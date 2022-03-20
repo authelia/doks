@@ -1,7 +1,7 @@
 ---
 title: "Time-based One Time Password"
 description: "Configuring Duo"
-lead: "An introduction into configuring Authelia."
+lead: "Authelia supports utilizing time-based one-time passwords as a 2FA method."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -13,12 +13,14 @@ weight: 103300
 toc: true
 ---
 
+You have the option to tune the settings of the TOTP generation, and you can see a full example of TOTP configuration
+below, as well as sections describing them.
 
-Authelia uses time-based one-time passwords as the OTP method. You have
-the option to tune the settings of the TOTP generation, and you can see a
-full example of TOTP configuration below, as well as sections describing them.
+Keep in mind the default settings are chosen for compatibility. Many applications do not support digits other than 6,
+and many only support SHA1.
 
 ## Configuration
+
 ```yaml
 totp:
   disable: false
@@ -111,6 +113,7 @@ other.
 Changing this value affects all TOTP validations, not just newly registered ones.
 
 ## Registration
+
 When users register their TOTP device for the first time, the current [issuer](#issuer), [algorithm](#algorithm), and
 [period](#period) are used to generate the TOTP link and QR code. These values are saved to the database for future
 validations.
@@ -121,6 +124,7 @@ users to register a new device, you can delete the old device for a particular u
 `authelia storage totp delete <username>` command regardless of if you change the settings or not.
 
 ## Input Validation
+
 The period and skew configuration parameters affect each other. The default values are a period of 30 and a skew of 1.
 It is highly recommended you do not change these unless you wish to set skew to 0.
 
@@ -130,6 +134,7 @@ password is valid for. The formula to calculate the effective validity period is
 seconds of validity, and period 30 and skew 2 would result in 150 seconds of validity.
 
 ## System time accuracy
+
 It's important to note that if the system time is not accurate enough then clients will seemingly not generate valid
 passwords for TOTP. Conversely this is the same when the client time is not accurate enough. This is due to the Time-based
 One Time Passwords being time-based.
@@ -139,6 +144,7 @@ a time synchronization issue on the server being an issue. There is however no e
 clients.
 
 ## Encryption
+
 The TOTP secret is [encrypted](storage/index.md#encryption_key) in the database in version 4.33.0 and above. This is so
 a user having access to only the database cannot easily compromise your two-factor authentication method.
 

@@ -52,11 +52,14 @@ log:
 ```
 
 #### JSON format
+
 ```
 {"level":"info","msg":"Logging severity set to info","time":"2020-01-01T00:00:00+11:00"}
 {"level":"info","msg":"Authelia is listening for non-TLS connections on 0.0.0.0:9091","time":"2020-01-01T00:00:00+11:00"}
 ```
+
 #### Text format
+
 ```
 time="2020-01-01T00:00:00+11:00" level=info msg="Logging severity set to info"
 time="2020-01-01T00:00:00+11:00" level=info msg="Authelia is listening for non-TLS connections on 0.0.0.0:9091"

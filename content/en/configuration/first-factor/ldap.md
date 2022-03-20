@@ -80,6 +80,7 @@ URL's are slightly more secure.
 
 
 ### tls
+
 Controls the TLS connection validation process. You can see how to configure the tls
 section [here](../prologue/common.md#tls-configuration).
 
@@ -205,6 +206,7 @@ Username column.
 | activedirectory | sAMAccountName | displayName  | mail |     cn     |
 
 #### Filter defaults
+
 The filters are probably the most important part to get correct when setting up LDAP. You want to exclude disabled
 accounts. The active directory example has two attribute filters that accomplish this as an example (more examples would
 be appreciated). The userAccountControl filter checks that the account is not disabled and the pwdLastSet makes sure that
@@ -220,6 +222,7 @@ _**Note:**_ The Active Directory filter `(sAMAccountType=805306368)` is exactly 
 and other Active Directory filters on the [TechNet wiki](https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx).
 
 ## Refresh Interval
+
 This setting takes a [duration notation](../prologue/common.md#duration-notation-format) that sets the max frequency for how often
 Authelia contacts the backend to verify the user still exists and that the groups stored in the session are up to date.
 This allows us to destroy sessions when the user no longer matches the user_filter, or deny access to resources as they
@@ -236,6 +239,7 @@ substantially costly. It's a trade-off between load and security that you should
 policy.
 
 ## Important notes
+
 Users must be uniquely identified by an attribute, this attribute must obviously contain a single value and be guaranteed
 by the administrator to be unique. If multiple users have the same value, Authelia will simply fail authenticating the
 user and display an error message in the logs.
