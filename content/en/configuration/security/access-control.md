@@ -159,7 +159,7 @@ access_control:
     policy: bypass
 ```
 
-### subject
+#### subject
 
 {{< confkey type="list(list(string))" required="no" >}}
 
@@ -220,7 +220,7 @@ access_control:
     - ["group:super-admin"]
 ```
 
-### methods
+#### methods
 
 {{< confkey type="list(string)" required="no" >}}
 
@@ -248,7 +248,7 @@ access_control:
 The valid request methods are: OPTIONS, HEAD, GET, POST, PUT, PATCH, DELETE, TRACE, CONNECT. Additional information
 about HTTP request methods can be found on the [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
 
-### networks
+#### networks
 
 {{< confkey type="list(string)" required="no" >}}
 
@@ -301,7 +301,7 @@ access_control:
     policy: two_factor
 ```
 
-### resources
+#### resources
 
 {{< confkey type="list(string)" required="no" >}}
 
