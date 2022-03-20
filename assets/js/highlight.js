@@ -8,6 +8,7 @@ import dockerfile from 'highlight.js/lib/languages/dockerfile';
 import nginx from 'highlight.js/lib/languages/nginx';
 import plaintext from 'highlight.js/lib/languages/plaintext';
 import python from 'highlight.js/lib/languages/python';
+import ldif from 'highlight.js/lib/languages/ldif';
 
 hljs.registerLanguage('json', json);
 hljs.registerLanguage('bash', bash);
@@ -21,6 +22,7 @@ hljs.registerLanguage('nginx', nginx);
 hljs.registerLanguage('plaintext', plaintext);
 hljs.registerLanguage('text', plaintext);
 hljs.registerLanguage('python', python);
+hljs.registerLanguage('ldif', ldif);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
