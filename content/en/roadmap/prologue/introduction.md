@@ -26,6 +26,6 @@ This is a summary of the features which are currently on the roadmap with links 
 1. [Webauthn](../active/webauthn.md)
 2. [OpenID Connect Provider](../active/openid-connect.md)
 3. [Internationalization or Multilingual Support](../active/internationalization.md)
-4. Multiple Domain Protection
-5. User and Administration Interface
-6. Kubernetes Documentation and Automation
+4. [Multiple Domain Protection](../active/multi-domain-protection.md)
+5. [Control Panel / Dashboard for User / Administration Settings](../active/dashboard-control-panel.md)
+6. [Kubernetes Documentation](../active/kubernetes-documentation.md)
