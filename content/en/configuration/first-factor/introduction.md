@@ -1,7 +1,7 @@
 ---
 title: "First Factor"
 description: "Configuring Duo"
-lead: "Authelia has multiple first factor methods. This section describes configuring this."
+lead: "Authelia uses a username and password for a first factor method. This section describes configuring this."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -15,8 +15,9 @@ toc: true
 
 There are two ways to store the users along with their password:
 
-* LDAP: users are stored in remote servers like OpenLDAP, OpenAM or Microsoft Active Directory.
-* File: users are stored in YAML file with a hashed version of their password.
+* [LDAP](ldap.md): users are stored in remote servers like OpenLDAP, OpenDJ, OpenAM, FreeIPA, or Microsoft Active
+  Directory.
+* [File](file.md): users are stored in YAML file with a hashed version of their password.
 
 ## Configuration
 
