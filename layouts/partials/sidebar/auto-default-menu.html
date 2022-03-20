@@ -1,4 +1,5 @@
 <!-- Auto default section menu -->
+aaaaaaaaaaa
 {{ $currentPage := . -}}
 {{ $section := $currentPage.Section -}}
 {{ range (where .Site.Sections "Section" "in" $section) }}
@@ -18,18 +19,18 @@
                 <ul class="list-unstyled ms-3">
                   {{ range .Pages }}
                     {{ $active := in $currentPage.RelPermalink .RelPermalink }}
-                    <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                    <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a></li>
                   {{ end }}
                 </ul>
               {{ else }}
                 {{ $active := in $currentPage.RelPermalink .RelPermalink }}
-                <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a></li>
               {{ end }}
             {{ end }}
           </ul>
         {{ else }}
           {{ $active := in $currentPage.RelPermalink .RelPermalink }}
-          <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .Permalink }}">{{ if (eq .CurrentSection.Title .Title) }}Introduction{{ else }}{{ .Title }}{{ end }}</a></li>
         {{ end }}
       {{ end }}
     </ul>
