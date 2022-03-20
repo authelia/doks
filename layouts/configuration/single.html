@@ -20,7 +20,7 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						{{ partial "main/breadcrumb" . -}}
-						<li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+						<li class="breadcrumb-item active" aria-current="page">{{ if (eq .CurrentSection.Title .Title) }}Introduction{{ else }}{{ .Title }}{{ end }}</li>
 					</ol>
 				</nav>
 			{{ end }}
