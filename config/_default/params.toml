@@ -93,3 +93,7 @@ lastMod = false
   [menu.section]
     auto = true
     collapsibleSidebar = true
+
+[Sections]
+  Search = ["overview", "configuration", "integration", "contributing"]
+  Searchable = ["blog"]
