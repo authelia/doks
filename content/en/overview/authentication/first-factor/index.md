@@ -13,12 +13,11 @@ weight: 220
 toc: true
 ---
 
-![First Factor Authentication](1FA.png "An example of the first factor sign in portal")
+{{< figure src="1FA.png" caption="An example of the first factor sign in portal" alt="First Factor Authentication View" width=400 >}}
 
-*IMPORTANT: This is currently the only method available as first factor.
+_**IMPORTANT:** This is currently the only method available for first factor authentication._
 
 Authelia supports several kind of user databases:
 
-* An LDAP server like OpenLDAP or OpenAM.
-* An Active Directory.
+* An LDAP server like OpenLDAP, OpenAM, Active Directory etc.
 * A YAML file

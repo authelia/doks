@@ -1,7 +1,7 @@
 ---
 title: "Security Key"
-description: "Authelia utilizes Webauthn security keys as one of it's second first factor authentication methods."
-lead: "Authelia utilizes Webauthn security keys as one of it's second first factor authentication methods."
+description: "Authelia utilizes Webauthn security keys as one of it's second factor authentication methods."
+lead: "Authelia utilizes Webauthn security keys as one of it's second first authentication methods."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -12,21 +12,21 @@ menu:
 weight: 240
 toc: true
 ---
+
 **Authelia** supports hardware-based second factors leveraging [FIDO2]&nbsp;[Webauthn] compatible security keys like
 [YubiKey]'s.
 
 Security keys are among the most secure second factor. This method is already supported by many major applications and
 platforms like Google, Facebook, GitHub, some banks, and much more.
 
-![YubiKey](yubikey.jpg "A YubiKey Security Key")
+{{< figure src="yubikey.jpg" caption="A YubiKey Security Key" alt="A YubiKey Security Key" width=150 >}}
+
 
 Normally, the protocol requires your security key to be enrolled on each site before being able to authenticate with it.
 Since Authelia provides Single Sign-On, your users will need to enroll their device only once to get access to all your
 applications.
 
-<p align="center">
-  <img src="../../images/REGISTER-U2F.png" width="400">
-</p>
+{{< figure src="REGISTER-U2F.png" caption="The Webauthn Registration View" alt="2FA Webauthn Registration View" width=400 >}}
 
 After having successfully passed the first factor, select *Security Key* method and click on *Register device* link.
 This will send you an email to verify your identity.
@@ -39,9 +39,7 @@ complete the enrollment.
 Upon successful enrollment, you can authenticate using your security key by simply touching the token again when
 requested:
 
-<p align="center">
-  <img src="../../images/2FA-U2F.png" width="400">
-</p>
+{{< figure src="2FA-U2F.png" caption="The Webauthn Authentication View" alt="2FA Webauthn Authentication View" width=400 >}}
 
 Easy, right?!
 

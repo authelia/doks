@@ -38,7 +38,7 @@ _**UPDATE:**_ The [initial implementation](#initial-implementation) has been dec
 {{< roadmap-status stage="in-progress" >}}
 
 We need to make a choice going forward about what method we will use to manage cookies and sessions. The current library
-has many drawbacks that just are not satisfactory in order
+has many drawbacks that just are not satisfactory in order to easily facilitate this.
 
 ### Initial Implementation
 
