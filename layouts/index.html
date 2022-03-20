@@ -6,43 +6,61 @@
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" role="button">Get Started</a>
-      <p class="meta">Open-source MIT Licensed. <a href="https://github.com/h-enk/doks">GitHub v{{ $data := getJSON "/package.json" }}{{ $data.version }}</a></p>
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="/configuration/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" role="button">Get Started</a>
+      <p class="meta">Open-source Apache 2.0 Licensed. <a href="https://github.com/authelia/authelia">GitHub v{{ $data := getJSON "https://raw.githubusercontent.com/authelia/authelia/master/web/package.json" }}{{ $data.version }}</a></p>
     </div>
   </div>
 </section>
 {{ end }}
 
 {{ define "sidebar-prefooter" }}
+<div class="d-flex justify-content-start mb-3">
+  <div class="bg-dots"></div>
+</div>
+
   {{ if eq $.Site.Language.LanguageName "English" }}
   <section class="section section-sm">
     <div class="container">
       <div class="row justify-content-center text-center">
         <div class="col-lg-5">
-          <h2 class="h4">Security aware</h2>
-          <p>Get A+ scores on <a href="https://observatory.mozilla.org/analyze/doks.netlify.app">Mozilla Observatory</a> out of the box. Easily change the default Security Headers to suit your needs.</p>
+          <h2 class="h4">Security by Design</h2>
+          <p>Not just another authentication portal, security is part of our design plan. </p>
         </div>
         <div class="col-lg-5">
-          <h2 class="h4">Fast by default ⚡️</h2>
-          <p>Get 100 scores on <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=92eaa982d7dbf92f94fe8ecc03987c9a">Google Lighthouse</a> by default. Doks removes unused css, prefetches links, and lazy loads images.</p>
+          <h2 class="h4">Login Regulation</h2>
+          <p>Prevent brute force login attempts by only allowing a certain number of logins before the user is locked for a period.</p>
         </div>
         <div class="col-lg-5">
-          <h2 class="h4">SEO-ready</h2>
-          <p>Use sensible defaults for structured data, open graph, and Twitter cards. Or easily change the SEO settings to your liking.</p>
+          <h2 class="h4">Password Reset</h2>
+          <p>In-built support for users to reset their LDAP or internal passwords with email validation right from the web interface.</p>
         </div>
       </div>
       <div class="row justify-content-center text-center">
         <div class="col-lg-5">
-          <h2 class="h4">Full text search</h2>
-          <p>Search your Doks site with FlexSearch. Easily customize index settings and search options to your liking.</p>
+          <h2 class="h4">Single Sign-On</h2>
+          <p>Allow your users the convenience of just being required to login once to a wide range of web applications.</p>
         </div>
         <div class="col-lg-5">
-          <h2 class="h4">Page layouts</h2>
-          <p>Build pages with a landing page, blog, or documentation layout. Add custom sections and components to suit your needs.</p>
+          <h2 class="h4">Authorization Policies</h2>
+          <p>Control which users and groups have access to which specific resources or domains with incredibly granular policy definitions.</p>
         </div>
         <div class="col-lg-5">
-          <h2 class="h4">Dark mode</h2>
-          <p>Switch to a low-light UI with the click of a button. Change colors with variables to match your branding.</p>
+          <h2 class="h4">Identity Validation</h2>
+          <p>Users who have not configured a second-factor device are required to validate their identity via an email reducing the chance an attacker could exploit a lazy user.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-5">
+          <h2 class="h4">High Availability</h2>
+          <p>Designed with high availability in mind, deployment options exist to allow multiple parallel containers on lifecycle management platforms like Kubernetes.</p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Multi-Factor Authentication</h2>
+          <p>Support for multiple second-factor methods including One Time Passwords, Mobile Push Notifications, and Universal Second Factor.</p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Intuitive User Interface</h2>
+          <p>The login portal is super straight forward and the workflow is completely transparent to your users.</p>
         </div>
       </div>
     </div>
@@ -51,6 +69,10 @@
 {{ end }}
 
 {{ define "sidebar-footer" }}
+<div class="d-flex justify-content-end mt-5">
+  <div class="bg-dots"></div>
+</div>
+
 <section class="section section-sm container-fluid">
   <div class="row justify-content-center text-center">
     <div class="col-lg-9">
