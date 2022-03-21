@@ -2,31 +2,37 @@
 
 [[main]]
   name = "Overview"
+  identifier = "overview"
   url = "/overview/prologue/introduction/"
   weight = 10
 
 [[main]]
   name = "Configuration"
+  identifier = "configuration"
   url = "/configuration/prologue/introduction/"
   weight = 20
 
 [[main]]
   name = "Integration"
+  identifier = "integration"
   url = "/integration/prologue/introduction/"
   weight = 30
 
 [[main]]
   name = "Contributing"
+  identifier = "contributing"
   url = "/contributing/prologue/introduction"
   weight = 40
 
 [[main]]
   name = "Blog"
+  identifier = "blog"
   url = "/blog/"
   weight = 50
 
 [[main]]
   name = "Roadmap"
+  identifier = "roadmap"
   url = "/roadmap/prologue/introduction/"
   weight = 60
 
