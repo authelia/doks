@@ -10,7 +10,7 @@ description = "Authelia is an open-source authentication and authorization serve
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
+images = ["authelia.png"]
 ogLocale = "en_US"
 domainTLD = "authelia.com"
 titleHome = "Authelia"
