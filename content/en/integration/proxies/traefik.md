@@ -7,8 +7,8 @@ lastmod: 2022-03-19T04:53:05+00:00
 draft: false
 images: []
 menu:
-integration:
-  parent: "proxies"
+  integration:
+    parent: "proxies"
 weight: 240
 toc: true
 ---
