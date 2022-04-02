@@ -13,10 +13,10 @@ weight: 106200
 toc: true
 ---
 
-**Authelia** currently supports the [OpenID Connect] OP role as a [**beta**](../../roadmap/oidc.md) feature. The OP role
-is the [OpenID Connect] Provider role, not the Relying Party or RP role. This means other applications that implement the
-[OpenID Connect] RP role can use Authelia as an authentication and authorization backend similar to how you may use
-social media or development platforms for login.
+**Authelia** currently supports the [OpenID Connect] OP role as a [**beta**](../../roadmap/active/openid-connect.md)
+feature. The OP role is the [OpenID Connect] Provider role, not the Relying Party or RP role. This means other
+applications that implement the [OpenID Connect] RP role can use Authelia as an authentication and authorization backend
+similar to how you may use social media or development platforms for login.
 
 The Relying Party role is the role which allows an application to use GitHub, Google, or other [OpenID Connect]
 providers for authentication and authorization. We do not intend to support this functionality at this moment in time.
@@ -276,7 +276,7 @@ tr -cd '[:alnum:]' < /dev/urandom | fold -w "${LENGTH}" | head -n 1 | tr -d '\n'
 ```
 
 prints such a string with a length in characters of `${LENGTH}` on `stdout`. The string will only contain alphanumeric
-characters. For Kubernetes, see [this section too](../secrets.md#Kubernetes).
+characters. For Kubernetes, see [this section too](../methods/secrets.md#kubernetes).
 
 ## Scope Definitions
 
@@ -288,19 +288,19 @@ does.
 _**Important Note:** The claim `sub` is planned to be changed in the future to a randomly unique value to identify the
 individual user. Please use the claim `preferred_username` instead._
 
-|       Claim        |   JWT Type    | Authelia Attribute |                  Description                  |
-|:------------------:|:-------------:|:------------------:|:---------------------------------------------:|
-|        sub         |    string     |      username      |   The username the user used to login with    |
-|       scope        |    string     |       scopes       |       Granted scopes (space delimited)        |
-|        scp         | array[string] |       scopes       |                Granted scopes                 |
-|        iss         |    string     |      hostname      |      The issuer name, determined by URL       |
-|      at_hash       |    string     |       _N/A_        |               Access Token Hash               |
-|        aud         | array[string] |       _N/A_        |                   Audience                    |
-|        exp         |    number     |       _N/A_        |                    Expires                    |
-|     auth_time      |    number     |       _N/A_        | The time the user authenticated with Authelia |
-|        rat         |    number     |       _N/A_        |     The time when the token was requested     |
-|        iat         |    number     |       _N/A_        |      The time when the token was issued       |
-|        jti         | string(uuid)  |       _N/A_        |                JWT Identifier                 |
+|   Claim   |   JWT Type    | Authelia Attribute |                         Description                         |
+|:---------:|:-------------:|:------------------:|:-----------------------------------------------------------:|
+|    iss    |    string     |      hostname      |             The issuer name, determined by URL              |
+|    jti    | string(uuid)  |       _N/A_        |                       JWT Identifier                        |
+|    rat    |    number     |       _N/A_        |            The time when the token was requested            |
+|    exp    |    number     |       _N/A_        |                           Expires                           |
+|    iat    |    number     |       _N/A_        |             The time when the token was issued              |
+| auth_time |    number     |       _N/A_        |        The time the user authenticated with Authelia        |
+|    sub    | string(uuid)  |  see description   | A unique and opaque value linked to the user who logged in  |
+|   scope   |    string     |       scopes       |              Granted scopes (space delimited)               |
+|    scp    | array[string] |       scopes       |                       Granted scopes                        |
+|    aud    | array[string] |       _N/A_        |                          Audience                           |
+|    amr    | array[string] |       _N/A_        | An [RFC8176] list of authentication method reference values |
 
 ### groups
 
@@ -329,6 +329,28 @@ This scope includes the profile information the authentication backend reports a
 | preferred_username |  string  |      username      | The username the user used to login with |
 |        name        |  string  |    display_name    |          The users display name          |
 
+## Authentication Method References
+
+Authelia currently supports adding the `amr` claim to the [ID Token] utilizing the [RFC8176] Authentication Method
+Reference values.
+
+The values this claim has are not strictly defined by the [OpenID Connect] specification. As such, some backends may
+expect a specification other than [RFC8176] for this purpose. If you have such an application and wish for us to support
+it then you're encouraged to create an issue.
+
+Below is a list of the potential values we place in the claim and their meaning:
+
+| Value |                           Description                            | Factor | Channel  |
+|:-----:|:----------------------------------------------------------------:|:------:|:--------:|
+|  mfa  |     User used multiple factors to login (see factor column)      |  N/A   |   N/A    |
+|  mca  |    User used multiple channels to login (see channel column)     |  N/A   |   N/A    |
+| user  |  User confirmed they were present when using their hardware key  |  N/A   |   N/A    |
+|  pin  | User confirmed they are the owner of the hardware key with a pin |  N/A   |   N/A    |
+|  pwd  |            User used a username and password to login            |  Know  | Browser  |
+|  otp  |                     User used TOTP to login                      |  Have  | Browser  |
+|  hwk  |                User used a hardware key to login                 |  Have  | Browser  |
+|  sms  |                      User used Duo to login                      |  Have  | External |
+
 ## Endpoint Implementations
 
 This is a table of the endpoints we currently support and their paths. This can be requrired information for some RP's,
@@ -349,3 +371,5 @@ Authelia via https://auth.example.com, the discovery URL is https://auth.example
 
 [OpenID Connect]: https://openid.net/connect/
 [token lifespan]: https://docs.apigee.com/api-platform/antipatterns/oauth-long-expiration
+[RFC8176]: https://datatracker.ietf.org/doc/html/rfc8176
+[ID Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken

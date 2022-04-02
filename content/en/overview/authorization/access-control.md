@@ -26,14 +26,14 @@ access_control:
   rules:
     - domain: dev.example.com
       resources:
-        - "^/groups/dev/.*$"
-      subject: "group:dev"
+        - '^/groups/dev/.*$'
+      subject: 'group:dev'
       policy: two_factor
       methods:
         - GET
         - POST
       networks:
-        - "192.168.1.0/24"
+        - 192.168.1.0/24
 ```
 
 This rule matches when the request targets the domain `dev.example.com`, the path matches the regular expression

@@ -56,6 +56,27 @@ While you can use multiple of these blocks in combination, ee suggest keeping it
 |         1 day         | `1d` or `24h` or `86400` or `86400s`  |
 |       10 hours        | `10h` or `600m` or `9h60m` or `36000` |
 
+## Regular Expressions
+
+We have several sections of configuration that utilize regular expressions. It's recommended to validate your regex
+manually either via tools like [Rego](https://regoio.herokuapp.com/) or some other means.
+
+It's important when attempting to utilize a backslash that it's utilized correctly. The YAML parser is likely to parse
+this as you trying to use YAML escape syntax instead of regex escape syntax. To avoid this use single quotes instead of
+no quotes or double quotes.
+
+Good Example:
+
+```yaml
+domain_regex: '^(admin|secure)\.example\.com$'
+```
+
+Bad Example:
+
+```yaml
+domain_regex: "^(admin|secure)\.example\.com$"
+```
+
 ## TLS Configuration
 
 Various sections of the configuration use a uniform configuration section called TLS. Notably LDAP and SMTP.
