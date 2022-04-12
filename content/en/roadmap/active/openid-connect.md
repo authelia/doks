@@ -68,7 +68,7 @@ Feature List:
 
 ### Beta 4
 
-{{< roadmap-status stage="in-progress" version="v4.35.0" >}}
+{{< roadmap-status stage="complete" version="v4.35.0" >}}
 
 Feature List:
 
@@ -76,9 +76,13 @@ Feature List:
   - Tokens
   - Auditable Information
   - Subject to User Mapping
+- Opaque UUID v4's for subject identifiers
+- Support for Pairwise and Plain Subject Identifier types as per [OpenID Connect Core (Subject Identifier Types)](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes)
 - Claims:
   - `sub` - replace username with opaque random UUID v4
-  - `amr` - authentication method references as per [RFC8176](https://datatracker.ietf.org/doc/html/rfc8176).
+  - `amr` - authentication method references as per [RFC8176](https://datatracker.ietf.org/doc/html/rfc8176)
+  - `azp` - authorized party as per [OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)
+  - `client_id` - the Client ID as per [RFC8693](https://datatracker.ietf.org/doc/html/rfc8693/#section-4.3)
 - Cross Origin Resource Sharing (CORS):
   - Automatically allow all cross-origin requests to the discovery endpoints
   - Automatically allow all cross-origin requests to the JSON Web Keys endpoint

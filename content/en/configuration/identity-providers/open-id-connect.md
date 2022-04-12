@@ -40,12 +40,23 @@ identity_providers:
     refresh_token_lifespan: 90m
     enable_client_debug_messages: false
     enforce_pkce: public_clients_only
+    cors:
+      endpoints:
+        - authorization
+        - token
+        - revocation
+        - introspection
+      allowed_origins:
+        - https://example.com
+      allowed_origins_from_client_redirect_uris: false
     clients:
       - id: myapp
         description: My Application
         secret: this_is_a_secret
+        sector_identifier: ''
         public: false
         authorization_policy: two_factor
+        pre_configured_consent_duration: ''
         audience: []
         scopes:
           - openid
@@ -159,6 +170,61 @@ Allows PKCE `plain` challenges when set to `true`.
 
 ***Security Notice:*** Changing this value is generally discouraged. Applications should use the `S256` PKCE challenge method instead.
 
+### cors
+
+Some OpenID Connect Endpoints need to allow cross-origin resource sharing, however some are optional. This section allows
+you to configure the optional parts. We reply with CORS headers when the request includes the Origin header.
+
+#### endpoints
+
+{{< confkey type="list(string)" required="no" >}}
+
+A list of endpoints to configure with cross-origin resource sharing headers. It is recommended that the `userinfo`
+option is at least in this list. The potential endpoints which this can be enabled on are as follows:
+
+* authorization
+* token
+* revocation
+* introspection
+* userinfo
+
+#### allowed_origins
+
+{{< confkey type="list(string)" required="no" >}}
+
+A list of permitted origins.
+
+Any origin with https is permitted unless this option is configured or the allowed_origins_from_client_redirect_uris
+option is enabled. This means you must configure this option manually if you want http endpoints to be permitted to
+make cross-origin requests to the OpenID Connect endpoints, however this is not recommended.
+
+Origins must only have the scheme, hostname and port, they may not have a trailing slash or path.
+
+In addition to an Origin URI, you may specify the wildcard origin in the allowed_origins. It MUST be specified by itself
+and the allowed_origins_from_client_redirect_uris MUST NOT be enabled. The wildcard origin is denoted as `*`. Examples:
+
+```yaml
+identity_providers:
+  oidc:
+    cors:
+      allowed_origins: "*"
+```
+
+```yaml
+identity_providers:
+  oidc:
+    cors:
+      allowed_origins:
+        - "*"
+```
+
+#### allowed_origins_from_client_redirect_uris
+
+{{< confkey type="boolean" default="false" required="no" >}}
+
+Automatically adds the origin portion of all redirect URI's on all clients to the list of allowed_origins, provided they
+have the scheme http or https and do not have the hostname of localhost.
+
 ### clients
 
 {{< confkey type="list" required="yes" >}}
@@ -189,6 +255,38 @@ You must [generate this option yourself](#generating-a-random-secret).
 This must be provided when the client is a confidential client type, and must be blank when using the public client
 type. To set the client type to public see the [public](#public) configuration option.
 
+#### sector_identifier
+
+{{< confkey type="string" required="no" >}}
+
+_**Important Note:** because adjusting this option will inevitably change the `sub` claim of all tokens generated for
+the specified client, changing this should cause the relying party to detect all future authorizations as completely new
+users._
+
+Must be an empty string or the host component of a URL. This is commonly just the domain name, but may also include a
+port.
+
+Authelia utilizes UUID version 4 subject identifiers. By default the public subject identifier type is utilized for all
+clients. This means the subject identifiers will be the same for all clients. This configuration option enables pairwise
+for this client, and configures the sector identifier utilized for both the storage and the lookup of the subject
+identifier.
+
+1. All clients who do not have this configured will generate the same subject identifier for a particular user regardless
+   of which client obtains the ID token.
+2. All clients which have the same sector identifier will:
+   1. have the same subject identifier for a particular user when compared to clients with the same sector identifier.
+   2. have a completely different subject identifier for a particular user whe compared to:
+      1. any client with the public subject identifier type.
+      2. any client with a differing sector identifier.
+
+In specific but limited scenarios this option is beneficial for privacy reasons. In particular this is useful when the
+party utilizing the _Authelia_ [OpenID Connect] Authorization Server is foreign and not controlled by the user. It would
+prevent the third party utilizing the subject identifier with another third party in order to track the user.
+
+Keep in mind depending on the other claims they may still be able to perform this tracking and it is not a silver bullet.
+There are very few benefits when utilizing this in a homelab or business where no third party is utilizing
+the server.
+
 #### public
 
 {{< confkey type="bool" default="false" required="no" >}}
@@ -205,6 +303,17 @@ In addition to the standard rules for redirect URIs, public clients can use the 
 {{< confkey type="string" default="two_factor" required="no" >}}
 
 The authorization policy for this client: either `one_factor` or `two_factor`.
+
+#### pre_configured_consent_duration
+
+{{< confkey type="string (duration)" required="no" >}}
+
+Configuring this enables users of this client to remember their consent as a pre-configured consent. The value is period
+of time is in [duration notation format](../prologue/common.md#duration-notation-format). The period of time dictates how
+long a users choice to remember the pre-configured consent lasts.
+
+Pre-configured consents are only valid if the subject, client id are exactly the same and the requested scopes/audience
+match exactly with the granted scopes/audience.
 
 #### audience
 
@@ -285,22 +394,24 @@ characters. For Kubernetes, see [this section too](../methods/secrets.md#kuberne
 This is the default scope for openid. This field is forced on every client by the configuration validation that Authelia
 does.
 
-_**Important Note:** The claim `sub` is planned to be changed in the future to a randomly unique value to identify the
-individual user. Please use the claim `preferred_username` instead._
+_**Important Note:** The subject identifiers or `sub` claim has been changed to a [RFC4122] UUID V4 to identify the
+individual user as per the [Subject Identifier Types] specification. Please use the claim `preferred_username` instead._
 
 |   Claim   |   JWT Type    | Authelia Attribute |                         Description                         |
 |:---------:|:-------------:|:------------------:|:-----------------------------------------------------------:|
 |    iss    |    string     |      hostname      |             The issuer name, determined by URL              |
-|    jti    | string(uuid)  |       _N/A_        |                       JWT Identifier                        |
+|    jti    | string(uuid)  |       _N/A_        |     A [RFC4122] UUID V4 representing the JWT Identifier     |
 |    rat    |    number     |       _N/A_        |            The time when the token was requested            |
 |    exp    |    number     |       _N/A_        |                           Expires                           |
 |    iat    |    number     |       _N/A_        |             The time when the token was issued              |
 | auth_time |    number     |       _N/A_        |        The time the user authenticated with Authelia        |
-|    sub    | string(uuid)  |  see description   | A unique and opaque value linked to the user who logged in  |
+|    sub    | string(uuid)  |     opaque id      |    A [RFC4122] UUID V4 linked to the user who logged in     |
 |   scope   |    string     |       scopes       |              Granted scopes (space delimited)               |
 |    scp    | array[string] |       scopes       |                       Granted scopes                        |
 |    aud    | array[string] |       _N/A_        |                          Audience                           |
 |    amr    | array[string] |       _N/A_        | An [RFC8176] list of authentication method reference values |
+|    azp    |    string     |    id (client)     |                    The authorized party                     |
+| client_id |    string     |    id (client)     |                        The client id                        |
 
 ### groups
 
@@ -353,23 +464,53 @@ Below is a list of the potential values we place in the claim and their meaning:
 
 ## Endpoint Implementations
 
-This is a table of the endpoints we currently support and their paths. This can be requrired information for some RP's,
-particularly those that don't use [discovery](https://openid.net/specs/openid-connect-discovery-1_0.html). The paths are
-appended to the end of the primary URL used to access Authelia. For example in the Discovery example provided you access
-Authelia via https://auth.example.com, the discovery URL is https://auth.example.com/.well-known/openid-configuration.
+The following section documents the endpoints we implement and their respective paths. This information can
+traditionally be discovered by relying parties that utilize
+[discovery](https://openid.net/specs/openid-connect-discovery-1_0.html), however this information may be useful for
+clients which do not implement this.
 
-|   Endpoint    |                     Path                      |
-|:-------------:|:---------------------------------------------:|
-|   Discovery   |    [root]/.well-known/openid-configuration    |
-|   Metadata    | [root]/.well-known/oauth-authorization-server |
-|     JWKS      |             [root]/api/oidc/jwks              |
-| Authorization |         [root]/api/oidc/authorization         |
-|     Token     |             [root]/api/oidc/token             |
-| Introspection |         [root]/api/oidc/introspection         |
-|  Revocation   |          [root]/api/oidc/revocation           |
-|   Userinfo    |           [root]/api/oidc/userinfo            |
+The endpoints can be discovered easily by visiting the Discovery and Metadata endpoints. It is recommended regardless
+of your version of Authelia that you utilize this version as it will always produce the correct endpoint URLs. The paths
+for the Discovery/Metadata endpoints are part of IANA's well known registration but are also documented in a table
+below.
 
-[OpenID Connect]: https://openid.net/connect/
-[token lifespan]: https://docs.apigee.com/api-platform/antipatterns/oauth-long-expiration
+These tables document the endpoints we currently support and their paths in the most recent version of Authelia. The
+paths are appended to the end of the primary URL used to access Authelia. The tables use the url
+https://auth.example.com as an example of the Authelia root URL which is also the OpenID Connect issuer.
+
+### Well Known Discovery Endpoints
+
+These endpoints can be utilized to discover other endpoints and metadata about the Authelia OP.
+
+|                 Endpoint                  |                              Path                               |
+|:-----------------------------------------:|:---------------------------------------------------------------:|
+|        [OpenID Connect Discovery]         |    https://auth.example.com/.well-known/openid-configuration    |
+| [OAuth 2.0 Authorization Server Metadata] | https://auth.example.com/.well-known/oauth-authorization-server |
+
+
+### Discoverable Endpoints
+
+These endpoints implement OpenID Connect elements.
+
+|      Endpoint       |                      Path                       |  Discovery Attribute   |
+|:-------------------:|:-----------------------------------------------:|:----------------------:|
+| [JSON Web Key Sets] |       https://auth.example.com/jwks.json        |        jwks_uri        |
+|   [Authorization]   | https://auth.example.com/api/oidc/authorization | authorization_endpoint |
+|       [Token]       |     https://auth.example.com/api/oidc/token     |     token_endpoint     |
+|     [Userinfo]      |   https://auth.example.com/api/oidc/userinfo    |   userinfo_endpoint    |
+|   [Introspection]   | https://auth.example.com/api/oidc/introspection | introspection_endpoint |
+|    [Revocation]     |  https://auth.example.com/api/oidc/revocation   |  revocation_endpoint   |
+
+
+[JSON Web Key Sets]: https://datatracker.ietf.org/doc/html/rfc7517#section-5
+[Subject Identifier Types]:https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes
+[OpenID Connect Discovery]: https://openid.net/specs/openid-connect-discovery-1_0.html
+[OAuth 2.0 Authorization Server Metadata]: https://datatracker.ietf.org/doc/html/rfc8414
+[Authorization]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
+[Token]: https://openid.net/specs/openid-connect-core-1_0.html#TokenEndpoint
+[Userinfo]: https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
+[Introspection]: https://datatracker.ietf.org/doc/html/rfc7662
+[Revocation]: https://datatracker.ietf.org/doc/html/rfc7009
 [RFC8176]: https://datatracker.ietf.org/doc/html/rfc8176
-[ID Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[RFC4122]: https://datatracker.ietf.org/doc/html/rfc4122
+[token lifespan]: https://docs.apigee.com/api-platform/antipatterns/oauth-long-expiration

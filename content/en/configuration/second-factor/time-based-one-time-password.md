@@ -13,6 +13,9 @@ weight: 103300
 toc: true
 ---
 
+The OTP method _Authelia_ uses is the Time-Based One-Time Password Algorithm (TOTP) [RFC6238] which is an extension of
+HMAC-Based One-Time Password Algorithm (HOTP) [RFC4226].
+
 You have the option to tune the settings of the TOTP generation, and you can see a full example of TOTP configuration
 below, as well as sections describing them.
 
@@ -29,6 +32,7 @@ totp:
   digits: 6
   period: 30
   skew: 1
+  secret_size: 32
 ```
 
 ## Options
@@ -112,6 +116,15 @@ other.
 
 Changing this value affects all TOTP validations, not just newly registered ones.
 
+### secret_size
+
+{{< confkey type="integer" default="32" required="no" >}}
+
+The length in bytes of generated shared secrets. The minimum is 20 (or 160 bits), and the default is 32 (or 256 bits).
+In most use cases 32 is sufficient. Though some authenticators may have issues with more than the minimum. Our minimum
+is the recommended value in [RFC4226], though technically according to the specification 16 bytes (or 128 bits) is the
+minimum.
+
 ## Registration
 
 When users register their TOTP device for the first time, the current [issuer](#issuer), [algorithm](#algorithm), and
@@ -128,9 +141,8 @@ users to register a new device, you can delete the old device for a particular u
 The period and skew configuration parameters affect each other. The default values are a period of 30 and a skew of 1.
 It is highly recommended you do not change these unless you wish to set skew to 0.
 
-The way you configure these affects security by changing the length of time a one-time
-password is valid for. The formula to calculate the effective validity period is
-`period + (period * skew * 2)`. For example period 30 and skew 1 would result in 90
+These options affect security by changing the length of time a one-time password is valid for. The formula to calculate
+the effective validity period is `period + (period * skew * 2)`. For example period 30 and skew 1 would result in 90
 seconds of validity, and period 30 and skew 2 would result in 150 seconds of validity.
 
 ## System time accuracy
@@ -169,3 +181,6 @@ Help:
 ```bash
 $ authelia storage totp export --help
 ```
+
+[RFC4226]: https://datatracker.ietf.org/doc/html/rfc4226
+[RFC6238]: https://datatracker.ietf.org/doc/html/rfc6238

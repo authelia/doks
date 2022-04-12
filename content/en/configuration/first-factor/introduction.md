@@ -24,6 +24,8 @@ There are two ways to store the users along with their password:
 ```yaml
 authentication_backend:
   disable_reset_password: false
+  password_reset:
+    custom_url: ""
   file: {}
   ldap: {}
 ```
@@ -35,6 +37,15 @@ authentication_backend:
 {{< confkey type="boolean" default="false" required="no" >}}
 
 This setting controls if users can reset their password from the web frontend or not.
+
+### password_reset
+
+#### custom_url
+
+{{< confkey type="string" required="no" >}}
+
+The custom password reset URL. This replaces the inbuilt password reset functionality and disables the endpoints if
+this is configured to anything other than nothing or an empty string.
 
 ### file
 
