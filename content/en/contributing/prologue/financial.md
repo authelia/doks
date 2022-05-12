@@ -50,6 +50,10 @@ Our [apt repository](https://apt.authelia.com) is hosted thanks to [Balto](https
 Our [continuous integration and continuous deployment pipelines](https://buildkite.com/authelia/?from=Authelia) are hosted by
 [Buildkite](https://buildkite.com/features?from=Authelia).
 
+### Crowdin
+
+Our [localization platform](https://crowdin.com/) is hosted by [Crowdin](https://crowdin.com/?from=Authelia).
+
 ### JetBrains
 
 Our development IDE's are provided by [JetBrains](https://www.jetbrains.com/?from=Authelia)
