@@ -45,6 +45,25 @@ considers the targeted website is the portal. In that case and if the default re
 redirected to that URL. If not defined, the user is not redirected after authentication.
 
 
+### default_2fa_method
+
+{{< confkey type="string" default="totp" required="no" >}}
+
+Sets the default second factor method for users. This must be blank or one of the enabled methods. New users will by
+default have this method selected for them. In addition if this was configured to `webauthn` and a user had the `totp`
+method, and the `totp` method was disabled in the configuration, the users' method would automatically update to the
+`webauthn` method.
+
+Options are:
+
+- totp
+- webauthn
+- mobile_push
+
+```yaml
+default_2fa_method: totp
+```
+
 ### jwt_secret
 
 {{< confkey type="string" required="yes" >}}

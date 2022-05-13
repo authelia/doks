@@ -36,10 +36,14 @@ Please visit [Open Collective] in order to financially contribute to Authelia.
 
 ## Sponsorship
 
-Authelia is sponsored by several companies via indrect means. These companies deserve a special mention since their
+Authelia is sponsored by several companies via indirect means. These companies deserve a special mention since their
 contributions are very important to us but not easily visible.
 
-Any company can become a sponsor by donating or providing any benefit to the project or the team helping improve Authelia.
+If you feel you have a product or service that Authelia could benefit from please feel free to [contact](../../information/contact.md) us.
+
+We are currently directly looking for someone to sponsor:
+
+- Security Audit
 
 ### Balto
 
@@ -56,15 +60,15 @@ Our [localization platform](https://crowdin.com/) is hosted by [Crowdin](https:/
 
 ### JetBrains
 
-Our development IDE's are provided by [JetBrains](https://www.jetbrains.com/?from=Authelia)
+Our development IDE's are provided by [JetBrains](https://www.jetbrains.com/?from=Authelia).
 
 ### Microsoft
 
 Our pipeline agents which we rely on for productivity are hosted on [Azure](https://azure.microsoft.com/?from=Authelia)
-and our [git repository](https://github.com/authelia/authelia) is hosted on [GitHub](https://github.com/?from=Authela)
+and our [git repositories](https://github.com/authelia) are hosted on [GitHub](https://github.com/?from=Authela)
 which are both [Microsoft](https://www.microsoft.com/?from=Authelia) products.
 
 ### Netlify
 
-Our [website and documentation](https://www.authelia.com) are hosted and built by
+Our [website and documentation](https://www.authelia.com) are built and hosted by
 [Netlify](https://www.netlify.com/?from=Authelia).

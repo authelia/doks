@@ -1,7 +1,7 @@
 ---
 title: "Statelessness"
-description: "An introduction into the Authelia overview."
-lead: "An introduction into the Authelia overview."
+description: "Statelessness is the ability for a system to operate without an in-memory state. A crash could result in loss of the in-memory state causing a bad user experience."
+lead: "Statelessness is the ability for a system to operate without an in-memory state. A crash could result in loss of the in-memory state causing a bad user experience."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -9,17 +9,17 @@ images: []
 menu:
   overview:
     parent: "authorization"
-weight: 500
+weight: 390
 toc: false
 ---
 
-**Authelia** supports operating as a stateless application. This is incredibly important
-when running in highly available deployments like you may see in platforms like Kubernetes.
+**Authelia** supports operating as a stateless application. This is incredibly important when running in highly
+available deployments like you may see in platforms like Kubernetes.
 
 ## Stateful Considerations
 
-There are some components within **Authelia** that may optionally be made stateful by using
-certain providers. Examples of this are as follows:
+There are some components within **Authelia** that may optionally be made stateful by using certain providers. Examples
+of this are as follows:
 
 ### Session Provider
 

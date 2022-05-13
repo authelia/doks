@@ -13,6 +13,19 @@ weight: 107400
 toc: true
 ---
 
+## Version support
+
+See [PostgreSQL support](https://www.postgresql.org/support/versioning/) for the versions supported by PostgreSQL. We
+recommend the _current minor_ version of one of the versions supported by PostgreSQL.
+
+The versions of PostgreSQL that should be supported by Authelia are:
+- 14
+- 13
+- 12
+- 11
+- 10
+- 9.6
+
 ## Configuration
 
 ```yaml

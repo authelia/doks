@@ -29,14 +29,15 @@ authentication_backend:
       skip_verify: false
       minimum_version: TLS1.2
     base_dn: DC=example,DC=com
-    username_attribute: uid
     additional_users_dn: ou=users
     users_filter: (&({username_attribute}={input})(objectClass=person))
+    username_attribute: uid
+    mail_attribute: mail
+    display_name_attribute: displayName
     additional_groups_dn: ou=groups
     groups_filter: (&(member={dn})(objectClass=groupOfNames))
     group_name_attribute: cn
-    mail_attribute: mail
-    display_name_attribute: displayName
+    permit_referrals: false
     user: CN=admin,DC=example,DC=com
     password: password
 ```
@@ -58,10 +59,18 @@ See the [Implementation Guide](#implementation-guide) for information.
 The LDAP URL which consists of a scheme, address, and port. Format is `<scheme>://<address>:<port>` or
 `<scheme>://<address>` where scheme is either `ldap` or `ldaps`.
 
+```yaml
+authentication_backend:
+  ldap:
+    url: ldaps://dc1.example.com
+```
+
 If utilising an IPv6 literal address it must be enclosed by square brackets:
 
 ```yaml
-url: ldap://[fd00:1111:2222:3333::1]
+authentication_backend:
+  ldap:
+    url: ldap://[fd00:1111:2222:3333::1]
 ```
 
 ### timeout
@@ -93,14 +102,6 @@ Sets the base distinguished name container for all LDAP queries. If your LDAP do
 authelia OU: `ou=authelia,dc=example,dc=com`. This is prefixed with the [additional_users_dn](#additional_users_dn) for
 user searches and [additional_groups_dn](#additional_groups_dn) for groups searches.
 
-### username_attribute
-
-{{< confkey type="string" required="situational" >}}
-
-The LDAP attribute that maps to the username in Authelia. The default value is dependent on the
-[implementation](#implementation), refer to the [attribute defaults](#attribute-defaults) for more information. If the
-implementation does not have a `username_attribute` default then this is required.
-
 ### additional_users_dn
 
 {{< confkey type="string" required="no" >}}
@@ -108,16 +109,53 @@ implementation does not have a `username_attribute` default then this is require
 Additional LDAP path to append to the [base_dn](#base_dn) when searching for users. Useful if you want to restrict
 exactly which OU to get users from for either security or performance reasons. For example setting it to
 `ou=users,ou=people` with a base_dn set to `dc=example,dc=com` will mean user searches will occur in
-`ou=users,ou=people,dc=example,dc=com`. The default value is dependent on the [implementation](#implementation), refer
-to the [attribute defaults](#attribute-defaults) for more information.
+`ou=users,ou=people,dc=example,dc=com`.
 
 ### users_filter
 
 {{< confkey type="string" required="no" >}}
 
+_**Note:** This option is technically required however the [implementation](#implementation) option
+can implicitly set a default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more
+information._
+
 The LDAP filter to narrow down which users are valid. This is important to set correctly as to exclude disabled users.
 The default value is dependent on the [implementation](#implementation), refer to the
 [attribute defaults](#attribute-defaults) for more information.
+
+### username_attribute
+
+{{< confkey type="string" required="situational" >}}
+
+_**Note:** This option is technically required however the [implementation](#implementation) option
+can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
+information._
+
+The LDAP attribute that maps to the username in Authelia. The default value is dependent on the
+[implementation](#implementation), refer to the [attribute defaults](#attribute-defaults) for more information. If the
+implementation does not have a `username_attribute` default then this is required.
+
+### mail_attribute
+
+{{< confkey type="string" required="situational" >}}
+
+_**Note:** This option is technically required however the [implementation](#implementation) option
+can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
+information._
+
+The attribute to retrieve which contains the users email addresses. This is important for the device registration and
+password reset processes. The user must have an email address in order for Authelia to perform identity verification when
+a user attempts to reset their password or register a second factor device.
+
+### display_name_attribute
+
+{{< confkey type="string" required="situational" >}}
+
+_**Note:** This option is technically required however the [implementation](#implementation) option
+can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
+information._
+
+The attribute to retrieve which is shown on the Web UI to the user when they log in.
 
 ### additional_groups_dn
 
@@ -129,25 +167,32 @@ Similar to [additional_users_dn](#additional_users_dn) but it applies to group s
 
 {{< confkey type="string" required="no" >}}
 
-Similar to [users_filter](#users_filter) but it applies to group searches. In order to include groups the memeber is not
+_**Note:** This option is technically required however the [implementation](#implementation) option
+can implicitly set a default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more
+information._
+
+Similar to [users_filter](#users_filter) but it applies to group searches. In order to include groups the member is not
 a direct member of, but is a member of another group that is a member of those (i.e. recursive groups), you may try
 using the following filter which is currently only tested against Microsoft Active Directory:
 
 `(&(member:1.2.840.113556.1.4.1941:={dn})(objectClass=group)(objectCategory=group))`
 
-### mail_attribute
+## group_name_attribute
 
-{{< confkey type="string" required="no" >}}
+{{< confkey type="string" required="situational" >}}
 
-The attribute to retrieve which contains the users email addresses. This is important for the device registration and
-password reset processes. The user must have an email address in order for Authelia to perform identity verification when
-a user attempts to reset their password or register a second factor device.
+_**Note:** This option is technically required however the [implementation](#implementation) option
+can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
+information._
 
-### display_name_attribute
+The LDAP attribute that is used by Authelia to determine the group name.
 
-{{< confkey type="string" required="no" >}}
+## permit_referrals
 
-The attribute to retrieve which is shown on the Web UI to the user when they log in.
+{{< confkey type="boolean" default="false" required="no" >}}
+
+Permits following referrals. This is useful if you have read-only servers in your architecture and thus require
+referrals to be followed when performing write operations.
 
 ### user
 
@@ -253,6 +298,5 @@ result in Authelia throwing an error. In versions <= `4.24.0` not including the 
 cause issues with the session refresh and will result in session resets when the refresh interval has expired, default
 of 5 minutes.
 
-[LDAP GeneralizedTime]: https://ldapwiki.com/wiki/GeneralizedTime
 [username attribute]: #username_attribute
 [TechNet wiki]: https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx
