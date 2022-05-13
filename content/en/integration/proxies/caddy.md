@@ -76,7 +76,7 @@ example.com {
 }
 ```
 
-## Advanced example
+### Advanced example
 
 The advanced example allows for more flexible customization, however the [basic example](#basic-example) should be
 preferred in _most_ situations. If you are unsure of what you're doing please don't use this method.
