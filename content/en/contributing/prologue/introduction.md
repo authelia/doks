@@ -13,6 +13,17 @@ weight: 110
 toc: true
 ---
 
-## Get started
+Contributions to **Authelia** have four main forms:
 
-Example.
+- Utilizing GitHub [Issues] or [Discussions] to make commentary about bugs, ideas, etc.
+- [Development](../development/introduction.md)
+- [Documentation](../documentation/introduction.md)
+- [Financial](financial.md)
+
+We encourage our community to be part of **Authelia** by contributing in these ways. We encourage anyone who wishes to
+contribute via development to utilize GitHub [Issues] or [Discussions] or one of the
+[other contact methods](../../information/contact.md) to discuss their contribution in advance and come up with a design
+plan.
+
+[Issues]: https://github.com/authelia/authelia/issues
+[Discussions]: https://github.com/authelia/authelia/discussions

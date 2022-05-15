@@ -9,7 +9,7 @@ images: []
 menu:
   integration:
     parent: "proxies"
-weight: 240
+weight: 270
 toc: true
 ---
 
@@ -17,21 +17,25 @@ toc: true
 
 ## Configuration
 
-Below you will find commented examples of the following configuration:
+Below you will find commented examples of the following docker deployment:
 
-* Traefik 2.x
+* [Traefik]
 * Authelia portal
 * Protected endpoint (Nextcloud)
 * Protected endpoint with `Authorization` header for basic authentication (Heimdall)
 
-The below configuration looks to provide examples of running Traefik 2.x with labels to protect your endpoint (Nextcloud in this case).
+The below configuration looks to provide examples of running [Traefik] 2.x with labels to protect your endpoint
+(Nextcloud in this case).
 
-Please ensure that you also setup the respective [ACME configuration](https://docs.traefik.io/https/acme/) for your Traefik setup as this is not covered in the example below.
+Please ensure that you also setup the respective [ACME configuration](https://docs.traefik.io/https/acme/) for your
+[Traefik] setup as this is not covered in the example below.
 
 ### Basic Authentication
 
-Authelia provides the means to be able to authenticate your first factor via the `Proxy-Authorization` header, this is compatible with Traefik >= 2.4.1.
-If you are running Traefik < 2.4.1, or you have a use-case which requires the use of the `Authorization` header/basic authentication login prompt you can call Authelia's `/api/verify` endpoint with the `auth=basic` query parameter to force a switch to the `Authentication` header.
+Authelia provides the means to be able to authenticate your first factor via the `Proxy-Authorization` header, this
+is compatible with Traefik >= 2.4.1. If you are running Traefik < 2.4.1, or you have a use-case which requires the use
+of the `Authorization` header/basic authentication login prompt you can call Authelia's `/api/verify` endpoint with the
+`auth=basic` query parameter to force a switch to the `Authentication` header.
 
 ##### docker-compose.yml
 ```yml
@@ -151,7 +155,7 @@ an issue where Traefik complains that: `middleware authelia@docker not found`.
 This can be avoided a couple different ways:
 1. Ensure Authelia container is up before Traefik is started:
   - Utilise the [`depends_on` option](https://docs.docker.com/compose/compose-file/#depends_on)
-2. Define the Authelia middleware on your Traefik container
+2. Define the Authelia middleware on your [Traefik] container
 ```yaml
 - 'traefik.http.middlewares.authelia.forwardauth.address=http://authelia:9091/api/verify?rd=https://login.example.com/'
 - 'traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true'

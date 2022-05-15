@@ -1,5 +1,5 @@
 ---
-title: "Traefik v1.x"
+title: "Traefik v1"
 description: "Traefik v1.x Integration"
 lead: "A guide on integrating Authelia with the Traefik reverse proxy."
 date: 2022-03-19T04:53:05+00:00
@@ -9,29 +9,32 @@ images: []
 menu:
   integration:
     parent: "proxies"
-weight: 250
+weight: 280
 toc: true
 ---
 
-[Traefik 1.x] is a reverse proxy supported by **Authelia**.
+[Traefik] v1 is a reverse proxy supported by **Authelia**.
 
 ## Configuration
 
-Below you will find commented examples of the following configuration:
+Below you will find commented examples of the following docker deployment:
 
-* Traefik 1.x
+* [Traefik] 1.x
 * Authelia portal
 * Protected endpoint (Nextcloud)
 * Protected endpoint with `Authorization` header for basic authentication (Heimdall)
 
-The below configuration looks to provide examples of running Traefik 1.x with labels to protect your endpoint (Nextcloud in this case).
+The below configuration looks to provide examples of running [Traefik] v1 with labels to protect your endpoint (Nextcloud
+in this case).
 
-Please ensure that you also setup the respective [ACME configuration](https://docs.traefik.io/v1.7/configuration/acme/) for your Traefik setup as this is not covered in the example below.
+Please ensure that you also setup the respective [ACME configuration](https://docs.traefik.io/v1.7/configuration/acme/)
+for your [Traefik] setup as this is not covered in the example below.
 
 ### Basic Authentication
 
 Authelia provides the means to be able to authenticate your first factor via the `Proxy-Authorization` header.
-Given that this is not compatible with Traefik 1.x you can call Authelia's `/api/verify` endpoint with the `auth=basic` query parameter to force a switch to the `Authentication` header.
+Given that this is not compatible with [Traefik] 1.x you can call the **Authelia** `/api/verify` endpoint with the
+`auth=basic` query parameter to force a switch to the `Authentication` header.
 
 ##### docker-compose.yml
 ```yml
@@ -40,9 +43,7 @@ version: '3'
 networks:
   net:
     driver: bridge
-
 services:
-
   traefik:
     image: traefik:v1.7.20-alpine
     container_name: traefik
@@ -69,7 +70,6 @@ services:
       - '--entryPoints=Name:http Address::80'
       - '--entryPoints=Name:https Address::443 TLS'
       - '--entryPoints=Name:api Address::8081'
-
   authelia:
     image: authelia/authelia
     container_name: authelia
@@ -84,7 +84,6 @@ services:
     restart: unless-stopped
     environment:
       - TZ=Australia/Melbourne
-
   nextcloud:
     image: linuxserver/nextcloud
     container_name: nextcloud
@@ -105,7 +104,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Australia/Melbourne
-
   heimdall:
     image: linuxserver/heimdall
     container_name: heimdall
@@ -127,4 +125,4 @@ services:
       - TZ=Australia/Melbourne
 ```
 
-[Traefik 1.x]: https://docs.traefik.io/v1.7/
+[Traefik]: https://docs.traefik.io/v1.7/

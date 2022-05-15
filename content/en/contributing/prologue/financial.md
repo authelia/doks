@@ -25,7 +25,7 @@ was not prompted by any bug bounty program as we do not have one, but we hope to
 
 Potential usage for the money, ranked in order of priority:
 
-1. Put Authelia through a comprehensive security audit.
+1. Put Authelia through a comprehensive [Security Audit](../../information/security.md#help-wanted).
    1. Audit of Code Security via Analysis.
    2. Audit via Penetration Testing.
 2. Bug Bounty Program.
@@ -43,7 +43,7 @@ If you feel you have a product or service that Authelia could benefit from pleas
 
 We are currently directly looking for someone to sponsor:
 
-- Security Audit
+- [Security Audit](../../information/security.md#help-wanted)
 
 ### Balto
 

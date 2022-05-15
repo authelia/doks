@@ -54,6 +54,11 @@
   weight = 20
 
 [[footer]]
+  name = "Security"
+  url = "/information/security"
+  weight = 30
+
+[[footer]]
   name = "Contact"
   url = "/information/contact"
-  weight = 30
+  weight = 40

@@ -9,11 +9,25 @@ images: []
 
 ## Security
 
-If you believe you have identified a security related bug with Authelia please do not open an issue, do not notify us in
-public, and do not disclose this issue to third parties. Please either utilize the
-{{< email user="security" domain="authelia.com" >}} email address or ask to have a private discussion with a team member
-(also do not mention why you wish to have a private discussion) so that provided the bug is confirmed we can coordinate
-the release of fixes and information responsibly.
+If you believe you have identified a security related bug with Authelia please visit the [security policy](security.md)
+documentation.
+
+## GitHub
+
+### Issues
+
+If you have found a bug or have a feature request please visit
+[GitHub Issues](https://github.com/authelia/authelia/issues) and once you've checked an existing bug or feature request
+has not been lodged feel free to lodge your own.
+
+Bug reports should be reserved for bugs with Authelia, not for issues with the documentation or problems with
+integration. If you are having an issue with one of these areas please utilize [discussions](#discussions) or one of
+the [chat](#chat) methods.
+
+### Discussions
+
+If you have a general question or want to discuss an idea that's not entirely hashed out please visit
+[GitHub Discussions](https://github.com/authelia/authelia/discussions) and start a new discussion.
 
 ## Chat
 

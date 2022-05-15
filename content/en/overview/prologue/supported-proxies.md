@@ -15,25 +15,26 @@ toc: false
 
 The following table is a support matrix for Authelia features and specific reverse proxies.
 
-|     Proxy     |                            [Standard](#standard)                             |                          [Kubernetes](#kubernetes)                           |    [XHR Redirect](#xhr-redirect)     |  [Request Method](#request-method)   |
-|:-------------:|:----------------------------------------------------------------------------:|:----------------------------------------------------------------------------:|:------------------------------------:|:------------------------------------:|
-|    [NGINX]    |   [<i class="icon-support-full"></i>](../../integration/proxies/nginx.md)    |  [<i class="icon-support-full"></i>](../../integration/kubernetes/nginx.md)  |  <i class="icon-support-none"></i>   |  <i class="icon-support-full"></i>   |
-| [Traefik] 1.x | [<i class="icon-support-full"></i>](../../integration/proxies/traefik1.x.md) |                     <i class="icon-support-unknown"></i>                     |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
-| [Traefik] 2.x | [<i class="icon-support-full"></i>](../../integration/proxies/traefik2.x.md) | [<i class="icon-support-full"></i>](../../integration/kubernetes/traefik.md) |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
-|   [HAProxy]   |  [<i class="icon-support-full"></i>](../../integration/proxies/haproxy.md)   |                     <i class="icon-support-unknown"></i>                     | <i class="icon-support-unknown"></i> |  <i class="icon-support-full"></i>   |
-|    [Caddy]    |   [<i class="icon-support-full"></i>](../../integration/proxies/caddy.md)    |                     <i class="icon-support-unknown"></i>                     |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
-|    [Envoy]    |                [<i class="icon-support-unknown"></i>](#envoy)                |                     <i class="icon-support-unknown"></i>                     | <i class="icon-support-unknown"></i> | <i class="icon-support-unknown"></i> |
-|   [Apache]    |       [<i class="icon-support-none" alt="Not Supported"></i>](#apache)       |                      <i class="icon-support-none"></i>                       |  <i class="icon-support-none"></i>   |  <i class="icon-support-none"></i>   |
-|     [IIS]     |                  [<i class="icon-support-none"></i>](#iis)                   |                      <i class="icon-support-none"></i>                       |  <i class="icon-support-none"></i>   |  <i class="icon-support-none"></i>   |
+|         Proxy         |                                 [Standard](#standard)                                 |                              [Kubernetes](#kubernetes)                               |    [XHR Redirect](#xhr-redirect)     |  [Request Method](#request-method)   |
+|:---------------------:|:-------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|:------------------------------------:|:------------------------------------:|
+|       [Traefik]       |       [<i class="icon-support-full"></i>](../../integration/proxies/traefik.md)       | [<i class="icon-support-full"></i>](../../integration/kubernetes/traefik-ingress.md) |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
+|        [NGINX]        |        [<i class="icon-support-full"></i>](../../integration/proxies/nginx.md)        |  [<i class="icon-support-full"></i>](../../integration/kubernetes/nginx-ingress.md)  |  <i class="icon-support-none"></i>   |  <i class="icon-support-full"></i>   |
+| [NGINX Proxy Manager] | [<i class="icon-support-full"></i>](../../integration/proxies/nginx-proxy-manager.md) |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-none"></i>   |  <i class="icon-support-full"></i>   |
+|       [HAProxy]       |       [<i class="icon-support-full"></i>](../../integration/proxies/haproxy.md)       |                         <i class="icon-support-unknown"></i>                         | <i class="icon-support-unknown"></i> |  <i class="icon-support-full"></i>   |
+|        [Caddy]        |        [<i class="icon-support-full"></i>](../../integration/proxies/caddy.md)        |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
+|     [Traefik] 1.x     |      [<i class="icon-support-full"></i>](../../integration/proxies/traefikv1.md)      |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
+|        [Envoy]        |      [<i class="icon-support-unknown"></i>](../../integration/proxies/envoy.md)       |                         <i class="icon-support-unknown"></i>                         | <i class="icon-support-unknown"></i> | <i class="icon-support-unknown"></i> |
+|       [Apache]        |           [<i class="icon-support-none" alt="Not Supported"></i>](#apache)            |                          <i class="icon-support-none"></i>                           |  <i class="icon-support-none"></i>   |  <i class="icon-support-none"></i>   |
+|         [IIS]         |                       [<i class="icon-support-none"></i>](#iis)                       |                          <i class="icon-support-none"></i>                           |  <i class="icon-support-none"></i>   |  <i class="icon-support-none"></i>   |
 
 Legend:
 
-|                 Icon                 |         Meaning         |
-|:------------------------------------:|:-----------------------:|
-|  <i class="icon-support-full"></i>   |        Supported        |
-| <i class="icon-support-unknown"></i> |         Unknown         |
-| <i class="icon-support-partial"></i> | Partially Not Supported |
-|  <i class="icon-support-none"></i>   |      Not Supported      |
+|                 Icon                 |       Meaning       |
+|:------------------------------------:|:-------------------:|
+|  <i class="icon-support-full"></i>   |      Supported      |
+| <i class="icon-support-unknown"></i> |       Unknown       |
+| <i class="icon-support-partial"></i> | Partially Supported |
+|  <i class="icon-support-none"></i>   |    Not Supported    |
 
 ## Support
 
@@ -61,7 +62,7 @@ More information about [Kubernetes] deployments of Authelia can be read in the
 
 XML HTTP Requests do not typically redirect browsers when returned 30x status codes. Instead, the standard method is to
 return a 401 status code with a Location header. While this may seem trivial; currently there isn't wide support for it.
-For example nginx's ngx_http_auth_request_module does not seem to support this in any way.
+For example the nginx ngx_http_auth_request_module does not seem to support this in any way.
 
 ### Request Method
 
@@ -97,6 +98,7 @@ this would even be possible, however if anyone did something like this in the fu
 contribution.
 
 [NGINX]: https://www.nginx.com/
+[NGINX Proxy Manager]: https://nginxproxymanager.com/
 [Traefik]: https://traefik.io/
 [Caddy]: https://caddyserver.com/
 [HAProxy]: https://www.haproxy.com/

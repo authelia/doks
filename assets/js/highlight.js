@@ -1,5 +1,6 @@
 import hljs from 'highlight.js/lib/core';
 
+import go from 'highlight.js/lib/languages/go';
 import json from 'highlight.js/lib/languages/json';
 import bash from 'highlight.js/lib/languages/bash';
 import xml from 'highlight.js/lib/languages/xml';
@@ -10,6 +11,7 @@ import plaintext from 'highlight.js/lib/languages/plaintext';
 import python from 'highlight.js/lib/languages/python';
 import ldif from 'highlight.js/lib/languages/ldif';
 
+hljs.registerLanguage('go', go);
 hljs.registerLanguage('json', json);
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('console', bash);

@@ -17,6 +17,11 @@ toc: true
 various tested proxies with examples of how you may configure them. We are eager for users to help us provide better
 examples of already documented proxies, as well as provide us examples of undocumented proxies.
 
+## Support
+
+See the [support matrix](../../overview/prologue/supported-proxies.md) for a list of supported proxies or check out the
+documentation in this section. We're currently actively looking to support [Envoy](https://www.envoyproxy.io/).
+
 ## Integration Implementation
 
 Authelia is capable of being integrated into many proxies due to the decisions regarding the implementation. We handle
@@ -72,13 +77,8 @@ With the exception of the [403 Forbidden](https://developer.mozilla.org/en-US/do
 Authelia responds with a [Location](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Location) header to
 redirect the user to the authentication portal.
 
-In the instance of a [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200) status response Authelia also
-responds with various headers which can be forwarded by your reverse proxy to the backend application which are
-potentially useful for SSO depending on if the backend application supports it. We respond with the following headers:
+In the instance of a [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200) status response Authelia
+also responds with various headers which can be forwarded by your reverse proxy to the backend application which are
+potentially useful for SSO depending on if the backend application supports it.
 
-|    Header     |   Example    |      Description / Notes       |
-|:-------------:|:------------:|:------------------------------:|
-|  Remote-User  |     john     |       The users username       |
-| Remote-Groups |  admin,dev   | The groups the user belongs to |
-|  Remote-Name  |  John Smith  |     The users display name     |
-| Remote-Email  | jsmith@a.com |    The users email address     |
+See the [Trusted Header SSO](../trusted-header-sso/introduction.md) documentation for more information.

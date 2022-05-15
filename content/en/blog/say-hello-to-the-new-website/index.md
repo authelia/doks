@@ -14,8 +14,11 @@ all in one neat package. The website is using a [Hugo](https://gohugo.io/) theme
 This does change the development process for documentation slightly compared to what it was previously. However most of
 the changes will make it easier for most documentation contributors.
 
-As part of this redesign we've taken the time to rewrite and reorganize key sections of the documentation. This may result
-in some links not working. Key things to note are the contribution documentation is up-to-date and probably more detailed
-than it ever has been before.
+As part of this redesign we've taken the time to rewrite and reorganize key sections of the documentation. This may
+result in some links not working. Key things to note are the contribution documentation is up-to-date and probably more
+detailed than it ever has been before.
+
+In particular the integration documentation is far more comprehensive than it was previously and some areas of the
+configuration documentation that were not really relevant for configuration have moved slightly.
 
 You may have also noticed we launched a new blog.

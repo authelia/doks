@@ -13,4 +13,6 @@ weight: 110
 toc: true
 ---
 
-test
+Authelia's [architecture](../../overview/prologue/architecture) is relatively simple which makes the methods of
+integrating it within your existing architecture fairly vast. This section of the documentation provides non-exhaustive
+insights and examples into how administrators may achieve integration.
