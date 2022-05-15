@@ -13,11 +13,12 @@ weight: 231
 toc: true
 ---
 
-## The reasons for these conventions:
+The reasons for these conventions are as follows:
 
-- simple navigation though and easier to read git history
+- simple navigation though git history
+- easier to read git history
 
-## Format of the commit message:
+## Commit Message Format
 
 Each commit message consists of a **header**, a **body**, and a **footer**.
 
@@ -55,7 +56,7 @@ for, and the structure it must have.
 
 The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
 
-#### Allowed `<type>` values:
+#### Allowed type values:
 
 * **build** Changes that affect the build system or external dependencies
   (example scopes: bundler, deps, docker, go, npm)
@@ -69,7 +70,7 @@ The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is opti
 * **release** Releasing a new version of Authelia
 * **test** Adding missing tests or correcting existing tests
 
-#### Allowed `<scope>` values:
+#### Allowed scope values:
 
 The scope should be the name of the package affected
 (as perceived by the person reading the changelog generated from commit messages).
@@ -99,11 +100,8 @@ The scope should be the name of the package affected
 There are currently a few exceptions to the "use package name" rule:
 
 * `api`: used for changes that change the openapi specification
-
 * `cmd`: used for changes to the `authelia|authelia-scripts|authelia-suites` top level binaries
-
 * `web`: used for changes to the React based frontend
-
 * none/empty string: useful for `test`, `refactor` and changes that are done across multiple packages
   (e.g. `test: add missing unit tests`) and for docs changes that are not related to a
   specific package (e.g. `docs: fix typo in tutorial`).
@@ -116,7 +114,6 @@ Use the summary field to provide a succinct description of the change:
 * don't capitalize the first letter
 * no dot (.) at the end
 
-
 ### Commit Message Body
 
 Just as in the summary, use the imperative, present tense: "fix" not "fixed" nor "fixes".
@@ -124,7 +121,6 @@ Just as in the summary, use the imperative, present tense: "fix" not "fixed" nor
 Explain the motivation for the change in the commit message body. This commit message should explain _why_ you are
 making the change. You can include a comparison of the previous behavior with the new behavior in order to illustrate
 the impact of the change.
-
 
 ### Commit Message Footer
 
@@ -143,8 +139,7 @@ Fixes #<issue number>
 Breaking Change section should start with the phrase "BREAKING CHANGE: " followed by a summary of the breaking change, a
 blank line, and a detailed description of the breaking change that also includes migration instructions.
 
-
-### Revert commits
+### Revert Commits
 
 If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit.
 
@@ -153,8 +148,7 @@ The content of the commit message body should contain:
 - information about the SHA of the commit being reverted in the following format: `This reverts commit <SHA>`,
 - a clear description of the reason for reverting the commit message.
 
-
-## Example commit message:
+## Commit Message Examples
 
 ```bash
 fix(logging): disabled colored logging outputs when file is specified
