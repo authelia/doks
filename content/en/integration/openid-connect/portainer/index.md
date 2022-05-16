@@ -1,7 +1,7 @@
 ---
 title: "Portainer"
 description: "Integrating Portainer with Authelia via OpenID Connect."
-lead: "This documentation is maintained by the community. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
+lead: "This documentation is maintained by the community. This documentation is not guaranteed to be complete or up-to-date. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -21,11 +21,11 @@ toc: true
 
 ## Before You Begin
 
-You are required to utilize a unique client id and a unique and random client secret for all OpenID Connect relying
+You are required to utilize a unique client id and a unique and random client secret for all [OpenID Connect] relying
 parties. You should not use the client secret in this example, you should randomly generate one yourself. You may also
 choose to utilize a different client id, it's completely up to you.
 
-In this example makes the following assumptions:
+This example makes the following assumptions:
 
 - **Application Root URL:** `https://portainer.example.com`
 - **Authelia Root URL:** `https://auth.example.com`
@@ -36,7 +36,7 @@ In this example makes the following assumptions:
 
 ### Application
 
-To configure [Portainer] to utilize Authelia as an OpenID Connect Provider:
+To configure [Portainer] to utilize Authelia as an [OpenID Connect] Provider:
 
 1. Visit Settings
 2. Visit Authentication
@@ -78,4 +78,9 @@ which will operate with the above example:
   userinfo_signing_algorithm: none
 ```
 
+## See Also
+
+- [Portainer OAuth Documentation](https://docs.portainer.io/admin/settings/authentication/oauth)
+
 [Portainer]: https://www.portainer.io/
+[OpenID Connect]: ../../openid-connect/introduction.md

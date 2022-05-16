@@ -1,6 +1,6 @@
 ---
-title: "Proxmox"
-description: "Integrating Proxmox with Authelia via OpenID Connect."
+title: "Grafana"
+description: "Integrating Grafana with Authelia via OpenID Connect."
 lead: "This documentation is maintained by the community. This documentation is not guaranteed to be complete or up-to-date. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
@@ -16,8 +16,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.33.2
-- Proxmox: 7.1-10
+- Authelia: v4.35.5
+- Grafana: 8.0.0
 
 ## Before You Begin
 
@@ -27,55 +27,61 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://proxmox.example.com`
+- **Application Root URL:** `https://grafana.example.com`
 - **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `proxmox`
-- **Client Secret:** `proxmox_client_secret`
+- **Client ID:** `grafana`
+- **Client Secret:** `grafana_client_secret`
 
 ## Configuration
 
 ### Application
 
-To configure [Proxmox] to utilize Authelia as an [OpenID Connect] Provider:
+To configure [Grafana] to utilize Authelia as an [OpenID Connect] Provider:
 
-1. Visit Datacenter
-2. Visit Permission
-3. Visit Realms
-4. Add an OpenID Connect Server
-5. Configure the following:
-   1. Issuer URL: `https://auth.example.com`
-   2. Realm: anything you wish
-   3. Client ID: `proxmox`
-   4. Client Key: `proxmox_client_secret`
-   5. Username Claim `preferred_username`
-   6. Scopes: `openid profile email`
-   7. Enable *Autocreate Users* if you want users to automatically be created in [Proxmox].
+1. Add the following Generic OAuth configuration to the Grafana configuration:
 
-{{< figure src="proxmox.gif" alt="Proxmox" width="736" style="padding-right: 10px" >}}
+```ruby
+[auth.generic_oauth]
+enabled = true
+name = Authelia
+icon = signin
+client_id = grafana
+client_secret = grafana_client_secret
+scopes = openid profile email groups
+empty_scopes = false
+auth_url = https://auth.example.com/api/oidc/authorization
+token_url = https://auth.example.com/api/oidc/token
+api_url = https://auth.example.com/api/oidc/userinfo
+login_attribute_path = preferred_username
+groups_attribute_path = groups
+name_attribute_path = name
+use_pkce = true
+```
 
 ### Authelia
 
 The following YAML configuration is an example **Authelia**
-[client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Proxmox]
+[client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Grafana]
 which will operate with the above example:
 
 ```yaml
-- id: proxmox
-  secret: proxmox_client_secret
+- id: grafana
+  secret: grafana_client_secret
   public: false
   authorization_policy: two_factor
   scopes:
     - openid
     - profile
+    - groups
     - email
   redirect_uris:
-    - https://proxmox.example.com
+    - https://grafana.example.com/login/generic_oauth
   userinfo_signing_algorithm: none
 ```
 
 ## See Also
 
-- [Proxmox User Management Documentation](https://pve.proxmox.com/wiki/User_Management)
+- [Grafana OAuth Documentation](https://grafana.com/docs/grafana/latest/auth/generic-oauth/)
 
-[Proxmox]: https://www.proxmox.com/
+[Grafana]: https://grafana.com/
 [OpenID Connect]: ../../openid-connect/introduction.md

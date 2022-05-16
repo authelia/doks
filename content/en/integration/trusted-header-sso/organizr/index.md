@@ -1,7 +1,7 @@
 ---
 title: "Organizr"
 description: "Trusted Header SSO Integration for Organizr"
-lead: "A guide on integrating Authelia with Organizr via trusted headers authentication."
+lead: "This documentation is maintained by the community. This documentation is not guaranteed to be complete or up-to-date. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -13,6 +13,9 @@ weight: 620
 toc: true
 ---
 
+This is a guide on integration of **Authelia** and [Organizr] via the trusted header SSO authentication.
+
+As with all guides in this section it's important you read the [introduction](../introduction.md) first.
 
 ## Tested Versions
 

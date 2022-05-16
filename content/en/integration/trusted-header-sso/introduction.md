@@ -47,6 +47,12 @@ forwarded over a trusted network via the reverse proxy when using the forward au
 |  Remote-Name  |     The users display name     |     John Smith     |
 | Remote-Email  |    The users email address     | jsmith@example.com |
 
+## Forwarding the Response Headers
+
+It's essential if you wish to utilize the trusted header single sign-on flow that you forward the
+[response headers](#response-headers) via the reverse proxy to the backend application, not the browser. Please refer to
+the relevant [proxy documentation](../proxies/introduction.md) for more information.
+
 ## Trusted Remote Networks
 
 Several applications which implement this authentication method allow or require you to configure a list of IP addresses
