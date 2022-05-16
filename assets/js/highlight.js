@@ -9,6 +9,7 @@ import dockerfile from 'highlight.js/lib/languages/dockerfile';
 import nginx from 'highlight.js/lib/languages/nginx';
 import ruby from 'highlight.js/lib/languages/ruby';
 import plaintext from 'highlight.js/lib/languages/plaintext';
+import php from 'highlight.js/lib/languages/php';
 import python from 'highlight.js/lib/languages/python';
 import ldif from 'highlight.js/lib/languages/ldif';
 
@@ -25,6 +26,7 @@ hljs.registerLanguage('nginx', nginx);
 hljs.registerLanguage('ruby', ruby);
 hljs.registerLanguage('rb', ruby);
 hljs.registerLanguage('plaintext', plaintext);
+hljs.registerLanguage('php', php);
 hljs.registerLanguage('text', plaintext);
 hljs.registerLanguage('python', python);
 hljs.registerLanguage('ldif', ldif);

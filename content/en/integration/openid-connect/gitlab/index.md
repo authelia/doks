@@ -17,7 +17,7 @@ toc: true
 ## Tested Versions
 
 - Authelia: v4.35.5
-- Portainer CE: 14.0.1
+- GitLab CE: 14.0.1
 
 ## Before You Begin
 
