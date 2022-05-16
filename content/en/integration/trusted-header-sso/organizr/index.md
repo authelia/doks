@@ -52,4 +52,8 @@ To configure [Organizr] to trust the `Remote-User` and `Remote-Email` header do 
 
 {{< figure src="organizr.png" alt="Organizr" width="736" style="padding-right: 10px" >}}
 
+## See Also
+
+[Organizr] does not appear to have documentation around their `Auth Proxy` configuration.
+
 [Organizr]: https://organizr.app/

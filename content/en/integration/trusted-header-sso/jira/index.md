@@ -42,4 +42,8 @@ To configure [Jira] to trust the `Remote-User` and `Remote-Email` header do the 
 2. Under HTTP configure the `Remote-User` header
 3. Check the `Username` checkbox
 
+## See Also
+
+- [EasySSO Documentation](https://techtime.co.nz/display/TECHTIME/EasySSO#documentation-area)
+
 [Jira]: https://www.atlassian.com/software/jira
