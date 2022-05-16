@@ -84,6 +84,10 @@ state but it's available as an option anyway.
 
 The secret key used to encrypt session data in Redis. It's recommended this is set using a [secret](../methods/secrets.md).
 
+We recommend generating a random string with 64 characters or more for this purposes which can be done by following the
+[Generating a Random Alphanumeric String](../miscellaneous/guides.md#generating-a-random-alphanumeric-string)
+guide.
+
 ### expiration
 
 {{< confkey type="duration" default="1h" required="no" >}}

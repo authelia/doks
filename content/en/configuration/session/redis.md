@@ -80,6 +80,10 @@ through the process of setting up [redis ACLs](https://redis.io/topics/acl).
 
 The password for [redis authentication](https://redis.io/commands/auth).
 
+We recommend generating a random string with 64 characters or more for this purposes which can be done by following the
+[Generating a Random Alphanumeric String](../miscellaneous/guides.md#generating-a-random-alphanumeric-string)
+guide.
+
 ### database_index
 
 {{< confkey type="integer" default="0" required="no" >}}

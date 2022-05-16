@@ -52,8 +52,6 @@ Authelia only works for websites served over HTTPS because the session cookie ca
 connections. Please note that it has been decided that we won't support websites served over HTTP in order to avoid any
 risk due to misconfiguration (see [#590](https://github.com/authelia/authelia/issues/590)).
 
-If a self-signed certificate is required, the following command can be used to generate one:
-
-```console
-docker run authelia/authelia authelia certificates generate --host example.com --dir /tmp/certs/
-```
+If a self-signed certificate is required, the
+[Generating an RSA Self-Signed Certificate](../../../configuration/miscellaneous/guides.md#generating-an-rsa-self-signed-certificate)
+guide should be followed.

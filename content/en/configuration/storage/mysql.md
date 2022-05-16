@@ -86,6 +86,10 @@ The username paired with the password used to connect to the database.
 The password paired with the username used to connect to the database. Can also be defined using a
 [secret](../methods/secrets.md) which is also the recommended way when running as a container.
 
+We recommend generating a random string with 64 characters or more for this purposes which can be done by following the
+[Generating a Random Alphanumeric String](../miscellaneous/guides.md#generating-a-random-alphanumeric-string)
+guide.
+
 ### timeout
 
 {{< confkey type="duration" default="5s" required="no" >}}

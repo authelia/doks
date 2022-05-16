@@ -16,8 +16,8 @@ toc: true
 Authelia supports [OpenID Connect] as part of an open beta. This section details implementation specifics that can be
 used for integrating Authelia with relying parties, as well as specific documentation for some relying parties.
 
-See the [configuration docs](../../configuration/identity-providers/open-id-connect.md) for information on how to
-configure [OpenID Connect].
+See the [configuration documentation](../../configuration/identity-providers/open-id-connect.md) for information on how
+to configure [OpenID Connect].
 
 ## Scope Definitions
 
