@@ -1,7 +1,7 @@
 ---
 title: "Jira"
 description: "Trusted Header SSO Integration for Jira"
-lead: "This documentation is maintained by the community. This documentation is not guaranteed to be complete or up-to-date. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
+lead: ""
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -12,6 +12,13 @@ menu:
 weight: 621
 toc: true
 ---
+
+{{< alert icon="⚠️" context="danger" >}}
+This documentation is maintained by the community, it is not guaranteed to be complete or up-to-date. If you find an
+error with this documentation please either make a pull request or start a GitHub Discussion.
+{{< /alert >}}
+
+## Introduction
 
 This is a guide on integration of **Authelia** and [Jira] via the trusted header SSO authentication.
 

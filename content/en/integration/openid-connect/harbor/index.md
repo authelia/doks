@@ -1,7 +1,7 @@
 ---
 title: "Harbor"
 description: "Integrating Harbor with Authelia via OpenID Connect."
-lead: "This documentation is maintained by the community. This documentation is not guaranteed to be complete or up-to-date. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
+lead: ""
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -13,6 +13,10 @@ weight: 420
 toc: true
 ---
 
+{{< alert icon="⚠️" context="danger" >}}
+This documentation is maintained by the community, it is not guaranteed to be complete or up-to-date. If you find an
+error with this documentation please either make a pull request or start a GitHub Discussion.
+{{< /alert >}}
 
 ## Tested Versions
 
