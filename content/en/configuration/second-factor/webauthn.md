@@ -1,7 +1,7 @@
 ---
-title: "Webauthn"
+title: "WebAuthn"
 description: "Configuring Duo"
-lead: "Webauthn is the modern browser security key specification that Authelia supports. This section describes configuring it."
+lead: "WebAuthn is the modern browser security key specification that Authelia supports. This section describes configuring it."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -30,7 +30,7 @@ webauthn:
 
 {{< confkey type="boolean" default="false" required="no" >}}
 
-This disables Webauthn if set to true.
+This disables WebAuthn if set to true.
 
 ### display_name
 
@@ -39,7 +39,7 @@ This disables Webauthn if set to true.
 Sets the display name which is sent to the client to be displayed. It's up to individual browsers and potentially
 individual operating systems if and how they display this information.
 
-See the [W3C Webauthn Documentation](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialentity-name) for more information.
+See the [W3C WebAuthn Documentation](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialentity-name) for more information.
 
 ### attestation_conveyance_preference
 
@@ -48,7 +48,7 @@ See the [W3C Webauthn Documentation](https://www.w3.org/TR/webauthn-2/#dom-publi
 Sets the conveyance preference. Conveyancing allows collection of attestation statements about the authenticator such as
 the AAGUID. The AAGUID indicates the model of the device.
 
-See the [W3C Webauthn Documentation](https://www.w3.org/TR/webauthn-2/#enum-attestation-convey) for more information.
+See the [W3C WebAuthn Documentation](https://www.w3.org/TR/webauthn-2/#enum-attestation-convey) for more information.
 
 Available Options:
 
@@ -64,7 +64,7 @@ Available Options:
 
 Sets the user verification preference.
 
-See the [W3C Webauthn Documentation](https://www.w3.org/TR/webauthn-2/#enum-userVerificationRequirement) for more information.
+See the [W3C WebAuthn Documentation](https://www.w3.org/TR/webauthn-2/#enum-userVerificationRequirement) for more information.
 
 Available Options:
 
@@ -78,7 +78,7 @@ Available Options:
 
 {{< confkey type="duration" default="60s" required="no" >}}
 
-This adjusts the requested timeout for a Webauthn interaction. The period of time is in
+This adjusts the requested timeout for a WebAuthn interaction. The period of time is in
 [duration notation format](../prologue/common.md#duration-notation-format).
 
 ## FAQ

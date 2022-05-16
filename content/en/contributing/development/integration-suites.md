@@ -13,7 +13,6 @@ weight: 240
 toc: true
 ---
 
-
 Authelia is a single component in interaction with many others in a complete ecosystem. Consequently, testing the
 features is not as easy as we might think. In order to solve this problem, Authelia came up with the concept of suite
 which is a kind of virtual environment for Authelia and a set of tests. A suite can setup components such as nginx,
@@ -22,7 +21,7 @@ redis or mariadb in which Authelia can run and be tested.
 This abstraction allows to prepare an environment for manual testing during development and also to craft and run
 integration tests efficiently.
 
-## Start a suite.
+## Start a suite
 
 Starting a suite called *Standalone* is done with the following command:
 

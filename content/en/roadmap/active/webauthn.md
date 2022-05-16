@@ -1,6 +1,6 @@
 ---
-title: "Webauthn"
-description: "Authelia Webauthn Implementation"
+title: "WebAuthn"
+description: "Authelia WebAuthn Implementation"
 lead: "An introduction into the Authelia roadmap."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
@@ -13,7 +13,7 @@ weight: 210
 toc: true
 ---
 
-Webauthn requires urgent implementation as it is being deprecated by Chrome. It is a modern evolution of the U2F/FIDO
+WebAuthn requires urgent implementation as it is being deprecated by Chrome. It is a modern evolution of the U2F/FIDO
 protocol and is very similar in many ways. It even includes a backwards compatability layer which allows a previously
 registered U2F device to be used with the protocol to authenticate.
 
@@ -27,7 +27,7 @@ due to how important or difficult to implement they are.
 
 {{< roadmap-status stage="complete" version="v4.34.0" >}}
 
-Implement Webauthn as a replacement for U2F with U2F backwards compatibility.
+Implement WebAuthn as a replacement for U2F with U2F backwards compatibility.
 
 |                       Setting                       |     Value      |                                                                Effect                                                                |
 |:---------------------------------------------------:|:--------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
@@ -48,13 +48,13 @@ the backend, it's just the public facing interface elements remaining.
 
 {{< roadmap-status >}}
 
-Implement Webauthn Platform Authenticators so that people can use things like Windows Hello, TouchID, or an Android
+Implement WebAuthn Platform Authenticators so that people can use things like Windows Hello, TouchID, or an Android
 Security Key.
 
 ### Passwordless Login
 
 {{< roadmap-status >}}
 
-Implement Webauthn Passwordless Login. This
+Implement WebAuthn Passwordless Login. This
 
 

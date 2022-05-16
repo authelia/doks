@@ -1,7 +1,7 @@
 ---
 title: "Security Key"
-description: "Authelia utilizes Webauthn security keys as one of it's second factor authentication methods."
-lead: "Authelia utilizes Webauthn security keys as one of it's second first authentication methods."
+description: "Authelia utilizes WebAuthn security keys as one of it's second factor authentication methods."
+lead: "Authelia utilizes WebAuthn security keys as one of it's second first authentication methods."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
@@ -13,7 +13,7 @@ weight: 240
 toc: true
 ---
 
-**Authelia** supports hardware-based second factors leveraging [FIDO2]&nbsp;[Webauthn] compatible security keys like
+**Authelia** supports hardware-based second factors leveraging [FIDO2]&nbsp;[WebAuthn] compatible security keys like
 [YubiKey]'s.
 
 Security keys are among the most secure second factor. This method is already supported by many major applications and
@@ -26,7 +26,7 @@ Normally, the protocol requires your security key to be enrolled on each site be
 Since Authelia provides Single Sign-On, your users will need to enroll their device only once to get access to all your
 applications.
 
-{{< figure src="REGISTER-U2F.png" caption="The Webauthn Registration View" alt="2FA Webauthn Registration View" width=400 >}}
+{{< figure src="REGISTER-U2F.png" caption="The WebAuthn Registration View" alt="2FA WebAuthn Registration View" width=400 >}}
 
 After having successfully passed the first factor, select *Security Key* method and click on *Register device* link.
 This will send you an email to verify your identity.
@@ -39,13 +39,13 @@ complete the enrollment.
 Upon successful enrollment, you can authenticate using your security key by simply touching the token again when
 requested:
 
-{{< figure src="2FA-U2F.png" caption="The Webauthn Authentication View" alt="2FA Webauthn Authentication View" width=400 >}}
+{{< figure src="2FA-U2F.png" caption="The WebAuthn Authentication View" alt="2FA WebAuthn Authentication View" width=400 >}}
 
 Easy, right?!
 
 ## FAQ
 
-### Can I register multiple FIDO2 Webauthn devices?
+### Can I register multiple FIDO2 WebAuthn devices?
 
 At present this is not possible in the frontend. However the backend technically supports it. We plan to add this to the
 frontend in the near future. Subscribe to [this issue](https://github.com/authelia/authelia/issues/275) for updates.
@@ -56,13 +56,13 @@ Not at this time. We will tackle this at a later date.
 
 ### Why don't I have access to the *Security Key* option?
 
-The [Webauthn] protocol is a new protocol that is only supported by modern browsers. Please ensure your browser is up to
-date, supports [Webauthn], and that the feature is not disabled if the option is not available to you in **Authelia**.
+The [WebAuthn] protocol is a new protocol that is only supported by modern browsers. Please ensure your browser is up to
+date, supports [WebAuthn], and that the feature is not disabled if the option is not available to you in **Authelia**.
 
 ### Can my FIDO U2F device operate with Authelia?
 
 At the present time there is no plan to support [FIDO U2F] within Authelia. We do implement a backwards compatible appid
-extension within **Authelia** however this only works for devices registered before the upgrade to the [FIDO2]&nbsp;[Webauthn]
+extension within **Authelia** however this only works for devices registered before the upgrade to the [FIDO2]&nbsp;[WebAuthn]
 protocol.
 
 If there was sufficient interest in supporting registration of old U2F / FIDO devices in **Authelia** we would consider
@@ -70,5 +70,5 @@ adding support for this after or at the same time of the multi-device enhancemen
 
 [FIDO U2F]: https://www.yubico.com/authentication-standards/fido-u2f/
 [FIDO2]: https://www.yubico.com/authentication-standards/fido2/
-[Webauthn]: https://www.yubico.com/authentication-standards/webauthn/
+[WebAuthn]: https://www.yubico.com/authentication-standards/webauthn/
 [YubiKey]: https://www.yubico.com/products/yubikey-5-overview/

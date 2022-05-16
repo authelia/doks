@@ -23,7 +23,7 @@ be glad to share ideas and plans with you.
 
 This is a summary of the features which are currently on the roadmap with links to further details:
 
-1. [Webauthn](../active/webauthn.md)
+1. [WebAuthn](../active/webauthn.md)
 2. [OpenID Connect Provider](../active/openid-connect.md)
 3. [Internationalization or Multilingual Support](../active/internationalization.md)
 4. [Multiple Domain Protection](../active/multi-domain-protection.md)

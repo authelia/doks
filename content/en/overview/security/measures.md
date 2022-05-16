@@ -446,6 +446,17 @@ services:
       - ./authelia:/config
 ```
 
+## Privacy
+
+### Opaque Identifiers
+
+Where possible we utilize opaque identifiers which link to user accounts. The primary example at this time is
+[OpenID Connect](../../integration/openid-connect/introduction.md) which utilizes an opaque identifier for the
+[subject claim](../../integration/openid-connect/introduction.md#openid).
+
+This will also be utilized in the future for the [WebAuthn](../authentication/security-key) passwordless flow
+(discoverable logins).
+
 [HTTP]: https://developer.mozilla.org/en-US/docs/Glossary/http
 [HTTPS]: https://developer.mozilla.org/en-US/docs/Glossary/https
 [HSTS]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security

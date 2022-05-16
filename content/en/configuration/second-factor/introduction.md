@@ -19,7 +19,7 @@ Authelia supports configuring [Time-based One Time Password](time-based-one-time
 
 ## Security Key
 
-Authelia supports configuring [Webauthn](webauthn.md) Security Keys.
+Authelia supports configuring [WebAuthn](webauthn.md) Security Keys.
 
 ## Mobile Push
 
