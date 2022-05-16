@@ -1,6 +1,6 @@
 ---
-title: "Grafana"
-description: "Integrating Grafana with Authelia via OpenID Connect."
+title: "HashiCorp Vault"
+description: "Integrating HashiCorp Vault with Authelia via OpenID Connect."
 lead: "This documentation is maintained by the community. This documentation is not guaranteed to be complete or up-to-date. If you find an error with this documentation please either make a pull request or start a GitHub Discussion."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
@@ -17,7 +17,7 @@ toc: true
 ## Tested Versions
 
 - Authelia: v4.35.5
-- Grafana: 8.0.0
+- HashiCorp Vault: 1.8.1
 
 ## Before You Begin
 
@@ -27,46 +27,27 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://grafana.example.com`
+- **Application Root URL:** `https://vault.example.com`
 - **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `grafana`
-- **Client Secret:** `grafana_client_secret`
+- **Client ID:** `vault`
+- **Client Secret:** `vault_client_secret`
 
 ## Configuration
 
 ### Application
 
-To configure [Grafana] to utilize Authelia as an [OpenID Connect] Provider:
-
-1. Add the following Generic OAuth configuration to the [Grafana] configuration:
-
-```ruby
-[auth.generic_oauth]
-enabled = true
-name = Authelia
-icon = signin
-client_id = grafana
-client_secret = grafana_client_secret
-scopes = openid profile email groups
-empty_scopes = false
-auth_url = https://auth.example.com/api/oidc/authorization
-token_url = https://auth.example.com/api/oidc/token
-api_url = https://auth.example.com/api/oidc/userinfo
-login_attribute_path = preferred_username
-groups_attribute_path = groups
-name_attribute_path = name
-use_pkce = true
-```
+To configure [HashiCorp Vault] to utilize Authelia as an [OpenID Connect] Provider please see the links in the
+[see also](#see-also) section.
 
 ### Authelia
 
 The following YAML configuration is an example **Authelia**
-[client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Grafana]
+[client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [HashiCorp Vault]
 which will operate with the above example:
 
 ```yaml
-- id: grafana
-  secret: grafana_client_secret
+- id: vault
+  secret: vault_client_secret
   public: false
   authorization_policy: two_factor
   scopes:
@@ -75,13 +56,15 @@ which will operate with the above example:
     - groups
     - email
   redirect_uris:
-    - https://grafana.example.com/login/generic_oauth
+    - https://vault.example.com/oidc/callback
+    - https://vault.example.com/ui/vault/auth/oidc/oidc/callback
   userinfo_signing_algorithm: none
 ```
 
 ## See Also
 
-- [Grafana OAuth Documentation](https://grafana.com/docs/grafana/latest/auth/generic-oauth/)
+- [HashiCorp Vault JWT/OIDC Auth Documentation](https://www.vaultproject.io/docs/auth/jwt)
+- [HashiCorp Vault OpenID Connect Providers Documentation](https://www.vaultproject.io/docs/auth/jwt/oidc_providers)
 
-[Grafana]: https://grafana.com/
+[HashiCorp Vault]: https://www.vaultproject.io/
 [OpenID Connect]: ../../openid-connect/introduction.md
