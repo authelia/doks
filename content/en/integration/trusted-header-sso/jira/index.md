@@ -13,10 +13,7 @@ weight: 621
 toc: true
 ---
 
-{{< alert icon="⚠️" context="danger" >}}
-This documentation is maintained by the community, it is not guaranteed to be complete or up-to-date. If you find an
-error with this documentation please either make a pull request or start a GitHub Discussion.
-{{< /alert >}}
+{{< community-doc >}}
 
 ## Introduction
 
