@@ -1,6 +1,6 @@
 ---
 title: "Proxies"
-description: "Proxies Integration"
+description: "An integration guide for Authelia and several supported reverse proxies"
 lead: "An introduction into integrating Authelia with a reverse proxy."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
@@ -19,8 +19,7 @@ examples of already documented proxies, as well as provide us examples of undocu
 
 ## Support
 
-See the [support matrix](../../overview/prologue/supported-proxies.md) for a list of supported proxies or check out the
-documentation in this section. We're currently actively looking to support [Envoy](https://www.envoyproxy.io/).
+See [support](support.md) for support information.
 
 ## Integration Implementation
 

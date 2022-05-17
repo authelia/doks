@@ -1,6 +1,6 @@
 ---
 title: "NGINX Proxy Manager"
-description: "NGINX Proxy Manager Integration"
+description: "An integration guide for Authelia and the NGINX Proxy Manager reverse proxy"
 lead: "A guide on integrating Authelia with NGINX Proxy Manager."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

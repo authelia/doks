@@ -1,6 +1,6 @@
 ---
 title: "Traefik v1"
-description: "Traefik v1.x Integration"
+description: "An integration guide for Authelia and the Traefik v1 reverse proxy"
 lead: "A guide on integrating Authelia with the Traefik reverse proxy."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
