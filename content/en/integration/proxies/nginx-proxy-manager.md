@@ -13,11 +13,17 @@ weight: 260
 toc: true
 ---
 
-[NGINX Proxy Manager] is supported by **Authelia**.
+[NGINX Proxy Manager] is supported by **Authelia**. It's a [NGINX] proxy with a configuration UI.
 
 ## UNDER CONSTRUCTION
 
 While this proxy is supported we don't have any specific documentation for it at the present time. Please see the
 [NGINX integration documentation](nginx.md) for hints on how to configure this.
 
+## See Also
+
+- [NGINX Proxy Manager Documentation](https://nginxproxymanager.com/setup/)
+- [NGINX ngx_http_auth_request_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+
 [NGINX Proxy Manager]: https://nginxproxymanager.com/
+[NGINX]: https://www.nginx.com/

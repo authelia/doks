@@ -357,4 +357,8 @@ error_page 401 /authelia-redirect?rd=$target_url;
 
 This tells nginx to use the virtual endpoint we defined above in case the auth_request failed.
 
+## See Also
+
+- [NGINX ngx_http_auth_request_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+
 [NGINX]: https://www.nginx.com/

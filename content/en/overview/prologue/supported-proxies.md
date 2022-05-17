@@ -20,6 +20,7 @@ The following table is a support matrix for Authelia features and specific rever
 |       [Traefik]       |       [<i class="icon-support-full"></i>](../../integration/proxies/traefik.md)       | [<i class="icon-support-full"></i>](../../integration/kubernetes/traefik-ingress.md) |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
 |        [NGINX]        |        [<i class="icon-support-full"></i>](../../integration/proxies/nginx.md)        |  [<i class="icon-support-full"></i>](../../integration/kubernetes/nginx-ingress.md)  |  <i class="icon-support-none"></i>   |  <i class="icon-support-full"></i>   |
 | [NGINX Proxy Manager] | [<i class="icon-support-full"></i>](../../integration/proxies/nginx-proxy-manager.md) |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-none"></i>   |  <i class="icon-support-full"></i>   |
+|        [SWAG]         |        [<i class="icon-support-full"></i>](../../integration/proxies/swag.md)         |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-none"></i>   |  <i class="icon-support-full"></i>   |
 |       [HAProxy]       |       [<i class="icon-support-full"></i>](../../integration/proxies/haproxy.md)       |                         <i class="icon-support-unknown"></i>                         | <i class="icon-support-unknown"></i> |  <i class="icon-support-full"></i>   |
 |        [Caddy]        |        [<i class="icon-support-full"></i>](../../integration/proxies/caddy.md)        |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
 |     [Traefik] 1.x     |      [<i class="icon-support-full"></i>](../../integration/proxies/traefikv1.md)      |                         <i class="icon-support-unknown"></i>                         |  <i class="icon-support-full"></i>   |  <i class="icon-support-full"></i>   |
@@ -99,6 +100,7 @@ contribution.
 
 [NGINX]: https://www.nginx.com/
 [NGINX Proxy Manager]: https://nginxproxymanager.com/
+[SWAG]: https://docs.linuxserver.io/general/swag
 [Traefik]: https://traefik.io/
 [Caddy]: https://caddyserver.com/
 [HAProxy]: https://www.haproxy.com/

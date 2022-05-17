@@ -9,7 +9,7 @@ images: []
 menu:
   integration:
     parent: "proxies"
-weight: 270
+weight: 280
 toc: true
 ---
 
@@ -161,5 +161,9 @@ This can be avoided a couple different ways:
 - 'traefik.http.middlewares.authelia.forwardauth.trustForwardHeader=true'
 - 'traefik.http.middlewares.authelia.forwardauth.authResponseHeaders=Remote-User, Remote-Groups, Remote-Name, Remote-Email'
 ```
+
+## See Also
+
+- [Traefik ForwardAuth Documentation](https://doc.traefik.io/traefik/middlewares/http/forwardauth/)
 
 [Traefik]: https://docs.traefik.io/
