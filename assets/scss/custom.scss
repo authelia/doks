@@ -50,3 +50,15 @@
   @extend .bi-x-circle;
   @extend .text-danger;
 }
+
+[data-dark-mode] body code span.line.hl {
+  background: $orange;
+  display: block;
+  width: 100%;
+}
+
+body code span.line.hl {
+  background: $orange;
+  display: block;
+  width: 100%;
+}

@@ -42,7 +42,7 @@ to ensure the basic example covers your use case in a secure way.
 
 #### Subdomain
 
-```Caddyfile
+```caddyfile
 authelia.example.com {
        reverse_proxy authelia:9091
 }
@@ -58,7 +58,7 @@ nextcloud.example.com {
 
 #### Subpath
 
-```Caddyfile
+```caddyfile
 example.com {
        @authelia path /authelia /authelia/*
        handle @authelia {
@@ -83,7 +83,7 @@ preferred in _most_ situations. If you are unsure of what you're doing please do
 
 _**Important:** Making a mistake when configuring the advanced example could lead to authentication bypass or errors._
 
-```Caddyfile
+```caddyfile
 authelia.example.com {
        reverse_proxy authelia:9091
 }
