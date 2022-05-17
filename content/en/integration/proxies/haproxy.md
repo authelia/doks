@@ -284,4 +284,8 @@ backend be_heimdall
     server heimdall heimdall:443 ssl verify none
 ```
 
+## See Also
+
+- [HAProxy Auth Request lua plugin Documentation](https://github.com/TimWolla/haproxy-auth-request)
+
 [HAproxy]: https://www.haproxy.org/

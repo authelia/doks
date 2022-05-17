@@ -27,4 +27,8 @@ We will aim to perform documentation for this on our own but there is no current
 Support for [Envoy] should be possible via [Envoy]'s
 [external authorization](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/ext_authz/v3/ext_authz.proto.html#extensions-filters-http-ext-authz-v3-extauthz).
 
+## See Also
+
+- [Envoy External Authorization Documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/ext_authz/v3/ext_authz.proto.html#extensions-filters-http-ext-authz-v3-extauthz)
+
 [Envoy]: https://www.envoyproxy.io/

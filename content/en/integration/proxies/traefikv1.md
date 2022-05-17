@@ -125,4 +125,8 @@ services:
       - TZ=Australia/Melbourne
 ```
 
+## See Also
+
+- [Traefik v1 Documentation](https://doc.traefik.io/traefik/v1.7/)
+
 [Traefik]: https://docs.traefik.io/v1.7/

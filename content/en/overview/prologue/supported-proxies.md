@@ -61,6 +61,11 @@ More information about [Kubernetes] deployments of Authelia can be read in the
 
 ### XHR Redirect
 
+_**Note:** The XHR is a deprecated web feature and applications should be using the new fetch API which does not have
+the same issues regarding redirects (the fetch API allows developers to control how to handle them). As such the fact
+a proxy does not support it should only be seen as a means to communicate a feature not that the proxy should not be
+used._
+
 XML HTTP Requests do not typically redirect browsers when returned 30x status codes. Instead, the standard method is to
 return a 401 status code with a Location header. While this may seem trivial; currently there isn't wide support for it.
 For example the nginx ngx_http_auth_request_module does not seem to support this in any way.
