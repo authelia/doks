@@ -1,3 +1,17 @@
+---
+title: "Reference: Authelia Scripts"
+description: "This section covers the authelia-scripts tool."
+lead: "This section covers the authelia-scripts tool."
+date: 2022-03-19T04:53:05+00:00
+lastmod: 2022-03-19T04:53:05+00:00
+draft: false
+images: []
+menu:
+  contributing:
+    parent: "development"
+weight: 290
+toc: true
+---
 
 Authelia comes with a set of dedicated scripts to perform a broad range of operations such as building the distributed
 version of Authelia, building the Docker image, running suites, testing the code, etc...
