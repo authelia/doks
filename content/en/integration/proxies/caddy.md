@@ -32,10 +32,9 @@ It's important to read the [Forwarded Headers] section as part of any proxy conf
 trusted proxies you need to uncomment and configure the `trusted_proxies` directive in the `(trusted_proxy_list)` at the
 top of the examples with a list of IP ranges that you consider to be trustworthy.
 
-The examples include two `trusted_proxy` example configurations, the first considers , and the second
-is one that considers all private ranges as trustworthy.
-
-
+The example `(trusted_proxy_list)` [Caddy Snippet] is not meant for production use and is an example of adding two IP
+addresses to be considered trustworthy. You should read the [Caddy Trusted Proxies Documentation] as part of
+configuring this.
 
 ## Configuration
 
@@ -203,9 +202,13 @@ nextcloud.example.com {
 ## See Also
 
 - [Caddy General Documentation](https://caddyserver.com/docs/)
-- [Caddy Forward Auth Documentation](https://caddyserver.com/docs/json/apps/http/servers/routes/handle/forward_auth/)
-- [Caddy Trusted Proxies Documentation](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#trusted_proxies)
+- [Caddy Forward Auth Documentation]
+- [Caddy Trusted Proxies Documentation]
+- [Caddy Snippet] Documentation
 - [Forwarded Headers]
 
 [Caddy]: https://caddyserver.com
+[Caddy Snippet]: https://caddyserver.com/docs/caddyfile/concepts#snippets
+[Caddy Forward Auth Documentation]: https://caddyserver.com/docs/caddyfile/directives/forward_auth
+[Caddy Trusted Proxies Documentation]: https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#trusted_proxies
 [Forwarded Headers]: fowarded-headers
