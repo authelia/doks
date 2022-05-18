@@ -14,7 +14,7 @@ toc: true
 ---
 
 The way the translation process is facilitated is via [Crowdin]. We encourage members of the community to
-[join the Authelia Crowdin project](https://crwd.in/authelia) and help translate their preferred language.
+[join the Authelia Crowdin project](https://translate.authelia.com) and help translate their preferred language.
 
 ## New Langauges
 
@@ -30,4 +30,4 @@ If the language you wish to translate is not on [Crowdin] then you have a few op
 Users can override translations easily locally using the [assets](../configuration/server.md#locales) directory. This is
 useful if you wish to perform a translation and see if it looks correct in the browser.
 
-[Crowdin]: https://crowdin.com/project/authelia
+[Crowdin]: https://translate.authelia.com

@@ -56,7 +56,7 @@ Our [continuous integration and continuous deployment pipelines](https://buildki
 
 ### Crowdin
 
-Our [localization platform](https://crowdin.com/) is hosted by [Crowdin](https://crowdin.com/?from=Authelia).
+Our [localization platform](https://translate.authelia.com) is hosted by [Crowdin](https://crowdin.com/?from=Authelia).
 
 ### JetBrains
 
