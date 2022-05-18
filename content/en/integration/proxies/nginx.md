@@ -15,6 +15,17 @@ toc: true
 
 [NGINX] is a reverse proxy supported by **Authelia**.
 
+## Requirements
+
+You need the following to run **Authelia** with [NGINX]:
+
+- [NGINX] must be built with the `http_auth_request` module which is relatively common
+- [NGINX] must be built with the `http_realip` module which is relatively common
+
+## Forwarded Header Trust
+
+It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+
 ## Configuration
 
 Below you will find commented examples of the following configuration:
@@ -360,5 +371,8 @@ This tells nginx to use the virtual endpoint we defined above in case the auth_r
 ## See Also
 
 - [NGINX ngx_http_auth_request_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+- [NGINX ngx_http_realip_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_realip_module.html)
+- [Forwarded Headers]
 
 [NGINX]: https://www.nginx.com/
+[Forwarded Headers]: fowarded-headers

@@ -24,6 +24,14 @@ only need to enabled two includes.
 _**Note:** All paths in this guide are the locations inside the container. You will have to either edit the files within
 the container or adapt the path to the path you have mounted the relevant container path to._
 
+## Forwarded Header Trust
+
+It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+
+To configure trusted proxies for [SWAG] see the [NGINX] section on
+[Forwarded Header Trust](nginx.md#forwarded-header-trust). Adapting this to [SWAG] is beyond the scope of this
+documentation.
+
 ## Prerequisite Steps
 
 These steps must be followed regardless of the choice of [subdomain](#subdomain-steps) or [subpath](#subpath-steps).
@@ -105,6 +113,8 @@ location ^~ /bazarr/ {
 - [Authelia NGINX Integration Documentation](nginx.md)
 - [LinuxServer.io Setting Up Authelia With SWAG Documentation / Blog Post](https://www.linuxserver.io/blog/2020-08-26-setting-up-authelia)
 - [NGINX ngx_http_auth_request_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+- [Forwarded Headers]
 
 [SWAG]: https://docs.linuxserver.io/general/swag
 [NGINX]: https://www.nginx.com/
+[Forwarded Headers]: fowarded-headers

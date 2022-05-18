@@ -17,15 +17,18 @@ toc: true
 
 ## Requirements
 
-You need the following to run Authelia with HAProxy:
+You need the following to run Authelia with [HAProxy]:
 
-* HAProxy 1.8.4+ (2.2.0+ recommended)
+* [HAProxy] 1.8.4+ (2.2.0+ recommended)
   * `USE_LUA=1` set at compile time
   * [haproxy-lua-http](https://github.com/haproxytech/haproxy-lua-http) must be available within the Lua path
     * A `json` library within the Lua path (dependency of haproxy-lua-http, usually found as OS package `lua-json`)
-    * With HAProxy 2.1.3+ you can use the [`lua-prepend-path`] configuration option to specify the search path.
+    * With [HAProxy] 2.1.3+ you can use the `lua-prepend-path` configuration option to specify the search path
   * [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
 
+## Forwarded Header Trust
+
+It's important to read the [Forwarded Headers] section as part of any proxy configuration.
 
 ## Configuration
 
@@ -71,10 +74,11 @@ backend upon successful authentication, for example:
     ```
 
 ### Secure Authelia with TLS
-There is a [known limitation](https://github.com/TimWolla/haproxy-auth-request/issues/12) with haproxy-auth-request with regard to TLS-enabled backends.
-If you want to run Authelia TLS enabled the recommended workaround utilises HAProxy itself to proxy the requests.
-This comes at a cost of two additional TCP connections, but allows the full HAProxy configuration flexibility with regard
-to TLS verification as well as header rewriting. An example of this configuration is also be provided below.
+There is a [known limitation](https://github.com/TimWolla/haproxy-auth-request/issues/12) with haproxy-auth-request with
+regard to TLS-enabled backends. If you want to run Authelia TLS enabled the recommended workaround utilises [HAProxy]
+itself to proxy the requests. This comes at a cost of two additional TCP connections, but allows the full [HAProxy]
+configuration flexibility with regard to TLS verification as well as header rewriting. An example of this configuration
+is also be provided below.
 
 #### Configuration
 
@@ -287,5 +291,7 @@ backend be_heimdall
 ## See Also
 
 - [HAProxy Auth Request lua plugin Documentation](https://github.com/TimWolla/haproxy-auth-request)
+- [Forwarded Headers]
 
 [HAproxy]: https://www.haproxy.org/
+[Forwarded Headers]: fowarded-headers

@@ -15,6 +15,10 @@ toc: true
 
 [Traefik] v1 is a reverse proxy supported by **Authelia**.
 
+## Forwarded Header Trust
+
+It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+
 ## Configuration
 
 Below you will find commented examples of the following docker deployment:
@@ -125,8 +129,20 @@ services:
       - TZ=Australia/Melbourne
 ```
 
+## Header Trust
+
+[Access Control Rules](../../configuration/security/access-control.md#rules) require that `X-Forwarded-*` headers,
+specifically the [X-Forwarded-For] header are from trusted sources. Failure to configure this correctly would allow
+anyone to hijack rules that implement a [network criteria](../../configuration/security/access-control.md#networks).
+To do this you must ensure all proxies in the chain including cloud proxies like [Cloudflare] remove this header if the
+source IP address is not trusted.
+
+TODO: add this section.
+
 ## See Also
 
 - [Traefik v1 Documentation](https://doc.traefik.io/traefik/v1.7/)
+- [Forwarded Headers]
 
 [Traefik]: https://docs.traefik.io/v1.7/
+[Forwarded Headers]: fowarded-headers
