@@ -15,31 +15,38 @@ toc: true
 
 [HAProxy] is a reverse proxy supported by **Authelia**.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## Requirements
 
-You need the following to run Authelia with [HAProxy]:
+You need the following to run **Authelia** with [HAProxy]:
 
-* [HAProxy] 1.8.4+ (2.2.0+ recommended)
-  * `USE_LUA=1` set at compile time
-  * [haproxy-lua-http](https://github.com/haproxytech/haproxy-lua-http) must be available within the Lua path
-    * A `json` library within the Lua path (dependency of haproxy-lua-http, usually found as OS package `lua-json`)
-    * With [HAProxy] 2.1.3+ you can use the `lua-prepend-path` configuration option to specify the search path
-  * [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
+- [HAProxy] 1.8.4+ (2.2.0+ recommended)
+  -`USE_LUA=1` set at compile time
+  - [haproxy-lua-http](https://github.com/haproxytech/haproxy-lua-http) must be available within the Lua path
+    - A `json` library within the Lua path (dependency of haproxy-lua-http, usually found as OS package `lua-json`)
+    - With [HAProxy] 2.1.3+ you can use the `lua-prepend-path` configuration option to specify the search path
+  - [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
 
 ## Forwarded Header Trust
 
 It's important to read the [Forwarded Headers] section as part of any proxy configuration.
 
+With [HAProxy] the most convenient solution to this is a file ACL.
+
 ## Configuration
 
 Below you will find commented examples of the following configuration:
 
-* Authelia portal
-* Protected endpoint (Nextcloud)
-* Protected endpoint with `Authorization` header for basic authentication (Heimdall)
-* [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
+* Authelia Portal
+* Protected Endpoint (Nextcloud)
+* Protected Endpoint with `Authorization` header for basic authentication (Heimdall)
 
 With this configuration you can protect your virtual hosts with Authelia, by following the steps below:
+
 1. Add host(s) to the `protected-frontends` or `protected-frontends-basic` ACLs to support protection with Authelia.
 You can separate each subdomain with a `|` in the regex, for example:
     ```
@@ -70,7 +77,7 @@ backend upon successful authentication, for example:
     backend be_phpmyadmin
         server phpmyadmin phpmyadmin:80
     backend be_heimdall
-            server heimdall heimdall:443 ssl verify none
+        server heimdall heimdall:443 ssl verify none
     ```
 
 ### Secure Authelia with TLS
@@ -82,7 +89,17 @@ is also be provided below.
 
 #### Configuration
 
-##### haproxy.cfg
+trusted_proxies.src.acl:
+
+```
+10.0.0.0/8
+172.16.0.0/12
+192.168.0.0/16
+fc00::/7
+```
+
+haproxy.cfg:
+
 ```
 global
     # Path to haproxy-lua-http, below example assumes /usr/local/etc/haproxy/haproxy-lua-http/http.lua
@@ -95,10 +112,18 @@ defaults
     mode http
     log global
     option httplog
-    option forwardfor
 
 frontend fe_http
-    bind *:443 ssl crt /usr/local/etc/haproxy/haproxy.pem
+    bind *:443 ssl crt example.com.pem
+
+    # Trusted Proxies ACLs.
+    acl src-trusted_proxies src -f trusted_proxies.src.acl
+    http-request del-header X-Forwarded-For	if !src-trusted_proxies
+
+    ## Ensure X-Forwarded-For is set for the auth request.
+    acl hdr-xff_exists req.hdr(X-Forwarded-For) -m found
+    http-request set-header X-Forwarded-For %[src] if !hdr-xff_exists
+    option forwardfor
 
     # Host ACLs
     acl protected-frontends hdr(host) -m reg -i ^(?i)(nextcloud)\.example\.com

@@ -15,20 +15,27 @@ toc: true
 
 [Traefik] is a reverse proxy supported by **Authelia**.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## Requirements
 
 You need the following to run **Authelia** with [Traefik]:
 
-- [Traefik] v2.0.0 or higher (a guide exists for 1.x [here](traefikv1.md))
-- [Traefik] v2.4.1 or higher if you wish to use [basic authentication](#basic-authentication)
+- [Traefik] [v2.0.0](https://github.com/traefik/traefik/releases/tag/v2.0.0) or greater
+  (a guide exists for 1.x [here](traefikv1.md))
+- [Traefik] [v2.4.1](https://github.com/traefik/traefik/releases/tag/v2.4.1) or greater if you wish to use
+  [basic authentication](#basic-authentication)
 
 ## Forwarded Header Trust
 
 It's important to read the [Forwarded Headers] section as part of any proxy configuration.
 
 With [Traefik] this is controlled at the [Entry Point](https://doc.traefik.io/traefik/routing/entrypoints) level which
-is the name they give the HTTP/HTTPS listener. The examples set the trusted range to
-`127.0.0.1/32,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16` which is the [Traefik] container, and all private network ranges.
+is the name they give the HTTP/HTTPS listener. The examples set the trusted range to `192.168.253.20/32` and
+`192.168.253.21/32` which are two arbitrary hosts. It's expected you'll uncomment and configure these values.
 
 See the lines with `forwardedHeaders.trustedIPs` and `proxyProtocol.trustedIPs`. It's strongly recommended that you
 adjust these values to your needs.
@@ -48,53 +55,67 @@ The below configuration looks to provide examples of running [Traefik] 2.x with 
 Please ensure that you also setup the respective [ACME configuration](https://docs.traefik.io/https/acme/) for your
 [Traefik] setup as this is not covered in the example below.
 
-##### Docker Compose
+### Docker Compose
 
 This is an example configuration using [docker compose] labels:
 
 ```yaml
-version: '3.8'
-
+version: "3.8"
 networks:
   net:
     driver: bridge
-
 services:
   traefik:
     image: traefik:v2.6
     container_name: traefik
+    user: 3000:3000
     volumes:
+      - ${PWD}/data/traefik:/config
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - net
+    ports:
+      - "80:8080"
+      - "443:8443"
+    command:
+      - '--api=true'
+      - '--api.dashboard=true'
+      - '--api.insecure=false'
+      - '--pilot.dashboard=false'
+      - '--global.sendAnonymousUsage=false'
+      - '--global.checkNewVersion=false'
+      - '--log=true'
+      - '--log.level=DEBUG'
+      - '--log.filepath=/var/log/traefik.log'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedByDefault=false'
+      - '--providers.docker.network=net'
+      - '--providers.file=true'
+      - '--providers.file.watch=true'
+      - '--providers.file.directory=/config'
+      - '--entryPoints.http=true'
+      - '--entryPoints.http.address=:8080/tcp'
+      - '--entryPoints.http.http.redirections.entryPoint.to=https'
+      - '--entryPoints.http.http.redirections.entryPoint.scheme=https'
+      ## Please see the Forwarded Header Trust section of the Authelia Traefik Integration documentation.
+      # - '--entryPoints.http.forwardedHeaders.trustedIPs=10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
+      # - '--entryPoints.http.proxyProtocol.trustedIPs=10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
+      - '--entryPoints.http.forwardedHeaders.insecure=false'
+      - '--entryPoints.http.proxyProtocol.insecure=false'
+      - '--entryPoints.https=true'
+      - '--entryPoints.https.address=:8443/tcp'
+      ## Please see the Forwarded Header Trust section of the Authelia Traefik Integration documentation.
+      # - '--entryPoints.https.forwardedHeaders.trustedIPs=10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
+      # - '--entryPoints.https.proxyProtocol.trustedIPs=10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
+      - '--entryPoints.https.forwardedHeaders.insecure=false'
+      - '--entryPoints.https.proxyProtocol.insecure=false'
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.api.rule=Host(`traefik.example.com`)'
       - 'traefik.http.routers.api.entryPoints=https'
+      - 'traefik.http.routers.api.tls=true'
       - 'traefik.http.routers.api.service=api@internal'
       - 'traefik.http.routers.api.middlewares=authelia@docker'
-      - 'traefik.http.routers.api.tls=true'
-    ports:
-      - "80:80"
-      - "443:443"
-    command:
-      - '--api'
-      - '--providers.docker=true'
-      - '--providers.docker.exposedByDefault=false'
-      - '--entryPoints.http=true'
-      - '--entryPoints.http.address=:80'
-      - '--entryPoints.http.forwardedHeaders.trustedIPs=127.0.0.1/32,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
-      - '--entryPoints.http.proxyProtocol.trustedIPs=127.0.0.1/32,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
-      - '--entryPoints.http.http.redirections.entryPoint.to=https'
-      - '--entryPoints.http.http.redirections.entryPoint.scheme=https'
-      - '--entryPoints.https=true'
-      - '--entryPoints.https.address=:443'
-      - '--entryPoints.https.forwardedHeaders.trustedIPs=127.0.0.1/32,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
-      - '--entryPoints.https.proxyProtocol.trustedIPs=127.0.0.1/32,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
-      - '--log=true'
-      - '--log.level=DEBUG'
-      - '--log.filepath=/var/log/traefik.log'
-
   authelia:
     image: authelia/authelia
     container_name: authelia
@@ -118,7 +139,6 @@ services:
     restart: unless-stopped
     environment:
       TZ: "Australia/Melbourne"
-
   nextcloud:
     image: linuxserver/nextcloud
     container_name: nextcloud
@@ -140,7 +160,6 @@ services:
       PUID: "1000"
       PGID: "1000"
       TZ: "Australia/Melbourne"
-
   heimdall:
     image: linuxserver/heimdall
     container_name: heimdall
@@ -162,6 +181,12 @@ services:
       PGID: "1000"
       TZ: "Australia/Melbourne"
 ```
+
+### YAML
+
+This example expects you to use the same [Docker Compose](#docker-compose) example above except remove all labels from
+every service. It's important to know that there are limitations of the docker compose label example where as far as we
+are aware you are
 
 ## FAQ
 

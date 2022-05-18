@@ -15,10 +15,19 @@ toc: true
 
 [NGINX Proxy Manager] is supported by **Authelia**. It's a [NGINX] proxy with a configuration UI.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## UNDER CONSTRUCTION
 
 While this proxy is supported we don't have any specific documentation for it at the present time. Please see the
 [NGINX integration documentation](nginx.md) for hints on how to configure this.
+
+## Requirements
+
+[NGINX Proxy Manager] supports the required [NGINX](nginx.md#requirements) requirements for **Authelia** out-of-the-box.
 
 ## Forwarded Header Trust
 

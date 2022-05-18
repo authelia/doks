@@ -15,6 +15,11 @@ toc: true
 
 [Traefik] v1 is a reverse proxy supported by **Authelia**.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## Forwarded Header Trust
 
 It's important to read the [Forwarded Headers] section as part of any proxy configuration.
@@ -49,7 +54,7 @@ networks:
     driver: bridge
 services:
   traefik:
-    image: traefik:v1.7.20-alpine
+    image: traefik:v1.7.34-alpine
     container_name: traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -67,12 +72,15 @@ services:
       - '--api'
       - '--api.entrypoint=api'
       - '--docker'
-      - '--defaultentrypoints=https'
+      - '--defaultEntryPoints=https'
       - '--logLevel=DEBUG'
-      - '--traefiklog=true'
-      - '--traefiklog.filepath=/var/log/traefik.log'
+      - '--traefikLog=true'
+      - '--traefikLog.filepath=/var/log/traefik.log'
       - '--entryPoints=Name:http Address::80'
       - '--entryPoints=Name:https Address::443 TLS'
+      ## See the Forwarded Header Trust section. Comment the above two lines, then uncomment and customize the next two lines to configure the TrustedIPs.
+      # - '--entryPoints=Name:http Address::80 ForwardedHeaders.TrustedIPs:10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7 ProxyProtocol.TrustedIPs:10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
+      # - '--entryPoints=Name:https Address::443 TLS ForwardedHeaders.TrustedIPs:10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7 ProxyProtocol.TrustedIPs:10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
       - '--entryPoints=Name:api Address::8081'
   authelia:
     image: authelia/authelia
@@ -128,16 +136,6 @@ services:
       - PGID=1000
       - TZ=Australia/Melbourne
 ```
-
-## Header Trust
-
-[Access Control Rules](../../configuration/security/access-control.md#rules) require that `X-Forwarded-*` headers,
-specifically the [X-Forwarded-For] header are from trusted sources. Failure to configure this correctly would allow
-anyone to hijack rules that implement a [network criteria](../../configuration/security/access-control.md#networks).
-To do this you must ensure all proxies in the chain including cloud proxies like [Cloudflare] remove this header if the
-source IP address is not trusted.
-
-TODO: add this section.
 
 ## See Also
 

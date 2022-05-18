@@ -15,6 +15,11 @@ toc: true
 
 [Envoy] is probably supported by **Authelia**.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## UNDER CONSTRUCTION
 
 It's currently not certain, but fairly likely that [Envoy] is supported by **Authelia**. We wish to add documentation

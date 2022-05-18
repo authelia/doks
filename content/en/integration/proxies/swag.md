@@ -16,6 +16,11 @@ toc: true
 [SWAG] is a reverse proxy supported by **Authelia**. It's an [NGINX] proxy container with bundled configurations to make
 your life easier.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## Introduction
 
 As [SWAG] is a [NGINX] proxy with curated configurations, integration of **Authelia** with [SWAG] is very easy and you
@@ -23,6 +28,10 @@ only need to enabled two includes.
 
 _**Note:** All paths in this guide are the locations inside the container. You will have to either edit the files within
 the container or adapt the path to the path you have mounted the relevant container path to._
+
+## Requirements
+
+[SWAG] supports the required [NGINX](nginx.md#requirements) requirements for **Authelia** out-of-the-box.
 
 ## Forwarded Header Trust
 

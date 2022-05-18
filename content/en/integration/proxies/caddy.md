@@ -19,8 +19,16 @@ toc: true
 officially support any plugin that supports this though we don't specifically prevent such plugins working and there may
 be plugins that work fine provided they support the forward authentication specification correctly.
 
+_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
+configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
+throughout this documentation and in the [See Also](#see-also) section._
+
 ## Requirements
 
+You need the following to run **Authelia** with [Caddy]:
+
+- [Caddy] [v2.5.1](https://github.com/caddyserver/caddy/releases/tag/v2.5.1) or greater
 You must be running [Caddy] [2.5.1](https://github.com/caddyserver/caddy/releases/tag/v2.5.1) or greater for this
 configuration to work.
 
@@ -32,16 +40,16 @@ It's important to read the [Forwarded Headers] section as part of any proxy conf
 trusted proxies you need to uncomment and configure the `trusted_proxies` directive in the `(trusted_proxy_list)` at the
 top of the examples with a list of IP ranges that you consider to be trustworthy.
 
-The example `(trusted_proxy_list)` [Caddy Snippet] is not meant for production use and is an example of adding two IP
-addresses to be considered trustworthy. You should read the [Caddy Trusted Proxies Documentation] as part of
-configuring this.
+The example `(trusted_proxy_list)` [Caddy Snippet] is not meant for production use and is an example of adding multiple
+network subnets to be considered trustworthy. You should read the [Caddy Trusted Proxies Documentation] as part of
+configuring this. It's important to ensure you take the time to configure this carefully and correctly.
 
 ## Configuration
 
 Below you will find commented examples of the following configuration:
 
-* Authelia portal
-* Protected endpoint (Nextcloud)
+- Authelia Portal
+- Protected Endpoint (Nextcloud)
 
 ### Basic examples
 
@@ -59,9 +67,10 @@ support to ensure the basic example covers your use case in a secure way.
 ## by Authelia.
 (trusted_proxy_list) {
        ## Uncomment & adjust the following line to configure specific ranges which should be considered as trustworthy.
-       # trusted_proxies 192.168.253.20/32 192.168.253.21/32
+       # trusted_proxies 10.0.0.0/8 172.16.0.0/16 192.168.0.0/16 fc00::/7
 }
 
+# Authelia Portal.
 auth.example.com {
         reverse_proxy authelia:9091 {
                 ## This import needs to be included if you're relying on a trusted proxies configuration.
@@ -69,6 +78,7 @@ auth.example.com {
         }
 }
 
+# Protected Endpoint.
 nextcloud.example.com {
         forward_auth authelia:9091 {
                 uri /api/verify?rd=https://auth.example.com
@@ -94,10 +104,11 @@ nextcloud.example.com {
 ## by Authelia.
 (trusted_proxy_list) {
        ## Uncomment & adjust the following line to configure specific ranges which should be considered as trustworthy.
-       # trusted_proxies 192.168.253.20/32 192.168.253.21/32
+       # trusted_proxies 10.0.0.0/8 172.16.0.0/16 192.168.0.0/16 fc00::/7
 }
 
 example.com {
+        # Authelia Portal.
         @authelia path /authelia /authelia/*
         handle @authelia {
                 reverse_proxy authelia:9091 {
@@ -106,6 +117,7 @@ example.com {
                 }
         }
 
+        # Protected Endpoint.
         @nextcloud path /nextcloud /nextcloud/*
         handle @nextcloud {
                 forward_auth authelia:9091 {
@@ -138,9 +150,10 @@ _**Important:** Making a mistake when configuring the advanced example could lea
 ## by Authelia.
 (trusted_proxy_list) {
        ## Uncomment & adjust the following line to configure specific ranges which should be considered as trustworthy.
-       # trusted_proxies 192.168.253.20/32 192.168.253.21/32
+       # trusted_proxies 10.0.0.0/8 172.16.0.0/16 192.168.0.0/16 fc00::/7
 }
 
+# Authelia Portal.
 auth.example.com {
         reverse_proxy authelia:9091 {
                 ## This import needs to be included if you're relying on a trusted proxies configuration.
@@ -148,6 +161,7 @@ auth.example.com {
         }
 }
 
+# Protected Endpoint.
 nextcloud.example.com {
         route {
                 reverse_proxy authelia:9091 {
