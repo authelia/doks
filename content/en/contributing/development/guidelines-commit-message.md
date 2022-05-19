@@ -30,12 +30,11 @@ Each commit message consists of a **header**, a **body**, and a **footer**.
 <footer>
 ```
 
-The `header` is mandatory and must conform to the [Commit Message Header](#commit-message-header) format.
-The header cannot be longer than 72 characters.
+The `header` is mandatory and must conform to the [Commit Message Header](#commit-message-header) format. The header
+cannot be longer than 72 characters.
 
-The `body` is mandatory for all commits except for those of type "docs".
-When the body is present it must be at least 20 characters long and must conform to the
-[Commit Message Body](#commit-message-body) format.
+The `body` is mandatory for all commits except for those of type "docs". When the body is present it must be at least 20
+characters long and must conform to the [Commit Message Body](#commit-message-body) format.
 
 The `footer` is optional. The [Commit Message Footer](#commit-message-footer) format describes what the footer is used
 for, and the structure it must have.
@@ -72,8 +71,8 @@ The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is opti
 
 #### Allowed scope values:
 
-The scope should be the name of the package affected
-(as perceived by the person reading the changelog generated from commit messages).
+The scope should be the name of the package affected (as perceived by the person reading the changelog generated from
+commit messages).
 
 * authentication
 * authorization
@@ -103,8 +102,8 @@ There are currently a few exceptions to the "use package name" rule:
 * `cmd`: used for changes to the `authelia|authelia-scripts|authelia-suites` top level binaries
 * `web`: used for changes to the React based frontend
 * none/empty string: useful for `test`, `refactor` and changes that are done across multiple packages
-  (e.g. `test: add missing unit tests`) and for docs changes that are not related to a
-  specific package (e.g. `docs: fix typo in tutorial`).
+  (e.g. `test: add missing unit tests`) and for docs changes that are not related to a specific package
+  (e.g. `docs: fix typo in tutorial`).
 
 #### Summary
 

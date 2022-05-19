@@ -13,20 +13,21 @@ weight: 240
 toc: true
 ---
 
-**Authelia** is written in Go and comes with a dedicated CLI called [authelia-scripts](./reference-authelia-scripts.md)
-which is available after running `source bootstrap.sh`. This CLI provides many useful tools to help you during
-development.
+**Authelia** is built a [React] frontend user portal bundled in a [go] application which acts as basic webserver for
+the [React] assets and a dedicated API.
 
-In order to build and contribute to **Authelia**, you need to make sure Go >= v1.16, Docker, docker-compose and
-Node >= v12 are installed on your machine.
+The GitHub repository comes with a CLI dedicated to developers called
+[authelia-scripts](./reference-authelia-scripts.md) which can be setup by looking at
+[Reference: authelia-scripts](reference-authelia-scripts.md).
+
+In order to build and contribute to **Authelia**, you need to make sure that you have looked at the
+[Environment](environment.md) guide to configure your development environment.
 
 ## Get started
 
-**Authelia** is made of Go application serving the API and a [React](https://reactjs.org/) application for the portal.
-
-In order to ease development, Authelia uses the concept of [suites] to run Authelia from source code so that your
+In order to ease development, **Authelia** uses the concept of [suites] to run Authelia from source code so that your
 patches are included. This is a kind of virtual environment running **Authelia** in a complete ecosystem
-(LDAP, Redis, SQL server). Note that Authelia is hot-reloaded in the environment so that your patches are instantly
+(LDAP, Redis, SQL server). Note that **Authelia** is hot-reloaded in the environment so that your patches are instantly
 included.
 
 The next command starts the suite called *Standalone*:
@@ -76,7 +77,7 @@ $ authelia-scripts suites test
 $ authelia-scripts suites teardown Standalone
 ```
 
-In order to test all suites (approx 30 minutes), you need to make sure there is no currently running suite and then you
+In order to test all suites (approx 30 minutes), you need to make sure there is no currently running sui te and then you
 should run:
 
 ```console
@@ -93,3 +94,10 @@ $ authelia-scripts suites test Standalone
 The suite will be spawned, tests will be run and then the suite will be torn down automatically.
 
 [suites]: ./integration-suites.md
+[React]: https://reactjs.org/
+[go]: https://go.dev/dl/
+[Node.js]: https://nodejs.org/en/download/
+[Docker]: https://docs.docker.com/get-docker/
+[Docker Compose]: https://docs.docker.com/compose/install/
+[golangci-lint]: https://golangci-lint.run/usage/install/
+[goimports-reviser]: https://github.com/incu6us/goimports-reviser#install

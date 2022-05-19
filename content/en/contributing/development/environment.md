@@ -13,41 +13,46 @@ weight: 220
 toc: true
 ---
 
-**Authelia** and its development workflow can be tested with Docker and docker-compose on Linux.
+**Authelia** and its development workflow can be tested with [Docker] and [Docker Compose] on Linux.
 
-In order to deploy the current version of Authelia locally, run the following command and follow the instructions of
-bootstrap.sh:
+## Setup
 
-```console
-$ source bootstrap.sh
-```
+In order to build and contribute to **Authelia**, you need to make sure the following are installed in your environment:
 
-Then, start the *Standalone* [suite].
-```console
-$ authelia-scripts suites setup Standalone
-```
+- [go] _(v1.18 or greater)_
+- [Docker]
+- [Docker Compose]
+- [Node.js] _(v16 or greater)_
 
-A [suite] is kind of a virtual environment for running Authelia in a complete ecosystem. If you want more details please
-read the related [documentation](./integration-suites.md).
+The additional tools are recommended:
+
+- [golangci-lint]
+- [goimports-reviser]
+- [yamllint]
+- Either the [VSCodium] or [GoLand] IDE
+
+## Scripts
+
+There is a scripting context provided with **Authelia** which can easily be configured. It allows running integration
+[suites] and various other tasks. Read more about it in the [authelia-scripts](reference-authelia-scripts.md) reference
+guide.
 
 ## FAQ
 
+### Do you support development under Windows or OSX?
+
+At the present time this is not officially supported. Some of the maintainers utilize Windows however running suites
+under Windows or OSX is not something that is currently possible to do easily. As such we recommend utilizing Linux.
+
 ### What version of Docker and docker-compose should I use?
 
-Here are the versions used for testing in Buildkite:
-
-```console
-$ docker --version
-Docker version 20.10.8, build 3967b7d
-
-$ docker-compose --version
-docker-compose version 1.28.0, build unknown
-```
+We have no firm recommendations on the version to use but we actively use the latest versions available to us in the
+distributions of our choice. As long as it's a modern version it should be sufficient for the development environment.
 
 ### How can I serve my application under example.com?
 
-Don't worry, you don't need to own the domain *example.com* to test Authelia. Copy the following lines in
-your `/etc/hosts`.
+Don't worry, you don't need to own the domain `example.com` to test Authelia. Copy the following lines in
+your `/etc/hosts`:
 
 ```
 192.168.240.100 home.example.com
@@ -59,7 +64,18 @@ your `/etc/hosts`.
 192.168.240.100 mx1.mail.example.com
 ```
 
-`192.168.240.100` is the IP attributed by Docker to the reverse proxy. Once added you can access the listed sub-domains
-from your browser, and they will target the reverse proxy.
+The IP address `192.168.240.100` is the IP attributed by [Docker] to the reverse proxy. Once added you can access the
+listed subdomains from your browser, and they will be served by the reverse proxy.
 
-[suite]: ./integration-suites.md
+[suites]: ./integration-suites.md
+[Buildkite]: https://buildkite.com/
+[React]: https://reactjs.org/
+[go]: https://go.dev/dl/
+[Node.js]: https://nodejs.org/en/download/
+[Docker]: https://docs.docker.com/get-docker/
+[Docker Compose]: https://docs.docker.com/compose/install/
+[golangci-lint]: https://golangci-lint.run/usage/install/
+[goimports-reviser]: https://github.com/incu6us/goimports-reviser#install
+[yamllint]: https://yamllint.readthedocs.io/en/stable/quickstart.html
+[VSCodium]: https://vscodium.com/
+[GoLand]: https://www.jetbrains.com/go/
