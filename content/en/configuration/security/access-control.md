@@ -24,10 +24,9 @@ access_control:
     - 10.0.0.0/8
     - 172.16.0.0/12
     - 192.168.0.0/18
-
   rules:
-  - domain: 'public.example.com'
-    domain_regex: '^\d+\.public.example.com$'
+  - domain: 'private.example.com'
+    domain_regex: '^(\d+\-)?priv-img.example.com$'
     policy: one_factor
     networks:
     - internal
@@ -103,7 +102,7 @@ understanding of how rules apply is also recommended.
 
 {{< confkey type="list(string)" required="yes" >}}
 
-_**Required:** This criteria OR the [domain_regex](#domain_regex) criteria are required._
+_**Required:** This criteria and/or the [domain_regex](#domain_regex) criteria are required._
 
 This criteria matches the domain name and has two methods of configuration, either as a single string or as a list of
 strings. When it's a list of strings the rule matches when **any** of the domains in the list match the request domain.
@@ -146,7 +145,7 @@ access_control:
     policy: bypass
 ```
 
-*Multiple domains matched. These rules would match either `apple.example.com` or `orange.example.com`. All rules in this
+*Multiple domains matched. These rules will match either `apple.example.com` or `orange.example.com`. All rules in this
 list are effectively the same rule just expressed in different ways.*
 
 ```yaml
@@ -160,11 +159,22 @@ access_control:
     policy: bypass
 ```
 
+*Multiple domains matched either via a static domain or via a [domain_regex](#domain_regex). This rule will match
+either `apple.example.com`, `pub-data.example.com`, or `img-data.example.com`.*
+
+```yaml
+access_control:
+  rules:
+  - domain: 'apple.example.com'
+    domain_regex: '^(pub|img)-data\.example\.com$'
+    policy: bypass
+```
+
 ### domain_regex
 
 {{< confkey type="list(string)" required="yes" >}}
 
-_**Required:** This criteria OR the [domain](#domain) criteria are required._
+_**Required:** This criteria and/or the [domain](#domain) criteria are required._
 
 _**Important Note:** If you intend to use this criteria with a bypass rule please read
 [bypass and subjects](#bypass-and-user-identity) before doing so._
@@ -192,16 +202,28 @@ the fact domain names should not be compared in a case-sensitive way as per the
 
 Examples:
 
+*An advanced multiple domain regex example with user/group matching. This will match the user `john` in the groups
+`example` and `example1`, when the request is made to `user-john.example.com`, `group-example.example.com`, or
+`group-example1.example.com`, it would not match when the request is made to `user-fred.example.com` or
+`group-admin.example.com`.*
+
 ```yaml
 access_control:
   rules:
-  - domain:
-    - apple.example.com
-    - banana.example.com
-    policy: bypass
   - domain_regex:
     - '^user-(?P<User>\w+)\.example\.com$'
     - '^group-(?P<Group>\w+)\.example\.com$'
+    policy: one_factor
+```
+
+*Multiple domains example, one with a static domain and one with a regex domain. This will match requests to
+`protected.example.com`, `img-private.example.com`, or `data-private.example.com`.*
+
+```yaml
+access_control:
+  rules:
+  - domain: 'protected.example.com'
+  - domain_regex: '^(img|data)-private\.example\.com'
     policy: one_factor
 ```
 
