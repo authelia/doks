@@ -7,8 +7,8 @@ lastmod: 2022-03-19T04:53:05+00:00
 draft: false
 images: []
 menu:
-roadmap:
-  parent: "active"
+  roadmap:
+    parent: "active"
 weight: 230
 toc: true
 ---
@@ -29,9 +29,12 @@ This stage will add the ability to easily translate the web interface in all vie
 
 ### Crowd Translation Service
 
-{{< roadmap-status stage="in-progress" >}}
+{{< roadmap-status stage="complete" >}}
 
-This stage will configure the Authelia repository to be easily translatable via a
+This stage will configure the Authelia repository to be easily translatable via a crowd sourced translation platform.
+
+_**Implemented:** You can now help translate **Authelia** by checking out the
+[Translations Contributing Guide](../../contributing/prologue/translations.md)._
 
 ### Picker
 
