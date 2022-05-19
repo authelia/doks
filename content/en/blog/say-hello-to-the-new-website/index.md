@@ -2,23 +2,41 @@
 title: "Say hello to the new website 👋"
 description: "Introducing the new website"
 lead: "Introducing the new website"
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-19T01:53:05+00:00
+lastmod: 2022-05-19T01:53:05+00:00
 draft: false
 contributors: ["James Elliott"]
 ---
 
 We're pleased to have you take a look at our new website. It combines both the main landing site and the documentation
-all in one neat package. The website is using a [Hugo](https://gohugo.io/) theme called [Doks](https://getdoks.org/).
+all in one neat package. The website is using a [Hugo] theme called [Doks]
 
 This does change the development process for documentation slightly compared to what it was previously. However most of
-the changes will make it easier for most documentation contributors.
+the changes will make it easier for most documentation contributors. This process is documented in the
+[Documentation Contributing] section. We will also be looking towards making all
+documentation changes getting quickly published to a staging site so they can quickly be seen by the maintainers and
+anyone else _too lazy_ to follow the steps in the [Documentation Contributing] section command and check it out locally.
 
 As part of this redesign we've taken the time to rewrite and reorganize key sections of the documentation. This may
-result in some links not working. Key things to note are the contribution documentation is up-to-date and probably more
-detailed than it ever has been before.
+result in some links not working, however we've aimed to temporarily redirect links that previously worked to reduce the
+number of visitors being presented a 404.
 
-In particular the integration documentation is far more comprehensive than it was previously and some areas of the
-configuration documentation that were not really relevant for configuration have moved slightly.
+In particular, you will see improvements in the following areas:
+
+- The integration documentation is a new area which replaces the deployment documentation:
+  - There are several additional proxies
+  - There are several additional deployment scenarios
+  - It's much better organized
+  - There are lots of additional links to additional resources to help people find the configuration that suits them
+  - Several of the proxy configurations have been refreshed to make them more modern
+  - Some additional docs for k8s now exist
+- The roadmap is now heavily documented with stages for areas which require it
+- Many areas previously located in the configuration docs have moved into integration docs as that's a more appropriate
+  area
+- The contribution docs have been slightly tidied up
 
 You may have also noticed we launched a new blog.
+
+[Hugo]: https://gohugo.io/
+[Doks]: https://getdoks.org/
+[Documentation Contributing]: ../../contributing/prologue/documentation.md
