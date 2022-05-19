@@ -19,14 +19,14 @@ endpoints are not enabled by default unless you specifically configure the [Open
 
 As [OpenID Connect] is fairly complex (the [OpenID Connect] Provider role especially so) it's intentional that it is
 both a beta and that the implemented features are part of a thoughtful roadmap. Items that are not immediately obvious
-as required (i.e. bug fixes or spec features), will likely be discussed in team meetings or on GitHub issues before being
-added to the list. We want to implement this feature in a very thoughtful way in order to avoid security issues.
+as required (i.e. bug fixes or spec features), will likely be discussed in team meetings or on GitHub issues before
+being added to the list. We want to implement this feature in a very thoughtful way in order to avoid security issues.
 
 ## Stages
 
 This section represents the stages involved in implementation of this feature. The stages are either in order of
-implementation due to there being an underlying requirement to implement them in this order, or in a rough order
-due to how important or difficult to implement they are.
+implementation due to there being an underlying requirement to implement them in this order, or in a rough order due to
+how important or difficult to implement they are.
 
 ### Beta 1
 
@@ -76,14 +76,15 @@ Feature List:
   - Tokens
   - Auditable Information
   - Subject to User Mapping
-- Opaque UUID v4's for subject identifiers
-- Support for Pairwise and Plain Subject Identifier types as per [OpenID Connect Core (Subject Identifier Types)](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes)
+- Opaque [RFC4122] UUID v4's for subject identifiers
+- Support for Pairwise and Plain subject identifier types as per [OpenID Connect Core (Subject Identifier Types)]
+  - Utilize the pairwise example method 3 as per [OpenID Connect Core (Pairwise Identifier Algorithm)]
 - Claims:
-  - `sub` - replace username with opaque random UUID v4
-  - `amr` - authentication method references as per [RFC8176](https://datatracker.ietf.org/doc/html/rfc8176)
-  - `azp` - authorized party as per [OpenID Connect Core](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)
-  - `client_id` - the Client ID as per [RFC8693](https://datatracker.ietf.org/doc/html/rfc8693/#section-4.3)
-- Cross Origin Resource Sharing (CORS):
+  - `sub` - replace username with opaque random [RFC4122] UUID v4
+  - `amr` - authentication method references as per [RFC8176]
+  - `azp` - authorized party as per [OpenID Connect Core (ID Token)]
+  - `client_id` - the Client ID as per [RFC8693 Section 4.3]
+- [Cross Origin Resource Sharing] (CORS):
   - Automatically allow all cross-origin requests to the discovery endpoints
   - Automatically allow all cross-origin requests to the JSON Web Keys endpoint
   - Optionally allow cross-origin requests to the other endpoints individually
@@ -97,13 +98,14 @@ Feature List:
 - Prompt Handling
 - Display Handling
 
+See [OpenID Connect Core (Mandatory to Implement Features for All OpenID Providers)].
+
 ### Beta 6
 
 {{< roadmap-status >}}
 
 Feature List:
 
-- [Back-Channel Logout](https://openid.net/specs/openid-connect-backchannel-1_0.html)
 - Revoke Tokens on User Logout or Expiration
 - [JSON Web Key Rotation](https://openid.net/specs/openid-connect-messages-1_0-20.html#rotate.sig.keys)
 - Hashed Client Secrets
@@ -121,11 +123,27 @@ Feature List:
 
 This stage lists features which individually do not fit into a specific stage and may or may not be implemented.
 
-#### Front-Channel Logout
+#### OpenID Connect Dynamic Client Registration
 
 {{< roadmap-status >}}
 
-See the [OpenID Connect] website for the [Front-Channel Logout specification](https://openid.net/specs/openid-connect-frontchannel-1_0.html).
+See the [OpenID Connect] website for the [OpenID Connect Dynamic Client Registration] specification.
+
+#### OpenID Connect Back-Channel Logout
+
+{{< roadmap-status >}}
+
+See the [OpenID Connect] website for the [OpenID Connect Back-Channel Logout] specification.
+
+Should be implemented alongside [Dynamic Client Registration](#openid-connect-dynamic-client-registration).
+
+#### OpenID Connect Front-Channel Logout
+
+{{< roadmap-status >}}
+
+See the [OpenID Connect] website for the [Front-Channel Logout] specification.
+
+Should be implemented alongside [Dynamic Client Registration](#openid-connect-dynamic-client-registration).
 
 #### OAuth 2.0 Authorization Server Metadata
 
@@ -137,7 +155,7 @@ See the [IETF Specification RFC8414](https://datatracker.ietf.org/doc/html/rfc84
 
 {{< roadmap-status >}}
 
-See the [OpenID Connect] website for the [OpenID Connect Session Management specification](https://openid.net/specs/openid-connect-session-1_0-17.html).
+See the [OpenID Connect] website for the [OpenID Connect Session Management] specification.
 
 #### End-User Scope Grants
 
@@ -157,4 +175,19 @@ Allow clients to be configured with a list of users and groups who have access t
 
 The `preferred_username` claim was missing and was fixed.
 
+[Cross Origin Resource Sharing]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+
+[RFC8176]: https://datatracker.ietf.org/doc/html/rfc8176
+[RFC8693 Section 4.3]: https://datatracker.ietf.org/doc/html/rfc8693/#section-4.3
+[RFC4122]: https://datatracker.ietf.org/doc/html/rfc4122
+
 [OpenID Connect]: https://openid.net/connect/
+[OpenID Connect Front-Channel Logout]: https://openid.net/specs/openid-connect-frontchannel-1_0.html
+[OpenID Connect Back-Channel Logout]: https://openid.net/specs/openid-connect-backchannel-1_0.html
+[OpenID Connect Session Management]: https://openid.net/specs/openid-connect-session-1_0.html
+[OpenID Connect Dynamic Client Registration]: https://openid.net/specs/openid-connect-registration-1_0.html
+
+[OpenID Connect Core (ID Token)]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[OpenID Connect Core (Subject Identifier Types)]: https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes
+[OpenID Connect Core (Pairwise Identifier Algorithm)]: https://openid.net/specs/openid-connect-core-1_0.html#PairwiseAlg
+[OpenID Connect Core (Mandatory to Implement Features for All OpenID Providers)]: https://openid.net/specs/openid-connect-core-1_0.html#ServerMTI

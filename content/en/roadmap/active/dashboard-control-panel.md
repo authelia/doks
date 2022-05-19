@@ -14,8 +14,8 @@ toc: true
 ---
 
 This feature has several major impacts on other roadmap items. For example several OpenID Connect features would greatly
-benefit from a dashboard. It would also be important when we implement WebAuthn features like passwordless authentication
-allowing users to intentionally register a passwordless credential.
+benefit from a dashboard. It would also be important when we implement WebAuthn features like passwordless
+authentication allowing users to intentionally register a passwordless credential.
 
 ## Stages
 
@@ -30,7 +30,7 @@ due to how important or difficult to implement they are.
 Add control panel with the ability to control all of the current settings, with the added benefit of being able to
 register multiple WebAuthn keys.
 
-Users should also be able to view all of their registered devicecs, and revoke them individually.
+Users should also be able to view all of their registered devices, and revoke them individually.
 
 ### Password Reset
 
@@ -48,8 +48,8 @@ Allow users to override the detected language in their browser and choose from o
 
 {{< roadmap-status >}}
 
-Add ability for users to view their own sessions and end them, administrators the ability to view all sessions and end them,
-and for administrators to be notified of and add/view/remove bans on users.
+Add ability for users to view their own sessions and end them, administrators the ability to view all sessions and end
+them, and for administrators to be notified of and add/view/remove bans on users.
 
 ### Much More
 

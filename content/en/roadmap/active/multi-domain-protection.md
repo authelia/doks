@@ -33,7 +33,7 @@ root domains.
 _**UPDATE:**_ The [initial implementation](#initial-implementation) has been decided as well as the
 [SSO implementation](#sso-implementation).
 
-### Make a Cookie Choice
+### Decide on a Session Library
 
 {{< roadmap-status stage="in-progress" >}}
 

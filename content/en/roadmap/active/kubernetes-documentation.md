@@ -19,23 +19,28 @@ This section represents the stages involved in implementation of this feature. T
 implementation due to there being an underlying requirement to implement them in this order, or in their likely order
 due to how important or difficult to implement they are.
 
-### Helm Chart
-
-{{< roadmap-status stage="in-progress" >}}
-
-Develop and release a Helm Chart which makes implementation on Kubernetes easy.
-
-This is currently in progress and there is a [Helm Chart Repository](https://charts.authelia.com). This is considered
-beta and the chart itself has a lot of work to go.
-
 ### Integration Documentation
 
 {{< roadmap-status stage="in-progress" >}}
 
-Provide some generalized integration documentation for Kubernetes.
+Provide some generalized integration documentation for [Kubernetes].
+
+### Helm Chart
+
+{{< roadmap-status stage="in-progress" >}}
+
+Develop and release a [Helm] [Chart](https://helm.sh/docs/topics/charts/) which makes implementation on [Kubernetes]
+easy.
+
+This is currently in progress and there is a [Helm Chart Repository](https://charts.authelia.com). This is considered
+beta and the chart itself has a lot of work to go.
 
 ### Kustomize
 
 {{< roadmap-status >}}
 
-Implement a Kustomize bundle people can utilize.
+Implement a [Kustomize] bundle people can utilize with [Kubernetes].
+
+[Helm]: https://helm.sh/
+[Kubernetes]: https://kubernetes.io/
+[Kustomize]: https://kustomize.io/

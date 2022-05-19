@@ -40,7 +40,9 @@ _**Implemented:** You can now help translate **Authelia** by checking out the
 
 {{< roadmap-status >}}
 
-Add a language picker to the web interface.
+Add a language picker to the web interface. The picker will be a per-browser choice which overrides the browser
+language advertisement as the language of choice for that browser. The information will be stored in the browser
+[local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) implementation.
 
 ### Ongoing
 
