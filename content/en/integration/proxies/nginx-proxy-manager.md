@@ -29,9 +29,10 @@ While this proxy is supported we don't have any specific documentation for it at
 
 [NGINX Proxy Manager] supports the required [NGINX](nginx.md#requirements) requirements for **Authelia** out-of-the-box.
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
 
 To configure trusted proxies for [NGINX Proxy Manager] see the [NGINX] section on
 [Forwarded Header Trust](nginx.md#forwarded-header-trust). Adapting this to [NGINX Proxy Manager] is beyond the scope of

@@ -130,7 +130,7 @@ subdomains of that domain. This is because a website can only write cookies for 
 theoretically possible for us to do this with multiple domains however we would have to be security conscious in our
 implementation, and it is not currently a priority.
 
-Examples:
+##### Examples
 
 *Single domain of `*.example.com` matched. All rules in this list are effectively the same rule just expressed in
 different ways.*
@@ -200,7 +200,7 @@ the fact domain names should not be compared in a case-sensitive way as per the
 [RFC4343](https://datatracker.ietf.org/doc/html/rfc4343) abstract and
 [RFC3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.2.2) section 3.2.2.
 
-Examples:
+##### Examples
 
 *An advanced multiple domain regex example with user/group matching. This will match the user `john` in the groups
 `example` and `example1`, when the request is made to `user-john.example.com`, `group-example.example.com`, or
@@ -253,7 +253,7 @@ The format of this rule is unique in as much as it is a list of lists. The logic
 `OR` and `AND` logic. The first level of the list defines the `OR` logic, and the second level defines the `AND` logic.
 Additionally each level of these lists does not have to be explicitly defined.
 
-Example:
+##### Examples
 
 *Matches when the user has the username `john`, **or** the user is in the groups `admin` **and** `app-name`, **or** the
 user is in the group `super-admin`. All rules in this list are effectively the same rule just expressed in different
@@ -309,7 +309,18 @@ permission to do GET requests, their authentication level was `one_factor`, and 
 who have done requests other than HEAD or GET which means the user experience may suffer. These are the reasons it's
 only recommended to use this to increase security where essential and for CORS preflight.
 
-Example:
+The accepted and valid methods for this configuration option are those specified in well known RFC's. The RFC's and the
+relevant methods are listed in this table:
+
+|                           RFC                            |                        Methods                        |                     Additional Documentation                     |
+|:--------------------------------------------------------:|:-----------------------------------------------------:|:----------------------------------------------------------------:|
+| [RFC7231](https://datatracker.ietf.org/doc/html/rfc7231) | GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
+| [RFC5789](https://datatracker.ietf.org/doc/html/rfc5789) |                         PATCH                         | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
+| [RFC4918](https://datatracker.ietf.org/doc/html/rfc4918) | PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK  |                                                                  |
+
+##### Examples
+
+*Bypass `OPTIONS` requests to the `example.com` domain.*
 
 ```yaml
 access_control:
@@ -319,15 +330,6 @@ access_control:
     methods:
     - OPTIONS
 ```
-
-The accepted and valid methods for this configuration option are those specified in well known RFC's. The RFC's and the
-relevant methods are listed in this table:
-
-|                           RFC                            |                        Methods                        |                     Additional Documentation                     |
-|:--------------------------------------------------------:|:-----------------------------------------------------:|:----------------------------------------------------------------:|
-| [RFC7231](https://datatracker.ietf.org/doc/html/rfc7231) | GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
-| [RFC5789](https://datatracker.ietf.org/doc/html/rfc5789) |                         PATCH                         | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
-| [RFC4918](https://datatracker.ietf.org/doc/html/rfc4918) | PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK  |                                                                  |
 
 #### networks
 
@@ -351,7 +353,7 @@ privileges when a user is on the local networks.
 There are a large number of scenarios regarding networks and the order of the rules. This provides a lot of flexibility
 for administrators to tune the security to their specific needs if desired.
 
-Examples:
+##### Examples
 
 *Require [two_factor](#two_factor) for all clients other than internal clients and `112.134.145.167`. The first two
 rules in this list are effectively the same rule just expressed in different ways.*
@@ -401,7 +403,7 @@ It's important when configuring resource rules that you enclose them in quotes o
 with escaping the expressions. Failure to do so may prevent Authelia from starting. It's technically optional but will
 likely save you a lot of time if you do it for all resource rules.
 
-Examples:
+##### Examples
 
 *Applies the [bypass](#bypass) policy when the domain is `app.example.com` and the url is `/api`, or starts with either
 `/api/` or `/api?`.*

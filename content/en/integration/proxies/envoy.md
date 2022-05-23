@@ -27,9 +27,15 @@ and thus if anyone has this working please let us know.
 
 We will aim to perform documentation for this on our own but there is no current timeframe.
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
+
+_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
+You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
+trust entire subnets unless that subnet only has trusted proxies and no other services._
 
 ## Potential
 

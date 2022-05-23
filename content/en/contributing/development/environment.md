@@ -23,6 +23,7 @@ In order to build and contribute to **Authelia**, you need to make sure the foll
 - [Docker]
 - [Docker Compose]
 - [Node.js] _(v16 or greater)_
+- [pnpm]
 
 The additional tools are recommended:
 
@@ -72,6 +73,7 @@ listed subdomains from your browser, and they will be served by the reverse prox
 [React]: https://reactjs.org/
 [go]: https://go.dev/dl/
 [Node.js]: https://nodejs.org/en/download/
+[pnpm]: https://pnpm.io/installation
 [Docker]: https://docs.docker.com/get-docker/
 [Docker Compose]: https://docs.docker.com/compose/install/
 [golangci-lint]: https://golangci-lint.run/usage/install/

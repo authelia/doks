@@ -33,9 +33,10 @@ the container or adapt the path to the path you have mounted the relevant contai
 
 [SWAG] supports the required [NGINX](nginx.md#requirements) requirements for **Authelia** out-of-the-box.
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
 
 To configure trusted proxies for [SWAG] see the [NGINX] section on
 [Forwarded Header Trust](nginx.md#forwarded-header-trust). Adapting this to [SWAG] is beyond the scope of this

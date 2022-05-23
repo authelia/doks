@@ -48,11 +48,79 @@ The following steps will allow you to run the website on the localhost and view 
 2. Visit [http://localhost:1313/](http://localhost:1313/) in your browser.
 3. Modify pages to see the effects live in your browser.
 
+## Front Matter
+
+Most documents come with a front matter that looks similar to this:
+
+```yaml
+---
+title: "A Page Title"
+description: "This is a description of the page."
+lead: "This is a page lead."
+date: 2022-03-19T04:53:05+00:00
+lastmod: 2022-03-19T04:53:05+00:00
+draft: false
+menu:
+  development:
+    parent: "prologue"
+weight: 100
+toc: true
+---
+```
+
+The front matter controls several aspects about how the page is displayed and varying other aspects.
+
+### Open Graph Protocol
+
+First of all it's important to understand the [Open Graph Protocol]. This is a protocol developed by Meta / Facebook
+which is utilized by most social media platforms to display a preview of a website. This is done by customizing special
+HTML `<meta />` tags.
+
+### Fields
+
+This section documents each of the fields that we commonly use.
+
+#### title
+
+Configures the `<title />` element, the first `<h1 />` element, and the [Open Graph Protocol] `og:title` value.
+
+#### description
+
+Configures the and the [Open Graph Protocol] `og:description` value.
+
+#### lead
+
+Configures the first paragraph of a page which occurs directly after the [title](#title).
+
+#### date
+
+Configures the [Open Graph Protocol] `og:article:published_time` value. Also used in the [Blog](../../blog).
+
+#### lastmod
+
+Configures the [Open Graph Protocol] `og:article:modified_time` value.
+
+#### draft
+
+Configures the visibility of a page. If it's set to `true` it is invisible.
+
+#### menu
+
+Configures the menu linkage.
+
+#### weight
+
+Configures the position in the menu and the order in which pagination occurs.
+
+#### toc
+
+Enables or disables the Table of Contents or `On This Page` section.
+
+[docs folder on GitHub]: https://github.com/authelia/authelia/tree/master/docs
 [Hugo]: https://gohugo.io/
 [Shortodes]: https://gohugo.io/content-management/shortcodes/
 [Doks]: https://getdoks.org/
 [Markdown]: https://www.markdownguide.org/
 [git]: https://git-scm.com/
 [Node.js]: https://nodejs.org/en/
-
-[docs folder on GitHub]: https://github.com/authelia/authelia/tree/master/docs
+[Open Graph Protocol]: https://ogp.me/

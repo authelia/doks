@@ -19,9 +19,9 @@ this only occurs when a configuration key is renamed or moved to a more appropri
 ## Format
 
 The migrations are formatted in a table with the old key and the new key. Periods indicate a different section which can
-be represented in YAML as a dictionary i.e. it's indented.
+be represented in [YAML] as a dictionary i.e. it's indented.
 
-In our table `server.host` with a value of `0.0.0.0` is represented in YAML like this:
+In our table `server.host` with a value of `0.0.0.0` is represented in [YAML] like this:
 
 ```yaml
 server:
@@ -62,21 +62,9 @@ environment variable or other environment variables set. This also applies to ot
 
 #### Kubernetes 4.30.0
 
-_**Please Note:** if you're using Authelia with Kubernetes and are not using the provided [helm chart](https://charts.authelia.com)
-you will be required to set the following option in your PodSpec. Keeping in mind this example is for a Pod, not for
-a Deployment, StatefulSet, or DaemonSet; you will need to adapt the `enableServiceLinks` option to fit into the relevant
-location depending on your needs._
-
-```yaml
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: authelia
-spec:
-  enableServiceLinks: false
-...
-```
+_**Please Note:** if you're using Authelia with Kubernetes and are not using the provided
+[helm chart](https://charts.authelia.com) you will be required to
+[configure the enableServiceLinks](../../integration/kubernetes/introduction/index.md#enable-service-links) option._
 
 ### 4.25.0
 
@@ -104,3 +92,5 @@ The following changes occurred in 4.7.0:
 
 _**Please Note:** The new keys also changed in [4.30.0](#4.30.0) so you will need to update them to the new values if you
 are using [4.30.0](#4.30.0) or newer instead of the new keys listed here._
+
+[YAML]: https://yaml.org/

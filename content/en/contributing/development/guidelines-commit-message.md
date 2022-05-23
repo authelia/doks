@@ -1,6 +1,6 @@
 ---
 title: "Commit Message Guidelines"
-description: "Development Commit Message Guidelines."
+description: "Authelia Development Commit Message Guidelines"
 lead: "This section covers the git commit message guidelines we use for development."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

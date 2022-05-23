@@ -30,13 +30,31 @@ Users are welcome to reach out directly by using any of our various [contact opt
 
 The following section has special notes regarding utilizing Authelia with Kubernetes.
 
-1. Authelia (and all of your other applications) may receive an invalid remote IP if the service handling traffic to
-   the Kubernetes Ingress of your choice doesn't have the `externalTrafficPolicy` setting configured to `local` as per
-   the Kubernetes [preserving the client source ip] documentation.
-2. Authelia's configuration management system conflicts with the `enableServiceLinks` option when it's set to `true`
-   which is the default. This should be changed to `false`. See the
-   [PodSpec v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#podspec-v1-core) documentation
-   for more details.
+### External Traffic Policy
+
+Authelia (and all of your other applications) may receive an invalid remote IP if the service handling traffic to the
+Kubernetes Ingress of your choice doesn't have the `externalTrafficPolicy` setting configured to `local` as per the
+Kubernetes [preserving the client source ip] documentation.
+
+### Enable Service Links
+
+Authelia's configuration management system conflicts with the `enableServiceLinks` option when it's set to `true` which
+is the default. This should be changed to `false`. See the
+[PodSpec v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#podspec-v1-core) documentation
+for more details.
+
+##### Pod Example
+
+```yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: authelia
+spec:
+  enableServiceLinks: false
+...
+```
 
 ## FAQ
 

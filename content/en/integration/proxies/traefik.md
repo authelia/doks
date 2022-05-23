@@ -29,16 +29,22 @@ You need the following to run **Authelia** with [Traefik]:
 - [Traefik] [v2.4.1](https://github.com/traefik/traefik/releases/tag/v2.4.1) or greater if you wish to use
   [basic authentication](#basic-authentication)
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
+
+_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
+You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
+trust entire subnets unless that subnet only has trusted proxies and no other services._
 
 With [Traefik] this is controlled at the [Entry Point](https://doc.traefik.io/traefik/routing/entrypoints) level which
 is the name they give the HTTP/HTTPS listener. The examples set the trusted range to `192.168.253.20/32` and
 `192.168.253.21/32` which are two arbitrary hosts. It's expected you'll uncomment and configure these values.
 
-See the lines with `forwardedHeaders.trustedIPs` and `proxyProtocol.trustedIPs`. It's strongly recommended that you
-adjust these values to your needs.
+[Traefik] requires users implicitly configure which proxies are considered trusted. To configure a proxy as trusted
+please see the lines with `trustedIPs`. It's strongly recommended that you adjust these values to your needs.
 
 ## Configuration
 
@@ -59,6 +65,8 @@ Please ensure that you also setup the respective [ACME configuration](https://do
 
 This is an example configuration using [docker compose] labels:
 
+##### docker-compose.yml
+
 ```yaml
 version: "3.8"
 networks:
@@ -66,17 +74,9 @@ networks:
     driver: bridge
 services:
   traefik:
-    image: traefik:v2.6
     container_name: traefik
-    user: 3000:3000
-    volumes:
-      - ${PWD}/data/traefik:/config
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - net
-    ports:
-      - "80:8080"
-      - "443:8443"
+    image: traefik:v2.6
+    restart: unless-stopped
     command:
       - '--api=true'
       - '--api.dashboard=true'
@@ -86,13 +86,9 @@ services:
       - '--global.checkNewVersion=false'
       - '--log=true'
       - '--log.level=DEBUG'
-      - '--log.filepath=/var/log/traefik.log'
+      - '--log.filepath=/config/traefik.log'
       - '--providers.docker=true'
       - '--providers.docker.exposedByDefault=false'
-      - '--providers.docker.network=net'
-      - '--providers.file=true'
-      - '--providers.file.watch=true'
-      - '--providers.file.directory=/config'
       - '--entryPoints.http=true'
       - '--entryPoints.http.address=:8080/tcp'
       - '--entryPoints.http.http.redirections.entryPoint.to=https'
@@ -109,6 +105,14 @@ services:
       # - '--entryPoints.https.proxyProtocol.trustedIPs=10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,fc00::/7'
       - '--entryPoints.https.forwardedHeaders.insecure=false'
       - '--entryPoints.https.proxyProtocol.insecure=false'
+    networks:
+      net: {}
+    ports:
+      - "80:8080"
+      - "443:8443"
+    volumes:
+      - ${PWD}/data/traefik:/config
+      - /var/run/docker.sock:/var/run/docker.sock
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.api.rule=Host(`traefik.example.com`)'
@@ -117,12 +121,17 @@ services:
       - 'traefik.http.routers.api.service=api@internal'
       - 'traefik.http.routers.api.middlewares=authelia@docker'
   authelia:
-    image: authelia/authelia
     container_name: authelia
-    volumes:
-      - /path/to/authelia:/config
+    image: authelia/authelia
+    restart: unless-stopped
     networks:
-      - net
+      net: {}
+    expose:
+      - 9091
+    volumes:
+      - ${PWD}/data/authelia/config:/config
+    environment:
+      TZ: "Australia/Melbourne"
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.authelia.rule=Host(`auth.example.com`)'
@@ -134,59 +143,302 @@ services:
       - 'traefik.http.middlewares.authelia-basic.forwardAuth.address=http://authelia:9091/api/verify?auth=basic'
       - 'traefik.http.middlewares.authelia-basic.forwardAuth.trustForwardHeader=true'
       - 'traefik.http.middlewares.authelia-basic.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
-    expose:
-      - 9091
-    restart: unless-stopped
-    environment:
-      TZ: "Australia/Melbourne"
   nextcloud:
-    image: linuxserver/nextcloud
     container_name: nextcloud
-    volumes:
-      - /path/to/nextcloud/config:/config
-      - /path/to/nextcloud/data:/data
+    image: linuxserver/nextcloud
+    restart: unless-stopped
     networks:
-      - net
+      net: {}
+    expose:
+      - 443
+    volumes:
+      - ${PWD}/data/nextcloud/config:/config
+      - ${PWD}/data/nextcloud/data:/data
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Melbourne"
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.nextcloud.rule=Host(`nextcloud.example.com`)'
       - 'traefik.http.routers.nextcloud.entryPoints=https'
       - 'traefik.http.routers.nextcloud.tls=true'
       - 'traefik.http.routers.nextcloud.middlewares=authelia@docker'
+  heimdall:
+    container_name: heimdall
+    image: linuxserver/heimdall
+    restart: unless-stopped
+    networks:
+      net: {}
     expose:
       - 443
-    restart: unless-stopped
+    volumes:
+      - ${PWD}/data/heimdall/config:/config
     environment:
       PUID: "1000"
       PGID: "1000"
       TZ: "Australia/Melbourne"
-  heimdall:
-    image: linuxserver/heimdall
-    container_name: heimdall
-    volumes:
-      - /path/to/heimdall/config:/config
-    networks:
-      - net
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.heimdall.rule=Host(`heimdall.example.com`)'
       - 'traefik.http.routers.heimdall.entryPoints=https'
       - 'traefik.http.routers.heimdall.tls=true'
       - 'traefik.http.routers.heimdall.middlewares=authelia-basic@docker'
-    expose:
-      - 443
-    restart: unless-stopped
-    environment:
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "Australia/Melbourne"
 ```
 
 ### YAML
 
-This example expects you to use the same [Docker Compose](#docker-compose) example above except remove all labels from
-every service. It's important to know that there are limitations of the docker compose label example where as far as we
-are aware you are
+This example uses a `docker-compose.yml` similar to the one above however it has two major differences:
+
+1. A majority of the configuration is in YAML instead of the `labels` section of the `docker-compose.yml` file.
+2. It connects to **Authelia** over TLS with client CA certificates which ensures that [Traefik] is a proxy
+   authorized to communicate with **Authelia**. This expects that the
+   [Server TLS](../../configuration/miscellaneous/server.md#tls) section is configured correctly.
+
+##### docker-compose.yml
+
+```yaml
+version: "3.8"
+networks:
+  net:
+    driver: bridge
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:v2.6
+    restart: unless-stopped
+    command:
+      - '--api=true'
+      - '--api.dashboard=true'
+      - '--api.insecure=false'
+      - '--pilot.dashboard=false'
+      - '--global.sendAnonymousUsage=false'
+      - '--global.checkNewVersion=false'
+      - '--log=true'
+      - '--log.level=DEBUG'
+      - '--log.filepath=/config/traefik.log'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedByDefault=false'
+      - '--providers.file=true'
+      - '--providers.file.watch=true'
+      - '--providers.file.directory=/config/dynamic'
+      - '--entryPoints.http=true'
+      - '--entryPoints.http.address=:8080/tcp'
+      - '--entryPoints.http.http.redirections.entryPoint.to=https'
+      - '--entryPoints.http.http.redirections.entryPoint.scheme=https'
+      - '--entryPoints.https=true'
+      - '--entryPoints.https.address=:8443/tcp'
+    networks:
+      net: {}
+    ports:
+      - "80:8080"
+      - "443:8443"
+    volumes:
+      - ${PWD}/data/traefik/config:/config
+      - ${PWD}/data/traefik/certificates:/certificates
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - 'traefik.enable=true'
+  authelia:
+    container_name: authelia
+    image: authelia/authelia
+    restart: unless-stopped
+    networks:
+      net: {}
+    expose:
+      - 9091
+    volumes:
+      - ${PWD}/data/authelia/config:/config
+      - ${PWD}/data/authelia/certificates:/certificates
+    environment:
+      TZ: "Australia/Melbourne"
+    labels:
+      - 'traefik.enable=true'
+  nextcloud:
+    container_name: nextcloud
+    image: linuxserver/nextcloud
+    restart: unless-stopped
+    networks:
+      net: {}
+    expose:
+      - 443
+    volumes:
+      - ${PWD}/data/nextcloud/config:/config
+      - ${PWD}/data/nextcloud/data:/data
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Melbourne"
+    labels:
+      - 'traefik.enable=true'
+  heimdall:
+    container_name: heimdall
+    image: linuxserver/heimdall
+    restart: unless-stopped
+    networks:
+      net: {}
+    expose:
+      - 443
+    volumes:
+      - ${PWD}/data/heimdall/config:/config
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "Australia/Melbourne"
+    labels:
+      - 'traefik.enable=true'
+  whoami:
+    container_name: whoami
+    image: traefik/whoami:latest
+    restart: unless-stopped
+    networks:
+      net: {}
+    expose:
+      - 80
+    environment:
+      TZ: "Australia/Melbourne"
+    labels:
+      - "traefik.enable=true"
+
+```
+
+##### traefik.yml
+
+```yaml
+entryPoints:
+  web:
+    proxyProtocol:
+      insecure: false
+      trustedIPs: []
+    forwardedHeaders:
+      insecure: false
+      trustedIPs: []
+  websecure:
+    proxyProtocol:
+      insecure: false
+      trustedIPs: []
+    forwardedHeaders:
+      insecure: false
+      trustedIPs: []
+tls:
+  options:
+    modern:
+      minVersion: "VersionTLS13"
+    intermediate:
+      minVersion: "VersionTLS12"
+      cipherSuites:
+        - "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
+        - "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+        - "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305"
+        - "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
+http:
+  middlewares:
+    authelia:
+      forwardAuth:
+        address: https://authelia:9091/api/verify?rd=https://auth.example.com
+        trustForwardHeader: true
+        authResponseHeaders:
+          - "Remote-User"
+          - "Remote-Groups"
+          - "Remote-Email"
+          - "Remote-Name"
+        tls:
+          ca: /certificates/ca.public.crt
+          cert: /certificates/traefik.public.crt
+          key: /certificates/traefik.private.pem
+    authelia-basic:
+      forwardAuth:
+        address: https://authelia:9091/api/verify?rd=https://auth.example.com
+        trustForwardHeader: true
+        authResponseHeaders:
+          - "Remote-User"
+          - "Remote-Groups"
+          - "Remote-Email"
+          - "Remote-Name"
+        tls:
+          ca: /certificates/ca.public.crt
+          cert: /certificates/traefik.public.crt
+          key: /certificates/traefik.private.pem
+  routers:
+    traefik:
+      rule: Host(`traefik.example.com`)
+      entryPoints: websecure
+      service: api@internal
+      middlewares:
+        - authelia@file
+      tls:
+        options: modern@file
+        certResolver: default
+        domains:
+          - main: "example.com"
+            sans:
+              - "*.example.com"
+    whoami:
+      rule: Host(`whoami.example.com`)
+      entryPoints: websecure
+      service: whoami-net@docker
+      middlewares:
+        - authelia@file
+      tls:
+        options: modern@file
+        certResolver: default
+        domains:
+          - main: "example.com"
+            sans:
+              - "*.example.com"
+    nextcloud:
+      rule: Host(`nextcloud.example.com`)
+      entryPoints: websecure
+      service: nextcloud-net@docker
+      middlewares:
+        - authelia@file
+      tls:
+        options: modern@file
+        certResolver: default
+        domains:
+          - main: "example.com"
+            sans:
+              - "*.example.com"
+    heimdall:
+      rule: Host(`heimdall.example.com`)
+      entryPoints: websecure
+      service: heimdall-net@docker
+      middlewares:
+        - authelia-basic@file
+      tls:
+        options: modern@file
+        certResolver: default
+        domains:
+          - main: "example.com"
+            sans:
+              - "*.example.com"
+    authelia:
+      rule: Host(`auth.example.com`)
+      entryPoints: websecure
+      service: authelia@file
+      tls:
+        options: modern@file
+        certResolver: default
+        domains:
+          - main: "example.com"
+            sans:
+              - "*.example.com"
+  services:
+    authelia:
+      loadBalancer:
+        servers:
+          - url: https://authelia:9091/
+        serversTransport: autheliaMutualTLS
+  serversTransports:
+    autheliaMutualTLS:
+      certificates:
+        - certFile: /certificates/traefik.public.crt
+          keyFile: /certificates/traefik.private.pem
+      rootCAs:
+        - /certificates/ca.public.crt
+```
 
 ## FAQ
 

@@ -13,6 +13,24 @@ weight: 100100
 toc: true
 ---
 
+## Documentation
+
+We document the configuration in two ways:
+
+1. The configuration template [YAML]
+   ([config.template.yml](https://github.com/authelia/authelia/blob/master/config.template.yml)) has comments with very
+   limited documentation on the effective use of a particular option. All documentation lines start with `##`. Lines
+   starting with a single `#` are [YAML] configuration options which are commented to disable them or as examples.
+2. This documentation site. Generally each section of the configuration is in its own section of the documentation
+   site. Each configuration option is listed in its relevant section as a heading, under that heading generally are two
+   or three colored labels.
+   - The `type` label is purple and indicates the [YAML] value type of the variable. It optionally includes some
+     additional information in parentheses.
+   - The `default` label is blue and indicates the default value if you don't define the option at all. This is not the
+     same value as you will see in the examples in all instances, it is the value set when blank or undefined.
+   - The `required` label changes color. When required it will be red, when not required it will be green, when the
+     required state depends on another configuration value it is yellow.
+
 ## Validation
 
 Authelia validates the configuration when it starts. This process checks multiple factors including configuration keys

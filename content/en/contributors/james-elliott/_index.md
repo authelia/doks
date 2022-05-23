@@ -7,8 +7,10 @@ draft: false
 images: []
 ---
 
-Authelia Core Team Member.
+_**Authelia Core Team Member.**_
 
-[james-d-elliott](https://github.com/james-d-elliott)
+**GitHub:** [james-d-elliott](https://github.com/james-d-elliott)
 
-[{{< email user="james" domain="authelia.com" >}}]
+**Email:** [james.elliott@authelia.com](mailto:james.elliott@authelia.com)
+
+**Matrix:** [@james:authelia.com](https://matrix.to/#/@james:authelia.com) **Discord:** [James#6549](https://discord.com/users/209869584814047232/)

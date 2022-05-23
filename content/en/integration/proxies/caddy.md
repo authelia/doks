@@ -29,20 +29,23 @@ throughout this documentation and in the [See Also](#see-also) section._
 You need the following to run **Authelia** with [Caddy]:
 
 - [Caddy] [v2.5.1](https://github.com/caddyserver/caddy/releases/tag/v2.5.1) or greater
-You must be running [Caddy] [2.5.1](https://github.com/caddyserver/caddy/releases/tag/v2.5.1) or greater for this
-configuration to work.
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
+
+_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
+You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
+trust entire subnets unless that subnet only has trusted proxies and no other services._
 
 [Caddy] by default strips these headers entirely which is a good security practice. To preserve these headers from
 trusted proxies you need to uncomment and configure the `trusted_proxies` directive in the `(trusted_proxy_list)` at the
 top of the examples with a list of IP ranges that you consider to be trustworthy.
 
-The example `(trusted_proxy_list)` [Caddy Snippet] is not meant for production use and is an example of adding multiple
-network subnets to be considered trustworthy. You should read the [Caddy Trusted Proxies Documentation] as part of
-configuring this. It's important to ensure you take the time to configure this carefully and correctly.
+You should read the [Caddy Trusted Proxies Documentation] as part of configuring this. It's important to ensure you take
+the time to configure this carefully and correctly.
 
 ## Configuration
 
@@ -59,12 +62,11 @@ support to ensure the basic example covers your use case in a secure way.
 
 #### Subdomain
 
+##### Caddyfile
+
 ```caddyfile
-## This snippet is used to configure the list of trusted proxies as per the Forwarded Header Trust docs section.
-## It's recommended that both the Forwarded Header Section, and the official Caddy
-## Trusted Proxies Documentation (which is linked in the See Also section of this document) is read before deciding
-## how to configure this. This snippet needs to be imported in all forward_auth and reverse_proxy sections protected
-## by Authelia.
+## It is important to read the following document before enabling this section:
+##     https://www.authelia.com/integration/proxies/caddy/#forwarded-header-trust#trusted-proxies
 (trusted_proxy_list) {
        ## Uncomment & adjust the following line to configure specific ranges which should be considered as trustworthy.
        # trusted_proxies 10.0.0.0/8 172.16.0.0/16 192.168.0.0/16 fc00::/7
@@ -96,12 +98,11 @@ nextcloud.example.com {
 
 #### Subpath
 
+##### Caddyfile
+
 ```caddyfile
-## This snippet is used to configure the list of trusted proxies as per the Forwarded Header Trust docs section.
-## It's recommended that both the Forwarded Header Section, and the official Caddy
-## Trusted Proxies Documentation (which is linked in the See Also section of this document) is read before deciding
-## how to configure this. This snippet needs to be imported in all forward_auth and reverse_proxy sections protected
-## by Authelia.
+## It is important to read the following document before enabling this section:
+##     https://www.authelia.com/integration/proxies/caddy/#forwarded-header-trust#trusted-proxies
 (trusted_proxy_list) {
        ## Uncomment & adjust the following line to configure specific ranges which should be considered as trustworthy.
        # trusted_proxies 10.0.0.0/8 172.16.0.0/16 192.168.0.0/16 fc00::/7
@@ -142,12 +143,11 @@ preferred in _most_ situations. If you are unsure of what you're doing please do
 
 _**Important:** Making a mistake when configuring the advanced example could lead to authentication bypass or errors._
 
+##### Caddyfile
+
 ```caddyfile
-## This snippet is used to configure the list of trusted proxies as per the Forwarded Header Trust docs section.
-## It's recommended that both the Forwarded Header Section, and the official Caddy
-## Trusted Proxies Documentation (which is linked in the See Also section of this document) is read before deciding
-## how to configure this. This snippet needs to be imported in all forward_auth and reverse_proxy sections protected
-## by Authelia.
+## It is important to read the following document before enabling this section:
+##     https://www.authelia.com/integration/proxies/caddy/#forwarded-header-trust#trusted-proxies
 (trusted_proxy_list) {
        ## Uncomment & adjust the following line to configure specific ranges which should be considered as trustworthy.
        # trusted_proxies 10.0.0.0/8 172.16.0.0/16 192.168.0.0/16 fc00::/7

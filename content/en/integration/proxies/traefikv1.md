@@ -20,9 +20,15 @@ method of deploying a proxy. These are guides showing a suggested setup only and
 configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
 throughout this documentation and in the [See Also](#see-also) section._
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
+
+_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
+You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
+trust entire subnets unless that subnet only has trusted proxies and no other services._
 
 ## Configuration
 
@@ -36,7 +42,7 @@ Below you will find commented examples of the following docker deployment:
 The below configuration looks to provide examples of running [Traefik] v1 with labels to protect your endpoint (Nextcloud
 in this case).
 
-Please ensure that you also setup the respective [ACME configuration](https://docs.traefik.io/v1.7/configuration/acme/)
+Please ensure that you also setup the respective [ACME](https://docs.traefik.io/v1.7/configuration/acme/) configuration
 for your [Traefik] setup as this is not covered in the example below.
 
 ### Basic Authentication

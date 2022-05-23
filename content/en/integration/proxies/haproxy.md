@@ -31,11 +31,21 @@ You need the following to run **Authelia** with [HAProxy]:
     - With [HAProxy] 2.1.3+ you can use the `lua-prepend-path` configuration option to specify the search path
   - [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
 
-## Forwarded Header Trust
+## Trusted Proxies
 
-It's important to read the [Forwarded Headers] section as part of any proxy configuration.
+_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before._
 
-With [HAProxy] the most convenient solution to this is a file ACL.
+_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
+You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
+trust entire subnets unless that subnet only has trusted proxies and no other services._
+
+With [HAProxy] the most convenient method to configure trusted proxies is to create a src ACL from the contents of a
+file. The example utilizes this method and trusted proxies can then easily be added or removed from the ACL file.
+
+[HAProxy] implicitly trusts all external proxies by default so it's important you configure this for a trusted
+environment.
 
 ## Configuration
 
@@ -89,7 +99,7 @@ is also be provided below.
 
 #### Configuration
 
-trusted_proxies.src.acl:
+##### trusted_proxies.src.acl
 
 ```
 10.0.0.0/8
@@ -98,7 +108,7 @@ trusted_proxies.src.acl:
 fc00::/7
 ```
 
-haproxy.cfg:
+##### haproxy.cfg
 
 ```
 global
