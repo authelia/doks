@@ -39,8 +39,8 @@ Below you will find commented examples of the following docker deployment:
 * Protected endpoint (Nextcloud)
 * Protected endpoint with `Authorization` header for basic authentication (Heimdall)
 
-The below configuration looks to provide examples of running [Traefik] v1 with labels to protect your endpoint (Nextcloud
-in this case).
+The below configuration looks to provide examples of running [Traefik] v1 with labels to protect your endpoint
+(Nextcloud in this case).
 
 Please ensure that you also setup the respective [ACME](https://docs.traefik.io/v1.7/configuration/acme/) configuration
 for your [Traefik] setup as this is not covered in the example below.

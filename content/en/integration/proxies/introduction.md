@@ -47,21 +47,23 @@ A logged in user must be identified via standard means. Users are identified by 
 - A session cookie with the HTTP only option set, and the secure option set meaning the cookie must only be sent over the
   [HTTPS scheme](https://developer.mozilla.org/en-US/docs/Glossary/https).
 - The [Proxy-Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Proxy-Authorization) header
-  utilizing the [basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme).
+  utilizing the
+  [basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme).
 
 ### Response Statuses
 
 Authelia responds in various ways depending on the result of the authorization policies.
 
-When the user is authenticated and authorized to access a resource we respond with a HTTP [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200)
-When the user is not logged in and we need them to authenticate with 1FA, or if they are already
-authenticated with only 1FA and they need to perform 2FA, the user is redirected to the portal with:
+When the user is authenticated and authorized to access a resource we respond with a HTTP
+[200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200). When the user is not logged in and we need them
+to authenticate with 1FA, or if they are already authenticated with only 1FA and they need to perform 2FA, the user is
+redirected to the portal with:
 
 - A HTTP [401 Unauthorized](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401) status if the original request
   was an [XMLHTTPRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) provided Authelia is able to
   detect it.
-- A HTTP [302 Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302) status if the original request had the
-  [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) or
+- A HTTP [302 Found](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302) status if the original request had
+  the [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) or
   [OPTIONS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS) method verb.
 - A HTTP [303 See Other](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/303) status if neither of the above
   conditions is met.

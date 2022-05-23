@@ -111,8 +111,8 @@ services:
       - "80:8080"
       - "443:8443"
     volumes:
-      - ${PWD}/data/traefik:/config
       - /var/run/docker.sock:/var/run/docker.sock
+      - ${PWD}/data/traefik:/config
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.api.rule=Host(`traefik.example.com`)'
@@ -234,9 +234,9 @@ services:
       - "80:8080"
       - "443:8443"
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - ${PWD}/data/traefik/config:/config
       - ${PWD}/data/traefik/certificates:/certificates
-      - /var/run/docker.sock:/var/run/docker.sock
     labels:
       - 'traefik.enable=true'
   authelia:

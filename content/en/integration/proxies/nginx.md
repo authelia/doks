@@ -37,7 +37,7 @@ how you can configure multiple IP ranges. You should customize this example to f
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
 trust entire subnets unless that subnet only has trusted proxies and no other services._
 
-[NGINX]'s `http_realip` module is used to configure the trusted proxies configuration. In our examples this is
+[NGINX]'s `http_realip` module is used to configure the trusted proxies' configuration. In our examples this is
 configured in the `proxy.conf` file. Each `set_realip_from` directive adds a trusted proxy address range to the trusted
 proxies list. Any request that comes from a source IP not in one of the configured ranges results in the header being
 replaced with the source IP of the client.

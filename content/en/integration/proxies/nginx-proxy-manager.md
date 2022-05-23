@@ -35,7 +35,7 @@ _**Important:** You should read the [Forwarded Headers] section and this section
 Especially if you have never read it before._
 
 To configure trusted proxies for [NGINX Proxy Manager] see the [NGINX] section on
-[Forwarded Header Trust](nginx.md#forwarded-header-trust). Adapting this to [NGINX Proxy Manager] is beyond the scope of
+[Trusted Proxies](nginx.md#trusted-proxies). Adapting this to [NGINX Proxy Manager] is beyond the scope of
 this documentation.
 
 ## See Also

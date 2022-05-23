@@ -39,7 +39,7 @@ _**Important:** You should read the [Forwarded Headers] section and this section
 Especially if you have never read it before._
 
 To configure trusted proxies for [SWAG] see the [NGINX] section on
-[Forwarded Header Trust](nginx.md#forwarded-header-trust). Adapting this to [SWAG] is beyond the scope of this
+[Trusted Proxies](nginx.md#trusted-proxies). Adapting this to [SWAG] is beyond the scope of this
 documentation.
 
 ## Prerequisite Steps
