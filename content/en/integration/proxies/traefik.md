@@ -191,9 +191,14 @@ services:
 This example uses a `docker-compose.yml` similar to the one above however it has two major differences:
 
 1. A majority of the configuration is in YAML instead of the `labels` section of the `docker-compose.yml` file.
-2. It connects to **Authelia** over TLS with client CA certificates which ensures that [Traefik] is a proxy
+2. It connects to **Authelia** over TLS with client certificates which ensures that [Traefik] is a proxy
    authorized to communicate with **Authelia**. This expects that the
    [Server TLS](../../configuration/miscellaneous/server.md#tls) section is configured correctly.
+   - The client certificates can easily be disabled by commenting the `cert` and `key` options in the `http.middlewares`
+     section for the `forwardAuth` middlewares and the `certificates` in the `http.serversTransports` section.
+   - The TLS communication can be disabled by commenting the entire `tls` section in the `http.middlewares` section for
+     all `forwardAuth` middlewares, adjusting the `authelia` router in the `http.routers` section to use the
+     `authelia-net@docker` service, and commenting the `authelia` service in the `http.service` section.
 
 ##### docker-compose.yml
 
