@@ -169,7 +169,9 @@ server {
 
 The following configuration files are snippets that are used as includes in other files. The includes in the other files
 match the headings, so if you wish to put them in a specific location or rename them, then make sure to update the
-includes appropriately.
+includes appropriately. Only the [proxy.conf](#proxyconf), [authelia-location.conf](#authelia-locationconf), and
+[authelia-authrequest.conf](#authelia-authrequestconf) are required; see the descriptions for the others as to their
+use cases.
 
 #### proxy.conf
 
