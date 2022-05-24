@@ -103,31 +103,25 @@ location /authelia {
 ##### auth.conf
 
 ```nginx
-## Basic Authelia Config
-## Send a subsequent request to Authelia to verify if the user is authenticated
-## and has the right permissions to access the resource.
+## Send a subrequest to Authelia to verify if the user is authenticated and has permission to access the resource.
 auth_request /authelia;
 
-## Set the `target_url` variable based on the request. It will be used to build the portal
-## URL with the correct redirection parameter.
+## Set the $target_url variable based on the original request.
 auth_request_set $target_url $scheme://$http_host$request_uri;
 
-## Set the X-Forwarded-User and X-Forwarded-Groups with the headers
-## returned by Authelia for the backends which can consume them.
-## This is not safe, as the backend must make sure that they come from the
-## proxy. In the future, it's gonna be safe to just use OAuth.
+## Save the upstream response headers from Authelia to variables.
 auth_request_set $user $upstream_http_remote_user;
 auth_request_set $groups $upstream_http_remote_groups;
 auth_request_set $name $upstream_http_remote_name;
 auth_request_set $email $upstream_http_remote_email;
+
+## Inject the response headers from the variables into the request made to the backend.
 proxy_set_header Remote-User $user;
 proxy_set_header Remote-Groups $groups;
 proxy_set_header Remote-Name $name;
 proxy_set_header Remote-Email $email;
 
-## If Authelia returns 401, then nginx redirects the user to the login portal.
-## If it returns 200, then the request pass through to the backend.
-## For other type of errors, nginx will handle them as usual.
+## If the subreqest returns 200 pass to the backend, if the subrequest returns 401 redirect to the portal.
 error_page 401 =302 https://auth.example.com/?rd=$target_url;
 ```
 
@@ -144,7 +138,7 @@ proxy_set_header X-Forwarded-For $remote_addr;
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header Connection "";
 
-## Basic Proxy Config.
+## Basic Proxy Configuration
 client_body_buffer_size 128k;
 proxy_next_upstream error timeout invalid_header http_500 http_502 http_503; ## Timeout if the real server is dead.
 proxy_redirect  http://  $scheme://;
@@ -153,7 +147,8 @@ proxy_cache_bypass $cookie_session;
 proxy_no_cache $cookie_session;
 proxy_buffers 64 256k;
 
-## Trusted Proxies configuration. Please read the following documentation before configuring this:
+## Trusted Proxies Configuration
+## Please read the following documentation before configuring this:
 ##     https://www.authelia.com/integration/proxies/nginx/#trusted-proxies
 # set_real_ip_from 10.0.0.0/8;
 # set_real_ip_from 172.16.0.0/12;
@@ -175,14 +170,18 @@ proxy_connect_timeout 360;
 
 ```nginx
 server {
-    server_name auth.example.com;
     listen 80;
+
+    server_name auth.example.com;
+
     return 301 https://$server_name$request_uri;
 }
 
 server {
-    server_name auth.example.com;
     listen 443 ssl http2;
+
+    server_name auth.example.com;
+
     include /config/nginx/ssl.conf;
 
     location / {
@@ -199,15 +198,20 @@ server {
 
 ```nginx
 server {
-    server_name nextcloud.example.com;
     listen 80;
+
+    server_name nextcloud.example.com;
+
     return 301 https://$server_name$request_uri;
 }
 
 server {
-    server_name nextcloud.example.com;
     listen 443 ssl http2;
+
+    server_name nextcloud.example.com;
+
     include /config/nginx/ssl.conf;
+
     include /config/nginx/authelia.conf; # Virtual endpoint to forward auth requests
 
     location / {
@@ -273,45 +277,43 @@ location /authelia {
 Same as `auth.conf` but without the `error_page` directive. We want nginx to proxy the 401 back to the client, not to return a 301.
 
 ```nginx
-## Basic Authelia Config
-## Send a subsequent request to Authelia to verify if the user is authenticated
-## and has the right permissions to access the resource.
+## Send a subrequest to Authelia to verify if the user is authenticated and has permission to access the resource.
 auth_request /authelia;
 
-## Set the `target_url` variable based on the request. It will be used to build the portal
-## URL with the correct redirection parameter.
+## Set the $target_url variable based on the original request.
 auth_request_set $target_url $scheme://$http_host$request_uri;
 
-## Set the X-Forwarded-User and X-Forwarded-Groups with the headers
-## returned by Authelia for the backends which can consume them.
-## This is not safe, as the backend must make sure that they come from the
-## proxy. In the future, it's gonna be safe to just use OAuth.
+## Save the upstream response headers from Authelia to variables.
 auth_request_set $user $upstream_http_remote_user;
 auth_request_set $groups $upstream_http_remote_groups;
 auth_request_set $name $upstream_http_remote_name;
 auth_request_set $email $upstream_http_remote_email;
 
+## Inject the response headers from the variables into the request made to the backend.
 proxy_set_header Remote-User $user;
 proxy_set_header Remote-Groups $groups;
 proxy_set_header Remote-Name $name;
 proxy_set_header Remote-Email $email;
-## If Authelia returns 401, then nginx passes it to the user.
-## If it returns 200, then the request pass through to the backend.
 ```
 
 #### Protected Endpoint
 
 ```nginx
 server {
-    server_name nextcloud.example.com;
     listen 80;
+
+    server_name nextcloud.example.com;
+
     return 301 https://$server_name$request_uri;
 }
 
 server {
-    server_name nextcloud.example.com;
     listen 443 ssl http2;
+
+    server_name nextcloud.example.com;
+
     include /config/nginx/ssl.conf;
+
     include /config/nginx/authelia-basic.conf; # Use the "basic" endpoint
 
     location / {
