@@ -350,7 +350,7 @@ http:
           key: /certificates/traefik.private.pem
     authelia-basic:
       forwardAuth:
-        address: https://authelia:9091/api/verify?rd=https://auth.example.com
+        address: https://authelia:9091/api/verify?auth=basic
         trustForwardHeader: true
         authResponseHeaders:
           - "Remote-User"
