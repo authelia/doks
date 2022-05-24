@@ -57,7 +57,7 @@ smallLimit = "300"
 footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://getdoks.org/\">Doks</a>"
 
 # Feed
-copyRight = "Copyright © 2016-2022 Authelia"
+copyRight = "Copyright © 2016-%s Authelia"
 
 # Alert
 alert = true
