@@ -46,123 +46,20 @@ replaced with the source IP of the client.
 
 Below you will find commented examples of the following configuration:
 
-* Authelia portal
-* Protected endpoint (Nextcloud)
-* Supplementary config
+* [Authelia Portal](#authelia-portal)
+* [Protected Endpoint (Nextcloud)](#protected-endpoint)
+* [Supporting Configuration Snippets](#supporting-configuration-snippets)
 
-With the below configuration you can add `authelia.conf` to virtual hosts to support protection with Authelia.
-`auth.conf` is utilised to enable the protection either at the root location or a more specific location/route.
-`proxy.conf` is included just for completeness.
+With the below configuration you can add `authelia-location.conf` internal location snippet to virtual hosts to support
+protection with Authelia. The `authelia-authrequest.conf` snippet is used to trigger the authentication flow in specific
+location blocks.
 
-### Supplementary config
+### Standard Example
 
-##### authelia.conf
-
-```nginx
-set $upstream_authelia http://authelia:9091/api/verify;
-
-# Virtual endpoint created by nginx to forward auth requests.
-location /authelia {
-    # Essential Proxy Config.
-    internal; # Mark this as an internal only location.
-    proxy_pass $upstream_authelia;
-
-    # [REQUIRED] Needed by Authelia to check authorizations of the resource.
-    # Provide either X-Original-URL and X-Forwarded-Proto or
-    # X-Forwarded-Proto, X-Forwarded-Host and X-Forwarded-Uri or both.
-    # Those headers will be used by Authelia to deduce the target url of the user.
-
-    # Header Proxy Config.
-    proxy_set_header X-Original-URL $scheme://$http_host$request_uri;
-    proxy_set_header X-Forwarded-Method $request_method;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-Host $http_host;
-    proxy_set_header X-Forwarded-Uri $request_uri;
-    proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header Content-Length "";
-    proxy_set_header Connection "";
-
-    # Basic Proxy Config.
-    proxy_pass_request_body off;
-    proxy_next_upstream error timeout invalid_header http_500 http_502 http_503; # Timeout if the real server is dead
-    proxy_redirect http:// $scheme://;
-    proxy_http_version 1.1;
-    proxy_cache_bypass $cookie_session;
-    proxy_no_cache $cookie_session;
-    proxy_buffers 4 32k;
-    client_body_buffer_size 128k;
-
-    # Advanced Proxy Config.
-    send_timeout 5m;
-    proxy_read_timeout 240;
-    proxy_send_timeout 240;
-    proxy_connect_timeout 240;
-}
-```
-
-##### auth.conf
-
-```nginx
-## Send a subrequest to Authelia to verify if the user is authenticated and has permission to access the resource.
-auth_request /authelia;
-
-## Set the $target_url variable based on the original request.
-auth_request_set $target_url $scheme://$http_host$request_uri;
-
-## Save the upstream response headers from Authelia to variables.
-auth_request_set $user $upstream_http_remote_user;
-auth_request_set $groups $upstream_http_remote_groups;
-auth_request_set $name $upstream_http_remote_name;
-auth_request_set $email $upstream_http_remote_email;
-
-## Inject the response headers from the variables into the request made to the backend.
-proxy_set_header Remote-User $user;
-proxy_set_header Remote-Groups $groups;
-proxy_set_header Remote-Name $name;
-proxy_set_header Remote-Email $email;
-
-## If the subreqest returns 200 pass to the backend, if the subrequest returns 401 redirect to the portal.
-error_page 401 =302 https://auth.example.com/?rd=$target_url;
-```
-
-##### proxy.conf
-
-```nginx
-## Headers
-proxy_set_header Host $host;
-proxy_set_header X-Forwarded-Proto $scheme;
-proxy_set_header X-Forwarded-Host $http_host;
-proxy_set_header X-Forwarded-Uri $request_uri;
-proxy_set_header X-Forwarded-Ssl on;
-proxy_set_header X-Forwarded-For $remote_addr;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header Connection "";
-
-## Basic Proxy Configuration
-client_body_buffer_size 128k;
-proxy_next_upstream error timeout invalid_header http_500 http_502 http_503; ## Timeout if the real server is dead.
-proxy_redirect  http://  $scheme://;
-proxy_http_version 1.1;
-proxy_cache_bypass $cookie_session;
-proxy_no_cache $cookie_session;
-proxy_buffers 64 256k;
-
-## Trusted Proxies Configuration
-## Please read the following documentation before configuring this:
-##     https://www.authelia.com/integration/proxies/nginx/#trusted-proxies
-# set_real_ip_from 10.0.0.0/8;
-# set_real_ip_from 172.16.0.0/12;
-# set_real_ip_from 192.168.0.0/16;
-# set_real_ip_from fc00::/7;
-real_ip_header X-Forwarded-For;
-real_ip_recursive on;
-
-## Advanced Proxy Config
-send_timeout 5m;
-proxy_read_timeout 360;
-proxy_send_timeout 360;
-proxy_connect_timeout 360;
-```
+This example is for using the **Authelia** portal redirection flow on a specific endpoint. It requires you to have the
+[authelia-location.conf](#authelia-locationconf) and
+[authelia-authrequest.conf](#authelia-authrequestconf) snippets. In the example these files exist in the
+`/config/nginx/` directory.
 
 #### Authelia Portal
 
@@ -212,26 +109,109 @@ server {
 
     include /config/nginx/ssl.conf;
 
-    include /config/nginx/authelia.conf; # Virtual endpoint to forward auth requests
+    include /config/nginx/authelia-location.conf; # Virtual endpoint to forward auth requests
 
     location / {
         set $upstream_nextcloud https://nextcloud;
         proxy_pass $upstream_nextcloud;
-        include /config/nginx/auth.conf; # Activates Authelia for specified route/location, please ensure you have setup the domain in your configuration.yml
+        include /config/nginx/authelia-authrequest.conf; # Activates Authelia for specified route/location, please ensure you have setup the domain in your configuration.yml
         include /config/nginx/proxy.conf; # Reverse proxy configuration
     }
 }
 ```
 
-### Basic Auth Example
+### HTTP Basic Authentication Example
 
-Here's an example for using HTTP basic auth on a specific endpoint. It is based on the full example above.
+This example is for using HTTP basic auth on a specific endpoint. It is based on the full example above. It requires you
+to have the [authelia-location-basic.conf](#authelia-location-basicconf) and
+[authelia-authrequest-basic.conf](#authelia-authrequest-basicconf) snippets. In the example these files exist in the
+`/config/nginx/` directory.
 
-##### authelia-basic.conf
+#### HTTP Basic Authentication Protected Endpoint
 
 ```nginx
-## Notice we added the auth=basic query arg here
-set $upstream_authelia http://authelia:9091/api/verify?auth=basic;
+server {
+    listen 80;
+
+    server_name nextcloud.example.com;
+
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+
+    server_name nextcloud.example.com;
+
+    include /config/nginx/ssl.conf;
+
+    include /config/nginx/authelia-location-basic.conf; # Use the "basic" endpoint
+
+    location / {
+        set $upstream_nextcloud https://nextcloud;
+        proxy_pass $upstream_nextcloud;
+        include /config/nginx/authelia-authrequest-basic.conf; # Activate authelia with basic auth
+        include /config/nginx/proxy.conf; # this file is the exact same as above
+    }
+}
+```
+
+### Supporting Configuration Snippets
+
+The following configuration files are snippets that are used as includes in other files. The includes in the other files
+match the headings, so if you wish to put them in a specific location or rename them, then make sure to update the
+includes appropriately.
+
+#### proxy.conf
+
+The following is an example `proxy.conf`. The important directives include the `real_ip` directives which you should read
+[Trusted Proxies](#trusted-proxies) section to understand, or set the `X-Forwarded-Proto`, `X-Forwarded-Host`,
+`X-Forwarded-Uri`, and `X-Forwarded-For` headers.
+
+```nginx
+## Headers
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-Host $http_host;
+proxy_set_header X-Forwarded-Uri $request_uri;
+proxy_set_header X-Forwarded-Ssl on;
+proxy_set_header X-Forwarded-For $remote_addr;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header Connection "";
+
+## Basic Proxy Configuration
+client_body_buffer_size 128k;
+proxy_next_upstream error timeout invalid_header http_500 http_502 http_503; ## Timeout if the real server is dead.
+proxy_redirect  http://  $scheme://;
+proxy_http_version 1.1;
+proxy_cache_bypass $cookie_session;
+proxy_no_cache $cookie_session;
+proxy_buffers 64 256k;
+
+## Trusted Proxies Configuration
+## Please read the following documentation before configuring this:
+##     https://www.authelia.com/integration/proxies/nginx/#trusted-proxies
+# set_real_ip_from 10.0.0.0/8;
+# set_real_ip_from 172.16.0.0/12;
+# set_real_ip_from 192.168.0.0/16;
+# set_real_ip_from fc00::/7;
+real_ip_header X-Forwarded-For;
+real_ip_recursive on;
+
+## Advanced Proxy Config
+send_timeout 5m;
+proxy_read_timeout 360;
+proxy_send_timeout 360;
+proxy_connect_timeout 360;
+```
+
+#### authelia-location.conf
+
+_The following snippet is used within the `server` block of a virtual host as a supporting endpoint used by
+`auth_request` and is paired with [authelia-authrequest.conf](#authelia-authrequestconf)._
+
+```nginx
+set $upstream_authelia http://authelia:9091/api/verify;
 
 # Virtual endpoint created by nginx to forward auth requests.
 location /authelia {
@@ -272,9 +252,10 @@ location /authelia {
 }
 ```
 
-##### auth-basic.conf
+#### authelia-authrequest.conf
 
-Same as `auth.conf` but without the `error_page` directive. We want nginx to proxy the 401 back to the client, not to return a 301.
+_The following snippet is used within a `location` block of a virtual host which uses the appropriate location block
+and is paired with [authelia-location.conf](#authelia-locationconf)._
 
 ```nginx
 ## Send a subrequest to Authelia to verify if the user is authenticated and has permission to access the resource.
@@ -294,47 +275,101 @@ proxy_set_header Remote-User $user;
 proxy_set_header Remote-Groups $groups;
 proxy_set_header Remote-Name $name;
 proxy_set_header Remote-Email $email;
+
+## If the subreqest returns 200 pass to the backend, if the subrequest returns 401 redirect to the portal.
+error_page 401 =302 https://auth.example.com/?rd=$target_url;
 ```
 
-#### Protected Endpoint
+#### authelia-location-basic.conf
+
+_The following snippet is used within the `server` block of a virtual host as a supporting endpoint used by
+`auth_request` and is paired with [authelia-authrequest-basic.conf](#authelia-authrequest-basicconf). This particular
+snippet is rarely required. It's only used if you want to only allow
+[HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) for a particular
+endpoint. It's recommended to use [authelia-location.conf](#authelia-locationconf) instead._
 
 ```nginx
-server {
-    listen 80;
+set $upstream_authelia http://authelia:9091/api/verify?auth=basic;
 
-    server_name nextcloud.example.com;
+# Virtual endpoint created by nginx to forward auth requests.
+location /authelia-basic {
+    # Essential Proxy Config.
+    internal; # Mark this as an internal only location.
+    proxy_pass $upstream_authelia;
 
-    return 301 https://$server_name$request_uri;
-}
+    # [REQUIRED] Needed by Authelia to check authorizations of the resource.
+    # Provide either X-Original-URL and X-Forwarded-Proto or
+    # X-Forwarded-Proto, X-Forwarded-Host and X-Forwarded-Uri or both.
+    # Those headers will be used by Authelia to deduce the target url of the user.
 
-server {
-    listen 443 ssl http2;
+    # Header Proxy Config.
+    proxy_set_header X-Original-URL $scheme://$http_host$request_uri;
+    proxy_set_header X-Forwarded-Method $request_method;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $http_host;
+    proxy_set_header X-Forwarded-Uri $request_uri;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Content-Length "";
+    proxy_set_header Connection "";
 
-    server_name nextcloud.example.com;
+    # Basic Proxy Config.
+    proxy_pass_request_body off;
+    proxy_next_upstream error timeout invalid_header http_500 http_502 http_503; # Timeout if the real server is dead
+    proxy_redirect http:// $scheme://;
+    proxy_http_version 1.1;
+    proxy_cache_bypass $cookie_session;
+    proxy_no_cache $cookie_session;
+    proxy_buffers 4 32k;
+    client_body_buffer_size 128k;
 
-    include /config/nginx/ssl.conf;
-
-    include /config/nginx/authelia-basic.conf; # Use the "basic" endpoint
-
-    location / {
-        set $upstream_nextcloud https://nextcloud;
-        proxy_pass $upstream_nextcloud;
-        include /config/nginx/auth-basic.conf; # Activate authelia with basic auth
-        include /config/nginx/proxy.conf; # this file is the exact same as above
-    }
+    # Advanced Proxy Config.
+    send_timeout 5m;
+    proxy_read_timeout 240;
+    proxy_send_timeout 240;
+    proxy_connect_timeout 240;
 }
 ```
 
+#### authelia-authrequest-basic.conf
 
-### Basic auth for specific client
-
-If you'd like to force basic auth for some requests, you can use the following template:
-
-##### authelia-detect.conf
+_The following snippet is used within a `location` block of a virtual host which uses the appropriate location block
+and is paired with [authelia-location-basic.conf](#authelia-location-basicconf). This particular snippet is rarely
+required. It's only used if you want to only allow
+[HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) for a particular
+endpoint. It's recommended to use [authelia-authrequest.conf](#authelia-authrequestconf) instead._
 
 ```nginx
+## Send a subrequest to Authelia to verify if the user is authenticated and has permission to access the resource.
+auth_request /authelia-basic;
+
+## Set the $target_url variable based on the original request.
+auth_request_set $target_url $scheme://$http_host$request_uri;
+
+## Save the upstream response headers from Authelia to variables.
+auth_request_set $user $upstream_http_remote_user;
+auth_request_set $groups $upstream_http_remote_groups;
+auth_request_set $name $upstream_http_remote_name;
+auth_request_set $email $upstream_http_remote_email;
+
+## Inject the response headers from the variables into the request made to the backend.
+proxy_set_header Remote-User $user;
+proxy_set_header Remote-Groups $groups;
+proxy_set_header Remote-Name $name;
+proxy_set_header Remote-Email $email;
+```
+
+#### authelia-location-detect.conf
+
+_The following snippet is used within the `server` block of a virtual host as a supporting endpoint used by
+`auth_request` and is paired with [authelia-authrequest-detect.conf](#authelia-authrequest-detectconf). This particular
+snippet is rarely required. It's only used if you want to conditionally require
+[HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) for a particular
+endpoint. It's recommended to use [authelia-location.conf](#authelia-locationconf) instead._
+
+```nginx
+include /config/nginx/authelia-location.conf;
+
 set $is_basic_auth ""; # false value
-set $upstream_authelia http://authelia:9091/api/verify;
 
 ## Detect the client you want to force basic auth for here
 ## For the example we just match a path on the original request
@@ -343,12 +378,8 @@ if ($request_uri = "/force-basic") {
     set $upstream_authelia "$upstream_authelia?auth=basic";
 }
 
-location = /authelia {
-    # Same as above
-}
-
 ## A new virtual endpoint to used if the auth_request failed
-location = /authelia-redirect {
+location  /authelia-detect {
     internal;
 
     if ($is_basic_auth) {
@@ -364,9 +395,13 @@ location = /authelia-redirect {
 }
 ```
 
-##### auth.conf
+#### authelia-authrequest-detect.conf
 
-Here we replace `error_page` directive to determine if basic auth should be utilised or not.
+_The following snippet is used within a `location` block of a virtual host which uses the appropriate location block
+and is paired with [authelia-location-detect.conf](#authelia-location-detectconf). This particular snippet is rarely
+required. It's only used if you want to conditionally require
+[HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) for a particular
+endpoint. It's recommended to use [authelia-authrequest.conf](#authelia-authrequestconf) instead._
 
 ```nginx
 ## Basic Authelia Config
@@ -394,10 +429,8 @@ proxy_set_header Remote-Email $email;
 
 ## If Authelia returns 401, then nginx passes it to the user.
 ## If it returns 200, then the request pass through to the backend.
-error_page 401 /authelia-redirect?rd=$target_url;
+error_page 401 /authelia-detect?rd=$target_url;
 ```
-
-This tells nginx to use the virtual endpoint we defined above in case the auth_request failed.
 
 ## See Also
 
