@@ -309,6 +309,10 @@ services:
 
 ##### traefik.yml
 
+This file is part of the dynamic configuration and should have the path
+`${PWD}/data/traefik/config/dynamic/traefik.yml`. Please see the [Traefik] service and the volume that mounts the
+`${PWD}/data/traefik/config` in the docker compose above.
+
 ```yaml
 entryPoints:
   web:
