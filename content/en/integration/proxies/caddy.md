@@ -83,7 +83,7 @@ auth.example.com {
 # Protected Endpoint.
 nextcloud.example.com {
         forward_auth authelia:9091 {
-                uri /api/verify?rd=https://auth.example.com
+                uri /api/verify?rd=https%3A%2F%2Fauth.example.com%2F
                 copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
 
                 ## This import needs to be included if you're relying on a trusted proxies configuration.
@@ -122,7 +122,7 @@ example.com {
         @nextcloud path /nextcloud /nextcloud/*
         handle @nextcloud {
                 forward_auth authelia:9091 {
-                        uri /api/verify?rd=https://example.com/authelia
+                        uri /api/verify?rd=https%3A%2F%2Fexample.com%2Fauthelia%2F
                         copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
 
                         ## This import needs to be included if you're relying on a trusted proxies configuration.
@@ -169,7 +169,7 @@ nextcloud.example.com {
                         import trusted_proxy_list
 
                         method GET
-                        rewrite "/api/verify?rd=https://auth.example.com"
+                        rewrite "/api/verify?rd=https%3A%2F%2Fauth.example.com%2F"
 
                         header_up X-Forwarded-Method {method}
                         header_up X-Forwarded-Uri {uri}

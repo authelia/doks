@@ -96,7 +96,7 @@ services:
     networks:
       - net
     labels:
-      - 'traefik.frontend.rule=Host:login.example.com'
+      - 'traefik.frontend.rule=Host:auth.example.com'
     expose:
       - 9091
     restart: unless-stopped
@@ -112,7 +112,7 @@ services:
       - net
     labels:
       - 'traefik.frontend.rule=Host:nextcloud.example.com'
-      - 'traefik.frontend.auth.forward.address=http://authelia:9091/api/verify?rd=https://login.example.com/'
+      - 'traefik.frontend.auth.forward.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.example.com%2F'
       - 'traefik.frontend.auth.forward.trustForwardHeader=true'
       - 'traefik.frontend.auth.forward.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
     expose:
