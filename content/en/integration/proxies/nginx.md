@@ -46,13 +46,17 @@ replaced with the source IP of the client.
 
 Below you will find commented examples of the following configuration:
 
-* [Authelia Portal](#authelia-portal)
-* [Protected Endpoint (Nextcloud)](#protected-endpoint)
-* [Supporting Configuration Snippets](#supporting-configuration-snippets)
-
-With the below configuration you can add `authelia-location.conf` internal location snippet to virtual hosts to support
-protection with Authelia. The `authelia-authrequest.conf` snippet is used to trigger the authentication flow in specific
-location blocks.
+- [Authelia Portal](#authelia-portal)
+  - Running in Docker
+  - Has the container name `authelia`
+- [Protected Endpoint (Nextcloud)](#protected-endpoint)
+  - Running in Docker
+  - Has the container name `nextcloud`
+- [Supporting Configuration Snippets](#supporting-configuration-snippets)
+- Assumes the following since we cannot reasonably provide a configuration for every architecture:
+  - [NGINX] is also running in Docker and uses Docker DNS as a
+    [resolver](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver) which is standard
+  - [NGINX] shares a network with the `authelia` and `nextcloud` containers
 
 ### Standard Example
 
@@ -82,9 +86,10 @@ server {
     include /config/nginx/ssl.conf;
 
     location / {
-        set $upstream_authelia http://authelia:9091; # This example assumes a Docker deployment
-        proxy_pass $upstream_authelia;
         include /config/nginx/proxy.conf;
+
+        set $upstream_authelia http://authelia:9091;
+        proxy_pass $upstream_authelia;
     }
 }
 ```
@@ -109,13 +114,14 @@ server {
 
     include /config/nginx/ssl.conf;
 
-    include /config/nginx/authelia-location.conf; # Virtual endpoint to forward auth requests
+    include /config/nginx/authelia-location.conf;
 
     location / {
+        include /config/nginx/proxy.conf;
+        include /config/nginx/authelia-authrequest.conf;
+
         set $upstream_nextcloud https://nextcloud;
         proxy_pass $upstream_nextcloud;
-        include /config/nginx/authelia-authrequest.conf; # Activates Authelia for specified route/location, please ensure you have setup the domain in your configuration.yml
-        include /config/nginx/proxy.conf; # Reverse proxy configuration
     }
 }
 ```
@@ -126,6 +132,8 @@ This example is for using HTTP basic auth on a specific endpoint. It is based on
 to have the [authelia-location-basic.conf](#authelia-location-basicconf) and
 [authelia-authrequest-basic.conf](#authelia-authrequest-basicconf) snippets. In the example these files exist in the
 `/config/nginx/` directory.
+
+The [Authelia Portal](#authelia-portal) configuration can be reused for this example as such it isn't repeated.
 
 #### HTTP Basic Authentication Protected Endpoint
 
