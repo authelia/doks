@@ -24,8 +24,8 @@ The [Docker] container is deployed with the following image names:
 We provide two main [Docker Compose] bundles which can be utilized to help test _Authelia_ or can be adapted into your
 existing [Docker Compose].
 
-- [lite bundle](https://github.com/authelia/authelia/tree/master/examples/compose/lite)
-- [local bundle](https://github.com/authelia/authelia/tree/master/examples/compose/local)
+- [lite bundle](#lite)
+- [local bundle](#local)
 
 ### Example
 
