@@ -25,6 +25,7 @@ authentication_backend:
     password:
       algorithm: argon2id
       iterations: 1
+      key_length: 32
       salt_length: 16
       parallelism: 8
       memory: 64
@@ -89,12 +90,19 @@ Controls the number of hashing iterations done by the other hashing settings.
 | argon2id  |    1    |    3    | [See Recommendations](#recommended-parameters-argon2id) |
 |  sha512   |  1000   |  50000  |                          50000                          |
 
+#### key_length
+
+{{< confkey type="integer" default="32" required="no" >}}
+
+This setting is specific to `argon2id` and unused with `sha512`. Sets the key length of the argon2 output. Minimum value
+is `16`, with a recommended value of `32`.
+
 #### salt_length
 
 {{< confkey type="integer" default="16" required="no" >}}
 
-Controls the length of the random salt added to each password before hashing. It's recommended this value is set to 16,
-and there is no documented reason why you'd set it to anything other than this, however the minimum is 8.
+Controls the length of the random salt added to each password before hashing. Minimum value is `8`, with a recommended
+value of `16`. There is not a compelling reason to have this set to anything other than `16`.
 
 #### parallelism
 
@@ -182,7 +190,7 @@ $ stress-ng --vm-bytes $(awk '/MemFree/{printf "%d\n", $2 * 0.9;}' < /proc/memin
 
 If this is not desirable we recommend investigating the following options in order of most to least secure:
 
-1. Use the [LDAP](./ldap.md) authentication provider instead
+1. Use the [LDAP](ldap.md) authentication provider instead
 2. Adjusting the [memory](#memory) parameter
 3. Changing the [algorithm](#algorithm)
 
@@ -193,7 +201,7 @@ salt length. The configuration variables are unique to the file authentication p
 under the file authentication configuration key called `password`. We have set what are considered as sane and
 recommended defaults to cater for a reasonable system, if you're unsure about which settings to tune, please see the
 parameters below, or for a more in depth understanding see the referenced documentation in
-[Argon2 links](./file.md#argon2-links).
+[Argon2 links](file.md#argon2-links).
 
 #### Recommended Parameters: Argon2id
 
