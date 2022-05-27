@@ -21,38 +21,39 @@ The [Docker] container is deployed with the following image names:
 
 ## Docker Compose
 
-We provide two main [Docker Compose] bundles which can be utilized to help test _Authelia_ or can be adapted into your
+We provide two main [Docker Compose] examples which can be utilized to help test _Authelia_ or can be adapted into your
 existing [Docker Compose].
 
-- [lite bundle](#lite)
-- [local bundle](#local)
+- [Unbundled Example](#standalone-example)
+- [Bundle: lite](#lite)
+- [Bundle: local](#local)
 
-### Example
+### Standalone Example
 
 The following is an example [Docker Compose] deployment with just _Authelia_ and no bundled applications or proxies.
 
 It expects the following:
 
-- The file `./data/authelia/config/configuration.yml` is present and the configuration file.
-- The files `./data/authelia/secrets/*` exist and contain the relevant secrets.
+- The file `data/authelia/config/configuration.yml` is present and the configuration file.
+- The files `data/authelia/secrets/*` exist and contain the relevant secrets.
 - You're using PostgreSQL.
 - You have an external network named `net` which is in bridge mode.
 
 ```yaml
 version: "3.8"
 secrets:
-  jwt:
-    file: ${PWD}/data/authelia/secrets/jwt
-  storage:
-    file: ${PWD}/data/authelia/secrets/storage
-  storageEnc:
-    file: ${PWD}/data/authelia/secrets/storageEnc
-  session:
-    file: ${PWD}/data/authelia/secrets/session
-  oidcHMACSecret:
-    file: ${PWD}/data/authelia/secrets/oidcHMACSecret
-  oidcPrivateKey:
-    file: ${PWD}/data/authelia/secrets/oidcPrivateKey
+  JWT_SECRET:
+    file: ${PWD}/data/authelia/secrets/JWT_SECRET
+  SESSION_SECRET:
+    file: ${PWD}/data/authelia/secrets/SESSION_SECRET
+  STORAGE_PASSWORD:
+    file: ${PWD}/data/authelia/secrets/STORAGE_PASSWORD
+  STORAGE_ENCRYPTION_KEY:
+    file: ${PWD}/data/authelia/secrets/STORAGE_ENCRYPTION_KEY
+  OIDC_HMAC_KEY:
+    file: ${PWD}/data/authelia/secrets/OIDC_HMAC_KEY
+  OIDC_PRIVATE_KEY:
+    file: ${PWD}/data/authelia/secrets/OIDC_PRIVATE_KEY
 services:
   authelia:
     container_name: authelia
@@ -63,14 +64,14 @@ services:
         aliases: []
     expose:
       - 9091
-    secrets: [jwt, session, storage, storageEnc, oidcHMACSecret, oidcPrivateKey]
+    secrets: [JWT_SECRET, SESSION_SECRET, STORAGE_PASSWORD, STORAGE_ENCRYPTION_KEY, OIDC_HMAC_KEY, OIDC_PRIVATE_KEY]
     environment:
-      AUTHELIA_JWT_SECRET_FILE: /run/secrets/jwt
-      AUTHELIA_SESSION_SECRET_FILE: /run/secrets/session
-      AUTHELIA_STORAGE_POSTGRES_PASSWORD_FILE: /run/secrets/storage
-      AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE: /run/secrets/storageEnc
-      AUTHELIA_IDENTITY_PROVIDERS_OIDC_ISSUER_PRIVATE_KEY_FILE: /run/secrets/oidcPrivateKey
-      AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE: /run/secrets/oidcHMACSecret
+      AUTHELIA_JWT_SECRET_FILE: /run/secrets/JWT_SECRET
+      AUTHELIA_SESSION_SECRET_FILE: /run/secrets/SESSION_SECRET
+      AUTHELIA_STORAGE_POSTGRES_PASSWORD_FILE: /run/secrets/STORAGE_PASSWORD
+      AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE: /run/secrets/STORAGE_ENCRYPTION_KEY
+      AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE: /run/secrets/OIDC_HMAC_KEY
+      AUTHELIA_IDENTITY_PROVIDERS_OIDC_ISSUER_PRIVATE_KEY_FILE: /run/secrets/OIDC_PRIVATE_KEY
     volumes:
       - ${PWD}/data/authelia/config:/config
 networks:
