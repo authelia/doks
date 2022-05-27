@@ -15,8 +15,6 @@ toc: true
 
 ## Configuration
 
-Configuring _Authelia_ to use a file is done by specifying the path to the file in the configuration file.
-
 ```yaml
 authentication_backend:
   disable_reset_password: false

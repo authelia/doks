@@ -1,10 +1,10 @@
 ---
-title : "Trusted Header SSO"
-description: "Trusted Header SSO Integration"
+title: "Deployment"
+description: "Deployment"
 lead: ""
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
 images: []
-weight: 700
+weight: 200
 ---
