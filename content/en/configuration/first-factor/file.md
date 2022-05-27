@@ -24,10 +24,10 @@ authentication_backend:
     path: /config/users.yml
     password:
       algorithm: argon2id
-      iterations: 1
+      iterations: 3
       key_length: 32
       salt_length: 16
-      parallelism: 8
+      parallelism: 4
       memory: 64
 ```
 

@@ -17,7 +17,7 @@ toc: true
 the [React] assets and a dedicated API.
 
 The GitHub repository comes with a CLI dedicated to developers called
-[authelia-scripts](./reference-authelia-scripts.md) which can be setup by looking at
+[authelia-scripts](reference-authelia-scripts.md) which can be setup by looking at
 [Reference: authelia-scripts](reference-authelia-scripts.md).
 
 In order to build and contribute to **Authelia**, you need to make sure that you have looked at the
