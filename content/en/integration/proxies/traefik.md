@@ -39,12 +39,19 @@ how you can configure multiple IP ranges. You should customize this example to f
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
 trust entire subnets unless that subnet only has trusted proxies and no other services._
 
-With [Traefik] this is controlled at the [Entry Point](https://doc.traefik.io/traefik/routing/entrypoints) level which
-is the name they give the HTTP/HTTPS listener. The examples set the trusted range to `192.168.253.20/32` and
-`192.168.253.21/32` which are two arbitrary hosts. It's expected you'll uncomment and configure these values.
+[Traefik] by default doesn't trust any other proxies requiring explicit configuration of which proxies are trusted
+and removes potentially fabricated headers that are likely to lead to security issues, and it is difficult to configure
+this incorrectly. This is an important security feature that is common with proxies with good security practices.
 
-[Traefik] requires users implicitly configure which proxies are considered trusted. To configure a proxy as trusted
-please see the lines with `trustedIPs`. It's strongly recommended that you adjust these values to your needs.
+In the example we have four commented lines which configure `trustedIPs` which show an example on adding the following
+networks to the trusted proxy list in [Traefik]:
+
+- 10.0.0.0/8
+- 172.16.0.0/16
+- 192.168.0.0/16
+- fc00::/7
+
+See the [Entry Points](https://doc.traefik.io/traefik/routing/entrypoints) documentation for more information.
 
 ## Configuration
 

@@ -228,11 +228,9 @@ which writes the secret's content to the `actualSecretContent.txt` file and prin
 
 - **Filename:** ./kustomization.yaml
 - **Command:** kubectl apply -k
-- **Notes:** this kustomization expects the Authelia configuration.yml in
-  the same directory. You will need to edit the kustomization.yaml with your
-  desired secrets after the equal signs. If you change the value before the
-  equal sign you'll have to adjust the volumes section of the daemonset
-  template (or deployment template if you're using it).
+- **Notes:** this kustomization expects the Authelia configuration.yml in the same directory. You will need to edit the
+  kustomization.yaml with your desired secrets after the equal signs. If you change the value before the equal sign
+  you'll have to adjust the volumes section of the daemonset template (or deployment template if you're using it).
 
 ```yaml
 #filename: ./kustomization.yaml

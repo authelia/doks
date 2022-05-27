@@ -138,16 +138,16 @@ These endpoints implement OpenID Connect elements.
 [OpenID Connect]: https://openid.net/connect/
 
 [OpenID Connect Discovery]: https://openid.net/specs/openid-connect-discovery-1_0.html
-[OAuth 2.0 Authorization Server Metadata]: https://datatracker.ietf.org/doc/html/rfc8414
+[OAuth 2.0 Authorization Server Metadata]: https://www.rfc-editor.org/rfc/rfc8414.html
 
-[JSON Web Key Sets]: https://datatracker.ietf.org/doc/html/rfc7517#section-5
+[JSON Web Key Sets]: https://www.rfc-editor.org/rfc/rfc7517.html#section-5
 
 [Authorization]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
 [Token]: https://openid.net/specs/openid-connect-core-1_0.html#TokenEndpoint
 [Userinfo]: https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
-[Introspection]: https://datatracker.ietf.org/doc/html/rfc7662
-[Revocation]: https://datatracker.ietf.org/doc/html/rfc7009
+[Introspection]: https://www.rfc-editor.org/rfc/rfc7662.html
+[Revocation]: https://www.rfc-editor.org/rfc/rfc7009.html
 
-[RFC8176]: https://datatracker.ietf.org/doc/html/rfc8176
-[RFC4122]: https://datatracker.ietf.org/doc/html/rfc4122
+[RFC8176]: https://www.rfc-editor.org/rfc/rfc8176.html
+[RFC4122]: https://www.rfc-editor.org/rfc/rfc4122.html
 [Subject Identifier Types]: https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes

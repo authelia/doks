@@ -125,8 +125,8 @@ Rules may start with a few different wildcards:
   group in that location. For example `{group}.example.com` would match `admins.example.com` if the user logged in was
   in the following groups `admins,users,people` because `admins` is in the list.
 
-Domains in this section must be the domain configured in the [session](./session/index.md#domain) configuration or
-subdomains of that domain. This is because a website can only write cookies for a domain it is part of. It is
+Domains in this section must be the domain configured in the [session](../session/introduction.md#domain) configuration
+or subdomains of that domain. This is because a website can only write cookies for a domain it is part of. It is
 theoretically possible for us to do this with multiple domains however we would have to be security conscious in our
 implementation, and it is not currently a priority.
 
@@ -197,8 +197,8 @@ groups which match attributes of the user:
 
 For the group match it matches if the user has any group name that matches, and both matches are case-insensitive due to
 the fact domain names should not be compared in a case-sensitive way as per the
-[RFC4343](https://datatracker.ietf.org/doc/html/rfc4343) abstract and
-[RFC3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.2.2) section 3.2.2.
+[RFC4343](https://www.rfc-editor.org/rfc/rfc4343.html) abstract and
+[RFC3986 Section 3.2.2](https://www.rfc-editor.org/rfc/rfc3986#section-3.2.2).
 
 ##### Examples
 
@@ -312,11 +312,11 @@ only recommended to use this to increase security where essential and for CORS p
 The accepted and valid methods for this configuration option are those specified in well known RFC's. The RFC's and the
 relevant methods are listed in this table:
 
-|                           RFC                            |                        Methods                        |                     Additional Documentation                     |
-|:--------------------------------------------------------:|:-----------------------------------------------------:|:----------------------------------------------------------------:|
-| [RFC7231](https://datatracker.ietf.org/doc/html/rfc7231) | GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
-| [RFC5789](https://datatracker.ietf.org/doc/html/rfc5789) |                         PATCH                         | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
-| [RFC4918](https://datatracker.ietf.org/doc/html/rfc4918) | PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK  |                                                                  |
+|    RFC    |                        Methods                        |                     Additional Documentation                     |
+|:---------:|:-----------------------------------------------------:|:----------------------------------------------------------------:|
+| [RFC7231] | GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
+| [RFC5789] |                         PATCH                         | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) |
+| [RFC4918] | PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, UNLOCK  |                                                                  |
 
 ##### Examples
 
@@ -522,3 +522,7 @@ access_control:
     - domain: '{user}.example.com'
       policy: bypass
 ```
+
+[RFC7231]: https://www.rfc-editor.org/rfc/rfc7231.html
+[RFC5789]: https://www.rfc-editor.org/rfc/rfc5789.html
+[RFC4918]: https://www.rfc-editor.org/rfc/rfc4918.html

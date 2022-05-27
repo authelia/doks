@@ -47,7 +47,7 @@ storage:
 
 ### encryption_key
 
-See the [encryption_key docs](./index.md#encryption_key).
+See the [encryption_key docs](introduction.md#encryption_key).
 
 ### host
 

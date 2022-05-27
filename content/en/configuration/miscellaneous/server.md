@@ -103,7 +103,7 @@ Example:
 
 The locales folder holds folders of internationalization locales. This folder can be utilized to override these locales.
 They are the names of locales that are returned by the `navigator.langauge` ECMAScript command. These are generally
-those in the [RFC5646 / BCP47 Format](https://datatracker.ietf.org/doc/html/rfc5646) specifically the language codes
+those in the [RFC5646 / BCP47 Format](https://www.rfc-editor.org/rfc/rfc5646.html) specifically the language codes
 from [Crowdin](https://support.crowdin.com/api/language-codes/).
 
 Each directory has json files which you can explore the format of in the

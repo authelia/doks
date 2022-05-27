@@ -47,6 +47,17 @@ file. The example utilizes this method and trusted proxies can then easily be ad
 [HAProxy] implicitly trusts all external proxies by default so it's important you configure this for a trusted
 environment.
 
+[HAProxy] by default **does** trust all other proxies. This means it's essential that you configure this correctly.
+
+In the example we have a `trusted_proxies.src.acl` file which is used by one `http-request del-header X-Forwarded-For`
+line in the main configuration which shows an example of not trusting any proxies or alternatively an example on adding
+the following networks to the trusted proxy list in [HAProxy]:
+
+- 10.0.0.0/8
+- 172.16.0.0/16
+- 192.168.0.0/16
+- fc00::/7
+
 ## Configuration
 
 Below you will find commented examples of the following configuration:
@@ -91,6 +102,7 @@ backend upon successful authentication, for example:
     ```
 
 ### Secure Authelia with TLS
+
 There is a [known limitation](https://github.com/TimWolla/haproxy-auth-request/issues/12) with haproxy-auth-request with
 regard to TLS-enabled backends. If you want to run Authelia TLS enabled the recommended workaround utilises [HAProxy]
 itself to proxy the requests. This comes at a cost of two additional TCP connections, but allows the full [HAProxy]
@@ -126,9 +138,12 @@ defaults
 frontend fe_http
     bind *:443 ssl crt example.com.pem
 
-    # Trusted Proxies ACLs.
-    acl src-trusted_proxies src -f trusted_proxies.src.acl
-    http-request del-header X-Forwarded-For	if !src-trusted_proxies
+    ## Trusted Proxies.
+    http-request del-header X-Forwarded-For
+
+    ## Comment the above directive and the two directives below to enable the trusted proxies ACL.
+    # acl src-trusted_proxies src -f trusted_proxies.src.acl
+    # http-request del-header X-Forwarded-For	if !src-trusted_proxies
 
     ## Ensure X-Forwarded-For is set for the auth request.
     acl hdr-xff_exists req.hdr(X-Forwarded-For) -m found

@@ -14,8 +14,8 @@ toc: true
 ---
 
 Authelia has the ability to check the system time against an NTP server. Currently this only occurs at startup. This
-section configures and tunes the settings for this check which is primarily used to ensure [TOTP](./one-time-password.md)
-can be accurately validated.
+section configures and tunes the settings for this check which is primarily used to ensure
+[TOTP](../second-factor/time-based-one-time-password.md) can be accurately validated.
 
 In the instance of inability to contact the NTP server Authelia will just log an error and will continue to run.
 
@@ -43,7 +43,7 @@ required.
 
 {{< confkey type="integer" default="4" required="no" >}}
 
-Determines the NTP verion supported. Valid values are 3 or 4.
+Determines the NTP version supported. Valid values are 3 or 4.
 
 ### max_desync
 

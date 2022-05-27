@@ -39,7 +39,8 @@ This disables WebAuthn if set to true.
 Sets the display name which is sent to the client to be displayed. It's up to individual browsers and potentially
 individual operating systems if and how they display this information.
 
-See the [W3C WebAuthn Documentation](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialentity-name) for more information.
+See the [W3C WebAuthn Documentation](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialentity-name) for more
+information.
 
 ### attestation_conveyance_preference
 
@@ -83,4 +84,4 @@ This adjusts the requested timeout for a WebAuthn interaction. The period of tim
 
 ## FAQ
 
-See the [Security Key FAQ](../features/2fa/security-key.md#faq) for the FAQ.
+See the [Security Key FAQ](../../overview/authentication/security-key/index.md#faq) for the FAQ.

@@ -14,8 +14,8 @@ toc: true
 ---
 
 This is a session provider. By default Authelia uses an in-memory provider. Not configuring redis leaves Authelia
-[stateful](../../features/statelessness.md). It's important in highly available scenarios to configure this option and
-we highly recommend it in production environments. It requires you setup [redis] as well.
+[stateful](../../overview/authorization/statelessness.md). It's important in highly available scenarios to configure
+this option and we highly recommend it in production environments. It requires you setup [redis] as well.
 
 ## Configuration
 
@@ -56,6 +56,7 @@ session:
 
 The [redis] host or unix socket path. If utilising an IPv6 literal address it must be enclosed by square brackets and
 quoted:
+
 ```yaml
 host: "[fd00:1111:2222:3333::1]"
 ```

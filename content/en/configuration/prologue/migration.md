@@ -56,9 +56,9 @@ The following changes occurred in 4.30.0:
 |  log_format   |       log.format       |
 
 _**Please Note:** you can no longer define secrets for providers that you are not using. For example if you're using the
-[filesystem notifier](./notifier/filesystem.md) you must ensure that the `AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE`
+[filesystem notifier](../notifications/introduction.md) you must ensure that the `AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE`
 environment variable or other environment variables set. This also applies to other providers like
-[storage](./storage/index.md) and [authentication backend](./authentication/index.md)._
+[storage](../storage/introduction.md) and [authentication backend](../first-factor/introduction.md)._
 
 #### Kubernetes 4.30.0
 

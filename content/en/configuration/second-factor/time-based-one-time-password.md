@@ -148,17 +148,17 @@ seconds of validity, and period 30 and skew 2 would result in 150 seconds of val
 ## System time accuracy
 
 It's important to note that if the system time is not accurate enough then clients will seemingly not generate valid
-passwords for TOTP. Conversely this is the same when the client time is not accurate enough. This is due to the Time-based
-One Time Passwords being time-based.
+passwords for TOTP. Conversely this is the same when the client time is not accurate enough. This is due to the
+Time-based One Time Passwords being time-based.
 
-Authelia by default checks the system time against an [NTP server](./ntp.md#address) on startup. This helps to prevent
-a time synchronization issue on the server being an issue. There is however no effective and reliable way to check the
-clients.
+Authelia by default checks the system time against an [NTP server](../miscellaneous/ntp.md) on startup. This helps to
+prevent a time synchronization issue on the server being an issue. There is however no effective and reliable way to
+check the clients.
 
 ## Encryption
 
-The TOTP secret is [encrypted](storage/index.md#encryption_key) in the database in version 4.33.0 and above. This is so
-a user having access to only the database cannot easily compromise your two-factor authentication method.
+The TOTP secret is [encrypted](../storage/introduction.md#encryption_key) in the database in version 4.33.0 and above.
+This is so a user having access to only the database cannot easily compromise your two-factor authentication method.
 
 This may be inconvenient for some users who wish to export TOTP keys from Authelia to other services. As such there is
 a command specifically for exporting TOTP configurations from the database. These commands require the configuration or
@@ -182,5 +182,5 @@ Help:
 $ authelia storage totp export --help
 ```
 
-[RFC4226]: https://datatracker.ietf.org/doc/html/rfc4226
-[RFC6238]: https://datatracker.ietf.org/doc/html/rfc6238
+[RFC4226]: https://www.rfc-editor.org/rfc/rfc4226.html
+[RFC6238]: https://www.rfc-editor.org/rfc/rfc6238.html

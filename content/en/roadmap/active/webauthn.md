@@ -30,17 +30,17 @@ due to how important or difficult to implement they are.
 
 Implement [WebAuthn] as a replacement for [FIDO U2F] with [FIDO U2F] backwards compatibility.
 
-|                        Setting                        |     Value      |                                                                Effect                                                                |
-|:-----------------------------------------------------:|:--------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
-|               [Conveyancing Preference]               |    indirect    | Configurable: ask users to permit collection of the AAGUID, this is like a model number, this GUID will be stored in the SQL storage |
-|            [User Verification Requirement]            |   preferred    |                           Configurable: ask the browser to prompt for the users PIN or other verification                            |
-| Discoverable Credentials ([Resident Key Requirement]) |  discouraged   |                                       See the [passwordless login stage](#passwordless-login)                                        |
-|              [Authenticator Attachment]               | cross-platform |                                   See the [platform authenticator stage](#platform-authenticator)                                    |
-|               Multi-Device Registration               |  unavailable   |                                see the [multi device registration stage](#multi-device-registration)                                 |
+|                       Setting                        |     Value      |                                                                Effect                                                                |
+|:----------------------------------------------------:|:--------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
+|              [Conveyancing Preference]               |    indirect    | Configurable: ask users to permit collection of the AAGUID, this is like a model number, this GUID will be stored in the SQL storage |
+|           [User Verification Requirement]            |   preferred    |                           Configurable: ask the browser to prompt for the users PIN or other verification                            |
+|              [Resident Key Requirement]              |  discouraged   |                                       See the [passwordless login stage](#passwordless-login)                                        |
+|              [Authenticator Attachment]              | cross-platform |                                   See the [platform authenticator stage](#platform-authenticator)                                    |
+|              Multi-Device Registration               |  unavailable   |                                see the [multi device registration stage](#multi-device-registration)                                 |
 
 ### Multi Device Registration
 
-{{< roadmap-status stage="waiting" >}}
+{{< roadmap-status >}}
 
 Implement multi device registration as part of the user interface. This is technically implemented for the most part in
 the backend, it's just the public facing interface elements remaining.
@@ -49,9 +49,9 @@ the backend, it's just the public facing interface elements remaining.
 
 {{< roadmap-status >}}
 
-Implement [WebAuthn] Platform Authenticators so that people can use things like [Windows Hello], [TouchID] [FaceID],
-or [Android Security Key]. This would also allow configuration of the [Authenticator Attachment] setting most likely, or at least
-allow admins to configure which ones are available for registration.
+Implement [WebAuthn] Platform Authenticators so that people can use things like [Windows Hello], [TouchID], [FaceID],
+or [Android Security Key]. This would also allow configuration of the [Authenticator Attachment] setting most likely,
+or at least allow admins to configure which ones are available for registration.
 
 ### Passwordless Login
 

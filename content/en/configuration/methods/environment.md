@@ -27,45 +27,9 @@ likely result in an error or even worse misconfiguration.
 
 ### Kubernetes
 
-_**Important Note:**_ There are compatability issues with Kubernetes and this particular configuration option. You must
-ensure you have the `enableServiceLinks: false` setting in your pod spec.
-
-Here an excerpt from a manifest as an example:
-
-```yaml
-kind: Deployment
-apiVersion: apps/v1
-metadata:
-  name: authelia
-  namespace: authelia
-  labels:
-    app.kubernetes.io/instance: authelia
-    app.kubernetes.io/name: authelia
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: authelia
-      app.kubernetes.io/name: authelia
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/instance: authelia
-        app.kubernetes.io/name: authelia
-    spec:
-      enableServiceLinks: false
-      containers:
-        - name: authelia
-          image: authelia/authelia:latest
-          command:
-            - authelia
-          args:
-            - '--config=/configuration.yaml'
-            - '--config=/configuration.acl.yaml'
-```
-
-See the [PodSpec API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core)
-for more information.
+Please see the
+[Kubernetes Integration: Enable Service Links](../../integration/kubernetes/introduction/index.md#enable-service-links)
+documentation for specific requirements for using _Authelia_ with Kubernetes.
 
 ## Mapping
 

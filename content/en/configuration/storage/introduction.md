@@ -44,7 +44,7 @@ be done by following the
 [Generating a Random Alphanumeric String](../miscellaneous/guides.md#generating-a-random-alphanumeric-string)
 guide.
 
-See [securty measures](../../security/measures.md#storage-security-measures) for more information.
+See [securty measures](../../overview/security/measures.md#storage-security-measures) for more information.
 
 ### local
 

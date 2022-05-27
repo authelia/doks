@@ -42,6 +42,7 @@ configured in the `proxy.conf` file. Each `set_realip_from` directive adds a tru
 proxies list. Any request that comes from a source IP not in one of the configured ranges results in the header being
 replaced with the source IP of the client.
 
+
 ## Configuration
 
 Below you will find commented examples of the following configuration:

@@ -38,9 +38,8 @@ the container or adapt the path to the path you have mounted the relevant contai
 _**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
 Especially if you have never read it before._
 
-To configure trusted proxies for [SWAG] see the [NGINX] section on
-[Trusted Proxies](nginx.md#trusted-proxies). Adapting this to [SWAG] is beyond the scope of this
-documentation.
+To configure trusted proxies for [SWAG] see the [NGINX] section on [Trusted Proxies](nginx.md#trusted-proxies).
+Adapting this to [SWAG] is beyond the scope of this documentation.
 
 ## Prerequisite Steps
 

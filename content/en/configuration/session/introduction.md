@@ -13,14 +13,11 @@ weight: 105100
 toc: true
 ---
 
-
-**Authelia** relies on session cookies to authenticate users. When the user visits
-a website of the protected domain `example.com` for the first time, Authelia detects
-that there is no cookie for that user. Consequently, Authelia redirects the user
-to the login portal through which the user should authenticate to get a cookie which
-is valid for `*.example.com`, meaning all websites of the domain.
-At the next request, Authelia receives the cookie associated to the authenticated user
-and can then order the reverse proxy to let the request pass through to the application.
+**Authelia** relies on session cookies to authenticate users. When the user visits a website of the protected domain
+`example.com` for the first time, Authelia detects that there is no cookie for that user. Consequently, Authelia
+redirects the user to the login portal through which the user should authenticate to get a cookie which is valid for
+`*.example.com`, meaning all websites of the domain. At the next request, Authelia receives the cookie associated to the
+authenticated user and can then order the reverse proxy to let the request pass through to the application.
 
 ## Configuration
 
@@ -82,7 +79,8 @@ state but it's available as an option anyway.
 
 {{< confkey type="string" required="yes" >}}
 
-The secret key used to encrypt session data in Redis. It's recommended this is set using a [secret](../methods/secrets.md).
+The secret key used to encrypt session data in Redis. It's recommended this is set using a
+[secret](../methods/secrets.md).
 
 We recommend generating a random string with 64 characters or more for this purposes which can be done by following the
 [Generating a Random Alphanumeric String](../miscellaneous/guides.md#generating-a-random-alphanumeric-string)
@@ -92,27 +90,28 @@ guide.
 
 {{< confkey type="duration" default="1h" required="no" >}}
 
-The time in [duration notation format](../prologue/common.md#duration-notation-format) before the cookie expires and the session
-is destroyed. This is overriden by remember_me_duration when the remember me box is checked.
+The time in [duration notation format](../prologue/common.md#duration-notation-format) before the cookie expires and the
+session is destroyed. This is overriden by [remember_me_duration](#remember_me_duration) when the remember me box is
+checked.
 
 ### inactivity
 
 {{< confkey type="duration" default="5m" required="no" >}}
 
-The time in [duration notation format](../prologue/common.md#duration-notation-format) the user can be inactive for until the
-session is destroyed. Useful if you want long session timers but don't want unused devices to be vulnerable.
+The time in [duration notation format](../prologue/common.md#duration-notation-format) the user can be inactive for
+until the session is destroyed. Useful if you want long session timers but don't want unused devices to be vulnerable.
 
 ### remember_me_duration
 
 {{< confkey type="duration" default="1M" required="no" >}}
 
-The time in [duration notation format](../prologue/common.md#duration-notation-format) the cookie expires and the session is
-destroyed when the remember me box is checked. Setting this to `-1` disables this feature entirely.
+The time in [duration notation format](../prologue/common.md#duration-notation-format) the cookie expires and the
+session is destroyed when the remember me box is checked. Setting this to `-1` disables this feature entirely.
 
 ## Security
 
 Configuration of this section has an impact on security. You should read notes in
-[security measures](../../security/measures.md#session-security) for more information.
+[security measures](../../overview/security/measures.md#session-security) for more information.
 
 ## Loading a password from a secret instead of inside the configuration
 

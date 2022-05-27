@@ -40,12 +40,20 @@ how you can configure multiple IP ranges. You should customize this example to f
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
 trust entire subnets unless that subnet only has trusted proxies and no other services._
 
-[Caddy] by default strips these headers entirely which is a good security practice. To preserve these headers from
-trusted proxies you need to uncomment and configure the `trusted_proxies` directive in the `(trusted_proxy_list)` at the
-top of the examples with a list of IP ranges that you consider to be trustworthy.
+[Caddy] by default doesn't trust any other proxies and removes potentially fabricated headers that are likely to lead
+to security issues, and it is difficult to configure this incorrectly. This is an important security feature that is
+common with proxies with good security practices.
 
 You should read the [Caddy Trusted Proxies Documentation] as part of configuring this. It's important to ensure you take
 the time to configure this carefully and correctly.
+
+In the example we have a commented `trusted_proxies` directive which shows an example on adding the following networks
+to the trusted proxy list in [Caddy]:
+
+- 10.0.0.0/8
+- 172.16.0.0/16
+- 192.168.0.0/16
+- fc00::/7
 
 ## Configuration
 
@@ -83,7 +91,7 @@ auth.example.com {
 # Protected Endpoint.
 nextcloud.example.com {
         forward_auth authelia:9091 {
-                uri /api/verify?rd=https%3A%2F%2Fauth.example.com%2F
+                uri /api/verify?rd=https://auth.example.com/
                 copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
 
                 ## This import needs to be included if you're relying on a trusted proxies configuration.
@@ -122,7 +130,7 @@ example.com {
         @nextcloud path /nextcloud /nextcloud/*
         handle @nextcloud {
                 forward_auth authelia:9091 {
-                        uri /api/verify?rd=https%3A%2F%2Fexample.com%2Fauthelia%2F
+                        uri /api/verify?rd=https://example.com/authelia/
                         copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
 
                         ## This import needs to be included if you're relying on a trusted proxies configuration.
@@ -169,7 +177,7 @@ nextcloud.example.com {
                         import trusted_proxy_list
 
                         method GET
-                        rewrite "/api/verify?rd=https%3A%2F%2Fauth.example.com%2F"
+                        rewrite "/api/verify?rd=https://auth.example.com/"
 
                         header_up X-Forwarded-Method {method}
                         header_up X-Forwarded-Uri {uri}

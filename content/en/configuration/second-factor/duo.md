@@ -15,8 +15,8 @@ toc: true
 
 Authelia supports mobile push notifications relying on [Duo].
 
-Follow the instructions in the dedicated [documentation](../features/2fa/push-notifications.md) for instructions on how
-to set up push notifications in Authelia.
+Follow the instructions in the dedicated [documentation](../../overview/authentication/push-notification/index.md) for
+instructions on how to set up push notifications in Authelia.
 
 **Note:** The configuration options in the following sections are noted as required. They are however only required when
 you have this section defined. i.e. if you don't wish to use the [Duo] push notifications you can just not define this
@@ -24,7 +24,6 @@ section of the configuration.
 
 ## Configuration
 
-The configuration is as follows:
 ```yaml
 duo_api:
   disable: false
@@ -33,9 +32,6 @@ duo_api:
   secret_key: 1234567890abcdefghifjkl
   enable_self_enrollment: false
 ```
-
-The secret key is shown as an example, you also have the option to set it using an environment variable as described
-[here](./secrets.md).
 
 ## Options
 
@@ -62,7 +58,8 @@ The non-secret [Duo] integration key. Similar to a client identifier.
 
 {{< confkey type="string" required="yes" >}}
 
-The secret [Duo] key used to verify your application is valid.
+The secret [Duo] key used to verify your application is valid. It's recommended to set this via a
+[secret](../methods/secrets.md).
 
 ### enable_self_enrollment
 

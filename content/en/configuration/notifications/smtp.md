@@ -85,7 +85,7 @@ guide.
 {{< confkey type="string" required="yes" >}}
 
 The sender is used to construct both the SMTP command `MAIL FROM` and to add the `FROM` header. This address must be
-in [RFC5322](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4) format. This means it must one of two formats:
+in [RFC5322](https://www.rfc-editor.org/rfc/rfc5322.html#section-3.4) format. This means it must one of two formats:
 - jsmith@domain.com
 - John Smith <jsmith@domain.com>
 
@@ -136,8 +136,8 @@ Controls the TLS connection validation process. You can see how to configure the
 
 ## Using Gmail
 
-You need to generate an app password in order to use Gmail SMTP servers. The process is
-described [here](https://support.google.com/accounts/answer/185833?hl=en)
+You need to generate an app password in order to use Gmail SMTP servers. The process is described
+[here](https://support.google.com/accounts/answer/185833?hl=en).
 
 ```yaml
 notifier:

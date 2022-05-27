@@ -82,8 +82,8 @@ Criteria:
 | Remove When Not From Trusted Source | IP Source Address |   is not in    | _list of trusted source addresses_ |
 
 Cloudflare publishes its IP address ranges publicly at the easy to remember address
-[https://www.cloudflare.com/ips/](https://www.cloudflare.com/ips/). You should use this with the trusted IP section of
-your relevant proxy to ensure it's trusted if you intend to use Cloudflare.
+[https://www.cloudflare.com/ips/](https://www.cloudflare.com/ips/). You should use this with the trusted proxies section
+of your relevant proxy to ensure it's trusted if you intend to use Cloudflare.
 
 [X-Forwarded-For]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
 [Cloudflare]: https://www.cloudflare.com

@@ -87,7 +87,6 @@ Enables use of the LDAP StartTLS process which is not commonly used. You should 
 it. The initial connection will be over plain text, and _Authelia_ will try to upgrade it with the LDAP server. LDAPS
 URL's are slightly more secure.
 
-
 ### tls
 
 Controls the TLS connection validation process. You can see how to configure the tls
@@ -98,8 +97,8 @@ section [here](../prologue/common.md#tls-configuration).
 {{< confkey type="string" required="yes" >}}
 
 Sets the base distinguished name container for all LDAP queries. If your LDAP domain is example.com this is usually
-`dc=example,dc=com`, however you can fine tune this to be more specific for example to only include objects inside the
-authelia OU: `ou=authelia,dc=example,dc=com`. This is prefixed with the [additional_users_dn](#additional_users_dn) for
+`DC=example,DC=com`, however you can fine tune this to be more specific for example to only include objects inside the
+authelia OU: `OU=authelia,DC=example,DC=com`. This is prefixed with the [additional_users_dn](#additional_users_dn) for
 user searches and [additional_groups_dn](#additional_groups_dn) for groups searches.
 
 ### additional_users_dn
@@ -108,16 +107,15 @@ user searches and [additional_groups_dn](#additional_groups_dn) for groups searc
 
 Additional LDAP path to append to the [base_dn](#base_dn) when searching for users. Useful if you want to restrict
 exactly which OU to get users from for either security or performance reasons. For example setting it to
-`ou=users,ou=people` with a base_dn set to `dc=example,dc=com` will mean user searches will occur in
-`ou=users,ou=people,dc=example,dc=com`.
+`OU=users,OU=people` with a base_dn set to `DC=example,DC=com` will mean user searches will occur in
+`OU=users,OU=people,DC=example,DC=com`.
 
 ### users_filter
 
-{{< confkey type="string" required="no" >}}
+{{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option
-can implicitly set a default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more
-information._
+_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more information._
 
 The LDAP filter to narrow down which users are valid. This is important to set correctly as to exclude disabled users.
 The default value is dependent on the [implementation](#implementation), refer to the
@@ -127,33 +125,29 @@ The default value is dependent on the [implementation](#implementation), refer t
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option
-can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
-information._
+_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information._
 
-The LDAP attribute that maps to the username in Authelia. The default value is dependent on the
-[implementation](#implementation), refer to the [attribute defaults](#attribute-defaults) for more information. If the
-implementation does not have a `username_attribute` default then this is required.
+The LDAP attribute that maps to the username in _Authelia_. This must contain the `{username_attribute}`
+[placeholder](#users-filter-replacements).
 
 ### mail_attribute
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option
-can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
-information._
+_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information._
 
 The attribute to retrieve which contains the users email addresses. This is important for the device registration and
-password reset processes. The user must have an email address in order for Authelia to perform identity verification when
-a user attempts to reset their password or register a second factor device.
+password reset processes. The user must have an email address in order for Authelia to perform identity verification
+when a user attempts to reset their password or register a second factor device.
 
 ### display_name_attribute
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option
-can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
-information._
+_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information._
 
 The attribute to retrieve which is shown on the Web UI to the user when they log in.
 
@@ -165,11 +159,10 @@ Similar to [additional_users_dn](#additional_users_dn) but it applies to group s
 
 ### groups_filter
 
-{{< confkey type="string" required="no" >}}
+{{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option
-can implicitly set a default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more
-information._
+_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more information._
 
 Similar to [users_filter](#users_filter) but it applies to group searches. In order to include groups the member is not
 a direct member of, but is a member of another group that is a member of those (i.e. recursive groups), you may try
@@ -181,8 +174,8 @@ using the following filter which is currently only tested against Microsoft Acti
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option
-can implicitly set a default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
+_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
 information._
 
 The LDAP attribute that is used by Authelia to determine the group name.
@@ -268,10 +261,10 @@ and other Active Directory filters on the [TechNet wiki](https://social.technet.
 
 ## Refresh Interval
 
-This setting takes a [duration notation](../prologue/common.md#duration-notation-format) that sets the max frequency for how often
-Authelia contacts the backend to verify the user still exists and that the groups stored in the session are up to date.
-This allows us to destroy sessions when the user no longer matches the user_filter, or deny access to resources as they
-are removed from groups.
+This setting takes a [duration notation](../prologue/common.md#duration-notation-format) that sets the max frequency for
+how often Authelia contacts the backend to verify the user still exists and that the groups stored in the session are up
+to date. This allows us to destroy sessions when the user no longer matches the user_filter, or deny access to resources
+as they are removed from groups.
 
 In addition to the duration notation, you may provide the value `always` or `disable`. Setting to `always` is the same
 as setting it to 0 which will refresh on every request, `disable` turns the feature off, which is not recommended. This
@@ -289,14 +282,10 @@ Users must be uniquely identified by an attribute, this attribute must obviously
 by the administrator to be unique. If multiple users have the same value, Authelia will simply fail authenticating the
 user and display an error message in the logs.
 
-In order to avoid such problems, we highly recommended you follow https://www.ietf.org/rfc/rfc2307.txt by using
-`sAMAccountName` for Active Directory and `uid` for other implementations as the attribute holding the unique identifier
+In order to avoid such problems, we highly recommended you follow [RFC2307] by using `sAMAccountName` for Active
+Directory and `uid` for other implementations as the attribute holding the unique identifier
 for your users.
-
-As of versions > `4.24.0` the `users_filter` must include the `username_attribute` placeholder, not including this will
-result in Authelia throwing an error. In versions <= `4.24.0` not including the `username_attribute` placeholder will
-cause issues with the session refresh and will result in session resets when the refresh interval has expired, default
-of 5 minutes.
 
 [username attribute]: #username_attribute
 [TechNet wiki]: https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx
+[RFC2307]: https://www.rfc-editor.org/rfc/rfc2307.html

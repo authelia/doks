@@ -30,6 +30,18 @@ how you can configure multiple IP ranges. You should customize this example to f
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
 trust entire subnets unless that subnet only has trusted proxies and no other services._
 
+[Traefik] by default doesn't trust any other proxies requiring explicit configuration of which proxies are trusted
+and removes potentially fabricated headers that are likely to lead to security issues, and it is difficult to configure
+this incorrectly. This is an important security feature that is common with proxies with good security practices.
+
+In the example we have four commented lines which configure `TrustedIPs` which show an example on adding the following
+networks to the trusted proxy list in [Traefik]:
+
+- 10.0.0.0/8
+- 172.16.0.0/16
+- 192.168.0.0/16
+- fc00::/7
+
 ## Configuration
 
 Below you will find commented examples of the following docker deployment:
@@ -112,7 +124,7 @@ services:
       - net
     labels:
       - 'traefik.frontend.rule=Host:nextcloud.example.com'
-      - 'traefik.frontend.auth.forward.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.example.com%2F'
+      - 'traefik.frontend.auth.forward.address=http://authelia:9091/api/verify?rd=https://auth.example.com/'
       - 'traefik.frontend.auth.forward.trustForwardHeader=true'
       - 'traefik.frontend.auth.forward.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
     expose:
@@ -146,6 +158,7 @@ services:
 ## See Also
 
 - [Traefik v1 Documentation](https://doc.traefik.io/traefik/v1.7/)
+- [Traefik v1 All Available Options](https://doc.traefik.io/traefik/v1.7/configuration/entrypoints/#all-available-options)
 - [Forwarded Headers]
 
 [Traefik]: https://docs.traefik.io/v1.7/
