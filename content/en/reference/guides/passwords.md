@@ -116,10 +116,10 @@ parameters below, or for a more in depth understanding see the referenced docume
 
 This table adapts the [RFC9106 Parameter Choice] recommendations to our configuration options:
 
-|  Situation  | Iterations | Parallelism | Memory | Salt Size | Key Size |
-|:-----------:|:----------:|:-----------:|:------:|:---------:|:--------:|
-| Low Memory  |     3      |      4      |  64MB  |    16     |    32    |
-| Recommended |     1      |      4      |  2GB   |    16     |    32    |
+|  Situation  | Iterations (t) | Parallelism (p) | Memory (m) | Salt Size | Key Size |
+|:-----------:|:--------------:|:---------------:|:----------:|:---------:|:--------:|
+| Low Memory  |       3        |        4        |     64     |    16     |    32    |
+| Recommended |       1        |        4        |    2048    |    16     |    32    |
 
 ## Argon2 Links
 
