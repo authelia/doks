@@ -80,7 +80,6 @@
 {{ if and (.Site.Params.options.flexSearch) (in .Site.Params.Sections.Search .Section) -}}
     <script src="{{ $index.RelPermalink }}" defer></script>
   {{ end -}}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{ else -}}
   {{ $js := $js | minify | fingerprint "sha512" -}}
   {{ $index := $index | minify | fingerprint "sha512" -}}
@@ -103,7 +102,6 @@
   {{ with .Params.mermaid -}}
     <script src="{{ $mermaid.RelPermalink }}" integrity="{{ $mermaid.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{ if and (.Site.Params.options.flexSearch) (in .Site.Params.Sections.Search .Section) -}}
     <script src="{{ $index.Permalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
