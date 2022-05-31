@@ -35,7 +35,9 @@ authentication_backend:
 
 {{< confkey type="string" required="yes" >}}
 
-The path to the YAML file with the user details list.
+The path to the file with the user details list. Supported file types are:
+
+- [YAML File](../../reference/guides/passwords.md#yaml-format)
 
 ### password
 
@@ -92,4 +94,4 @@ A [reference guide](../../reference/guides/passwords.md) exists specifically for
 section contains far more information than is practical to include in this configuration document. See the
 [Passwords Reference Guide](../../reference/guides/passwords.md) for more information.
 
-This guide contains examples such as the [Users YAML File](../../reference/guides/passwords.md#yaml-format).
+This guide contains examples such as the [User / Password File](../../reference/guides/passwords.md#user--password-file).
