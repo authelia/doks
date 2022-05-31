@@ -1,6 +1,6 @@
 ---
 title: "Notifications"
-description: "Notifications Configuration"
+description: "Configuring the Notifications Settings."
 lead: "Authelia sends messages to users in order to verify their identity. This section describes how to configure this."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

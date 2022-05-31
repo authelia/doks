@@ -1,6 +1,6 @@
 ---
 title: "Environment"
-description: "Environment Configuration Method"
+description: "Using the Environment Variable Configuration Method."
 lead: "Authelia has a layered configuration model. This section describes how to implement the environment configuration."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

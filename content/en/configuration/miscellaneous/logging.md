@@ -1,6 +1,6 @@
 ---
 title: "Log"
-description: "Log Configuration"
+description: "Configuring the Log Settings."
 lead: "Authelia performs logging to various locations. This section describes how to configure and tune this."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

@@ -1,6 +1,6 @@
 ---
 title: "Files"
-description: "Files Configuration Method"
+description: "Using the YAML File Configuration Method."
 lead: "Authelia can be configured via files. This section describes utilizing this method."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

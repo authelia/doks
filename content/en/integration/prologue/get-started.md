@@ -55,7 +55,7 @@ The important sections to consider in initial configuration are as follows:
 ## Deployment
 
 There are several methods of deploying _Authelia_ and we recommend reading the
-[Deployment](../deployment/introduction.md) documentation in order to perform deployment.
+[Deployment Documentation](../deployment/introduction.md) in order to perform deployment.
 
 ## Proxy Integration
 

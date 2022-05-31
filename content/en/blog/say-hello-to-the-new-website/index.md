@@ -9,7 +9,7 @@ contributors: ["James Elliott"]
 ---
 
 We're pleased to have you take a look at our new website. It combines both the main landing site and the documentation
-all in one neat package. The website is using a [Hugo] theme called [Doks]
+all in one neat package. The website is using a [Hugo] theme called [Doks].
 
 This does change the development process for documentation slightly compared to what it was previously. However most of
 the changes will make it easier for most documentation contributors. This process is documented in the
@@ -35,7 +35,10 @@ In particular, you will see improvements in the following areas:
   area
 - The contribution docs have been slightly tidied up
 
-You may have also noticed we launched a new blog.
+You may have also noticed we launched a new blog! This blog will be used to communicate key things about the future of
+Authelia as well as key things we believe the Authelia community needs to know about. You can subscribe to this blog
+via the [RSS Feed](https://www.authelia.com/blog/index.xml). We may introduce a mail list for the blog sometime in the
+future.
 
 [Hugo]: https://gohugo.io/
 [Doks]: https://getdoks.org/

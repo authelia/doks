@@ -1,6 +1,6 @@
 ---
 title: "Second Factor"
-description: "Second Factor Methods"
+description: "Configuring Authelia Second Factor Authentication."
 lead: "Authelia provides a number of 2FA methods. This section describes these methods."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

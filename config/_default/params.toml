@@ -95,5 +95,5 @@ lastMod = false
     collapsibleSidebar = true
 
 [Sections]
-  Search = ["overview", "configuration", "integration", "contributing"]
+  Search = ["overview", "configuration", "integration", "contributing", "reference"]
   Searchable = ["blog"]

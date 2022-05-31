@@ -1,6 +1,6 @@
 ---
 title: "Guides"
-description: "Miscellaneous Guides for Configuration"
+description: "Miscellaneous Guides for Configuration."
 lead: "This section contains miscellaneous guides used in the configuration."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

@@ -9,6 +9,7 @@ images: []
 menu:
   integration:
     parent: "deployment"
+    identifier: "kubernetes-deployment"
 weight: 240
 toc: true
 search: false

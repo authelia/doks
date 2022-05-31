@@ -1,6 +1,6 @@
 ---
 title: "Miscellaneous"
-description: "Miscellaneous Configuration"
+description: "Miscellaneous Configuration."
 lead: "Authelia has a few config items that don't fit into their own area. This describes these options."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

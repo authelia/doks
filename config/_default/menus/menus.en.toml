@@ -34,7 +34,13 @@
   name = "Roadmap"
   identifier = "roadmap"
   url = "/roadmap/prologue/introduction/"
-  weight = 60
+  weight = 80
+
+[[main]]
+  name = "Reference"
+  identifier = "reference"
+  url = "/reference/prologue/introduction/"
+  weight = 90
 
 [[social]]
   name = "GitHub"

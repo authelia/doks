@@ -1,6 +1,6 @@
 ---
 title: "First Factor"
-description: "Configuring Duo"
+description: "Configuring Authelia First Factor Authentication."
 lead: "Authelia uses a username and password for a first factor method. This section describes configuring this."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
@@ -13,11 +13,11 @@ weight: 102100
 toc: true
 ---
 
-There are two ways to store the users along with their password:
+There are two ways to integrate _Authelia_ with an authentication backend:
 
-* [LDAP](ldap.md): users are stored in remote servers like OpenLDAP, OpenDJ, OpenAM, FreeIPA, or Microsoft Active
-  Directory.
-* [File](file.md): users are stored in YAML file with a hashed version of their password.
+* [LDAP](ldap.md): users are stored in remote servers like [OpenLDAP], [OpenDJ], [FreeIPA], or
+  [Microsoft Active Directory].
+* [File](file.md): users are stored in [YAML] file with a hashed version of their password.
 
 ## Configuration
 
@@ -54,3 +54,9 @@ The [file](file.md) authentication provider.
 ### ldap
 
 The [LDAP](ldap.md) authentication provider.
+
+[OpenLDAP]: https://www.openldap.org/
+[OpenDJ]: https://www.openidentityplatform.org/opendj
+[FreeIPA]: https://www.freeipa.org/
+[Microsoft Active Directory]: https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/ad-ds-getting-started
+[YAML]: https://yaml.org/

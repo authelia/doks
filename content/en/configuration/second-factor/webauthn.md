@@ -1,6 +1,6 @@
 ---
 title: "WebAuthn"
-description: "Configuring Duo"
+description: "Configuring the WebAuthn Second Factor Method."
 lead: "WebAuthn is the modern browser security key specification that Authelia supports. This section describes configuring it."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
