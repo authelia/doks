@@ -82,62 +82,11 @@ server:
 
 Authelia by default serves all static assets from an embedded filesystem in the Go binary.
 
-Modifying this setting will allow you to override and serve specific assets for Authelia from a specified path.
-All files that can be overridden are documented below and must be placed in the `asset_path` with a flat file structure.
+Modifying this setting will allow you to override and serve specific assets for Authelia from a specified path. All
+assets that can be overridden must be placed in the `asset_path`. The structure of this directory and the assets which
+can be overriden is documented in the
+[Sever Asset Overrides Reference Guide](../../reference/guides/server-asset-overrides.md).
 
-Example:
-```console
-/config/assets/
-├── favicon.ico
-├── logo.png
-└── locales/<lang>[-[variant]]/<namespace>.json
-```
-
-|  Asset  |   File name   |
-|:-------:|:-------------:|
-| Favicon |  favicon.ico  |
-|  Logo   |   logo.png    |
-| locales | see [locales] |
-
-#### locales
-
-The locales folder holds folders of internationalization locales. This folder can be utilized to override these locales.
-They are the names of locales that are returned by the `navigator.langauge` ECMAScript command. These are generally
-those in the [RFC5646 / BCP47 Format](https://www.rfc-editor.org/rfc/rfc5646.html) specifically the language codes
-from [Crowdin](https://support.crowdin.com/api/language-codes/).
-
-Each directory has json files which you can explore the format of in the
-[internal/server/locales](https://github.com/authelia/authelia/tree/master/internal/server/locales) directory on
-GitHub. The important part is the key names you wish to override. Each file represents a translation namespace. The list
-of current namespaces are below:
-
-| Namespace |       Purpose       |
-|:---------:|:-------------------:|
-|  portal   | Portal Translations |
-
-A full example for the `en-US` locale for the portal namespace is `locales/en-US/portal.json`.
-
-Languages in browsers are supported in two forms. In their language only form such as `en` for English, and in their
-variant form such as `en-AU` for English (Australian). If a user has the browser language `en-AU` we automatically load
-the `en` and `en-AU` languages, where any keys in the `en-AU` language take precedence over the `en` language, and the
-translations for the `en` language only applying when a translation from `en-AU` is not available.
-
-List of supported languages and variants:
-
-| Description | Language | Additional Variants |        Location        |
-|:-----------:|:--------:|:-------------------:|:----------------------:|
-|   English   |    en    |         N/A         | locales/en/portal.json |
-|   Spanish   |    es    |         N/A         | locales/es/portal.json |
-|   German    |    de    |         N/A         | locales/de/portal.json |
-
-_**Important Note** Currently users can only override languages that already exist in this list either by overriding
-the language itself, or adding a variant form of that language. If you'd like support for another language feel free
-to make a PR. We also encourage people to make PR's for variants where the difference in the variants is important._
-
-_**Important Note** Overriding these files will not guarantee any form of stability. Users who planning to utilize these
-overrides should either check for changes to the files in the
-[en](https://github.com/authelia/authelia/tree/master/internal/server/locales/en) translation prior to upgrading or PR
-their translation to ensure it is maintained._
 
 ### read_buffer_size
 

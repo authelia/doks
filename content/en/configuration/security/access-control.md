@@ -393,7 +393,8 @@ _**Important Note:** to utilize regex you must escape it properly. See
 
 This criteria matches the path and query of the request using regular expressions. The rule is expressed as a list of
 strings. If any one of the regular expressions in the list matches the request it's considered a match. A useful tool
-for debugging these regular expressions is called [Rego](https://regoio.herokuapp.com/).
+for debugging these regular expressions is called [Regex 101](https://regex101.com/) (ensure you pick the `Golang`
+option).
 
 _**Note:** Prior to 4.27.0 the regular expressions only matched the path excluding the query parameters. After 4.27.0
 they match the entire path including the query parameters. When upgrading you may be required to alter some of your
