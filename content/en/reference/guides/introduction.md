@@ -1,6 +1,6 @@
 ---
 title: "Guides"
-description: "A collection of reference guides."
+description: "A collection of reference guides"
 lead: "This section contains reference guides for Authelia."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

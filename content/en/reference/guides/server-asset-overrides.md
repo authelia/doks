@@ -1,6 +1,6 @@
 ---
 title: "Server Asset Overrides"
-description: "A reference guide on overriding server assets."
+description: "A reference guide on overriding server assets"
 lead: "This section contains reference documentation for Authelia's server asset override capabilities."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00

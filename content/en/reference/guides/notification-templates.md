@@ -1,6 +1,6 @@
 ---
 title: "Notification Templates"
-description: "A reference guide on overriding notification templates."
+description: "A reference guide on overriding notification templates"
 lead: "This section contains reference documentation for Authelia's notification templates."
 date: 2022-03-19T04:53:05+00:00
 lastmod: 2022-03-19T04:53:05+00:00
