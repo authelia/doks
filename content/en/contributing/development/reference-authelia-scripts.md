@@ -14,7 +14,9 @@ toc: true
 ---
 
 **Authelia** comes with a set of dedicated scripts to perform a broad range of operations such as building the
-distributed version of Authelia, building the Docker image, running suites, testing the code, etc.
+distributed version of Authelia, building the Docker image, running suites, testing the code, etc. This is a small
+reference guide for the command, the full guide can be found in the
+[CLI Reference](../../reference/cli/authelia-scripts/authelia-scripts.md).
 
 ## Examples
 
