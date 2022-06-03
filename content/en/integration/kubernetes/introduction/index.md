@@ -2,8 +2,8 @@
 title: "Kubernetes"
 description: "An introduction into integrating Authelia with Kubernetes."
 lead: "An introduction into integrating Authelia with Kubernetes."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-15T13:52:27+10:00
+lastmod: 2022-05-31T11:13:56+10:00
 draft: false
 images: []
 menu:

@@ -2,8 +2,8 @@
 title: "Threat Model"
 description: "An overview of the Authelia threat model."
 lead: "An overview of the Authelia threat model."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-13T12:34:15+10:00
+lastmod: 2022-05-13T12:34:15+10:00
 draft: false
 images: []
 menu:

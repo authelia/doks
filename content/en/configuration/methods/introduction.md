@@ -2,8 +2,8 @@
 title: "Methods"
 description: "Methods of Configuration."
 lead: "Authelia has a layered configuration model. This section describes how to implement configuration."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-03-20T12:52:27+11:00
+lastmod: 2022-05-31T11:13:56+10:00
 draft: false
 images: []
 menu:

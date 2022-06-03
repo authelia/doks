@@ -2,8 +2,8 @@
 title: "Prologue"
 description: "An introduction into Authelia reference documentation."
 lead: "This section contains reference documentation for Authelia."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-31T11:13:56+10:00
+lastmod: 2022-05-31T11:13:56+10:00
 draft: false
 images: []
 menu:

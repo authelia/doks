@@ -2,8 +2,8 @@
 title: "Automation"
 description: "Automated Deployment of Authelia."
 lead: "Authelia has several features which make automation easy."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-28T08:20:42+10:00
+lastmod: 2022-05-28T08:20:42+10:00
 draft: false
 images: []
 menu:

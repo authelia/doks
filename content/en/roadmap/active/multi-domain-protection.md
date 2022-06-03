@@ -2,8 +2,8 @@
 title: "Multi Domain Protection"
 description: "Authelia Multi Domain Protection Implementation"
 lead: "Multi Domain Protection is one of the most requested Authelia features."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-03-20T12:52:27+11:00
+lastmod: 2022-05-19T12:16:47+10:00
 draft: false
 images: []
 menu:

@@ -2,8 +2,8 @@
 title: "Get Started"
 description: "A getting started guide for Authelia."
 lead: "This document serves as a get started guide for Authelia. It contains links to various sections and has some key notes in questions frequently asked by people looking to perform setup for the first time."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-27T22:24:38+10:00
+lastmod: 2022-05-31T11:13:56+10:00
 draft: false
 images: []
 menu:

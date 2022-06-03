@@ -2,8 +2,8 @@
 title: "WebAuthn"
 description: "Authelia WebAuthn Implementation"
 lead: "An introduction into the Authelia roadmap."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-03-20T12:52:27+11:00
+lastmod: 2022-05-27T20:21:43+10:00
 draft: false
 images: []
 menu:

@@ -2,7 +2,7 @@
 title: "Common"
 description: "Common configuration options and notations."
 lead: "This section details common configuration elements within the Authelia configuration. This section is mainly used as a reference for other sections as necessary."
-date: 2022-03-19T04:53:05+00:00
+date: 2022-03-20T12:52:27+11:00
 lastmod: 2022-03-19T04:53:05+00:00
 draft: false
 images: []

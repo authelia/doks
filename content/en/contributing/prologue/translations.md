@@ -2,8 +2,8 @@
 title: "Translations"
 description: "Information on contributing translations to the Authelia project."
 lead: "Authelia has translations for many using facing areas of the web portal. Contributing to these translations is a very easy process."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-16T13:42:36+10:00
+lastmod: 2022-05-19T09:35:24+10:00
 draft: false
 images: []
 menu:

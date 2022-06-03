@@ -2,8 +2,8 @@
 title: "Architecture"
 description: "An overview of the Authelia architecture."
 lead: "An overview of the Authelia architecture."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-13T12:34:15+10:00
+lastmod: 2022-05-16T15:21:22+10:00
 draft: false
 images: []
 menu:

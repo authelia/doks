@@ -2,8 +2,8 @@
 title: "Access Control"
 description: "Access Control is the main authorization system in Authelia."
 lead: "Access Control is the main authorization system in Authelia."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-03-20T22:52:38+11:00
+lastmod: 2022-05-13T12:06:00+10:00
 draft: false
 images: []
 menu:

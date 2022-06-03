@@ -2,8 +2,8 @@
 title: "Password Policy"
 description: "Authelia utilizes WebAuthn security keys as one of it's second factor authentication methods."
 lead: "Authelia utilizes WebAuthn security keys as one of it's second first authentication methods."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-04-12T14:40:22+10:00
+lastmod: 2022-05-16T14:30:24+10:00
 draft: false
 images: []
 menu:

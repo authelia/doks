@@ -1,8 +1,8 @@
 ---
 title: "Security"
 description: "Report security issues."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-15T13:52:27+10:00
+lastmod: 2022-05-15T13:52:27+10:00
 draft: false
 images: []
 ---

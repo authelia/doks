@@ -1,8 +1,8 @@
 ---
 title: "Blog"
 description: "The Authelia Blog."
-date: 2022-05-19T01:53:05+00:00
-lastmod: 2022-05-19T01:53:05+00:00
+date: 2020-04-15T15:48:16+02:00
+lastmod: 2022-05-19T14:18:33+10:00
 draft: false
 images: []
 ---

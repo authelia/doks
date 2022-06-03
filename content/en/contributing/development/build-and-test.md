@@ -2,8 +2,8 @@
 title: "Building and Testing"
 description: "Building and Testing Authelia."
 lead: "This section covers the build process and how to perform tests in development."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-15T13:52:27+10:00
+lastmod: 2022-05-27T20:55:34+10:00
 draft: false
 images: []
 menu:

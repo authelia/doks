@@ -2,8 +2,8 @@
 title: "Style Guidelines"
 description: "Authelia Development Style Guidelines"
 lead: "This section covers the style guidelines we use for development."
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-05-15T13:52:27+10:00
+lastmod: 2022-05-27T20:55:34+10:00
 draft: false
 images: []
 menu:

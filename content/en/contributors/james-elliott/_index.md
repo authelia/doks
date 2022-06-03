@@ -1,8 +1,8 @@
 ---
 title: "James Elliott"
 description: "Authelia Core Team"
-date: 2022-03-19T04:53:05+00:00
-lastmod: 2022-03-19T04:53:05+00:00
+date: 2022-03-20T12:52:27+11:00
+lastmod: 2022-05-23T22:03:03+10:00
 draft: false
 images: []
 ---
