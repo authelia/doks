@@ -3,13 +3,13 @@ title: "authelia-gen docs"
 description: "Reference for the authelia-gen docs command."
 lead: ""
 date: 2022-06-03T10:57:43+10:00
-lastmod: 2022-06-03T10:57:43+10:00
+lastmod: 2022-06-03T11:17:29+10:00
 draft: false
 images: []
 menu:
   reference:
     parent: "cli-authelia-gen"
-weight: 130
+weight: 330
 toc: true
 ---
 
@@ -30,7 +30,7 @@ authelia-gen docs [flags]
 
 ### SEE ALSO
 
-* [authelia-gen](authelia-gen.md)	 - 
+* [authelia-gen](authelia-gen.md)	 - Authelia's generator tooling
 * [authelia-gen docs cli](authelia-gen_docs_cli.md)	 - Generate CLI docs
 * [authelia-gen docs time](authelia-gen_docs_time.md)	 - Generate doc timestamps
 

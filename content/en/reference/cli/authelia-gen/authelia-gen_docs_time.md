@@ -2,14 +2,14 @@
 title: "authelia-gen docs time"
 description: "Reference for the authelia-gen docs time command."
 lead: ""
-date: 2022-06-03T10:57:43+10:00
-lastmod: 2022-06-03T11:15:44+10:00
+date: 2022-06-03T11:17:29+10:00
+lastmod: 2022-06-03T11:17:29+10:00
 draft: false
 images: []
 menu:
   reference:
     parent: "cli-authelia-gen"
-weight: 130
+weight: 330
 toc: true
 ---
 
@@ -24,8 +24,10 @@ authelia-gen docs time [flags]
 ### Options
 
 ```
-  -d, --directory string   The directory to modify (default "./docs/content")
-  -h, --help               help for time
+      --commit-since string   The commit to check the logs since
+      --commit-until string   The commit to check the logs until (default "HEAD")
+  -d, --directory string      The directory to modify (default "./docs/content")
+  -h, --help                  help for time
 ```
 
 ### Options inherited from parent commands
