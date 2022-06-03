@@ -3,7 +3,7 @@ title: "authelia storage encryption"
 description: "Reference for the authelia storage encryption command."
 lead: ""
 date: 2022-05-31T11:13:56+10:00
-lastmod: 2022-06-02T23:28:13+10:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:

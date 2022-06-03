@@ -1,9 +1,9 @@
 ---
-title: "authelia-gen docs cli"
-description: "Reference for the authelia-gen docs cli command."
+title: "authelia-gen docs time"
+description: "Reference for the authelia-gen docs time command."
 lead: ""
 date: 2022-06-03T10:57:43+10:00
-lastmod: 2022-06-03T10:57:43+10:00
+lastmod: 2022-06-03T11:15:44+10:00
 draft: false
 images: []
 menu:
@@ -13,19 +13,19 @@ weight: 130
 toc: true
 ---
 
-## authelia-gen docs cli
+## authelia-gen docs time
 
-Generate CLI docs
+Generate doc timestamps
 
 ```
-authelia-gen docs cli [flags]
+authelia-gen docs time [flags]
 ```
 
 ### Options
 
 ```
-  -d, --directory string   The directory to store the markdown in (default "./docs/content/en/reference/cli")
-  -h, --help               help for cli
+  -d, --directory string   The directory to modify (default "./docs/content")
+  -h, --help               help for time
 ```
 
 ### Options inherited from parent commands

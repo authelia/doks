@@ -3,7 +3,7 @@ title: "MySQL"
 description: "MySQL Configuration"
 lead: "The MySQL storage provider which supports both MySQL and MariaDB."
 date: 2022-03-20T12:52:27+11:00
-lastmod: 2022-05-27T20:21:43+10:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:

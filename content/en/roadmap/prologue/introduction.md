@@ -3,7 +3,7 @@ title: "Prologue"
 description: "An introduction into the Authelia roadmap."
 lead: "An introduction into the Authelia roadmap."
 date: 2022-03-20T12:52:27+11:00
-lastmod: 2022-05-16T14:30:24+10:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:

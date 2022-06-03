@@ -3,7 +3,7 @@ title: "Server"
 description: "Configuring the Server Settings."
 lead: "Authelia runs an internal webserver. This section describes how to configure and tune this."
 date: 2022-03-20T12:52:27+11:00
-lastmod: 2022-03-19T04:53:05+00:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:

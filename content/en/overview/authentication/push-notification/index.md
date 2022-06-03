@@ -3,7 +3,7 @@ title: "Duo / Mobile Push"
 description: "Authelia utilizes WebAuthn security keys as one of it's second factor authentication methods."
 lead: "Authelia utilizes WebAuthn security keys as one of it's second first authentication methods."
 date: 2022-03-20T22:52:38+11:00
-lastmod: 2022-05-16T14:30:24+10:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:

@@ -3,7 +3,7 @@ title: "Traefik"
 description: "An integration guide for Authelia and the Traefik reverse proxy"
 lead: "A guide on integrating Authelia with the Traefik reverse proxy."
 date: 2022-03-20T20:23:41+11:00
-lastmod: 2022-05-27T22:24:38+10:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:

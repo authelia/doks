@@ -3,7 +3,7 @@ title: "Documentation"
 description: "Information on contributing documentation to the Authelia project."
 lead: "Authelia has great documentation however there are always things that can be added. This section describes the contribution process for the documentation even though it's incredibly easy."
 date: 2022-05-19T14:18:33+10:00
-lastmod: 2022-05-23T22:03:03+10:00
+lastmod: 2022-06-03T10:43:55+10:00
 draft: false
 images: []
 menu:
