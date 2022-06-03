@@ -46,6 +46,10 @@ guide.
 
 See [securty measures](../../overview/security/measures.md#storage-security-measures) for more information.
 
+### postgres
+
+See [PostgreSQL](postgres.md).
+
 ### local
 
 See [SQLite](sqlite.md).
@@ -54,6 +58,3 @@ See [SQLite](sqlite.md).
 
 See [MySQL](mysql.md).
 
-### postgres
-
-See [PostgreSQL](postgres.md).
