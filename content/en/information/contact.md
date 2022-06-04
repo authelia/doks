@@ -8,7 +8,6 @@ images: []
 aliases:
   - /contact
   - /contact.html
-  - /def.html
 ---
 
 ## Security
