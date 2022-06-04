@@ -30,8 +30,8 @@
 /l/fr                   https://github.com/authelia/authelia/issues/new?assignees=&labels=Feature+Request&template=feature_request.md
 
 ## Common Links
-/contact                /information/contact/
-/contact.html           /information/contact/
+# /contact                /information/contact/
+# /contact.html           /information/contact/
 
 /security               /information/security/
 /security.html          /information/security/
