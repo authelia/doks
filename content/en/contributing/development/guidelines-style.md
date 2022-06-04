@@ -78,34 +78,22 @@ The body of the section is to contain paragraphs describing the usage and inform
 __Example Stylized Icons:__
 
 ```html
-<div markdown="1">
-type: string
-{: .label .label-config .label-purple }
-default: example
-{: .label .label-config .label-blue }
-required: no
-{: .label .label-config .label-green }
-</div>
+{{< print "{{< confkey type=\"string\" default=\"none\" required=\"no\" >}}" >}}
 ```
 
 ##### type
 
 This section has the type of the value in a semi human readable format. Some example values are `string`, `integer`,
-`boolean`, `list(string)`, `duration`. This is immediately followed by the styles `.label`, `.label-config`,
-`.label-purple`.
+`boolean`, `list(string)`, `duration`.
 
 ##### default
 
 This section has the default of the value if one exists, this section can be completely omitted if there is no default.
-This is immediately followed by the styles `.label`, `.label-config`,
-`.label-blue`.
 
 ##### required
 
 This section has the required status of the value and must be one of `yes`, `no`, or `situational`. Situational means it
-depends on other configuration options. If it's situational the situational usage should be documented. This is
-immediately followed by the styles `.label`, `.label-config`, and a traffic lights color label, i.e. if yes `.label-red`,
-if no `.label-green`, or if situational `.label-yellow`.
+depends on other configuration options. If it's situational the situational usage should be documented.
 
 ### Storage
 
