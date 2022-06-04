@@ -2,6 +2,7 @@
 	<div class="docs-navigation d-flex justify-content-between">
 	<!-- https://www.feliciano.tech/blog/custom-sort-hugo-single-pages/ -->
 	{{ $pages := where site.RegularPages "Section" .Section -}}
+  {{ $pages = ($pages.ByParam "Title").ByParam "Weight" -}}
 	{{ with $pages.Next . -}}
 		<a href="{{ .RelPermalink }}">
 			<div class="card my-1">
