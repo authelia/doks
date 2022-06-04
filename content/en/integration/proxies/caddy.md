@@ -13,32 +13,32 @@ weight: 320
 toc: true
 ---
 
-[Caddy] is a reverse proxy supported by **Authelia**.
+[Caddy] is a reverse proxy supported by __Authelia__.
 
-**Authelia** offers integration support for the official forward auth integration method Caddy provides, we don't
+__Authelia__ offers integration support for the official forward auth integration method Caddy provides, we don't
 officially support any plugin that supports this though we don't specifically prevent such plugins working and there may
 be plugins that work fine provided they support the forward authentication specification correctly.
 
-_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+*__Important:__ When using these guides it's important to recognize that we cannot provide a guide for every possible
 method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
 configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
-throughout this documentation and in the [See Also](#see-also) section._
+throughout this documentation and in the [See Also](#see-also) section.*
 
 ## Requirements
 
-You need the following to run **Authelia** with [Caddy]:
+You need the following to run __Authelia__ with [Caddy]:
 
-- [Caddy] [v2.5.1](https://github.com/caddyserver/caddy/releases/tag/v2.5.1) or greater
+* [Caddy] [v2.5.1](https://github.com/caddyserver/caddy/releases/tag/v2.5.1) or greater
 
 ## Trusted Proxies
 
-_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
-Especially if you have never read it before._
+*__Important:__ You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before.*
 
-_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+*__Important:__ The included example is __NOT__ meant for production use. It's used expressly as an example to showcase
 how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
-trust entire subnets unless that subnet only has trusted proxies and no other services._
+trust entire subnets unless that subnet only has trusted proxies and no other services.*
 
 [Caddy] by default doesn't trust any other proxies and removes potentially fabricated headers that are likely to lead
 to security issues, and it is difficult to configure this incorrectly. This is an important security feature that is
@@ -50,22 +50,22 @@ the time to configure this carefully and correctly.
 In the example we have a commented `trusted_proxies` directive which shows an example on adding the following networks
 to the trusted proxy list in [Caddy]:
 
-- 10.0.0.0/8
-- 172.16.0.0/16
-- 192.168.0.0/16
-- fc00::/7
+* 10.0.0.0/8
+* 172.16.0.0/16
+* 192.168.0.0/16
+* fc00::/7
 
 ## Configuration
 
 Below you will find commented examples of the following configuration:
 
-- Authelia Portal
-- Protected Endpoint (Nextcloud)
+* Authelia Portal
+* Protected Endpoint (Nextcloud)
 
 ### Basic examples
 
 This example is the preferred example for integration with [Caddy]. There is an [advanced example](#advanced-example)
-but we _**strongly urge**_ anyone who needs to use this for a particular reason to either reach out to us or Caddy for
+but we *__strongly urge__* anyone who needs to use this for a particular reason to either reach out to us or Caddy for
 support to ensure the basic example covers your use case in a secure way.
 
 #### Subdomain
@@ -147,9 +147,9 @@ example.com {
 ### Advanced example
 
 The advanced example allows for more flexible customization, however the [basic example](#basic-examples) should be
-preferred in _most_ situations. If you are unsure of what you're doing please don't use this method.
+preferred in *most* situations. If you are unsure of what you're doing please don't use this method.
 
-_**Important:** Making a mistake when configuring the advanced example could lead to authentication bypass or errors._
+*__Important:__ Making a mistake when configuring the advanced example could lead to authentication bypass or errors.*
 
 ##### Caddyfile
 
@@ -223,11 +223,11 @@ nextcloud.example.com {
 
 ## See Also
 
-- [Caddy General Documentation](https://caddyserver.com/docs/)
-- [Caddy Forward Auth Documentation]
-- [Caddy Trusted Proxies Documentation]
-- [Caddy Snippet] Documentation
-- [Forwarded Headers]
+* [Caddy General Documentation](https://caddyserver.com/docs/)
+* [Caddy Forward Auth Documentation]
+* [Caddy Trusted Proxies Documentation]
+* [Caddy Snippet] Documentation
+* [Forwarded Headers]
 
 [Caddy]: https://caddyserver.com
 [Caddy Snippet]: https://caddyserver.com/docs/caddyfile/concepts#snippets

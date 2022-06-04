@@ -33,8 +33,8 @@ This stage will add the ability to easily translate the web interface in all vie
 
 This stage will configure the Authelia repository to be easily translatable via a crowd sourced translation platform.
 
-_**Implemented:** You can now help translate **Authelia** by checking out the
-[Translations Contributing Guide](../../contributing/prologue/translations.md)._
+*__Implemented:__ You can now help translate __Authelia__ by checking out the
+[Translations Contributing Guide](../../contributing/prologue/translations.md).*
 
 ### Picker
 

@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
-- GitLab CE: 14.0.1
+* Authelia: v4.35.5
+* GitLab CE: 14.0.1
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://gitlab.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `gitlab`
-- **Client Secret:** `gitlab_client_secret`
+* __Application Root URL:__ `https://gitlab.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `gitlab`
+* __Client Secret:__ `gitlab_client_secret`
 
 ## Configuration
 
@@ -68,7 +68,7 @@ gitlab_rails['omniauth_providers'] = [
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [GitLab]
 which will operate with the above example:
 
@@ -89,7 +89,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [GitLab OpenID Connect OmniAuth Documentation](https://docs.gitlab.com/ee/administration/auth/oidc.html)
+* [GitLab OpenID Connect OmniAuth Documentation](https://docs.gitlab.com/ee/administration/auth/oidc.html)
 
 [GitLab]: https://about.gitlab.com/
 [OpenID Connect]: ../../openid-connect/introduction.md

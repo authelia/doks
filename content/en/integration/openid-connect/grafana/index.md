@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
-- Grafana: 8.0.0
+* Authelia: v4.35.5
+* Grafana: 8.0.0
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://grafana.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `grafana`
-- **Client Secret:** `grafana_client_secret`
+* __Application Root URL:__ `https://grafana.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `grafana`
+* __Client Secret:__ `grafana_client_secret`
 
 ## Configuration
 
@@ -61,7 +61,7 @@ use_pkce = true
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Grafana]
 which will operate with the above example:
 
@@ -82,7 +82,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [Grafana OAuth Documentation](https://grafana.com/docs/grafana/latest/auth/generic-oauth/)
+* [Grafana OAuth Documentation](https://grafana.com/docs/grafana/latest/auth/generic-oauth/)
 
 [Grafana]: https://grafana.com/
 [OpenID Connect]: ../../openid-connect/introduction.md

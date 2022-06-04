@@ -13,7 +13,7 @@ weight: 106200
 toc: true
 ---
 
-**Authelia** currently supports the [OpenID Connect] OP role as a [**beta**](../../roadmap/active/openid-connect.md)
+__Authelia__ currently supports the [OpenID Connect] OP role as a [__beta__](../../roadmap/active/openid-connect.md)
 feature. The OP role is the [OpenID Connect] Provider role, not the Relying Party or RP role. This means other
 applications that implement the [OpenID Connect] RP role can use Authelia as an authentication and authorization backend
 similar to how you may use social media or development platforms for login.
@@ -144,7 +144,7 @@ Allows additional debug messages to be sent to the clients.
 
 This controls the minimum length of the `nonce` and `state` parameters.
 
-_**Security Notice:**_ Changing this value is generally discouraged, reducing it from the default can theoretically
+*__Security Notice:__* Changing this value is generally discouraged, reducing it from the default can theoretically
 make certain scenarios less secure. It is highly encouraged that if your OpenID Connect RP does not send these
 parameters or sends parameters with a lower length than the default that they implement a change rather than changing
 this value.
@@ -161,7 +161,7 @@ If set to `public_clients_only` (default), [PKCE] will be required for public cl
 
 When set to `always`, [PKCE] will be required for all clients using the Authorization Code flow.
 
-_**Security Notice:**_ Changing this value to `never` is generally discouraged, reducing it from the default can
+*__Security Notice:__* Changing this value to `never` is generally discouraged, reducing it from the default can
 theoretically make certain client-side applications (mobile applications, SPA) vulnerable to CSRF and authorization code
 interception attacks.
 
@@ -171,7 +171,7 @@ interception attacks.
 
 Allows [PKCE] `plain` challenges when set to `true`.
 
-_**Security Notice:**_ Changing this value is generally discouraged. Applications should use the `S256` [PKCE] challenge
+*__Security Notice:__* Changing this value is generally discouraged. Applications should use the `S256` [PKCE] challenge
 method instead.
 
 ### cors
@@ -186,11 +186,11 @@ you to configure the optional parts. We reply with CORS headers when the request
 A list of endpoints to configure with cross-origin resource sharing headers. It is recommended that the `userinfo`
 option is at least in this list. The potential endpoints which this can be enabled on are as follows:
 
-- authorization
-- token
-- revocation
-- introspection
-- userinfo
+* authorization
+* token
+* revocation
+* introspection
+* userinfo
 
 #### allowed_origins
 
@@ -247,7 +247,7 @@ consuming this client.
 
 #### description
 
-{{< confkey type="string" default="_same as id_" required="no" >}}
+{{< confkey type="string" default="*same as id*" required="no" >}}
 
 A friendly description for this client shown in the UI. This defaults to the same as the ID.
 
@@ -268,9 +268,9 @@ type. To set the client type to public see the [public](#public) configuration o
 
 {{< confkey type="string" required="no" >}}
 
-_**Important Note:** because adjusting this option will inevitably change the `sub` claim of all tokens generated for
+*__Important Note:__ because adjusting this option will inevitably change the `sub` claim of all tokens generated for
 the specified client, changing this should cause the relying party to detect all future authorizations as completely new
-users._
+users.*
 
 Must be an empty string or the host component of a URL. This is commonly just the domain name, but may also include a
 port.
@@ -289,7 +289,7 @@ the lookup of the subject identifier.
       2. any client with a differing sector identifier.
 
 In specific but limited scenarios this option is beneficial for privacy reasons. In particular this is useful when the
-party utilizing the _Authelia_ [OpenID Connect] Authorization Server is foreign and not controlled by the user. It would
+party utilizing the *Authelia* [OpenID Connect] Authorization Server is foreign and not controlled by the user. It would
 prevent the third party utilizing the subject identifier with another third party in order to track the user.
 
 Keep in mind depending on the other claims they may still be able to perform this tracking and it is not a silver
@@ -359,16 +359,16 @@ their redirect URIs are as follows:
 
 {{< confkey type="list(string)" default="refresh_token, authorization_code" required="no" >}}
 
-A list of grant types this client can return. _It is recommended that this isn't configured at this time unless you
-know what you're doing_. Valid options are: `implicit`, `refresh_token`, `authorization_code`, `password`,
+A list of grant types this client can return. *It is recommended that this isn't configured at this time unless you
+know what you're doing*. Valid options are: `implicit`, `refresh_token`, `authorization_code`, `password`,
 `client_credentials`.
 
 #### response_types
 
 {{< confkey type="list(string)" default="code" required="no" >}}
 
-A list of response types this client can return. _It is recommended that this isn't configured at this time unless you
-know what you're doing_. Valid options are: `code`, `code id_token`, `id_token`, `token id_token`, `token`,
+A list of response types this client can return. *It is recommended that this isn't configured at this time unless you
+know what you're doing*. Valid options are: `code`, `code id_token`, `id_token`, `token id_token`, `token`,
 `token id_token code`.
 
 #### response_modes

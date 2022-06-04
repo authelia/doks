@@ -15,7 +15,7 @@ toc: true
 
 {{< figure src="1FA.png" caption="An example of the first factor sign in portal" alt="First Factor Authentication View" width=400 >}}
 
-_**IMPORTANT:** This is currently the only method available for first factor authentication._
+*__IMPORTANT:__ This is currently the only method available for first factor authentication.*
 
 Authelia supports several kind of user databases:
 

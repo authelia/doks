@@ -136,10 +136,10 @@ If you wish to change your encryption key for any reason you can do so using the
    it.
 2. Run the `./authelia storage encryption change-key --help` command.
 3. Stop Authelia.
-   - You can skip this step, however note that any data changed between the time you make the change and the time when
+   * You can skip this step, however note that any data changed between the time you make the change and the time when
    you stop Authelia i.e. via user registering a device; will be encrypted with the incorrect key.
 4. Run the `./authelia storage encryption change-key` command with the appropriate parameters.
-   - The help from step 1 will be useful here. The easiest method to accomplish this is with the `--config`,
+   * The help from step 1 will be useful here. The easiest method to accomplish this is with the `--config`,
    `--encryption-key`, and `--new-encryption-key` parameters.
 5. Update the encryption key Authelia uses on startup.
 6. Start Authelia.
@@ -155,7 +155,7 @@ As such all SMTP connections require the following:
 connections require it as well)
 2. Valid X509 Certificate presented to the client during the TLS handshake
 
-There is an option to disable both of these security measures however they are **not recommended**.
+There is an option to disable both of these security measures however they are __not recommended__.
 
 The following configuration options exist to configure the security level in order of most preferable to least
 preferable:
@@ -250,16 +250,16 @@ Users who need custom behaviours in this area can submit a request or remove/rep
 
 #### X-Content-Type-Options
 
-**Value:** `nosniff`
-**Endpoints:** All
+__Value:__ `nosniff`
+__Endpoints:__ All
 
 Prevents MIME type sniffing. See the
 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options) for more information.
 
 #### Referrer-Policy
 
-**Value:** `strict-origin-when-cross-origin`
-**Endpoints:** All
+__Value:__ `strict-origin-when-cross-origin`
+__Endpoints:__ All
 
 Sends only the origin as the referrer in cross-origin requests, but sends the origin, path, and query string in
 same-origin requests. See the
@@ -267,16 +267,16 @@ same-origin requests. See the
 
 #### X-Frame-Options
 
-**Value:** `SAMEORIGIN`
-**Endpoints:** All
+__Value:__ `SAMEORIGIN`
+__Endpoints:__ All
 
 Prevents Authelia rendering in a `frame`, `iframe`, `embed`, or `object` element. See the
 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) for more information.
 
 #### X-XSS-Protection
 
-**Value:** `0`
-**Endpoints:** All
+__Value:__ `0`
+__Endpoints:__ All
 
 We disable this as this feature is not present in any modern browser and could introduce vulnerabilities if enabled at
 all. Going forward [CORS], [CORP], CORB, and [COEP] are the standards for browser centric site security. See the
@@ -284,23 +284,23 @@ all. Going forward [CORS], [CORP], CORB, and [COEP] are the standards for browse
 
 #### Permissions-Policy
 
-**Value:** `interest-cohort=()`
-**Endpoints:** All
+__Value:__ `interest-cohort=()`
+__Endpoints:__ All
 
 Disables FLoC Cohorts.
 
 #### Pragma
 
-**Value:** `no-cache`
-**Endpoints:** API
+__Value:__ `no-cache`
+__Endpoints:__ API
 
 Disables caching of API requests on HTTP/1.0 browsers. See the
 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma) for more information.
 
 #### Cache-Control
 
-**Value:** `no-store`
-**Endpoints:** API
+__Value:__ `no-store`
+__Endpoints:__ API
 
 Disables caching responses entirely on HTTP/1.1 browsers. See the
 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) for more information.

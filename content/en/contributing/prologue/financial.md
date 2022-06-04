@@ -43,7 +43,7 @@ If you feel you have a product or service that Authelia could benefit from pleas
 
 We are currently directly looking for someone to sponsor:
 
-- [Security Audit](../../information/security.md#help-wanted)
+* [Security Audit](../../information/security.md#help-wanted)
 
 ### Balto
 

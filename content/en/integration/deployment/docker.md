@@ -15,29 +15,29 @@ toc: true
 
 The [Docker] container is deployed with the following image names:
 
-- [authelia/authelia](https://hub.docker.com/r/authelia/authelia)
-- [docker.io/authelia/authelia](https://hub.docker.com/r/authelia/authelia)
-- [ghcr.io/authelia/authelia](https://github.com/authelia/authelia/pkgs/container/authelia)
+* [authelia/authelia](https://hub.docker.com/r/authelia/authelia)
+* [docker.io/authelia/authelia](https://hub.docker.com/r/authelia/authelia)
+* [ghcr.io/authelia/authelia](https://github.com/authelia/authelia/pkgs/container/authelia)
 
 ## Docker Compose
 
-We provide two main [Docker Compose] examples which can be utilized to help test _Authelia_ or can be adapted into your
+We provide two main [Docker Compose] examples which can be utilized to help test *Authelia* or can be adapted into your
 existing [Docker Compose].
 
-- [Unbundled Example](#standalone-example)
-- [Bundle: lite](#lite)
-- [Bundle: local](#local)
+* [Unbundled Example](#standalone-example)
+* [Bundle: lite](#lite)
+* [Bundle: local](#local)
 
 ### Standalone Example
 
-The following is an example [Docker Compose] deployment with just _Authelia_ and no bundled applications or proxies.
+The following is an example [Docker Compose] deployment with just *Authelia* and no bundled applications or proxies.
 
 It expects the following:
 
-- The file `data/authelia/config/configuration.yml` is present and the configuration file.
-- The files `data/authelia/secrets/*` exist and contain the relevant secrets.
-- You're using PostgreSQL.
-- You have an external network named `net` which is in bridge mode.
+* The file `data/authelia/config/configuration.yml` is present and the configuration file.
+* The files `data/authelia/secrets/*` exist and contain the relevant secrets.
+* You're using PostgreSQL.
+* You have an external network named `net` which is in bridge mode.
 
 ```yaml
 version: "3.8"
@@ -116,9 +116,9 @@ cd examples/compose/local
 The bundle setup modifies the `/etc/hosts` file which is performed with `sudo`. Once it is successfully setup you can
 visit the following URL's to see Authelia in action (`example.com` will be replaced by the domain you specified):
 
-- [https://public.example.com](https://public.example.com) - Bypasses Authelia
-- [https://traefik.example.com](https://traefik.example.com) - Secured with Authelia one-factor authentication
-- [https://secure.example.com](https://secure.example.com) - Secured with Authelia two-factor authentication (see note below)
+* [https://public.example.com](https://public.example.com) - Bypasses Authelia
+* [https://traefik.example.com](https://traefik.example.com) - Secured with Authelia one-factor authentication
+* [https://secure.example.com](https://secure.example.com) - Secured with Authelia two-factor authentication (see note below)
 
 You will need to authorize the self-signed certificate upon visiting each domain. To visit
 [https://secure.example.com](https://secure.example.com) you will need to register a device for second factor

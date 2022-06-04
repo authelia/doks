@@ -26,22 +26,22 @@ to configure [OpenID Connect].
 This is the default scope for openid. This field is forced on every client by the configuration validation that Authelia
 does.
 
-_**Important Note:** The subject identifiers or `sub` claim has been changed to a [RFC4122] UUID V4 to identify the
-individual user as per the [Subject Identifier Types] specification. Please use the claim `preferred_username` instead._
+*__Important Note:__ The subject identifiers or `sub` claim has been changed to a [RFC4122] UUID V4 to identify the
+individual user as per the [Subject Identifier Types] specification. Please use the claim `preferred_username` instead.*
 
 |   Claim   |   JWT Type    | Authelia Attribute |                         Description                         |
 |:---------:|:-------------:|:------------------:|:-----------------------------------------------------------:|
 |    iss    |    string     |      hostname      |             The issuer name, determined by URL              |
-|    jti    | string(uuid)  |       _N/A_        |     A [RFC4122] UUID V4 representing the JWT Identifier     |
-|    rat    |    number     |       _N/A_        |            The time when the token was requested            |
-|    exp    |    number     |       _N/A_        |                           Expires                           |
-|    iat    |    number     |       _N/A_        |             The time when the token was issued              |
-| auth_time |    number     |       _N/A_        |        The time the user authenticated with Authelia        |
+|    jti    | string(uuid)  |       *N/A*        |     A [RFC4122] UUID V4 representing the JWT Identifier     |
+|    rat    |    number     |       *N/A*        |            The time when the token was requested            |
+|    exp    |    number     |       *N/A*        |                           Expires                           |
+|    iat    |    number     |       *N/A*        |             The time when the token was issued              |
+| auth_time |    number     |       *N/A*        |        The time the user authenticated with Authelia        |
 |    sub    | string(uuid)  |     opaque id      |    A [RFC4122] UUID V4 linked to the user who logged in     |
 |   scope   |    string     |       scopes       |              Granted scopes (space delimited)               |
 |    scp    | array[string] |       scopes       |                       Granted scopes                        |
-|    aud    | array[string] |       _N/A_        |                          Audience                           |
-|    amr    | array[string] |       _N/A_        | An [RFC8176] list of authentication method reference values |
+|    aud    | array[string] |       *N/A*        |                          Audience                           |
+|    amr    | array[string] |       *N/A*        | An [RFC8176] list of authentication method reference values |
 |    azp    |    string     |    id (client)     |                    The authorized party                     |
 | client_id |    string     |    id (client)     |                        The client id                        |
 
@@ -60,7 +60,7 @@ This scope includes the email information the authentication backend reports abo
 |     Claim      |   JWT Type    | Authelia Attribute |                        Description                        |
 |:--------------:|:-------------:|:------------------:|:---------------------------------------------------------:|
 |     email      |    string     |      email[0]      |       The first email address in the list of emails       |
-| email_verified |     bool      |       _N/A_        | If the email is verified, assumed true for the time being |
+| email_verified |     bool      |       *N/A*        | If the email is verified, assumed true for the time being |
 |   alt_emails   | array[string] |     email[1:]      |  All email addresses that are not in the email JWT field  |
 
 ### profile

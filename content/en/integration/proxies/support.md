@@ -41,8 +41,8 @@ Legend:
 
 Standard support includes the essential features in securing an application with Authelia such as:
 
-- Redirecting users to the Authelia portal if they are not authenticated.
-- Redirecting users to the target application after authentication has occurred successfully.
+* Redirecting users to the Authelia portal if they are not authenticated.
+* Redirecting users to the target application after authentication has occurred successfully.
 
 It does not include actually running Authelia as a service behind the proxy, any proxy should be compatible with serving
 the Authelia portal itself. Standard support is only important for protected applications.
@@ -59,11 +59,11 @@ More information about [Kubernetes] deployments of Authelia can be read in the
 
 ### XHR Redirect
 
-_**Note:** The XHR is a deprecated web feature and applications should be using the new [Fetch API] which does not have
+*__Note:__ The XHR is a deprecated web feature and applications should be using the new [Fetch API] which does not have
 the same issues regarding redirects (the [Fetch API] allows developers to
 [control how to handle them](https://developer.mozilla.org/en-US/docs/Web/API/Request/redirect)). As such the fact
 a proxy does not support it should only be seen as a means to communicate a feature not that the proxy should not be
-used._
+used.*
 
 XML HTTP Requests do not typically redirect browsers when returned 30x status codes. Instead, the standard method is to
 return a 401 status code with a Location header. While this may seem trivial; currently there isn't wide support for it.

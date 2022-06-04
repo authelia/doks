@@ -30,7 +30,7 @@ due to how important or difficult to implement they are.
 We need to decide on a method to implement this feature initially and how it will finally look to provide SSO between
 root domains.
 
-_**UPDATE:**_ The [initial implementation](#initial-implementation) has been decided as well as the
+*__UPDATE:__* The [initial implementation](#initial-implementation) has been decided as well as the
 [SSO implementation](#sso-implementation).
 
 ### Decide on a Session Library

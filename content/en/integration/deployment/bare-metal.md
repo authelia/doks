@@ -13,15 +13,15 @@ weight: 250
 toc: true
 ---
 
-There are several ways to achieve this, as _Authelia_ runs as a daemon. We do not provide specific examples for running
-_Authelia_ as a service excluding the [systemd unit](#systemd) files.
+There are several ways to achieve this, as *Authelia* runs as a daemon. We do not provide specific examples for running
+*Authelia* as a service excluding the [systemd unit](#systemd) files.
 
 ## systemd
 
 We publish two example [systemd] unit files:
 
-- [authelia.service](https://github.com/authelia/authelia/blob/master/authelia.service)
-- [authelia@.service](https://github.com/authelia/authelia/blob/master/authelia%40.service)
+* [authelia.service](https://github.com/authelia/authelia/blob/master/authelia.service)
+* [authelia@.service](https://github.com/authelia/authelia/blob/master/authelia%40.service)
 
 ## Arch Linux
 

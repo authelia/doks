@@ -13,7 +13,7 @@ weight: 101200
 toc: true
 ---
 
-_Authelia_ loads `configuration.yml` as the configuration if you just run it. You can override this behaviour with the
+*Authelia* loads `configuration.yml` as the configuration if you just run it. You can override this behaviour with the
 following syntax:
 
 ```bash
@@ -33,9 +33,9 @@ authelia --config configuration.yml,config-acl.yml,config-other.yml
 Authelia's configuration files use the YAML format. A template with all possible options can be found at the root of the
 repository [here](https://github.com/authelia/authelia/blob/master/config.template.yml).
 
-_**Important Note:** You should not have configuration sections such as Access Control Rules or OpenID Connect clients
+*__Important Note:__ You should not have configuration sections such as Access Control Rules or OpenID Connect clients
 configured in multiple files. If you wish to split these into their own files that is fine, but if you have two files that
-specify these sections and expect them to merge properly you are asking for trouble._
+specify these sections and expect them to merge properly you are asking for trouble.*
 
 ### Container
 

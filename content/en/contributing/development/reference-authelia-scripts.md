@@ -13,7 +13,7 @@ weight: 290
 toc: true
 ---
 
-**Authelia** comes with a set of dedicated scripts to perform a broad range of operations such as building the
+__Authelia__ comes with a set of dedicated scripts to perform a broad range of operations such as building the
 distributed version of Authelia, building the Docker image, running suites, testing the code, etc. This is a small
 reference guide for the command, the full guide can be found in the
 [CLI Reference](../../reference/cli/authelia-scripts/authelia-scripts.md).
@@ -32,7 +32,7 @@ Then, you can access the scripts usage by running the following command:
 authelia-scripts --help
 ```
 
-For instance, you can build **Authelia** ([go] binary and [React] frontend) with:
+For instance, you can build __Authelia__ ([go] binary and [React] frontend) with:
 
 ```bash
 authelia-scripts build

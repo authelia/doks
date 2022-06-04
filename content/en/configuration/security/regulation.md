@@ -14,7 +14,7 @@ toc: true
 ---
 
 
-**Authelia** can temporarily ban accounts when there are too many
+__Authelia__ can temporarily ban accounts when there are too many
 authentication attempts. This helps prevent brute-force attacks.
 
 ## Configuration

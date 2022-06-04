@@ -84,14 +84,14 @@ In consideration of your cost you should take into account the fact some algorit
 one factor and not others It's usually considered better to have a mix of cost types however this is not possible with
 all algorithms. The main cost type measurements are:
 
-- CPU
-- Memory
+* CPU
+* Memory
 
-_**Important Note:** When using algorithms that use a memory cost like [Argon2] it should be noted that this memory is
+*__Important Note:__ When using algorithms that use a memory cost like [Argon2] it should be noted that this memory is
 released by go after the hashing process completes, however the operating system may not reclaim the memory until a
 later time such as when the system is experiencing memory pressure which may cause the appearance of more memory being
 in use than Authelia is actually actively using. Authelia will typically reuse this memory if it has not be reclaimed as
-long as another hashing calculation is not still utilizing it._
+long as another hashing calculation is not still utilizing it.*
 
 To get a rough estimate of how much memory should be utilized with these algorithms you can utilize the following
 command:

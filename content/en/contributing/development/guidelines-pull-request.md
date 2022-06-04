@@ -18,8 +18,8 @@ processing merges into the [master] branch.
 
 ## Overview
 
-- Ensure the `Allow edits by maintainers` checkbox is checked due to our [Squash Merge](#squash-merge) policy
-- Ensure you avoid a force push due to our [Squash Merge](#squash-merge) policy and [Review](#review) complications
+* Ensure the `Allow edits by maintainers` checkbox is checked due to our [Squash Merge](#squash-merge) policy
+* Ensure you avoid a force push due to our [Squash Merge](#squash-merge) policy and [Review](#review) complications
 
 ## Squash Merge
 

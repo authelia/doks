@@ -13,7 +13,7 @@ weight: 102100
 toc: true
 ---
 
-There are two ways to integrate _Authelia_ with an authentication backend:
+There are two ways to integrate *Authelia* with an authentication backend:
 
 * [LDAP](ldap.md): users are stored in remote servers like [OpenLDAP], [OpenDJ], [FreeIPA], or
   [Microsoft Active Directory].

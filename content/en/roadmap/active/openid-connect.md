@@ -34,14 +34,14 @@ how important or difficult to implement they are.
 
 Feature List:
 
-- [User Consent](https://openid.net/specs/openid-connect-core-1_0.html#Consent)
-- [Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps)
-- [OpenID Connect Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html)
-- [RS256 Signature Strategy](https://www.rfc-editor.org/rfc/rfc7518.html#section-3.1)
-- Per Client Scope/Grant Type/Response Type Restriction
-- Per Client Authorization Policy (1FA/2FA)
-- Per Client List of Valid Redirection URI's
-- [Confidential Client Type](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.1)
+* [User Consent](https://openid.net/specs/openid-connect-core-1_0.html#Consent)
+* [Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps)
+* [OpenID Connect Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html)
+* [RS256 Signature Strategy](https://www.rfc-editor.org/rfc/rfc7518.html#section-3.1)
+* Per Client Scope/Grant Type/Response Type Restriction
+* Per Client Authorization Policy (1FA/2FA)
+* Per Client List of Valid Redirection URI's
+* [Confidential Client Type](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.1)
 
 ### Beta 2
 
@@ -49,12 +49,12 @@ Feature List:
 
 Feature List:
 
-- [Userinfo Endpoint](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
-- Parameter Entropy
-- Token/Code Lifespan
-- Client Debug Messages
-- Client Audience
-- [Public Client Type](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.1)
+* [Userinfo Endpoint](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo)
+* Parameter Entropy
+* Token/Code Lifespan
+* Client Debug Messages
+* Client Audience
+* [Public Client Type](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.1)
 
 ### Beta 3
 
@@ -62,9 +62,9 @@ Feature List:
 
 Feature List:
 
-- [Proof Key Code Exchange (PKCE)](https://www.rfc-editor.org/rfc/rfc7636.html) for Authorization Code Flow
-- Claims:
-  - `preferred_username` - sending the username in this claim instead of the `sub` claim.
+* [Proof Key Code Exchange (PKCE)](https://www.rfc-editor.org/rfc/rfc7636.html) for Authorization Code Flow
+* Claims:
+  * `preferred_username` - sending the username in this claim instead of the `sub` claim.
 
 ### Beta 4
 
@@ -72,22 +72,22 @@ Feature List:
 
 Feature List:
 
-- Persistent Storage
-  - Tokens
-  - Auditable Information
-  - Subject to User Mapping
-- Opaque [RFC4122] UUID v4's for subject identifiers
-- Support for Pairwise and Plain subject identifier types as per [OpenID Connect Core (Subject Identifier Types)]
-  - Utilize the pairwise example method 3 as per [OpenID Connect Core (Pairwise Identifier Algorithm)]
-- Claims:
-  - `sub` - replace username with opaque random [RFC4122] UUID v4
-  - `amr` - authentication method references as per [RFC8176]
-  - `azp` - authorized party as per [OpenID Connect Core (ID Token)]
-  - `client_id` - the Client ID as per [RFC8693 Section 4.3]
-- [Cross Origin Resource Sharing] (CORS):
-  - Automatically allow all cross-origin requests to the discovery endpoints
-  - Automatically allow all cross-origin requests to the JSON Web Keys endpoint
-  - Optionally allow cross-origin requests to the other endpoints individually
+* Persistent Storage
+  * Tokens
+  * Auditable Information
+  * Subject to User Mapping
+* Opaque [RFC4122] UUID v4's for subject identifiers
+* Support for Pairwise and Plain subject identifier types as per [OpenID Connect Core (Subject Identifier Types)]
+  * Utilize the pairwise example method 3 as per [OpenID Connect Core (Pairwise Identifier Algorithm)]
+* Claims:
+  * `sub` - replace username with opaque random [RFC4122] UUID v4
+  * `amr` - authentication method references as per [RFC8176]
+  * `azp` - authorized party as per [OpenID Connect Core (ID Token)]
+  * `client_id` - the Client ID as per [RFC8693 Section 4.3]
+* [Cross Origin Resource Sharing] (CORS):
+  * Automatically allow all cross-origin requests to the discovery endpoints
+  * Automatically allow all cross-origin requests to the JSON Web Keys endpoint
+  * Optionally allow cross-origin requests to the other endpoints individually
 
 ### Beta 5
 
@@ -95,8 +95,8 @@ Feature List:
 
 Feature List:
 
-- Prompt Handling
-- Display Handling
+* Prompt Handling
+* Display Handling
 
 See [OpenID Connect Core (Mandatory to Implement Features for All OpenID Providers)].
 
@@ -106,9 +106,9 @@ See [OpenID Connect Core (Mandatory to Implement Features for All OpenID Provide
 
 Feature List:
 
-- Revoke Tokens on User Logout or Expiration
-- [JSON Web Key Rotation](https://openid.net/specs/openid-connect-messages-1_0-20.html#rotate.sig.keys)
-- Hashed Client Secrets
+* Revoke Tokens on User Logout or Expiration
+* [JSON Web Key Rotation](https://openid.net/specs/openid-connect-messages-1_0-20.html#rotate.sig.keys)
+* Hashed Client Secrets
 
 ### General Availability
 
@@ -116,8 +116,8 @@ Feature List:
 
 Feature List:
 
-- Enable by Default
-- Only after all previous stages are checked for bugs
+* Enable by Default
+* Only after all previous stages are checked for bugs
 
 ### Miscellaneous
 

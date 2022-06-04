@@ -13,28 +13,28 @@ weight: 220
 toc: true
 ---
 
-**Authelia** and its development workflow can be tested with [Docker] and [Docker Compose] on Linux.
+__Authelia__ and its development workflow can be tested with [Docker] and [Docker Compose] on Linux.
 
 ## Setup
 
-In order to build and contribute to **Authelia**, you need to make sure the following are installed in your environment:
+In order to build and contribute to __Authelia__, you need to make sure the following are installed in your environment:
 
-- [go] _(v1.18 or greater)_
-- [Docker]
-- [Docker Compose]
-- [Node.js] _(v16 or greater)_
-- [pnpm]
+* [go] *(v1.18 or greater)*
+* [Docker]
+* [Docker Compose]
+* [Node.js] *(v16 or greater)*
+* [pnpm]
 
 The additional tools are recommended:
 
-- [golangci-lint]
-- [goimports-reviser]
-- [yamllint]
-- Either the [VSCodium] or [GoLand] IDE
+* [golangci-lint]
+* [goimports-reviser]
+* [yamllint]
+* Either the [VSCodium] or [GoLand] IDE
 
 ## Scripts
 
-There is a scripting context provided with **Authelia** which can easily be configured. It allows running integration
+There is a scripting context provided with __Authelia__ which can easily be configured. It allows running integration
 [suites] and various other tasks. Read more about it in the [authelia-scripts](reference-authelia-scripts.md) reference
 guide.
 

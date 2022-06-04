@@ -13,33 +13,33 @@ weight: 340
 toc: true
 ---
 
-[HAProxy] is a reverse proxy supported by **Authelia**.
+[HAProxy] is a reverse proxy supported by __Authelia__.
 
-_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+*__Important:__ When using these guides it's important to recognize that we cannot provide a guide for every possible
 method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
 configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
-throughout this documentation and in the [See Also](#see-also) section._
+throughout this documentation and in the [See Also](#see-also) section.*
 
 ## Requirements
 
-You need the following to run **Authelia** with [HAProxy]:
+You need the following to run __Authelia__ with [HAProxy]:
 
-- [HAProxy] 1.8.4+ (2.2.0+ recommended)
+* [HAProxy] 1.8.4+ (2.2.0+ recommended)
   -`USE_LUA=1` set at compile time
-  - [haproxy-lua-http](https://github.com/haproxytech/haproxy-lua-http) must be available within the Lua path
-    - A `json` library within the Lua path (dependency of haproxy-lua-http, usually found as OS package `lua-json`)
-    - With [HAProxy] 2.1.3+ you can use the `lua-prepend-path` configuration option to specify the search path
-  - [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
+  * [haproxy-lua-http](https://github.com/haproxytech/haproxy-lua-http) must be available within the Lua path
+    * A `json` library within the Lua path (dependency of haproxy-lua-http, usually found as OS package `lua-json`)
+    * With [HAProxy] 2.1.3+ you can use the `lua-prepend-path` configuration option to specify the search path
+  * [haproxy-auth-request](https://github.com/TimWolla/haproxy-auth-request/blob/master/auth-request.lua)
 
 ## Trusted Proxies
 
-_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
-Especially if you have never read it before._
+*__Important:__ You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before.*
 
-_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+*__Important:__ The included example is __NOT__ meant for production use. It's used expressly as an example to showcase
 how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
-trust entire subnets unless that subnet only has trusted proxies and no other services._
+trust entire subnets unless that subnet only has trusted proxies and no other services.*
 
 With [HAProxy] the most convenient method to configure trusted proxies is to create a src ACL from the contents of a
 file. The example utilizes this method and trusted proxies can then easily be added or removed from the ACL file.
@@ -47,49 +47,56 @@ file. The example utilizes this method and trusted proxies can then easily be ad
 [HAProxy] implicitly trusts all external proxies by default so it's important you configure this for a trusted
 environment.
 
-[HAProxy] by default **does** trust all other proxies. This means it's essential that you configure this correctly.
+[HAProxy] by default __does__ trust all other proxies. This means it's essential that you configure this correctly.
 
 In the example we have a `trusted_proxies.src.acl` file which is used by one `http-request del-header X-Forwarded-For`
 line in the main configuration which shows an example of not trusting any proxies or alternatively an example on adding
 the following networks to the trusted proxy list in [HAProxy]:
 
-- 10.0.0.0/8
-- 172.16.0.0/16
-- 192.168.0.0/16
-- fc00::/7
+* 10.0.0.0/8
+* 172.16.0.0/16
+* 192.168.0.0/16
+* fc00::/7
 
 ## Configuration
 
 Below you will find commented examples of the following configuration:
 
-- Authelia Portal
-- Protected Endpoint (Nextcloud)
-- Protected Endpoint with `Authorization` header for basic authentication (Heimdall)
+* Authelia Portal
+* Protected Endpoint (Nextcloud)
+* Protected Endpoint with `Authorization` header for basic authentication (Heimdall)
 
 With this configuration you can protect your virtual hosts with Authelia, by following the steps below:
 
 1. Add host(s) to the `protected-frontends` or `protected-frontends-basic` ACLs to support protection with Authelia.
 You can separate each subdomain with a `|` in the regex, for example:
+
     ```text
     acl protected-frontends hdr(host) -m reg -i ^(?i)(jenkins|nextcloud|phpmyadmin)\.example\.com
     acl protected-frontends-basic hdr(host) -m reg -i ^(?i)(heimdall)\.example\.com
     ```
+
 2. Add host ACL(s) in the form of `host-service`, this will be utilised to route to the correct
 backend upon successful authentication, for example:
+
     ```text
     acl host-jenkins hdr(host) -i jenkins.example.com
     acl host-nextcloud hdr(host) -i nextcloud.example.com
     acl host-phpmyadmin hdr(host) -i phpmyadmin.example.com
     acl host-heimdall hdr(host) -i heimdall.example.com
     ```
+
 3. Add backend route for your service(s), for example:
+
     ```text
     use_backend be_jenkins if host-jenkins
     use_backend be_nextcloud if host-nextcloud
     use_backend be_phpmyadmin if host-phpmyadmin
     use_backend be_heimdall if host-heimdall
     ```
+
 4. Add backend definitions for your service(s), for example:
+
     ```text
     backend be_jenkins
         server jenkins jenkins:8080
@@ -143,7 +150,7 @@ frontend fe_http
 
     ## Comment the above directive and the two directives below to enable the trusted proxies ACL.
     # acl src-trusted_proxies src -f trusted_proxies.src.acl
-    # http-request del-header X-Forwarded-For	if !src-trusted_proxies
+    # http-request del-header X-Forwarded-For if !src-trusted_proxies
 
     ## Ensure X-Forwarded-For is set for the auth request.
     acl hdr-xff_exists req.hdr(X-Forwarded-For) -m found
@@ -341,8 +348,8 @@ backend be_heimdall
 
 ## See Also
 
-- [HAProxy Auth Request lua plugin Documentation](https://github.com/TimWolla/haproxy-auth-request)
-- [Forwarded Headers]
+* [HAProxy Auth Request lua plugin Documentation](https://github.com/TimWolla/haproxy-auth-request)
+* [Forwarded Headers]
 
 [HAproxy]: https://www.haproxy.org/
 [Forwarded Headers]: fowarded-headers

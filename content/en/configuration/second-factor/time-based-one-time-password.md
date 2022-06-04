@@ -13,7 +13,7 @@ weight: 103300
 toc: true
 ---
 
-The OTP method _Authelia_ uses is the Time-Based One-Time Password Algorithm (TOTP) [RFC6238] which is an extension of
+The OTP method *Authelia* uses is the Time-Based One-Time Password Algorithm (TOTP) [RFC6238] which is an extension of
 HMAC-Based One-Time Password Algorithm (HOTP) [RFC4226].
 
 You have the option to tune the settings of the TOTP generation, and you can see a full example of TOTP configuration
@@ -57,19 +57,19 @@ by Authelia from others.
 
 {{< confkey type="string" default="sha1" required="no" >}}
 
-_**Important Note:** Many TOTP applications do not support this option. It is strongly advised you find out which
+*__Important Note:__ Many TOTP applications do not support this option. It is strongly advised you find out which
 applications your users use and test them before changing this option. It is insufficient to test that the application
 can add the key, it must also authenticate with Authelia as some applications silently ignore these options. Bitwarden
 is the only one that has been tested at this time. If you'd like to contribute to documenting support for this option
-please see [Issue 2650](https://github.com/authelia/authelia/issues/2650)._
+please see [Issue 2650](https://github.com/authelia/authelia/issues/2650).*
 
 The algorithm used for the TOTP key.
 
 Possible Values (case-insensitive):
 
-- `sha1`
-- `sha256`
-- `sha512`
+* `sha1`
+* `sha256`
+* `sha512`
 
 Changing this value only affects newly registered TOTP keys. See the [Registration](#registration) section for more
 information.
@@ -78,11 +78,11 @@ information.
 
 {{< confkey type="integer" default="6" required="no" >}}
 
-_**Important Note:** Some TOTP applications do not support this option. It is strongly advised you find out which
+*__Important Note:__ Some TOTP applications do not support this option. It is strongly advised you find out which
 applications your users use and test them before changing this option. It is insufficient to test that the application
 can add the key, it must also authenticate with Authelia as some applications silently ignore these options. Bitwarden
 is the only one that has been tested at this time. If you'd like to contribute to documenting support for this option
-please see [Issue 2650](https://github.com/authelia/authelia/issues/2650)._
+please see [Issue 2650](https://github.com/authelia/authelia/issues/2650).*
 
 The number of digits a user needs to input to perform authentication. It's generally not recommended for this to be
 altered as many TOTP applications do not support anything other than 6. What's worse is some TOTP applications allow

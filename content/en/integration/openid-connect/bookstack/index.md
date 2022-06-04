@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.33.2
-- BookStack: 20.10
+* Authelia: v4.33.2
+* BookStack: 20.10
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://bookstack.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `bookstack`
-- **Client Secret:** `bookstack_client_secret`
+* __Application Root URL:__ `https://bookstack.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `bookstack`
+* __Client Secret:__ `bookstack_client_secret`
 
 ## Configuration
 
@@ -51,7 +51,7 @@ To configure [BookStack] to utilize Authelia as an [OpenID Connect] Provider:
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [BookStack]
 which will operate with the above example:
 
@@ -71,7 +71,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [BookStack OpenID Connect Documentation](https://www.bookstackapp.com/docs/admin/oidc-auth/)
+* [BookStack OpenID Connect Documentation](https://www.bookstackapp.com/docs/admin/oidc-auth/)
 
 [BookStack]: https://www.bookstackapp.com/
 [OpenID Connect]: ../../openid-connect/introduction.md

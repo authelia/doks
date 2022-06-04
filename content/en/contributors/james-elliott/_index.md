@@ -7,10 +7,10 @@ draft: false
 images: []
 ---
 
-_**Authelia Core Team Member.**_
+*__Authelia Core Team Member.__*
 
-**GitHub:** [james-d-elliott](https://github.com/james-d-elliott)
+__GitHub:__ [james-d-elliott](https://github.com/james-d-elliott)
 
-**Email:** [james.elliott@authelia.com](mailto:james.elliott@authelia.com)
+__Email:__ [james.elliott@authelia.com](mailto:james.elliott@authelia.com)
 
-**Matrix:** [@james:authelia.com](https://matrix.to/#/@james:authelia.com) **Discord:** [James#6549](https://discord.com/users/209869584814047232/)
+__Matrix:__ [@james:authelia.com](https://matrix.to/#/@james:authelia.com) __Discord:__ [James#6549](https://discord.com/users/209869584814047232/)

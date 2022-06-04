@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
-- Seafile: 9.0.4
+* Authelia: v4.35.5
+* Seafile: 9.0.4
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://seafile.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `seafile`
-- **Client Secret:** `seafile_client_secret`
+* __Application Root URL:__ `https://seafile.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `seafile`
+* __Client Secret:__ `seafile_client_secret`
 
 ## Configuration
 
@@ -66,7 +66,7 @@ OAUTH_ATTRIBUTE_MAP = {
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Seafile]
 which will operate with the above example:
 
@@ -86,7 +86,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [Seafile OAuth Authentication Documentation](https://manual.seafile.com/deploy/oauth/)
+* [Seafile OAuth Authentication Documentation](https://manual.seafile.com/deploy/oauth/)
 
 [Seafile]: https://www.seafile.com/
 [OpenID Connect]: ../../openid-connect/introduction.md

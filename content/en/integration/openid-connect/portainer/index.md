@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.34.6
-- Portainer (CE and EE): 2.12.2
+* Authelia: v4.34.6
+* Portainer (CE and EE): 2.12.2
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://portainer.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `portainer`
-- **Client Secret:** `portainer_client_secret`
+* __Application Root URL:__ `https://portainer.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `portainer`
+* __Client Secret:__ `portainer_client_secret`
 
 ## Configuration
 
@@ -59,7 +59,7 @@ To configure [Portainer] to utilize Authelia as an [OpenID Connect] Provider:
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Portainer]
 which will operate with the above example:
 
@@ -80,7 +80,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [Portainer OAuth Documentation](https://docs.portainer.io/admin/settings/authentication/oauth)
+* [Portainer OAuth Documentation](https://docs.portainer.io/admin/settings/authentication/oauth)
 
 [Portainer]: https://www.portainer.io/
 [OpenID Connect]: ../../openid-connect/introduction.md

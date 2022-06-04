@@ -26,7 +26,7 @@ First, sign up on their website, log in, create a user account and attach it a m
 the user must match the name of the user in Authelia, or must have an alias that matches the user in Authelia.
 
 Then, in Duo interface, click on *Applications* and *Protect an Application*. Select the option *Partner Auth API*. This
-will generate an integration key, a secret key and a hostname. You can set the name of the application to **Authelia**
+will generate an integration key, a secret key and a hostname. You can set the name of the application to __Authelia__
 and then you must add the generated information to Authelia [configuration](../../deployment/index.md) as shown below:
 
 ```yaml
@@ -47,13 +47,13 @@ case you have multiple devices available, you will be asked to select your prefe
 
 ## Limitation
 
-Users must be enrolled via the Duo Admin panel, they cannot enroll a device from **Authelia** yet.
+Users must be enrolled via the Duo Admin panel, they cannot enroll a device from __Authelia__ yet.
 
 ## FAQ
 
 ### Why don't I have access to the *Push Notification* option?
 
-It's likely that you have not configured **Authelia** correctly. Please read this documentation again and be sure you
+It's likely that you have not configured __Authelia__ correctly. Please read this documentation again and be sure you
 had a look at [config.template.yml](https://github.com/authelia/authelia/blob/master/config.template.yml) and
 [configuration documentation](../../../configuration/second-factor/duo.md).
 

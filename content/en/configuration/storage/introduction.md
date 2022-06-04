@@ -13,7 +13,7 @@ weight: 107100
 toc: true
 ---
 
-**Authelia** supports multiple storage backends. The backend is used to store user preferences, 2FA device handles and
+__Authelia__ supports multiple storage backends. The backend is used to store user preferences, 2FA device handles and
 secrets, authentication logs, etc...
 
 The available storage backends are listed in the table of contents below.

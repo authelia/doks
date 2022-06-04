@@ -18,7 +18,7 @@ toc: true
 
 ## Ansible
 
-_Authelia_ could theoretically be easily deployed via [Ansible] however we do not have an [Ansible Role] at this time.
+*Authelia* could theoretically be easily deployed via [Ansible] however we do not have an [Ansible Role] at this time.
 It would be a desirable [Contribution](../../contributing/development/introduction.md).
 
 [Ansible]: https://www.ansible.com/

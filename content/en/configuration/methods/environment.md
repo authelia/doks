@@ -16,8 +16,8 @@ toc: true
 Environment variables are applied after the configuration file meaning anything specified as part of the environment
 overrides the configuration files.
 
-_**Please Note:** It is not possible to configure the access control rules section or OpenID Connect identity provider
-clients section using environment variables at this time._
+*__Please Note:__ It is not possible to configure the access control rules section or OpenID Connect identity provider
+clients section using environment variables at this time.*
 
 ## Prefix
 
@@ -29,7 +29,7 @@ likely result in an error or even worse misconfiguration.
 
 Please see the
 [Kubernetes Integration: Enable Service Links](../../integration/kubernetes/introduction/index.md#enable-service-links)
-documentation for specific requirements for using _Authelia_ with Kubernetes.
+documentation for specific requirements for using *Authelia* with Kubernetes.
 
 ## Mapping
 

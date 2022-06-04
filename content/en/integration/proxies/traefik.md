@@ -13,31 +13,31 @@ weight: 360
 toc: true
 ---
 
-[Traefik] is a reverse proxy supported by **Authelia**.
+[Traefik] is a reverse proxy supported by __Authelia__.
 
-_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+*__Important:__ When using these guides it's important to recognize that we cannot provide a guide for every possible
 method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
 configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
-throughout this documentation and in the [See Also](#see-also) section._
+throughout this documentation and in the [See Also](#see-also) section.*
 
 ## Requirements
 
-You need the following to run **Authelia** with [Traefik]:
+You need the following to run __Authelia__ with [Traefik]:
 
-- [Traefik] [v2.0.0](https://github.com/traefik/traefik/releases/tag/v2.0.0) or greater
+* [Traefik] [v2.0.0](https://github.com/traefik/traefik/releases/tag/v2.0.0) or greater
   (a guide exists for 1.x [here](traefikv1.md))
-- [Traefik] [v2.4.1](https://github.com/traefik/traefik/releases/tag/v2.4.1) or greater if you wish to use
+* [Traefik] [v2.4.1](https://github.com/traefik/traefik/releases/tag/v2.4.1) or greater if you wish to use
   [basic authentication](#basic-authentication)
 
 ## Trusted Proxies
 
-_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
-Especially if you have never read it before._
+*__Important:__ You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before.*
 
-_**Important:** The included example is **NOT** meant for production use. It's used expressly as an example to showcase
+*__Important:__ The included example is __NOT__ meant for production use. It's used expressly as an example to showcase
 how you can configure multiple IP ranges. You should customize this example to fit your specific architecture and needs.
 You should only include the specific IP address ranges of the trusted proxies within your architecture and should not
-trust entire subnets unless that subnet only has trusted proxies and no other services._
+trust entire subnets unless that subnet only has trusted proxies and no other services.*
 
 [Traefik] by default doesn't trust any other proxies requiring explicit configuration of which proxies are trusted
 and removes potentially fabricated headers that are likely to lead to security issues, and it is difficult to configure
@@ -46,10 +46,10 @@ this incorrectly. This is an important security feature that is common with prox
 In the example we have four commented lines which configure `trustedIPs` which show an example on adding the following
 networks to the trusted proxy list in [Traefik]:
 
-- 10.0.0.0/8
-- 172.16.0.0/16
-- 192.168.0.0/16
-- fc00::/7
+* 10.0.0.0/8
+* 172.16.0.0/16
+* 192.168.0.0/16
+* fc00::/7
 
 See the [Entry Points](https://doc.traefik.io/traefik/routing/entrypoints) documentation for more information.
 
@@ -57,10 +57,10 @@ See the [Entry Points](https://doc.traefik.io/traefik/routing/entrypoints) docum
 
 Below you will find commented examples of the following docker deployment:
 
-- [Traefik]
-- Authelia portal
-- Protected endpoint (Nextcloud)
-- Protected endpoint with [Authorization] header for basic authentication (Heimdall)
+* [Traefik]
+* Authelia portal
+* Protected endpoint (Nextcloud)
+* Protected endpoint with [Authorization] header for basic authentication (Heimdall)
 
 The below configuration looks to provide examples of running [Traefik] 2.x with labels to protect your endpoint
 (Nextcloud in this case).
@@ -198,12 +198,12 @@ services:
 This example uses a `docker-compose.yml` similar to the one above however it has two major differences:
 
 1. A majority of the configuration is in YAML instead of the `labels` section of the `docker-compose.yml` file.
-2. It connects to **Authelia** over TLS with client certificates which ensures that [Traefik] is a proxy
-   authorized to communicate with **Authelia**. This expects that the
+2. It connects to __Authelia__ over TLS with client certificates which ensures that [Traefik] is a proxy
+   authorized to communicate with __Authelia__. This expects that the
    [Server TLS](../../configuration/miscellaneous/server.md#tls) section is configured correctly.
-   - The client certificates can easily be disabled by commenting the `cert` and `key` options in the `http.middlewares`
+   * The client certificates can easily be disabled by commenting the `cert` and `key` options in the `http.middlewares`
      section for the `forwardAuth` middlewares and the `certificates` in the `http.serversTransports` section.
-   - The TLS communication can be disabled by commenting the entire `tls` section in the `http.middlewares` section for
+   * The TLS communication can be disabled by commenting the entire `tls` section in the `http.middlewares` section for
      all `forwardAuth` middlewares, adjusting the `authelia` router in the `http.routers` section to use the
      `authelia-net@docker` service, and commenting the `authelia` service in the `http.service` section.
 
@@ -468,14 +468,14 @@ call Authelia's `/api/verify?auth=basic` endpoint to force a switch to the [Auth
 
 ### Middleware authelia@docker not found
 
-If [Traefik] and **Authelia** are defined in different docker compose stacks you may experience an issue where [Traefik]
+If [Traefik] and __Authelia__ are defined in different docker compose stacks you may experience an issue where [Traefik]
 complains that: `middleware authelia@docker not found`.
 
 This can be avoided a couple different ways:
 
-1. Ensure **Authelia** container is up before [Traefik] is started:
-   - Utilise the [depends_on](https://docs.docker.com/compose/compose-file/#depends_on) option
-2. Define the **Authelia** middleware on your [Traefik] container. See the below example.
+1. Ensure __Authelia__ container is up before [Traefik] is started:
+   * Utilise the [depends_on](https://docs.docker.com/compose/compose-file/#depends_on) option
+2. Define the __Authelia__ middleware on your [Traefik] container. See the below example.
 
 ```yaml
 - 'traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.example.com%2F'
@@ -485,10 +485,10 @@ This can be avoided a couple different ways:
 
 ## See Also
 
-- [Traefik ForwardAuth Documentation](https://doc.traefik.io/traefik/middlewares/http/forwardauth/)
-- [Traefik Forwarded Headers Documentation](https://doc.traefik.io/traefik/routing/entrypoints/#forwarded-headers)
-- [Traefik Proxy Protocol Documentation](https://doc.traefik.io/traefik/routing/entrypoints/#proxyprotocol)
-- [Forwarded Headers]
+* [Traefik ForwardAuth Documentation](https://doc.traefik.io/traefik/middlewares/http/forwardauth/)
+* [Traefik Forwarded Headers Documentation](https://doc.traefik.io/traefik/routing/entrypoints/#forwarded-headers)
+* [Traefik Proxy Protocol Documentation](https://doc.traefik.io/traefik/routing/entrypoints/#proxyprotocol)
+* [Forwarded Headers]
 
 [docker compose]: https://docs.docker.com/compose/
 [Traefik]: https://docs.traefik.io/

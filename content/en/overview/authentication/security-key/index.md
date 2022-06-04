@@ -13,7 +13,7 @@ weight: 240
 toc: true
 ---
 
-**Authelia** supports hardware-based second factors leveraging [FIDO2]&nbsp;[WebAuthn] compatible security keys like
+__Authelia__ supports hardware-based second factors leveraging [FIDO2]&nbsp;[WebAuthn] compatible security keys like
 [YubiKey]'s.
 
 Security keys are among the most secure second factor. This method is already supported by many major applications and
@@ -32,7 +32,7 @@ This will send you an email to verify your identity.
 
 *NOTE: This e-mail has likely been sent to the mailbox at https://mail.example.com:8080/ if you're testing Authelia.*
 
-Confirm your identity by clicking on **Register** and you'll be asked to touch the token of your security key to
+Confirm your identity by clicking on __Register__ and you'll be asked to touch the token of your security key to
 complete the enrollment.
 
 Upon successful enrollment, you can authenticate using your security key by simply touching the token again when
@@ -56,15 +56,15 @@ Not at this time. We will tackle this at a later date.
 ### Why don't I have access to the *Security Key* option?
 
 The [WebAuthn] protocol is a new protocol that is only supported by modern browsers. Please ensure your browser is up to
-date, supports [WebAuthn], and that the feature is not disabled if the option is not available to you in **Authelia**.
+date, supports [WebAuthn], and that the feature is not disabled if the option is not available to you in __Authelia__.
 
 ### Can my FIDO U2F device operate with Authelia?
 
 At the present time there is no plan to support [FIDO U2F] within Authelia. We do implement a backwards compatible appid
-extension within **Authelia** however this only works for devices registered before the upgrade to the [FIDO2]&nbsp;[WebAuthn]
+extension within __Authelia__ however this only works for devices registered before the upgrade to the [FIDO2]&nbsp;[WebAuthn]
 protocol.
 
-If there was sufficient interest in supporting registration of old U2F / FIDO devices in **Authelia** we would consider
+If there was sufficient interest in supporting registration of old U2F / FIDO devices in __Authelia__ we would consider
 adding support for this after or at the same time of the multi-device enhancements.
 
 [FIDO U2F]: https://www.yubico.com/authentication-standards/fido-u2f/

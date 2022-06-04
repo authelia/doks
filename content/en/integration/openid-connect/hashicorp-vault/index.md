@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
-- HashiCorp Vault: 1.8.1
+* Authelia: v4.35.5
+* HashiCorp Vault: 1.8.1
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://vault.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `vault`
-- **Client Secret:** `vault_client_secret`
+* __Application Root URL:__ `https://vault.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `vault`
+* __Client Secret:__ `vault_client_secret`
 
 ## Configuration
 
@@ -42,7 +42,7 @@ To configure [HashiCorp Vault] to utilize Authelia as an [OpenID Connect] Provid
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [HashiCorp Vault]
 which will operate with the above example:
 
@@ -64,8 +64,8 @@ which will operate with the above example:
 
 ## See Also
 
-- [HashiCorp Vault JWT/OIDC Auth Documentation](https://www.vaultproject.io/docs/auth/jwt)
-- [HashiCorp Vault OpenID Connect Providers Documentation](https://www.vaultproject.io/docs/auth/jwt/oidc_providers)
+* [HashiCorp Vault JWT/OIDC Auth Documentation](https://www.vaultproject.io/docs/auth/jwt)
+* [HashiCorp Vault OpenID Connect Providers Documentation](https://www.vaultproject.io/docs/auth/jwt/oidc_providers)
 
 [HashiCorp Vault]: https://www.vaultproject.io/
 [OpenID Connect]: ../../openid-connect/introduction.md

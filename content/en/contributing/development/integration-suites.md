@@ -13,10 +13,10 @@ weight: 240
 toc: true
 ---
 
-**Authelia** is a single component in interaction with many others in a complete ecosystem. Consequently, testing the
+__Authelia__ is a single component in interaction with many others in a complete ecosystem. Consequently, testing the
 features is not as easy as we might think. In order to solve this problem, Authelia came up with the concept of suite
 which is a kind of virtual environment for Authelia and a set of tests. A suite can setup components such as NGINX,
-Redis or MariaDB in which **Authelia** can run and be tested.
+Redis or MariaDB in which __Authelia__ can run and be tested.
 
 This abstraction allows to prepare an environment for manual testing during development and also to craft and run
 integration tests efficiently.
@@ -71,12 +71,12 @@ authelia-scripts suites test --headless
 
 ## Create a suite
 
-Creating a suite is as easy. Let's take the example of the **Standalone** suite:
+Creating a suite is as easy. Let's take the example of the __Standalone__ suite:
 
-* **suite_standalone.go** - It defines the setup and teardown phases. It likely uses docker-compose to setup the
+* __suite_standalone.go__ - It defines the setup and teardown phases. It likely uses docker-compose to setup the
   ecosystem. This file also defines the timeouts.
-* **suite_standalone_test.go** - It defines the set of tests to run against the suite.
-* **Standalone** directory - It contains resources required by the suite and likely mounted in the containers.
+* __suite_standalone_test.go__ - It defines the set of tests to run against the suite.
+* __Standalone__ directory - It contains resources required by the suite and likely mounted in the containers.
 
 A suite can also be much more complex like setting up a complete Kubernetes ecosystem. You can check the Kubernetes
 suite as example.

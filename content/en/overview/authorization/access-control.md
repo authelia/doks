@@ -13,7 +13,7 @@ weight: 310
 toc: false
 ---
 
-**Authelia** allows to define a fine-grained rule-based access control policies. This list of rules is tested against
+__Authelia__ allows to define a fine-grained rule-based access control policies. This list of rules is tested against
 any requests protected by Authelia and defines the level of authentication the user must pass to get authorization to
 the resource.
 

@@ -27,24 +27,26 @@ the [Markdown] file responsible for the document.
 
 ## Viewing Changes
 
-It's relatively easy to run the **Authelia** website locally to test out the changes you've made.
+It's relatively easy to run the __Authelia__ website locally to test out the changes you've made.
 
 ### Requirements
 
-- [git] _(though this can be skipped if you just download the repository)_
-- [Node.js] and npm _(bundled with [Node.js])_
+* [git] *(though this can be skipped if you just download the repository)*
+* [Node.js] and npm *(bundled with [Node.js])*
 
 ### Directions
 
 The following steps will allow you to run the website on the localhost and view it live in your browser:
 
 1. Run the following commands:
+
   ```bash
   git clone https://github.com/authelia/authelia.git
   cd authelia/docs
   npm run install
   npm run start
   ```
+
 2. Visit [http://localhost:1313/](http://localhost:1313/) in your browser.
 3. Modify pages to see the effects live in your browser.
 

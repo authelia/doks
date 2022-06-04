@@ -84,7 +84,7 @@ The timeout for dialing an LDAP connection.
 {{< confkey type="boolean" default="false" required="no" >}}
 
 Enables use of the LDAP StartTLS process which is not commonly used. You should only configure this if you know you need
-it. The initial connection will be over plain text, and _Authelia_ will try to upgrade it with the LDAP server. LDAPS
+it. The initial connection will be over plain text, and *Authelia* will try to upgrade it with the LDAP server. LDAPS
 URL's are slightly more secure.
 
 ### tls
@@ -114,8 +114,8 @@ exactly which OU to get users from for either security or performance reasons. F
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
-default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more information._
+*__Note:__ This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more information.*
 
 The LDAP filter to narrow down which users are valid. This is important to set correctly as to exclude disabled users.
 The default value is dependent on the [implementation](#implementation), refer to the
@@ -125,18 +125,18 @@ The default value is dependent on the [implementation](#implementation), refer t
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
-default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information._
+*__Note:__ This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information.*
 
-The LDAP attribute that maps to the username in _Authelia_. This must contain the `{username_attribute}`
+The LDAP attribute that maps to the username in *Authelia*. This must contain the `{username_attribute}`
 [placeholder](#users-filter-replacements).
 
 ### mail_attribute
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
-default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information._
+*__Note:__ This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information.*
 
 The attribute to retrieve which contains the users email addresses. This is important for the device registration and
 password reset processes. The user must have an email address in order for Authelia to perform identity verification
@@ -146,8 +146,8 @@ when a user attempts to reset their password or register a second factor device.
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
-default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information._
+*__Note:__ This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more information.*
 
 The attribute to retrieve which is shown on the Web UI to the user when they log in.
 
@@ -161,8 +161,8 @@ Similar to [additional_users_dn](#additional_users_dn) but it applies to group s
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
-default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more information._
+*__Note:__ This option is technically required however the [implementation](#implementation) option can implicitly set a
+default negating this requirement. Refer to the [filter defaults](#filter-defaults) for more information.*
 
 Similar to [users_filter](#users_filter) but it applies to group searches. In order to include groups the member is not
 a direct member of, but is a member of another group that is a member of those (i.e. recursive groups), you may try
@@ -174,9 +174,9 @@ using the following filter which is currently only tested against Microsoft Acti
 
 {{< confkey type="string" required="situational" >}}
 
-_**Note:** This option is technically required however the [implementation](#implementation) option can implicitly set a
+*__Note:__ This option is technically required however the [implementation](#implementation) option can implicitly set a
 default negating this requirement. Refer to the [attribute defaults](#attribute-defaults) for more
-information._
+information.*
 
 The LDAP attribute that is used by Authelia to determine the group name.
 
@@ -255,7 +255,7 @@ value is not 0 which means the password requires changing at the next login.
 |     custom      |                                                                               N/A                                                                               |                            N/A                            |
 | activedirectory | (&(&#124;({username_attribute}={input})({mail_attribute}={input}))(sAMAccountType=805306368)(!(userAccountControl:1.2.840.113556.1.4.803:=2))(!(pwdLastSet=0))) | (&(member={dn})(objectClass=group)(objectCategory=group)) |
 
-_**Note:**_ The Active Directory filter `(sAMAccountType=805306368)` is exactly the same as
+*__Note:__* The Active Directory filter `(sAMAccountType=805306368)` is exactly the same as
 `(&(objectCategory=person)(objectClass=user))` except that the former is more performant, you can read more about this
 and other Active Directory filters on the [TechNet wiki](https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx).
 

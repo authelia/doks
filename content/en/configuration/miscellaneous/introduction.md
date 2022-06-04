@@ -55,9 +55,9 @@ method, and the `totp` method was disabled in the configuration, the users' meth
 
 Options are:
 
-- totp
-- webauthn
-- mobile_push
+* totp
+* webauthn
+* mobile_push
 
 ```yaml
 default_2fa_method: totp
@@ -76,9 +76,9 @@ verification process. This can also be defined using a [secret](../methods/secre
 
 There are currently 3 available themes for Authelia:
 
-- light (default)
-- dark
-- grey
+* light (default)
+* dark
+* grey
 
 To enable automatic switching between themes, you can set `theme` to `auto`. The theme will be set to either `dark` or
 `light` depending on the user's system preference which is determined using media queries. To read more technical

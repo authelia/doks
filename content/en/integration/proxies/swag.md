@@ -13,30 +13,30 @@ weight: 351
 toc: true
 ---
 
-[SWAG] is a reverse proxy supported by **Authelia**. It's an [NGINX] proxy container with bundled configurations to make
+[SWAG] is a reverse proxy supported by __Authelia__. It's an [NGINX] proxy container with bundled configurations to make
 your life easier.
 
-_**Important:** When using these guides it's important to recognize that we cannot provide a guide for every possible
+*__Important:__ When using these guides it's important to recognize that we cannot provide a guide for every possible
 method of deploying a proxy. These are guides showing a suggested setup only and you need to understand the proxy
 configuration and customize it to your needs. To-that-end we include links to the official proxy documentation
-throughout this documentation and in the [See Also](#see-also) section._
+throughout this documentation and in the [See Also](#see-also) section.*
 
 ## Introduction
 
-As [SWAG] is a [NGINX] proxy with curated configurations, integration of **Authelia** with [SWAG] is very easy and you
+As [SWAG] is a [NGINX] proxy with curated configurations, integration of __Authelia__ with [SWAG] is very easy and you
 only need to enabled two includes.
 
-_**Note:** All paths in this guide are the locations inside the container. You will have to either edit the files within
-the container or adapt the path to the path you have mounted the relevant container path to._
+*__Note:__ All paths in this guide are the locations inside the container. You will have to either edit the files within
+the container or adapt the path to the path you have mounted the relevant container path to.*
 
 ## Requirements
 
-[SWAG] supports the required [NGINX](nginx.md#requirements) requirements for **Authelia** out-of-the-box.
+[SWAG] supports the required [NGINX](nginx.md#requirements) requirements for __Authelia__ out-of-the-box.
 
 ## Trusted Proxies
 
-_**Important:** You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
-Especially if you have never read it before._
+*__Important:__ You should read the [Forwarded Headers] section and this section as part of any proxy configuration.
+Especially if you have never read it before.*
 
 To configure trusted proxies for [SWAG] see the [NGINX] section on [Trusted Proxies](nginx.md#trusted-proxies).
 Adapting this to [SWAG] is beyond the scope of this documentation.
@@ -45,8 +45,8 @@ Adapting this to [SWAG] is beyond the scope of this documentation.
 
 These steps must be followed regardless of the choice of [subdomain](#subdomain-steps) or [subpath](#subpath-steps).
 
-1. Deploy **Authelia** to your docker network with the `container_name` of `authelia` and ensure it's listening on the
-   default port and you have not configured the **Authelia** server TLS settings.
+1. Deploy __Authelia__ to your docker network with the `container_name` of `authelia` and ensure it's listening on the
+   default port and you have not configured the __Authelia__ server TLS settings.
 
 ## Subdomain Steps
 
@@ -90,7 +90,7 @@ server {
 
 ## Subpath Steps
 
-_**Note:** Steps 1 and 2 only need to be done once, even if you wish to protect multiple applications._
+*__Note:__ Steps 1 and 2 only need to be done once, even if you wish to protect multiple applications.*
 
 1. Edit `/config/nginx/proxy-confs/default`.
 2. Uncomment the `#include /config/nginx/authelia-server.conf;` line.
@@ -119,10 +119,10 @@ location ^~ /bazarr/ {
 
 ## See Also
 
-- [Authelia NGINX Integration Documentation](nginx.md)
-- [LinuxServer.io Setting Up Authelia With SWAG Documentation / Blog Post](https://www.linuxserver.io/blog/2020-08-26-setting-up-authelia)
-- [NGINX ngx_http_auth_request_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
-- [Forwarded Headers]
+* [Authelia NGINX Integration Documentation](nginx.md)
+* [LinuxServer.io Setting Up Authelia With SWAG Documentation / Blog Post](https://www.linuxserver.io/blog/2020-08-26-setting-up-authelia)
+* [NGINX ngx_http_auth_request_module Module Documentation](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+* [Forwarded Headers]
 
 [SWAG]: https://docs.linuxserver.io/general/swag
 [NGINX]: https://www.nginx.com/

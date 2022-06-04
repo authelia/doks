@@ -38,8 +38,8 @@ send emails. This can be disabled with the `disable_startup_check` option.
 
 {{< confkey type="string" required="no" >}}
 
-_**Note:** you may configure this directory and add only add the templates you wish to override, any templates not
-supplied in this folder will utilize the default templates._
+*__Note:__ you may configure this directory and add only add the templates you wish to override, any templates not
+supplied in this folder will utilize the default templates.*
 
 This option allows the administrator to set a path to a directory where custom templates for notifications can be found.
 The specifics are located in the

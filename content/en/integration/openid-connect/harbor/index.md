@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
-- Harbor: 2.5.0
+* Authelia: v4.35.5
+* Harbor: 2.5.0
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://harbor.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `harbor`
-- **Client Secret:** `harbor_client_secret`
+* __Application Root URL:__ `https://harbor.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `harbor`
+* __Client Secret:__ `harbor_client_secret`
 
 ## Configuration
 
@@ -59,7 +59,7 @@ To configure [Harbor] to utilize Authelia as an [OpenID Connect] Provider:
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Harbor]
 which will operate with the above example:
 
@@ -81,7 +81,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [Harbor OpenID Connect Provider Documentation](https://goharbor.io/docs/2.5.0/administration/configure-authentication/oidc-auth/)
+* [Harbor OpenID Connect Provider Documentation](https://goharbor.io/docs/2.5.0/administration/configure-authentication/oidc-auth/)
 
 [Harbor]: https://goharbor.io/
 [OpenID Connect]: ../../openid-connect/introduction.md

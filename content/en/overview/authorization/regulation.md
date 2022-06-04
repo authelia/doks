@@ -13,7 +13,7 @@ weight: 320
 toc: false
 ---
 
-**Authelia** takes the security of users very seriously and comes with a way to avoid brute-forcing the first factor
+__Authelia__ takes the security of users very seriously and comes with a way to avoid brute-forcing the first factor
 credentials by regulating the authentication attempts and temporarily banning an account when too many attempts have
 been made.
 

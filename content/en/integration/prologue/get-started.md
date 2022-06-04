@@ -18,7 +18,7 @@ obviously choose a different path if you are so inclined.
 
 ## Configuration
 
-It's important to customize the configuration for _Authelia_ in advance of deploying it. The configuration is static and
+It's important to customize the configuration for *Authelia* in advance of deploying it. The configuration is static and
 not configured via web GUI. You can find a
 [configuration template](https://github.com/authelia/authelia/blob/master/config.template.yml) on GitHub which can be
 used as a basis for configuration.
@@ -28,7 +28,7 @@ The important sections to consider in initial configuration are as follows:
 1. [jwt_secret](../../configuration/miscellaneous/introduction.md#jwt_secret) which is used to sign identity
    verification emails
 2. [default_redirection_url](../../configuration/miscellaneous/introduction.md#default_redirection_url) which is the
-   default URL users will be redirected to when visiting _Authelia_ directly
+   default URL users will be redirected to when visiting *Authelia* directly
 3. [authentication_backend](../../configuration/first-factor/introduction.md) which you must pick between
    [LDAP](../../configuration/first-factor/ldap.md) and a [YAML File](../../configuration/first-factor/file.md) and is
    essential for users to authenticate.
@@ -44,6 +44,7 @@ The important sections to consider in initial configuration are as follows:
    recommended for production.
 7. [access_control](../../configuration/security/access-control.md) is also important but should be configured with a
    very basic policy to begin with. Something like:
+
   ```yaml
   access_control:
     default_policy: deny
@@ -54,17 +55,17 @@ The important sections to consider in initial configuration are as follows:
 
 ## Deployment
 
-There are several methods of deploying _Authelia_ and we recommend reading the
+There are several methods of deploying *Authelia* and we recommend reading the
 [Deployment Documentation](../deployment/introduction.md) in order to perform deployment.
 
 ## Proxy Integration
 
-The default method of utilizing _Authelia_ is via the [Proxy Integrations](../proxies/introduction.md). It's
+The default method of utilizing *Authelia* is via the [Proxy Integrations](../proxies/introduction.md). It's
 recommended that you read the relevant [Proxy Integration Documentation](../proxies/introduction.md).
 
-_**Important Note:** When your [Deployment](#deployment) is on [Kubernetes](../kubernetes/introduction/index.md) we
+*__Important Note:__ When your [Deployment](#deployment) is on [Kubernetes](../kubernetes/introduction/index.md) we
 recommend viewing the dedicated [Kubernetes Documentation](../kubernetes/introduction/index.md) prior to viewing the
-[Proxy Integration Documentation](../proxies/introduction.md)._
+[Proxy Integration Documentation](../proxies/introduction.md).*
 
 ## Moving to Production
 
@@ -77,5 +78,5 @@ We consider it important to do several things in moving to a production environm
 3. Review the [Security Measures](../../overview/security/measures.md) and
    [Threat Model](../../overview/security/threat-model.md) documentation.
 4. Ensure you have reviewed the [Forwarded Headers](../proxies/fowarded-headers/index.md) documentation to ensure your
-   proxy is not allowing insecure headers to be passed to _Authelia_.
+   proxy is not allowing insecure headers to be passed to *Authelia*.
 5. Review the other [Configuration Options](../../configuration/prologue/introduction.md).

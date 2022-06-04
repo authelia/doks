@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.33.2
-- Proxmox: 7.1-10
+* Authelia: v4.33.2
+* Proxmox: 7.1-10
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://proxmox.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `proxmox`
-- **Client Secret:** `proxmox_client_secret`
+* __Application Root URL:__ `https://proxmox.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `proxmox`
+* __Client Secret:__ `proxmox_client_secret`
 
 ## Configuration
 
@@ -56,7 +56,7 @@ To configure [Proxmox] to utilize Authelia as an [OpenID Connect] Provider:
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Proxmox]
 which will operate with the above example:
 
@@ -76,7 +76,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [Proxmox User Management Documentation](https://pve.proxmox.com/wiki/User_Management)
+* [Proxmox User Management Documentation](https://pve.proxmox.com/wiki/User_Management)
 
 [Proxmox]: https://www.proxmox.com/
 [OpenID Connect]: ../../openid-connect/introduction.md

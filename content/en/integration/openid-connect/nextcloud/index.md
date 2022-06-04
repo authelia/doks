@@ -17,8 +17,8 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
-- Nextcloud: 22.1.0
+* Authelia: v4.35.5
+* Nextcloud: 22.1.0
 
 ## Before You Begin
 
@@ -28,10 +28,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Application Root URL:** `https://nextcloud.example.com`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `nextcloud`
-- **Client Secret:** `nextcloud_client_secret`
+* __Application Root URL:__ `https://nextcloud.example.com`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `nextcloud`
+* __Client Secret:__ `nextcloud_client_secret`
 
 ## Configuration
 
@@ -80,7 +80,7 @@ $CONFIG = array (
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Nextcloud]
 which will operate with the above example:
 
@@ -100,8 +100,8 @@ which will operate with the above example:
 
 ## See Also
 
-- [Nextcloud OpenID Connect Login app]
-- [Nextcloud OpenID Connect Login Documentation](https://github.com/pulsejet/nextcloud-oidc-login)
+* [Nextcloud OpenID Connect Login app]
+* [Nextcloud OpenID Connect Login Documentation](https://github.com/pulsejet/nextcloud-oidc-login)
 
 [Nextcloud]: https://nextcloud.com/
 [Nextcloud OpenID Connect Login app]: https://apps.nextcloud.com/apps/oidc_login

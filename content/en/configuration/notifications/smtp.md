@@ -87,8 +87,8 @@ guide.
 The sender is used to construct both the SMTP command `MAIL FROM` and to add the `FROM` header. This address must be
 in [RFC5322](https://www.rfc-editor.org/rfc/rfc5322.html#section-3.4) format. This means it must one of two formats:
 
-- jsmith@domain.com
-- John Smith <jsmith@domain.com>
+* jsmith@domain.com
+* John Smith <jsmith@domain.com>
 
 The `MAIL FROM` command sent to SMTP servers will not include the name portion, this is only set in the `FROM` as per
 specifications.
@@ -111,7 +111,7 @@ be included in all emails as it is the internal descriptor for the contents of t
 
 {{< confkey type="string" default="test@authelia.com" required="no" >}}
 
-**Authelia** checks the SMTP server is valid at startup, one of the checks requires we ask the SMTP server if it can
+__Authelia__ checks the SMTP server is valid at startup, one of the checks requires we ask the SMTP server if it can
 send an email from us to a specific address, this is that address. No email is actually sent in the process. It is fine
 to leave this as is, but you can customize it if you have issues or you desire to.
 
@@ -126,7 +126,7 @@ for more information. This option disables this measure (not recommended).
 
 {{< confkey type="boolean" default="false" required="no" >}}
 
-This setting completely disables HTML formatting of emails and only sends text emails. **Authelia** by default sends
+This setting completely disables HTML formatting of emails and only sends text emails. __Authelia__ by default sends
 mixed emails which contain both HTML and text so this option is rarely necessary.
 
 ### tls

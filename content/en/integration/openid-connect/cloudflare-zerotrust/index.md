@@ -17,7 +17,7 @@ toc: true
 
 ## Tested Versions
 
-- Authelia: v4.35.5
+* Authelia: v4.35.5
 
 ## Before You Begin
 
@@ -27,10 +27,10 @@ choose to utilize a different client id, it's completely up to you.
 
 This example makes the following assumptions:
 
-- **Cloudflare Team Name:** `example-team`
-- **Authelia Root URL:** `https://auth.example.com`
-- **Client ID:** `cloudflare`
-- **Client Secret:** `cloudflare_client_secret`
+* __Cloudflare Team Name:__ `example-team`
+* __Authelia Root URL:__ `https://auth.example.com`
+* __Client ID:__ `cloudflare`
+* __Client Secret:__ `cloudflare_client_secret`
 
 ## Configuration
 
@@ -55,7 +55,7 @@ To configure [Cloudflare Zero Trust] to utilize Authelia as an [OpenID Connect] 
 
 ### Authelia
 
-The following YAML configuration is an example **Authelia**
+The following YAML configuration is an example __Authelia__
 [client configuration](../../../configuration/identity-providers/open-id-connect.md#clients) for use with [Cloudflare]
 which will operate with the above example:
 
@@ -76,7 +76,7 @@ which will operate with the above example:
 
 ## See Also
 
-- [Cloudflare Zero Trust Generic OIDC Documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/generic-oidc/)
+* [Cloudflare Zero Trust Generic OIDC Documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/generic-oidc/)
 
 [Cloudflare]: https://www.cloudflare.com/
 [Cloudflare Zero Trust]: https://www.cloudflare.com/products/zero-trust/

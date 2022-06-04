@@ -64,23 +64,23 @@ Modifying this setting will allow you to serve Authelia out from a specified bas
 that currently only a single level path is supported meaning slashes are not allowed, and only
 alphanumeric characters are supported.
 
-**Example:**
+__Example:__
 
 ```yaml
 server:
   path: ""
 ```
 
-_Works for https://auth.example.com/, https://example.com/, etc_.
+*Works for https://auth.example.com/, https://example.com/, etc*.
 
-**Example:**
+__Example:__
 
 ```yaml
 server:
   path: authelia
 ```
 
-_Works for https://auth.example.com/authelia/,  https://example.com/authelia/, etc_.
+*Works for https://auth.example.com/authelia/,  https://example.com/authelia/, etc*.
 
 ### asset_path
 

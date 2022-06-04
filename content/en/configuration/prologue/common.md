@@ -18,17 +18,17 @@ toc: true
 We have implemented a string/integer based notation for configuration options that take a duration of time. This section
 describes the implementation of this. You can use this implementation in various areas of configuration such as:
 
-- session:
-  - expiration
-  - inactivity
-  - remember_me_duration
-- regulation:
-  - ban_time
-  - find_time
-- ntp:
-  - max_desync
-- webauthn:
-  - timeout
+* session:
+  * expiration
+  * inactivity
+  * remember_me_duration
+* regulation:
+  * ban_time
+  * find_time
+* ntp:
+  * max_desync
+* webauthn:
+  * timeout
 
 The way this format works is you can either configure an integer or a string in the specific configuration areas. If you
 supply an integer, it is considered a representation of seconds. If you supply a string, it parses the string in blocks

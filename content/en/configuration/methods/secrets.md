@@ -13,15 +13,15 @@ weight: 101400
 toc: true
 ---
 
-Configuration of _Authelia_ requires several secrets and passwords. Even if they can be set in the configuration file or
+Configuration of *Authelia* requires several secrets and passwords. Even if they can be set in the configuration file or
 standard environment variables, the recommended way to set secrets is to use this configuration method as described below.
 
 See the [security](#security) section for more information.
 
 ## Layers
 
-_**Important Note:**_ While this method is the third layer of the layered configuration model as described by the
-[introduction](introduction.md#layers), this layer is special in as much as _Authelia_ will not start if you define
+*__Important Note:__* While this method is the third layer of the layered configuration model as described by the
+[introduction](introduction.md#layers), this layer is special in as much as *Authelia* will not start if you define
 a secret as well as any other configuration method.
 
 For example if you define `jwt_secret` in the [files method](files.md) and/or `AUTHELIA_JWT_SECRET` in the
@@ -34,17 +34,17 @@ configuration in a logically secure way.
 
 ## Environment variables
 
-A secret value can be loaded by _Authelia_ when the configuration key ends with one of the following words: `key`,
+A secret value can be loaded by *Authelia* when the configuration key ends with one of the following words: `key`,
 `secret`, `password`, or `token`.
 
 If you take the expected environment variable for the configuration option with the `_FILE` suffix at the end. The value
 of these environment variables must be the path of a file that is readable by the Authelia process, if they are not,
-_Authelia_ will fail to load. Authelia will automatically remove the newlines from the end of the files contents.
+*Authelia* will fail to load. Authelia will automatically remove the newlines from the end of the files contents.
 
 For instance the LDAP password can be defined in the configuration
-at the path **authentication_backend.ldap.password**, so this password
+at the path __authentication_backend.ldap.password__, so this password
 could alternatively be set using the environment variable called
-**AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE**.
+__AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE__.
 
 Here is the list of the environment variables which are considered secrets and can be defined. Please note that only
 secrets can be loaded into the configuration if they end with one of the suffixes above, you can set the value of any
@@ -225,9 +225,9 @@ which writes the secret's content to the `actualSecretContent.txt` file and prin
 
 ### Kustomization
 
-- **Filename:** ./kustomization.yaml
-- **Command:** kubectl apply -k
-- **Notes:** this kustomization expects the Authelia configuration.yml in the same directory. You will need to edit the
+* __Filename:__ ./kustomization.yaml
+* __Command:__ kubectl apply -k
+* __Notes:__ this kustomization expects the Authelia configuration.yml in the same directory. You will need to edit the
   kustomization.yaml with your desired secrets after the equal signs. If you change the value before the equal sign
   you'll have to adjust the volumes section of the daemonset template (or deployment template if you're using it).
 
@@ -256,9 +256,9 @@ secretGenerator:
 
 ### DaemonSet
 
-- **Filename:** ./daemonset.yaml
-- **Command:** kubectl apply -f ./daemonset.yaml
-- **Notes:** assumes Kubernetes API 1.16 or greater
+* __Filename:__ ./daemonset.yaml
+* __Command:__ kubectl apply -f ./daemonset.yaml
+* __Notes:__ assumes Kubernetes API 1.16 or greater
 
 ```yaml
 #filename: daemonset.yaml

@@ -16,16 +16,16 @@ toc: true
 ## Version support
 
 See [PostgreSQL support](https://www.postgresql.org/support/versioning/) for the versions supported by PostgreSQL. We
-recommend the _current minor_ version of one of the versions supported by PostgreSQL.
+recommend the *current minor* version of one of the versions supported by PostgreSQL.
 
 The versions of PostgreSQL that should be supported by Authelia are:
 
-- 14
-- 13
-- 12
-- 11
-- 10
-- 9.6
+* 14
+* 13
+* 12
+* 11
+* 10
+* 9.6
 
 ## Configuration
 
@@ -75,14 +75,14 @@ The port the database server is listening on.
 {{< confkey type="string" required="yes" >}}
 
 The database name on the database server that the assigned [user](#username) has access to for the purpose of
-**Authelia**.
+__Authelia__.
 
 ### schema
 
 {{< confkey type="string" default="public" required="no" >}}
 
 The database schema name to use on the database server that the assigned [user](#username) has access to for the purpose
-of **Authelia**. By default this is the public schema.
+of __Authelia__. By default this is the public schema.
 
 ### username
 

@@ -13,7 +13,7 @@ weight: 210
 toc: true
 ---
 
-There are three main methods to deploy _Authelia_.
+There are three main methods to deploy *Authelia*.
 
 1. [Docker](docker.md)
 2. [Kubernetes](../kubernetes/introduction/index.md)

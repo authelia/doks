@@ -7,15 +7,15 @@ draft: false
 images: []
 ---
 
-The **Authelia** team takes security very seriously. Because **Authelia** is intended as a security product a lot of
+The __Authelia__ team takes security very seriously. Because __Authelia__ is intended as a security product a lot of
 decisions are made with security being the priority.
 
 ## Coordinated vulnerability disclosure
 
-**Authelia** follows the
+__Authelia__ follows the
 [coordinated vulnerability disclosure](https://en.wikipedia.org/wiki/Coordinated_vulnerability_disclosure) model when
 dealing with security vulnerabilities. This was previously known as `responsible disclosure`. We strongly urge anyone
-reporting vulnerabilities to **Authelia** or any other project to follow this model as it is considered as a best
+reporting vulnerabilities to __Authelia__ or any other project to follow this model as it is considered as a best
 practice by many in the security industry.
 
 If you believe you have identified a security related bug with Authelia please do not open an issue, do not notify us in
@@ -28,7 +28,7 @@ below.
 
 Please either utilize the {{< email user="security" domain="authelia.com" >}} email address for security issues
 discovered. This email address is only accessible by key members of the team for the purpose of disclosing security
-issues within the **Authelia** code base.
+issues within the __Authelia__ code base.
 
 This is the preferred method of reporting.
 
@@ -63,8 +63,8 @@ As security is imperative to us we see this as one of the main financial priorit
 
 We believe that we should obtain the following categories of security audits:
 
-- Code Security Audit / Analysis
-- Penetration Testing
+* Code Security Audit / Analysis
+* Penetration Testing
 
 If you know of a company which either performs these kinds of audits and would be willing to sponsor the audit in some
 way such as doing it pro bono or at a discounted rate, or wants to help improve Authelia in a meaningful way and is

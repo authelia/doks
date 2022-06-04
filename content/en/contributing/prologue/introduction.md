@@ -13,14 +13,14 @@ weight: 110
 toc: true
 ---
 
-Contributions to **Authelia** have four main forms:
+Contributions to __Authelia__ have four main forms:
 
-- Utilizing GitHub [Issues] or [Discussions] to make commentary about bugs, ideas, etc.
-- [Development](../development/introduction.md)
-- [Documentation](../documentation/introduction.md)
-- [Financial](financial.md)
+* Utilizing GitHub [Issues] or [Discussions] to make commentary about bugs, ideas, etc.
+* [Development](../development/introduction.md)
+* [Documentation](../documentation/introduction.md)
+* [Financial](financial.md)
 
-We encourage our community to be part of **Authelia** by contributing in these ways. We encourage anyone who wishes to
+We encourage our community to be part of __Authelia__ by contributing in these ways. We encourage anyone who wishes to
 contribute via development to utilize GitHub [Issues] or [Discussions] or one of the
 [other contact methods](../../information/contact.md) to discuss their contribution in advance and come up with a design
 plan.

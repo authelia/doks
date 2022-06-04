@@ -37,7 +37,7 @@ authentication_backend:
 
 The path to the file with the user details list. Supported file types are:
 
-- [YAML File](../../reference/guides/passwords.md#yaml-format)
+* [YAML File](../../reference/guides/passwords.md#yaml-format)
 
 ### password
 
@@ -47,8 +47,8 @@ The path to the file with the user details list. Supported file types are:
 
 Controls the hashing algorithm used for hashing new passwords. Value must be one of:
 
-- `argon2id` for the [Argon2] `id` variant
-- `sha512` for the [SHA Crypt] `SHA512` variant
+* `argon2id` for the [Argon2] `id` variant
+* `sha512` for the [SHA Crypt] `SHA512` variant
 
 #### iterations
 
@@ -66,7 +66,7 @@ parameter `rounds`). This affects the effective cost of hashing.
 
 {{< confkey type="integer" default="32" required="no" >}}
 
-_**Important:** This setting is specific to the `argon2id` algorithm and unused with the `sha512` algorithm._
+*__Important:__ This setting is specific to the `argon2id` algorithm and unused with the `sha512` algorithm.*
 
 Sets the key length of the [Argon2] hash output. The minimum value is `16` with the recommended value of `32` being set
 as the default.
@@ -83,7 +83,7 @@ default.
 
 {{< confkey type="integer" default="4" required="no" >}}
 
-_**Important:** This setting is specific to the `argon2id` algorithm and unused with the `sha512` algorithm._
+*__Important:__ This setting is specific to the `argon2id` algorithm and unused with the `sha512` algorithm.*
 
 Sets the number of threads used by [Argon2] when hashing passwords ([Argon2] parameter `p`). The minimum value is `1`
 with the recommended value of `4` being set as the default. This affects the effective cost of hashing.
@@ -92,7 +92,7 @@ with the recommended value of `4` being set as the default. This affects the eff
 
 {{< confkey type="integer" default="64" required="no" >}}
 
-_**Important:** This setting is specific to the `argon2id` algorithm and unused with the `sha512` algorithm._
+*__Important:__ This setting is specific to the `argon2id` algorithm and unused with the `sha512` algorithm.*
 
 Sets the amount of memory in megabytes allocated to a single password hashing calculation ([Argon2] parameter `m`). This
 affects the effective cost of hashing.

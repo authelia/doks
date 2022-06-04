@@ -13,8 +13,8 @@ weight: 312
 toc: true
 ---
 
-The`X-Forwarded-*` headers presented to **Authelia** must be from trusted sources. As such you must ensure that the
-reverse proxies and load balances utilized with **Authelia** are configured to remove and replace specific headers when
+The`X-Forwarded-*` headers presented to __Authelia__ must be from trusted sources. As such you must ensure that the
+reverse proxies and load balances utilized with __Authelia__ are configured to remove and replace specific headers when
 they come directly from clients and not from proxies in your trusted environment.
 
 Some proxies require users explicitly configure the proxy to trust another proxy, however some implicitly trust all
@@ -49,7 +49,7 @@ These same rules apply to any off-site hosted proxy or load balancing solution t
 to it. This means a client can forge their remote IP address with the most widely accepted remote IP header out of the
 box.
 
-It is therefore important you configure [Cloudflare] to remove this IP address. _**Please Note:** This is by no means an
+It is therefore important you configure [Cloudflare] to remove this IP address. *__Please Note:__ This is by no means an
 exhaustive guide on using [Cloudflare] transform rules, however it's enough to configure a couple rules which should
 achieve a secure result. Please see the [Cloudflare] documentation on
 [transform rules](https://developers.cloudflare.com/rules/transform/) for more information._
@@ -78,8 +78,8 @@ Criteria:
 
 |           Desired Result            |       Field       |    Operator    |               Value                |
 |:-----------------------------------:|:-----------------:|:--------------:|:----------------------------------:|
-|            Always Remove            |  X-Forwarded-For  | does not equal |              _blank_               |
-| Remove When Not From Trusted Source | IP Source Address |   is not in    | _list of trusted source addresses_ |
+|            Always Remove            |  X-Forwarded-For  | does not equal |              *blank*               |
+| Remove When Not From Trusted Source | IP Source Address |   is not in    | *list of trusted source addresses* |
 
 Cloudflare publishes its IP address ranges publicly at the easy to remember address
 [https://www.cloudflare.com/ips/](https://www.cloudflare.com/ips/). You should use this with the trusted proxies section

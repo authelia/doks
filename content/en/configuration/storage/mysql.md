@@ -72,7 +72,7 @@ The port the database server is listening on.
 {{< confkey type="string" required="yes" >}}
 
 The database name on the database server that the assigned [user](#username) has access to for the purpose of
-**Authelia**.
+__Authelia__.
 
 ### username
 

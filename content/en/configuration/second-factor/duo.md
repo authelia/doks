@@ -18,7 +18,7 @@ Authelia supports mobile push notifications relying on [Duo].
 Follow the instructions in the dedicated [documentation](../../overview/authentication/push-notification/index.md) for
 instructions on how to set up push notifications in Authelia.
 
-**Note:** The configuration options in the following sections are noted as required. They are however only required when
+__Note:__ The configuration options in the following sections are noted as required. They are however only required when
 you have this section defined. i.e. if you don't wish to use the [Duo] push notifications you can just not define this
 section of the configuration.
 

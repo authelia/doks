@@ -13,7 +13,7 @@ weight: 105100
 toc: true
 ---
 
-**Authelia** relies on session cookies to authenticate users. When the user visits a website of the protected domain
+__Authelia__ relies on session cookies to authenticate users. When the user visits a website of the protected domain
 `example.com` for the first time, Authelia detects that there is no cookie for that user. Consequently, Authelia
 redirects the user to the login portal through which the user should authenticate to get a cookie which is valid for
 `*.example.com`, meaning all websites of the domain. At the next request, Authelia receives the cookie associated to the
@@ -36,9 +36,9 @@ session:
 
 There are currently two providers for session storage (three if you count Redis Sentinel as a separate provider):
 
-- Memory (default, stateful, no additional configuration)
-- [Redis](redis.md) (stateless).
-- [Redis Sentinel](redis.md#high_availability) (stateless, highly available).
+* Memory (default, stateful, no additional configuration)
+* [Redis](redis.md) (stateless).
+* [Redis Sentinel](redis.md#high_availability) (stateless, highly available).
 
 ### Kubernetes or High Availability
 
