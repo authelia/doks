@@ -1,5 +1,5 @@
 {{- range $p := .Site.Pages -}}
-{{- range .Aliases }}
+{{- range $p.Aliases }}
 {{ . }} {{ $p.RelPermalink -}}
 {{- end }}
 {{- end -}}
