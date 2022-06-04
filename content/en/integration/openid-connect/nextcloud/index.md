@@ -11,9 +11,8 @@ menu:
     parent: "openid-connect"
 weight: 620
 toc: true
+community: true
 ---
-
-{{< community-doc >}}
 
 ## Tested Versions
 

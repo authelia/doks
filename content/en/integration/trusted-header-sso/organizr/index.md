@@ -11,9 +11,8 @@ menu:
     parent: "trusted-header-sso"
 weight: 420
 toc: true
+community: true
 ---
-
-{{< community-doc >}}
 
 ## Introduction
 
