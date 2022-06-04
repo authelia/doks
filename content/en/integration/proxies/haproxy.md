@@ -62,35 +62,35 @@ the following networks to the trusted proxy list in [HAProxy]:
 
 Below you will find commented examples of the following configuration:
 
-* Authelia Portal
-* Protected Endpoint (Nextcloud)
-* Protected Endpoint with `Authorization` header for basic authentication (Heimdall)
+- Authelia Portal
+- Protected Endpoint (Nextcloud)
+- Protected Endpoint with `Authorization` header for basic authentication (Heimdall)
 
 With this configuration you can protect your virtual hosts with Authelia, by following the steps below:
 
 1. Add host(s) to the `protected-frontends` or `protected-frontends-basic` ACLs to support protection with Authelia.
 You can separate each subdomain with a `|` in the regex, for example:
-    ```
+    ```text
     acl protected-frontends hdr(host) -m reg -i ^(?i)(jenkins|nextcloud|phpmyadmin)\.example\.com
     acl protected-frontends-basic hdr(host) -m reg -i ^(?i)(heimdall)\.example\.com
     ```
 2. Add host ACL(s) in the form of `host-service`, this will be utilised to route to the correct
 backend upon successful authentication, for example:
-    ```
+    ```text
     acl host-jenkins hdr(host) -i jenkins.example.com
     acl host-nextcloud hdr(host) -i nextcloud.example.com
     acl host-phpmyadmin hdr(host) -i phpmyadmin.example.com
     acl host-heimdall hdr(host) -i heimdall.example.com
     ```
 3. Add backend route for your service(s), for example:
-    ```
+    ```text
     use_backend be_jenkins if host-jenkins
     use_backend be_nextcloud if host-nextcloud
     use_backend be_phpmyadmin if host-phpmyadmin
     use_backend be_heimdall if host-heimdall
     ```
 4. Add backend definitions for your service(s), for example:
-    ```
+    ```text
     backend be_jenkins
         server jenkins jenkins:8080
     backend be_nextcloud
@@ -113,7 +113,7 @@ is also be provided below.
 
 ##### trusted_proxies.src.acl
 
-```
+```text
 10.0.0.0/8
 172.16.0.0/12
 192.168.0.0/16
@@ -122,7 +122,7 @@ fc00::/7
 
 ##### haproxy.cfg
 
-```
+```text
 global
     # Path to haproxy-lua-http, below example assumes /usr/local/etc/haproxy/haproxy-lua-http/http.lua
     lua-prepend-path /usr/local/etc/haproxy/?/http.lua
@@ -232,7 +232,8 @@ backend be_heimdall
 ```
 
 ##### haproxy.cfg (TLS enabled Authelia)
-```
+
+```text
 global
     # Path to haproxy-lua-http, below example assumes /usr/local/etc/haproxy/haproxy-lua-http/http.lua
     lua-prepend-path /usr/local/etc/haproxy/?/http.lua

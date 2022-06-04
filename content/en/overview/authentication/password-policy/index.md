@@ -23,11 +23,12 @@ This mode of operation allows administrators to set the rules that user password
 password.
 
 The available options are:
-* Minimum password length
-* Require Uppercase
-* Require Lowercase
-* Require Numbers
-* Require Special characters
+
+- Minimum password length
+- Require Uppercase
+- Require Lowercase
+- Require Numbers
+- Require Special characters
 
 {{< figure src="password-policy-classic-1.png" caption="Classic Password Policy" alt="Classic Password Policy" width=400 >}}
 

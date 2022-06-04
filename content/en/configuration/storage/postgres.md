@@ -19,6 +19,7 @@ See [PostgreSQL support](https://www.postgresql.org/support/versioning/) for the
 recommend the _current minor_ version of one of the versions supported by PostgreSQL.
 
 The versions of PostgreSQL that should be supported by Authelia are:
+
 - 14
 - 13
 - 12
@@ -58,6 +59,7 @@ See the [encryption_key docs](introduction.md#encryption_key).
 The database server host.
 
 If utilising an IPv6 literal address it must be enclosed by square brackets and quoted:
+
 ```yaml
 host: "[fd00:1111:2222:3333::1]"
 ```

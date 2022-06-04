@@ -55,7 +55,6 @@ To configure [Portainer] to utilize Authelia as an [OpenID Connect] Provider:
    7. User Identifier: `preferred_username`
    8. Scopes: `openid profile groups email`
 
-
 {{< figure src="portainer.png" alt="Portainer" width="736" style="padding-right: 10px" >}}
 
 ### Authelia

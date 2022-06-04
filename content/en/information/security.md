@@ -62,6 +62,7 @@ We are actively looking for sponsorship to obtain security audits to comprehensi
 As security is imperative to us we see this as one of the main financial priorities.
 
 We believe that we should obtain the following categories of security audits:
+
 - Code Security Audit / Analysis
 - Penetration Testing
 

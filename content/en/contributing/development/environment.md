@@ -55,7 +55,7 @@ distributions of our choice. As long as it's a modern version it should be suffi
 Don't worry, you don't need to own the domain `example.com` to test Authelia. Copy the following lines in
 your `/etc/hosts`:
 
-```
+```text
 192.168.240.100 home.example.com
 192.168.240.100 login.example.com
 192.168.240.100 singlefactor.example.com

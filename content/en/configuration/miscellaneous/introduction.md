@@ -44,7 +44,6 @@ can redirect them after the authentication process. However, when a user visits 
 considers the targeted website is the portal. In that case and if the default redirection URL is configured, the user is
 redirected to that URL. If not defined, the user is not redirected after authentication.
 
-
 ### default_2fa_method
 
 {{< confkey type="string" default="totp" required="no" >}}
@@ -76,9 +75,10 @@ verification process. This can also be defined using a [secret](../methods/secre
 {{< confkey type="string " default="light" required="no" >}}
 
 There are currently 3 available themes for Authelia:
-* light (default)
-* dark
-* grey
+
+- light (default)
+- dark
+- grey
 
 To enable automatic switching between themes, you can set `theme` to `auto`. The theme will be set to either `dark` or
 `light` depending on the user's system preference which is determined using media queries. To read more technical

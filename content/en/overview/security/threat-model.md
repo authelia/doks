@@ -69,7 +69,7 @@ If properly configured, Authelia guarantees the following for security of your u
   being used.
 - Log comprehensive information about user sessions so administrators can identify malicious activity and potential
   consequences or damage caused by identified malicious activity.
-- Ensure the X-Forwarded-* and X-Original-* headers are able to be trusted by allowing configuration of trusted proxy
+- Ensure the `X-Forwarded-*` and `X-Original-*` headers are able to be trusted by allowing configuration of trusted proxy
   servers.
 
 ## Trusted environment

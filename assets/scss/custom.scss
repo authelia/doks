@@ -1,5 +1,6 @@
 .text-orange {
   --bs-text-opacity: 1;
+
   color: $orange;
 }
 
@@ -51,13 +52,13 @@
   @extend .text-danger;
 }
 
-[data-dark-mode] body code span.line.hl {
+body code span.line.hl {
   background: $orange;
   display: block;
   width: 100%;
 }
 
-body code span.line.hl {
+[data-dark-mode] body code span.line.hl {
   background: $orange;
   display: block;
   width: 100%;

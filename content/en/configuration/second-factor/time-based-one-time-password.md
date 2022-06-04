@@ -66,6 +66,7 @@ please see [Issue 2650](https://github.com/authelia/authelia/issues/2650)._
 The algorithm used for the TOTP key.
 
 Possible Values (case-insensitive):
+
 - `sha1`
 - `sha256`
 - `sha512`
@@ -167,19 +168,19 @@ at least a minimal configuration that has the storage backend connection details
 Export in [Key URI Format](https://github.com/google/google-authenticator/wiki/Key-Uri-Format):
 
 ```bash
-$ authelia storage totp export --format uri
+authelia storage totp export --format uri
 ```
 
 Export as CSV:
 
 ```bash
-$ authelia storage totp export --format csv
+authelia storage totp export --format csv
 ```
 
 Help:
 
 ```bash
-$ authelia storage totp export --help
+authelia storage totp export --help
 ```
 
 [RFC4226]: https://www.rfc-editor.org/rfc/rfc4226.html

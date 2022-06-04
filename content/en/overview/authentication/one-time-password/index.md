@@ -33,7 +33,6 @@ You can then use [Google Authenticator] or an authenticator of your choice to sc
 From now on, you get tokens generated every 30 seconds that
 you can use to validate the second factor in **Authelia**.
 
-
 ## Limitations
 
 Users currently can only enroll a single TOTP device in **Authelia**. This is standard practice, as a user can obviously

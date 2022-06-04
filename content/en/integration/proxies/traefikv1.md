@@ -46,10 +46,10 @@ networks to the trusted proxy list in [Traefik]:
 
 Below you will find commented examples of the following docker deployment:
 
-* [Traefik] 1.x
-* Authelia portal
-* Protected endpoint (Nextcloud)
-* Protected endpoint with `Authorization` header for basic authentication (Heimdall)
+- [Traefik] 1.x
+- Authelia portal
+- Protected endpoint (Nextcloud)
+- Protected endpoint with `Authorization` header for basic authentication (Heimdall)
 
 The below configuration looks to provide examples of running [Traefik] v1 with labels to protect your endpoint
 (Nextcloud in this case).
@@ -64,7 +64,8 @@ Given that this is not compatible with [Traefik] 1.x you can call the **Authelia
 `auth=basic` query parameter to force a switch to the `Authentication` header.
 
 ##### docker-compose.yml
-```yml
+
+```yaml
 version: '3'
 
 networks:

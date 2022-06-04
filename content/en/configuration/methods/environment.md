@@ -50,5 +50,3 @@ Can be replaced by this environment variable configuration:
 AUTHELIA_LOG_LEVEL=info
 AUTHELIA_SERVER_READ_BUFFER_SIZE=4096
 ```
-
-

@@ -82,14 +82,14 @@ authentication for any [container] configured to use this authentication flow.
 
 The following command will print out the IP for a container named `traefik` on the `authelia` network:
 
-```console
-$ docker inspect -f '{{.NetworkSettings.Networks.authelia.IPAddress}}' traefik
+```bash
+docker inspect -f '{{.NetworkSettings.Networks.authelia.IPAddress}}' traefik
 ```
 
 The following command will print out all network names and the associated IP address for a container named `traefik`:
 
-```console
-$ docker inspect -f '{{range $network, $config := .NetworkSettings.Networks}}{{ $network }}: {{ $config.IPAddress }} {{end}}' traefik
+```bash
+docker inspect -f '{{range $network, $config := .NetworkSettings.Networks}}{{ $network }}: {{ $config.IPAddress }} {{end}}' traefik
 ```
 
 ### Kubernetes

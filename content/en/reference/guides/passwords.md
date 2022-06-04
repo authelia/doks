@@ -97,7 +97,7 @@ To get a rough estimate of how much memory should be utilized with these algorit
 command:
 
 ```bash
-$ stress-ng --vm-bytes $(awk '/MemFree/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
+stress-ng --vm-bytes $(awk '/MemFree/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
 ```
 
 If this is not desirable we recommend investigating the following options in order of most to least secure:

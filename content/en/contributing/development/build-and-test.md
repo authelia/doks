@@ -32,15 +32,15 @@ included.
 
 The next command starts the suite called *Standalone*:
 
-```console
-$ authelia-scripts suites setup Standalone
+```bash
+authelia-scripts suites setup Standalone
 ```
 
 Most of the suites are using docker-compose to bootstrap the environment. Therefore, you can check the logs of all
 application by running the following command on the component you want to monitor.
 
-```console
-$ docker logs authelia_authelia-backend_1 -f
+```bash
+docker logs authelia_authelia-backend_1 -f
 ```
 
 Then, edit the code and observe how **Authelia** is automatically reloaded.
@@ -49,8 +49,8 @@ Then, edit the code and observe how **Authelia** is automatically reloaded.
 
 To run the unit tests, run:
 
-```console
-$ authelia-scripts unittest
+```bash
+authelia-scripts unittest
 ```
 
 ### Integration tests
@@ -59,7 +59,7 @@ Integration tests are located under the `internal/suites` directory and are base
 of environment and tests. Executing a suite therefore means starting the environment, running the tests and tearing down
 the environment. Each step can be run independently:
 
-```console
+```bash
 # List the available suites
 $ authelia-scripts suites list
 Standalone
@@ -80,15 +80,15 @@ $ authelia-scripts suites teardown Standalone
 In order to test all suites (approx 30 minutes), you need to make sure there is no currently running sui te and then you
 should run:
 
-```console
-$ authelia-scripts suites test
+```bash
+authelia-scripts suites test
 ```
 
 Also, you don't need to start the suite before testing it. Given you're not running any suite, just use the following
 command to test the *Standalone* suite.
 
-```console
-$ authelia-scripts suites test Standalone
+```bash
+authelia-scripts suites test Standalone
 ```
 
 The suite will be spawned, tests will be run and then the suite will be torn down automatically.

@@ -22,32 +22,32 @@ reference guide for the command, the full guide can be found in the
 
 Those scripts become available after sourcing the `bootstrap.sh` script with:
 
-```console
-$ source bootstrap.sh
+```bash
+source bootstrap.sh
 ```
 
 Then, you can access the scripts usage by running the following command:
 
-```console
-$ authelia-scripts --help
+```bash
+authelia-scripts --help
 ```
 
 For instance, you can build **Authelia** ([go] binary and [React] frontend) with:
 
-```console
-$ authelia-scripts build
+```bash
+authelia-scripts build
 ```
 
 Or build the official [Docker] image with:
 
-```console
-$ authelia-scripts docker build
+```bash
+authelia-scripts docker build
 ```
 
 Or start the *Standalone* suite with:
 
-```console
-$ authelia-scripts suites setup Standalone
+```bash
+authelia-scripts suites setup Standalone
 ```
 
 ## Help
@@ -55,10 +55,10 @@ $ authelia-scripts suites setup Standalone
 The `authelia-scripts` provides help using the `--help` or `-h` flags. Every command should provide some form of help
 when provided with either flag. Examples:
 
-```console
-$ authelia-scripts --help
+```bash
+authelia-scripts --help
 ```
 
-```console
-$ authelia-scripts build --help
+```bash
+authelia-scripts build --help
 ```

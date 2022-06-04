@@ -38,6 +38,5 @@ annotations:
   nginx.ingress.kubernetes.io/auth-url: http://authelia.default.svc.cluster.local/api/verify
 ```
 
-
 [ingress-nginx]: https://kubernetes.github.io/ingress-nginx/
 [nginx-ingress-controller]: https://docs.nginx.com/nginx-ingress-controller/

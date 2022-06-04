@@ -31,7 +31,6 @@ For example, to modify the `IdentityVerification` HTML template, if your
 `/config/email_templates`, you would create the `/config/email_templates/IdentityVerification.html` file to override the
 HTML `IdentityVerification` template.
 
-
 ## Placeholder Variables
 
 In template files, you can use the following placeholders which are automatically injected into the templates:

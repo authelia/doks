@@ -56,6 +56,7 @@ See the [encryption_key docs](introduction.md#encryption_key).
 The database server host.
 
 If utilising an IPv6 literal address it must be enclosed by square brackets and quoted:
+
 ```yaml
 host: "[fd00:1111:2222:3333::1]"
 ```

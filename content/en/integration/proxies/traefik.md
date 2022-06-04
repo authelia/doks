@@ -57,10 +57,10 @@ See the [Entry Points](https://doc.traefik.io/traefik/routing/entrypoints) docum
 
 Below you will find commented examples of the following docker deployment:
 
-* [Traefik]
-* Authelia portal
-* Protected endpoint (Nextcloud)
-* Protected endpoint with [Authorization] header for basic authentication (Heimdall)
+- [Traefik]
+- Authelia portal
+- Protected endpoint (Nextcloud)
+- Protected endpoint with [Authorization] header for basic authentication (Heimdall)
 
 The below configuration looks to provide examples of running [Traefik] 2.x with labels to protect your endpoint
 (Nextcloud in this case).
@@ -474,8 +474,8 @@ complains that: `middleware authelia@docker not found`.
 This can be avoided a couple different ways:
 
 1. Ensure **Authelia** container is up before [Traefik] is started:
-  - Utilise the [depends_on](https://docs.docker.com/compose/compose-file/#depends_on) option
-2. Define the **Authelia** middleware on your [Traefik] container:
+   - Utilise the [depends_on](https://docs.docker.com/compose/compose-file/#depends_on) option
+2. Define the **Authelia** middleware on your [Traefik] container. See the below example.
 
 ```yaml
 - 'traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.example.com%2F'

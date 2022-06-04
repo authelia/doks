@@ -21,7 +21,6 @@ platforms like Google, Facebook, GitHub, some banks, and much more.
 
 {{< figure src="yubikey.jpg" caption="A YubiKey Security Key" alt="A YubiKey Security Key" width=150 >}}
 
-
 Normally, the protocol requires your security key to be enrolled on each site before being able to authenticate with it.
 Since Authelia provides Single Sign-On, your users will need to enroll their device only once to get access to all your
 applications.

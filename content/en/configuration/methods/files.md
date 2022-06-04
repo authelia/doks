@@ -17,7 +17,7 @@ _Authelia_ loads `configuration.yml` as the configuration if you just run it. Yo
 following syntax:
 
 ```bash
-$ authelia --config config.custom.yml
+authelia --config config.custom.yml
 ```
 
 ## Multiple Configuration Files
@@ -26,8 +26,8 @@ You can have multiple configuration files which will be merged in the order spec
 the last one to be specified is the one that takes precedence. Example:
 
 ```bash
-$ authelia --config configuration.yml --config config-acl.yml --config config-other.yml
-$ authelia --config configuration.yml,config-acl.yml,config-other.yml
+authelia --config configuration.yml --config config-acl.yml --config config-other.yml
+authelia --config configuration.yml,config-acl.yml,config-other.yml
 ```
 
 Authelia's configuration files use the YAML format. A template with all possible options can be found at the root of the
@@ -46,7 +46,7 @@ By default, the container looks for a configuration file at `/config/configurati
 This is an example of how to override the configuration files loaded in docker:
 
 ```bash
-$ docker run -d --volume /path/to/config:/config authelia:authelia:latest authelia --config=/config/configuration.yaml --config=/config/configuration.acl.yaml
+docker run -d --volume /path/to/config:/config authelia:authelia:latest authelia --config=/config/configuration.yaml --config=/config/configuration.acl.yaml
 ```
 
 See the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/run/) for more information on the

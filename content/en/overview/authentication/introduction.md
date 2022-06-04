@@ -32,4 +32,3 @@ unreliable and simple usernames and passwords are not sufficient for security.
 In addition to this Authelia can apply authorization policies to individual website resources which restrict which
 identities can access which resources from a given remote address. These policies can require 1FA, 2FA, or outright deny
 access depending on the criteria you configure.
-

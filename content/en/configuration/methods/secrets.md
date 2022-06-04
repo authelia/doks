@@ -89,7 +89,6 @@ why setting them via the file counterparts is highly encouraged.
 Secrets can be provided in a `docker-compose.yml` either with Docker secrets or
 bind mounted secret files, examples of these are provided below.
 
-
 ### Compose with Docker secrets
 
 This example assumes secrets are stored in `/path/to/authelia/secrets/{secretname}`
@@ -260,6 +259,7 @@ secretGenerator:
 - **Filename:** ./daemonset.yaml
 - **Command:** kubectl apply -f ./daemonset.yaml
 - **Notes:** assumes Kubernetes API 1.16 or greater
+
 ```yaml
 #filename: daemonset.yaml
 #command: kubectl apply -f daemonset.yaml

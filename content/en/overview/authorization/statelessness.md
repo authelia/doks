@@ -31,7 +31,6 @@ If you do not configure an external provider for the session configuration
 it stores the session in memory. This is unacceptable for the operation of
 **Authelia** and is thus not supported for high availability.
 
-
 ### Storage Provider
 
 **Severity:** *BREAKING*.
@@ -40,7 +39,6 @@ it stores the session in memory. This is unacceptable for the operation of
 
 Use of the local storage provider (SQLite3) is not supported in high availability setups
 due to a design limitation with how SQLite3 operates. Use any of the other storage providers.
-
 
 ### Notification Provider
 

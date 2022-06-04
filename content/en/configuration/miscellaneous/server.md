@@ -64,17 +64,23 @@ Modifying this setting will allow you to serve Authelia out from a specified bas
 that currently only a single level path is supported meaning slashes are not allowed, and only
 alphanumeric characters are supported.
 
-Example: https://auth.example.com/, https://example.com/
+**Example:**
+
 ```yaml
 server:
   path: ""
 ```
 
-Example: https://auth.example.com/authelia/, https://example.com/authelia/
+_Works for https://auth.example.com/, https://example.com/, etc_.
+
+**Example:**
+
 ```yaml
 server:
   path: authelia
 ```
+
+_Works for https://auth.example.com/authelia/,  https://example.com/authelia/, etc_.
 
 ### asset_path
 
@@ -86,7 +92,6 @@ Modifying this setting will allow you to override and serve specific assets for 
 assets that can be overridden must be placed in the `asset_path`. The structure of this directory and the assets which
 can be overriden is documented in the
 [Sever Asset Overrides Reference Guide](../../reference/guides/server-asset-overrides.md).
-
 
 ### read_buffer_size
 

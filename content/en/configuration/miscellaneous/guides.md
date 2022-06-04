@@ -19,7 +19,7 @@ Some sections of the configuration recommend generating a random string. There a
 possible way on Linux is utilizing the following command which prints a string with a length in characters of
 `${LENGTH}` to `stdout`. The string will only contain alphanumeric characters.
 
-```console
+```bash
 LENGTH=64
 tr -cd '[:alnum:]' < /dev/urandom | fold -w "${LENGTH}" | head -n 1 | tr -d '\n' ; echo
 ```
@@ -33,21 +33,21 @@ such ways.
 
 The `openssl` command on Linux can be used to generate a RSA 4096 bit keypair:
 
-```console
-$ openssl genrsa -out private.pem 4096
-$ openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+```bash
+openssl genrsa -out private.pem 4096
+openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 ```
 
 ### authelia
 
 The **Authelia** docker container or CLI binary can be used to generate a RSA 4096 bit keypair:
 
-```console
-$ docker run -u "$(id -u):$(id -g)" -v "$(pwd)":/keys authelia/authelia:latest authelia rsa generate --dir /keys
+```bash
+docker run -u "$(id -u):$(id -g)" -v "$(pwd)":/keys authelia/authelia:latest authelia rsa generate --dir /keys
 ```
 
-```console
-$ authelia rsa generate --dir /path/to/keys
+```bash
+authelia rsa generate --dir /path/to/keys
 ```
 
 ## Generating an RSA Self-Signed Certificate
@@ -60,8 +60,8 @@ many ways to achieve this, this section explains two such ways.
 The `openssl` command on Linux can be used to generate a RSA 4096 bit self-signed certificate for the domain
 `example.com`:
 
-```console
-$ openssl req -x509 -nodes -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365 -subj '/CN=example.com'
+```bash
+openssl req -x509 -nodes -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365 -subj '/CN=example.com'
 ```
 
 ### authelia
@@ -69,10 +69,10 @@ $ openssl req -x509 -nodes -newkey rsa:4096 -keyout key.pem -out cert.pem -sha25
 The **Authelia** docker container or binary can be used to generate a RSA 4096 bit self-signed certificate for the
 domain `example.com`:
 
-```console
-$ docker run -u "$(id -u):$(id -g)" -v "$(pwd)":/keys authelia/authelia authelia certificates generate --host example.com --dir /keys
+```bash
+docker run -u "$(id -u):$(id -g)" -v "$(pwd)":/keys authelia/authelia authelia certificates generate --host example.com --dir /keys
 ```
 
-```console
-$ authelia certificates generate --host example.com --dir /path/to/keys
+```bash
+authelia certificates generate --host example.com --dir /path/to/keys
 ```

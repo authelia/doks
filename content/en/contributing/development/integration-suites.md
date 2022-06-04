@@ -25,8 +25,8 @@ integration tests efficiently.
 
 Starting a suite called *Standalone* is done with the following command:
 
-```console
-$ authelia-scripts suites setup Standalone
+```bash
+authelia-scripts suites setup Standalone
 ```
 
 This command deploys the environment of the suite.
@@ -38,8 +38,8 @@ This command deploys the environment of the suite.
 If a suite is already running, you can simply type the test command that will run the test related to the currently
 running suite:
 
-```console
-$ authelia-scripts suites test
+```bash
+authelia-scripts suites test
 ```
 
 ### Run tests of non-running suite
@@ -47,16 +47,16 @@ $ authelia-scripts suites test
 However, if no suite is running yet and you just want to run the tests of a specific suite like *HighAvailability*, you
 can do so with the next command:
 
-```console
-$ authelia-scripts suites test HighAvailability
+```bash
+authelia-scripts suites test HighAvailability
 ```
 
 ### Run all tests of all suites
 
 Running all tests is easy. Make sure that no suite is already running and run:
 
-```console
-$ authelia-scripts suites test
+```bash
+authelia-scripts suites test
 ```
 
 ### Run tests in headless mode
@@ -65,8 +65,8 @@ As you might have noticed, the tests are run using chromedriver and selenium. It
 of Chrome that might interfere with your other activities. In order to run the tests in headless mode to avoid the
 interference, use the following command:
 
-```console
-$ authelia-scripts suites test --headless
+```bash
+authelia-scripts suites test --headless
 ```
 
 ## Create a suite

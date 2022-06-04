@@ -43,7 +43,7 @@ is the default. This should be changed to `false`. See the
 [PodSpec v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#podspec-v1-core) documentation
 for more details.
 
-##### Pod Example
+#### Pod Example
 
 ```yaml
 ---

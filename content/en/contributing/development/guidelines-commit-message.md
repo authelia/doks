@@ -41,7 +41,7 @@ for, and the structure it must have.
 
 ### Commit Message Header
 
-```
+```text
 <type>(<scope>): <summary>
   │       │             │
   │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
@@ -57,51 +57,51 @@ The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is opti
 
 #### Allowed type values:
 
-* **build** Changes that affect the build system or external dependencies
+- **build** Changes that affect the build system or external dependencies
   (example scopes: bundler, deps, docker, go, npm)
-* **ci** Changes to our CI configuration files and scripts
+- **ci** Changes to our CI configuration files and scripts
   (example scopes: autheliabot, buildkite, codecov, golangci-lint, renovate, reviewdog)
-* **docs** Documentation only changes
-* **feat** A new feature
-* **fix** A bug fix
-* **perf** A code change that improves performance
-* **refactor** A code change that neither fixes a bug nor adds a feature
-* **release** Releasing a new version of Authelia
-* **test** Adding missing tests or correcting existing tests
+- **docs** Documentation only changes
+- **feat** A new feature
+- **fix** A bug fix
+- **perf** A code change that improves performance
+- **refactor** A code change that neither fixes a bug nor adds a feature
+- **release** Releasing a new version of Authelia
+- **test** Adding missing tests or correcting existing tests
 
 #### Allowed scope values:
 
 The scope should be the name of the package affected (as perceived by the person reading the changelog generated from
 commit messages).
 
-* authentication
-* authorization
-* commands
-* configuration
-* duo
-* handlers
-* logging
-* middlewares
-* mocks
-* model
-* notification
-* ntp
-* oidc
-* regulation
-* server
-* session
-* storage
-* suites
-* templates
-* totp
-* utils
+- authentication
+- authorization
+- commands
+- configuration
+- duo
+- handlers
+- logging
+- middlewares
+- mocks
+- model
+- notification
+- ntp
+- oidc
+- regulation
+- server
+- session
+- storage
+- suites
+- templates
+- totp
+- utils
 
 There are currently a few exceptions to the "use package name" rule:
 
-* `api`: used for changes that change the openapi specification
-* `cmd`: used for changes to the `authelia|authelia-scripts|authelia-suites` top level binaries
-* `web`: used for changes to the React based frontend
-* none/empty string: useful for `test`, `refactor` and changes that are done across multiple packages
+- `api`: used for changes that change the openapi specification
+- `cmd`: used for changes to the `authelia|authelia-scripts|authelia-suites` top level binaries
+- `web`: used for changes to the React based frontend
+- none/empty string: useful for `test`, `refactor` and changes that are done across multiple packages
   (e.g. `test: add missing unit tests`) and for docs changes that are not related to a specific package
   (e.g. `docs: fix typo in tutorial`).
 
@@ -109,9 +109,9 @@ There are currently a few exceptions to the "use package name" rule:
 
 Use the summary field to provide a succinct description of the change:
 
-* use the imperative, present tense: "change" not "changed" nor "changes"
-* don't capitalize the first letter
-* no dot (.) at the end
+- use the imperative, present tense: "change" not "changed" nor "changes"
+- don't capitalize the first letter
+- no dot (.) at the end
 
 ### Commit Message Body
 
@@ -126,7 +126,7 @@ the impact of the change.
 The footer can contain information about breaking changes and is also the place to reference GitHub issues and other PRs
 that this commit closes or is related to.
 
-```
+```text
 BREAKING CHANGE: <breaking change summary>
 <BLANK LINE>
 <breaking change description + migration instructions>
@@ -140,7 +140,7 @@ blank line, and a detailed description of the breaking change that also includes
 
 ### Revert Commits
 
-If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit.
+If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the reverted commit.
 
 The content of the commit message body should contain:
 

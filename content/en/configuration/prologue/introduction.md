@@ -43,7 +43,7 @@ impacting downtime in an upgrade. This process does not validate integrations, i
 syntax is valid.
 
 ```bash
-$ authelia validate-config --config configuration.yml
+authelia validate-config --config configuration.yml
 ```
 
 [YAML]: https://yaml.org/

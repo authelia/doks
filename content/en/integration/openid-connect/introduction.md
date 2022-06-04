@@ -118,7 +118,6 @@ These endpoints can be utilized to discover other endpoints and metadata about t
 |        [OpenID Connect Discovery]         |    https://auth.example.com/.well-known/openid-configuration    |
 | [OAuth 2.0 Authorization Server Metadata] | https://auth.example.com/.well-known/oauth-authorization-server |
 
-
 ### Discoverable Endpoints
 
 These endpoints implement OpenID Connect elements.
@@ -131,7 +130,6 @@ These endpoints implement OpenID Connect elements.
 |     [Userinfo]      |   https://auth.example.com/api/oidc/userinfo    |   userinfo_endpoint    |
 |   [Introspection]   | https://auth.example.com/api/oidc/introspection | introspection_endpoint |
 |    [Revocation]     |  https://auth.example.com/api/oidc/revocation   |  revocation_endpoint   |
-
 
 [ID Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
 

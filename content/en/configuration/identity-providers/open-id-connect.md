@@ -144,7 +144,7 @@ Allows additional debug messages to be sent to the clients.
 
 This controls the minimum length of the `nonce` and `state` parameters.
 
-***Security Notice:*** Changing this value is generally discouraged, reducing it from the default can theoretically
+_**Security Notice:**_ Changing this value is generally discouraged, reducing it from the default can theoretically
 make certain scenarios less secure. It is highly encouraged that if your OpenID Connect RP does not send these
 parameters or sends parameters with a lower length than the default that they implement a change rather than changing
 this value.
@@ -161,7 +161,7 @@ If set to `public_clients_only` (default), [PKCE] will be required for public cl
 
 When set to `always`, [PKCE] will be required for all clients using the Authorization Code flow.
 
-***Security Notice:*** Changing this value to `never` is generally discouraged, reducing it from the default can
+_**Security Notice:**_ Changing this value to `never` is generally discouraged, reducing it from the default can
 theoretically make certain client-side applications (mobile applications, SPA) vulnerable to CSRF and authorization code
 interception attacks.
 
@@ -171,7 +171,7 @@ interception attacks.
 
 Allows [PKCE] `plain` challenges when set to `true`.
 
-***Security Notice:*** Changing this value is generally discouraged. Applications should use the `S256` [PKCE] challenge
+_**Security Notice:**_ Changing this value is generally discouraged. Applications should use the `S256` [PKCE] challenge
 method instead.
 
 ### cors
@@ -186,11 +186,11 @@ you to configure the optional parts. We reply with CORS headers when the request
 A list of endpoints to configure with cross-origin resource sharing headers. It is recommended that the `userinfo`
 option is at least in this list. The potential endpoints which this can be enabled on are as follows:
 
-* authorization
-* token
-* revocation
-* introspection
-* userinfo
+- authorization
+- token
+- revocation
+- introspection
+- userinfo
 
 #### allowed_origins
 
@@ -247,7 +247,7 @@ consuming this client.
 
 #### description
 
-{{< confkey type="string" default="*same as id*" required="no" >}}
+{{< confkey type="string" default="_same as id_" required="no" >}}
 
 A friendly description for this client shown in the UI. This defaults to the same as the ID.
 

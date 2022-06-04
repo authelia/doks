@@ -22,6 +22,7 @@ For our commit messages please see our [Commit Message Guidelines](guidelines-co
 
 We implement the following tools that help us abide by our style guide and include the configuration for them inside
 our repository:
+
 - [golangci-lint](https://github.com/golangci/golangci-lint)
 - [yamllint](https://yamllint.readthedocs.io/en/stable/)
 - [eslint](https://eslint.org/)
@@ -43,11 +44,12 @@ display two files side by side (vertically split). As always, keep in mind you s
 when it doesn't make sense to.
 
 This includes but is not limited to the following file types:
-- Go (*.go)
-- YAML (*.yml, *.yaml)
-- Markdown (*.md)
-- JavaScript (*.js)
-- TypeScript (*.ts, *.tsx)
+
+- Go (`*.go`)
+- YAML (`*.yml`, `*.yaml`)
+- Markdown (`*.md`)
+- JavaScript (`*.js`)
+- TypeScript (`*.ts`, `*.tsx`)
 
 ### Error Strings
 
@@ -72,7 +74,6 @@ Under the configuration example each option in the configuration needs to be doc
 (h3 / indent 3). Immediately following the heading is a div with some stylized icons.
 
 The body of the section is to contain paragraphs describing the usage and information specific to that value.
-
 
 **Example Stylized Icons:**
 
@@ -107,34 +108,43 @@ immediately followed by the styles `.label`, `.label-config`, and a traffic ligh
 if no `.label-green`, or if situational `.label-yellow`.
 
 ### Storage
+
 This section outlines some rules for storage contributions. Including but not limited to migrations, schema rules, etc.
 
 #### Migrations
+
 All migrations must have an up and down migration, preferably idempotent.
 
 All migrations must be named in the following format:
+
 ```text
 V<version>.<name>.<engine>.<direction>.sql
 ```
 
 ##### version
+
 A 4 digit version number, should be in sequential order.
 
 ##### name
+
 A name containing alphanumeric characters, underscores (treated as spaces), hyphens, and no spaces.
 
 ##### engine
+
 The target engine for the migration, options are all, mysql, postgres, and sqlite.
 
 #### Primary Key
+
 All tables must have a primary key. This primary key must be an integer with auto increment enabled, or in the case of
 PostgreSQL a serial type.
 
 #### Table/Column Names
+
 Table and Column names must be in snake case format. This means they must have only lowercase letters, and have words
 seperated by underscores. The reasoning for this is that some database engines ignore case by default and this makes it
 easy to be consistent with the casing.
 
 #### Context
+
 All database methods should include the context attribute so that database requests that are no longer needed are
 terminated appropriately.

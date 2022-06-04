@@ -315,7 +315,7 @@ fail2ban to access it.
 Create a configuration file in the `filter.d` folder with the content below. In Debian-based systems the folder is
 typically located at `/etc/fail2ban/filter.d`.
 
-```
+```ini
 # Fail2Ban filter for Authelia
 
 # Make sure that the HTTP header "X-Forwarded-For" received by Authelia's backend
@@ -339,7 +339,7 @@ Modify the `jail.local` file. In Debian-based systems the folder is typically lo
 does not exist, create it by copying the jail.conf `cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local`. Add an
 Authelia entry to the "Jails" section of the file:
 
-```
+```ini
 [authelia]
 enabled = true
 port = http,https,9091
@@ -400,7 +400,7 @@ docker run --user 8000:9000 -v /authelia:/config authelia/authelia:latest
 
 Example for docker-compose:
 
-```
+```yaml
 version: '3.8'
 services:
   authelia:
@@ -433,7 +433,7 @@ docker run -e PUID=1000 -e PGID=1000 -v /authelia:/config authelia/authelia:late
 
 Example for docker-compose:
 
-```
+```yaml
 version: '3.8'
 services:
   authelia:
