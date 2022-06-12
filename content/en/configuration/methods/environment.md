@@ -12,8 +12,6 @@ weight: 101300
 toc: true
 ---
 
-test
-
 Environment variables are applied after the configuration file meaning anything specified as part of the environment
 overrides the configuration files.
 
