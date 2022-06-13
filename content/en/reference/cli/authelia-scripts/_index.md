@@ -2,7 +2,8 @@
 title: "authelia-scripts"
 description: ""
 lead: ""
-date: 2022-05-31T11:13:56+10:00
+date: 2022-01-18T20:00:32+01:00
+lastmod: 2022-06-13T16:28:16+10:00
 draft: false
 images: []
 menu:
