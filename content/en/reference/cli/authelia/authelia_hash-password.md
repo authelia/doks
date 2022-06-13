@@ -2,8 +2,7 @@
 title: "authelia hash-password"
 description: "Reference for the authelia hash-password command."
 lead: ""
-date: 2022-05-30T06:42:39+10:00
-lastmod: 2022-06-13T16:28:16+10:00
+date: 2022-05-31T11:13:56+10:00
 draft: false
 images: []
 menu:
@@ -15,10 +14,25 @@ toc: true
 
 ## authelia hash-password
 
-Hash a password to be used in file-based users database. Default algorithm is argon2id.
+Hash a password to be used in file-based users database.
+
+### Synopsis
+
+Hash a password to be used in file-based users database.
 
 ```
 authelia hash-password [flags] -- <password>
+```
+
+### Examples
+
+```
+authelia hash-password -- 'mypass'
+authelia hash-password --sha512 -- 'mypass'
+authelia hash-password --iterations=4 -- 'mypass'
+authelia hash-password --memory=128 -- 'mypass'
+authelia hash-password --parallelism=1 -- 'mypass'
+authelia hash-password --key-length=64 -- 'mypass'
 ```
 
 ### Options

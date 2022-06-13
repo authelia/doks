@@ -2,8 +2,7 @@
 title: "authelia"
 description: "Reference for the authelia command."
 lead: ""
-date: 2022-05-30T06:42:39+10:00
-lastmod: 2022-06-13T16:28:16+10:00
+date: 2022-05-31T11:13:56+10:00
 draft: false
 images: []
 menu:
@@ -51,7 +50,7 @@ authelia --config /etc/authelia/config/
 * [authelia access-control](authelia_access-control.md)	 - Helpers for the access control system
 * [authelia build-info](authelia_build-info.md)	 - Show the build information of Authelia
 * [authelia certificates](authelia_certificates.md)	 - Commands related to certificate generation
-* [authelia hash-password](authelia_hash-password.md)	 - Hash a password to be used in file-based users database. Default algorithm is argon2id.
+* [authelia hash-password](authelia_hash-password.md)	 - Hash a password to be used in file-based users database.
 * [authelia rsa](authelia_rsa.md)	 - Commands related to rsa keypair generation
 * [authelia storage](authelia_storage.md)	 - Manage the Authelia storage
 * [authelia validate-config](authelia_validate-config.md)	 - Check a configuration against the internal configuration validation mechanisms
