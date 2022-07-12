@@ -2,7 +2,7 @@
 title: "Financial"
 description: "Information on contributing financially to the Authelia project."
 lead: "The Authelia team is small and all of the maintainers spend their free time managing the project. Some may wish to contribute financially for various reasons, this page provides information about doing so."
-date: 2022-03-20T12:52:27+11:00
+date: 2022-06-15T17:51:47+10:00
 draft: false
 images: []
 menu:
@@ -24,7 +24,7 @@ was not prompted by any bug bounty program as we do not have one, but we hope to
 
 Potential usage for the money, ranked in order of priority:
 
-1. Put Authelia through a comprehensive [Security Audit](../../information/security.md#help-wanted).
+1. Put Authelia through a comprehensive [Security Audit](../../../information/security.md#help-wanted).
    1. Audit of Code Security via Analysis.
    2. Audit via Penetration Testing.
 2. Bug Bounty Program.
@@ -38,15 +38,17 @@ Please visit [Open Collective] in order to financially contribute to Authelia.
 Authelia is sponsored by several companies via indirect means. These companies deserve a special mention since their
 contributions are very important to us but not easily visible.
 
-If you feel you have a product or service that Authelia could benefit from please feel free to [contact](../../information/contact.md) us.
+If you feel you have a product or service that Authelia could benefit from please feel free to [contact](../../../information/contact.md) us.
 
 We are currently directly looking for someone to sponsor:
 
-* [Security Audit](../../information/security.md#help-wanted)
+* [Security Audit](../../../information/security.md#help-wanted)
 
 ### Balto
 
 Our [apt repository](https://apt.authelia.com) is hosted thanks to [Balto](https://www.getbalto.com/?from=Authelia).
+
+{{< figure src="/images/logos/balto.svg" alt="Balto" width="193" style="padding-right: 10px"  ignoreStaticImages="false" >}}
 
 ### Buildkite
 
@@ -61,13 +63,21 @@ Our [localization platform](https://translate.authelia.com) is hosted by [Crowdi
 
 Our development IDE's are provided by [JetBrains](https://www.jetbrains.com/?from=Authelia).
 
+{{< figure src="/images/logos/jetbrains.svg" alt="JetBrains" width="50" style="padding-right: 10px" ignoreStaticImages="false" >}}
+
 ### Microsoft
 
 Our pipeline agents which we rely on for productivity are hosted on [Azure](https://azure.microsoft.com/?from=Authelia)
 and our [git repositories](https://github.com/authelia) are hosted on [GitHub](https://github.com/?from=Authela)
 which are both [Microsoft](https://www.microsoft.com/?from=Authelia) products.
 
+{{< figure src="/images/logos/microsoft.svg" alt="Microsoft" width="234.45" style="padding-right: 10px" ignoreStaticImages="false" >}}
+
+{{< figure src="/images/logos/azure.svg" alt="Azure" width="173.55" style="padding-right: 10px" ignoreStaticImages="false" >}}
+
 ### Netlify
 
 Our [website and documentation](https://www.authelia.com) are built and hosted by
 [Netlify](https://www.netlify.com/?from=Authelia).
+
+[Open Collective]: https://opencollective.com/authelia-sponsors
