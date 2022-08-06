@@ -75,25 +75,6 @@ Source:
     }
   });
 
-
-  // Not yet supported: https://github.com/nextapps-de/flexsearch#complex-documents
-
-  /*
-  var docs = [
-    {{ range $index, $page := (where .Site.Pages "Section" "docs") -}}
-      {
-        id: {{ $index }},
-        href: "{{ .Permalink }}",
-        title: {{ .Title | jsonify }},
-        description: {{ .Params.description | jsonify }},
-        content: {{ .Content | jsonify }}
-      },
-    {{ end -}}
-  ];
-  */
-
-  // https://discourse.gohugo.io/t/range-length-or-last-element/3803/2
-
   {{ $list := slice }}
   {{- if and (isset .Site.Params.options "searchsectionsindex") (not (eq (len .Site.Params.options.searchSectionsIndex) 0)) }}
   {{- if eq .Site.Params.options.searchSectionsIndex "ALL" }}
