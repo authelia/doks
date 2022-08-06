@@ -2,7 +2,7 @@
 title: "Gitea"
 description: "Integrating Gitea with the Authelia OpenID Connect Provider."
 lead: ""
-date: 2022-06-30T12:35:54+10:00
+date: 2022-07-01T13:07:02+10:00
 draft: false
 images: []
 menu:
@@ -16,9 +16,9 @@ community: true
 ## Tested Versions
 
 * [Authelia]
-  * [v4.36.1](https://github.com/authelia/authelia/releases/tag/v4.36.1)
+  * [v4.36.3](https://github.com/authelia/authelia/releases/tag/v4.36.3)
 * [Gitea]
-  * [1.16.5](https://github.com/go-gitea/gitea/releases/tag/v1.16.5)
+  * [1.17.0](https://github.com/go-gitea/gitea/releases/tag/v1.17.0)
 
 ## Before You Begin
 
@@ -68,7 +68,7 @@ will operate with the above example:
     - email
     - profile
   redirect_uris:
-    - https://gitea.example.com
+    - https://gitea.example.com/user/oauth2/authelia/callback
   userinfo_signing_algorithm: none
 ```
 
