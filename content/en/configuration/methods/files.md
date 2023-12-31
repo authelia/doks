@@ -113,7 +113,7 @@ spec:
       enableServiceLinks: false
       containers:
         - name: authelia
-          image: docker.io/authelia/authelia:fix-missing-head-handler
+          image: docker.io/authelia/authelia:latest
           command:
             - authelia
           args:
